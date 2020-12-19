@@ -90,6 +90,7 @@ export const button_border_width = border_width_base;
 export const button_border_radius = border_radius_sm;
 export const button_round_border_radius = border_radius_max;
 export const button_plain_background_color = white;
+export const button_plain_underlay_color = border_color; // 按钮按下去的颜色
 export const button_disabled_opacity = disabled_opacity;
 
 // NavBar
