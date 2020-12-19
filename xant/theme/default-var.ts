@@ -15,6 +15,7 @@ export const orange_dark = '#ed6a0c';
 export const orange_light = '#fffbe8';
 export const green = '#07c160';
 export const primary = blue;
+export const activeOpacity = 0.8; // 被点击时的透明度
 
 // Component Colors
 export const text_color = gray_8;
@@ -102,3 +103,13 @@ export const nav_bar_text_color = blue;
 export const nav_bar_title_font_size = font_size_lg;
 export const nav_bar_title_text_color = text_color;
 export const nav_bar_z_index = 1;
+
+// Image
+export const image_default_size = 100; // 图片默认尺寸
+export const image_placeholder_text_color = gray_6;
+export const image_placeholder_font_size = font_size_md;
+export const image_placeholder_background_color = background_color;
+export const image_loading_icon_size = 32;
+export const image_loading_icon_color = gray_4;
+export const image_error_icon_size = 32;
+export const image_error_icon_color = gray_4;
