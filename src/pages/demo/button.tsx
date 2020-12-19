@@ -35,7 +35,10 @@ const ButtonView: React.FC = () => {
 
             <View style={CStyles.ctxSplit} />
 
-            <Button type="danger" text="danger" />
+            <Button type="danger">
+              <Icon name="upload" />
+              <Text>danger</Text>
+            </Button>
           </View>
 
           <View>
