@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import Layout from '@~/layouts/layout';
-import Button from '@~/xant-ui/button';
+import Button from 'xant/button';
 
 import CStyles from './style';
 
@@ -35,7 +35,7 @@ const ButtonView: React.FC = () => {
 
             <View style={CStyles.ctxSplit} />
 
-            <Button type="error" text="error" />
+            <Button type="danger" text="danger" />
           </View>
 
           <View>
@@ -59,7 +59,7 @@ const ButtonView: React.FC = () => {
 
             <View style={CStyles.ctxSplit} />
 
-            <Button type="primary" plain text="success" />
+            <Button type="success" plain text="success" />
           </View>
 
           <View>
