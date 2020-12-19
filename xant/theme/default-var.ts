@@ -94,6 +94,36 @@ export const button_plain_background_color = white;
 export const button_plain_underlay_color = border_color; // 按钮按下去的颜色
 export const button_disabled_opacity = disabled_opacity;
 
+// Cell
+export const cell_font_size = font_size_md;
+export const cell_line_height = 24;
+export const cell_vertical_padding = 10;
+export const cell_horizontal_padding = padding_md;
+export const cell_text_color = text_color;
+export const cell_background_color = white;
+export const cell_border_color = border_color;
+export const cell_active_color = active_color;
+export const cell_required_color = red;
+export const cell_label_color = gray_6;
+export const cell_label_font_size = font_size_sm;
+export const cell_label_line_height = line_height_sm;
+export const cell_label_margin_top = padding_base;
+export const cell_value_color = gray_6;
+export const cell_icon_size = 16;
+export const cell_right_icon_color = gray_6;
+export const cell_large_vertical_padding = padding_sm;
+export const cell_large_title_font_size = font_size_lg;
+export const cell_large_label_font_size = font_size_md;
+
+// CellGroup
+export const cell_group_background_color = white;
+export const cell_group_title_color = gray_6;
+export const cell_group_title_padding_horizontal = padding_md;
+export const cell_group_title_padding_top = padding_md;
+export const cell_group_title_padding_bottom = padding_xs;
+export const cell_group_title_font_size = font_size_md;
+export const cell_group_title_line_height = 16;
+
 // NavBar
 export const nav_bar_height = 46;
 export const nav_bar_background_color = white;

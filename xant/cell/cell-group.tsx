@@ -1,0 +1,42 @@
+import React, { memo } from 'react';
+import { View, Text } from 'react-native';
+
+import { CellGroupProps } from './interface';
+import { createStyles } from './style.cell-group';
+import { Theme } from '../theme';
+
+/**
+ * 单元格分组
+ */
+const CellGroup: React.FC<CellGroupProps> = ({
+  children,
+  title,
+  style,
+  textStyle,
+  border = true,
+}) => {
+  const { themeVar } = Theme.useContainer();
+  const Styles = createStyles(themeVar, { border });
+
+  const titleStyles = [Styles.title, style];
+  const titleTextStyles = [Styles.text, textStyle];
+  const wrapperStyles = [Styles.wrapper];
+
+  /** 标题 可能是自定义 JSX */
+  const TitleJSX = title ? (
+    React.isValidElement(title) ? (
+      title
+    ) : (
+      <Text style={titleTextStyles}>{title}</Text>
+    )
+  ) : null;
+
+  return (
+    <>
+      <View style={titleStyles}>{TitleJSX}</View>
+      <View style={wrapperStyles}>{children}</View>
+    </>
+  );
+};
+
+export default memo<typeof CellGroup>(CellGroup);
