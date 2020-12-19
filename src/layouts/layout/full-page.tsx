@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, StatusBar, StyleSheet, StatusBarProps } from 'react-native';
 
 import Page from './page';
@@ -45,4 +45,4 @@ const FullPage: React.FC<FullPageProps> = ({
   );
 };
 
-export default FullPage;
+export default memo(FullPage);

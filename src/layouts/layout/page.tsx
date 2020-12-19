@@ -2,7 +2,8 @@ import React, { memo } from 'react';
 import { View, StatusBarProps, ViewStyle } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import NavBar, { NavBarProps } from 'xant/nav-bar';
+import NavBar from 'xant/nav-bar';
+import { NavBarProps } from 'xant/nav-bar/interface';
 import { Theme } from 'xant/theme';
 import FocusAwareStatusBar from '../focus-aware-status-bar';
 
