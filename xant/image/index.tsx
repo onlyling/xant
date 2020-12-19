@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, memo } from 'react';
 import {
   View,
   Text,
@@ -106,4 +106,4 @@ const Image: React.FC<ImageProps> = (props) => {
   );
 };
 
-export default Image;
+export default memo(Image);

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, memo } from 'react';
 import {
   Text,
   TouchableHighlight,
@@ -132,11 +132,11 @@ const Button: React.FC<ButtonProps> = ({
       ) : (
         <>
           {icon ? <Text style={iconStyles}>{icon}</Text> : null}
-          {text ? <Text style={textStyles}>{text}</Text> : children}
+          <Text style={textStyles}>{text || children}</Text>
         </>
       )}
     </TouchableHighlight>
   );
 };
 
-export default Button;
+export default memo<typeof Button>(Button);

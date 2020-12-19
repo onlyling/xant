@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
@@ -78,4 +78,4 @@ const NavBar: React.FC<NavBarProps> = ({
   );
 };
 
-export default NavBar;
+export default memo(NavBar);
