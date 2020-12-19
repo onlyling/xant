@@ -56,10 +56,10 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
       <View>
         <Text
           onPress={() => {
-            navigation.push('DemoCell');
+            navigation.push('DemoImage');
           }}
         >
-          Go cell
+          Go image
         </Text>
       </View>
 
@@ -68,10 +68,10 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
       <View>
         <Text
           onPress={() => {
-            navigation.push('DemoImage');
+            navigation.push('DemoCell');
           }}
         >
-          Go image
+          Go cell
         </Text>
       </View>
 

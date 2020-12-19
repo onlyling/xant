@@ -15,8 +15,8 @@ import DemoView from '@~/pages/demo/demo';
 import DemoFullView from '@~/pages/demo/full';
 import DemoFullView2 from '@~/pages/demo/full2';
 import DemoButtonView from '@~/pages/demo/button';
-// import DemoCellView from '@~/pages/demo/cell';
 import DemoImageView from '@~/pages/demo/image';
+import DemoCellView from '@~/pages/demo/cell';
 
 import ListView from '@~/pages/list/list';
 import DetailsView from '@~/pages/details/details';
@@ -78,9 +78,9 @@ const NestingNavigators: React.FC = () => {
 
         <Stack.Screen name="DemoButton" component={DemoButtonView} />
 
-        {/* <Stack.Screen name="DemoCell" component={DemoCellView} /> */}
-
         <Stack.Screen name="DemoImage" component={DemoImageView} />
+
+        <Stack.Screen name="DemoCell" component={DemoCellView} />
 
         <Stack.Screen name="List" component={ListView} />
 

@@ -3,7 +3,7 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import Layout from '@~/layouts/layout';
-import Cell from '@~/xant-ui/cell';
+import Cell, { CellGroup } from 'xant/cell';
 
 import CStyles from './style';
 
@@ -27,7 +27,7 @@ const Demo: React.FC = () => {
 
         <Cell title="单元格" value="内容" label="一些简单的描述" />
 
-        <Cell required title="单元格" value="内容" />
+        <Cell required title="单元格" />
 
         <Cell
           title="单元格"
@@ -140,7 +140,7 @@ const Demo: React.FC = () => {
           <Text>分组</Text>
         </View>
 
-        <Cell.CellGroup title="分组头">
+        <CellGroup title="分组头">
           <Cell
             title="单元格"
             value="内容"
@@ -153,14 +153,15 @@ const Demo: React.FC = () => {
             title="单元格"
             value="内容"
             label="一些简单的描述"
+            border={false}
             isLink
             center
           />
-        </Cell.CellGroup>
+        </CellGroup>
 
         <View style={CStyles.ctxSplit} />
 
-        <Cell.CellGroup title={<Text style={Styles.text}>分组头</Text>}>
+        <CellGroup title={<Text style={Styles.text}>分组头</Text>}>
           <Cell
             title="单元格"
             value="内容"
@@ -173,10 +174,11 @@ const Demo: React.FC = () => {
             title="单元格"
             value="内容"
             label="一些简单的描述"
+            border={false}
             isLink
             center
           />
-        </Cell.CellGroup>
+        </CellGroup>
 
         <View style={CStyles.ctxSplit} />
       </ScrollView>
