@@ -10,8 +10,16 @@
 
 ### Image
 
-![按钮](screenshots/image.jpg)
+![图片](screenshots/image.jpg)
 
 ### 单元格
 
-![按钮](screenshots/cell.jpg)
+![按单元格钮](screenshots/cell.jpg)
+
+### 分割线
+
+![分割线](screenshots/divider.jpg)
+
+### 标签
+
+![标签](screenshots/tag.jpg)
