@@ -18,6 +18,7 @@ import DemoButtonView from '@~/pages/demo/button';
 import DemoImageView from '@~/pages/demo/image';
 import DemoCellView from '@~/pages/demo/cell';
 import DemoDividerView from '@~/pages/demo/divider';
+import DemoTagView from '@~/pages/demo/tag';
 
 import ListView from '@~/pages/list/list';
 import DetailsView from '@~/pages/details/details';
@@ -34,6 +35,7 @@ type RootStackParamList = {
   DemoCell: undefined;
   DemoImage: undefined;
   DemoDivider: undefined;
+  DemoTag: undefined;
   List: undefined;
   Details: {
     id: number;
@@ -88,6 +90,8 @@ const NestingNavigators: React.FC = () => {
         <Stack.Screen name="DemoCell" component={DemoCellView} />
 
         <Stack.Screen name="DemoDivider" component={DemoDividerView} />
+
+        <Stack.Screen name="DemoTag" component={DemoTagView} />
 
         <Stack.Screen name="List" component={ListView} />
 
