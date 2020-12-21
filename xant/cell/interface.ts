@@ -42,10 +42,10 @@ export interface CellProps extends TouchableHighlightProps {
   title?: React.ReactNode;
 
   /** 右侧内容 */
-  value?: string | number;
+  value?: React.ReactNode;
 
   /** 标题下方的描述信息 */
-  label?: string | number | React.ReactNode;
+  label?: React.ReactNode;
 
   /** 单元格大小，可选值为 large */
   size?: 'large';
