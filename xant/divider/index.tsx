@@ -14,7 +14,6 @@ const Divider: React.FC<DividerProps> = ({
   hairline = true,
   contentPosition = 'center',
 }) => {
-  console.log(dashed);
   const { themeVar } = Theme.useContainer();
   const Styles = createStyles(themeVar, { dashed, hairline, contentPosition });
 
