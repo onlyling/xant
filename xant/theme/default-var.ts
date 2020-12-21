@@ -154,3 +154,23 @@ export const image_loading_icon_size = 32;
 export const image_loading_icon_color = gray_4;
 export const image_error_icon_size = 32;
 export const image_error_icon_color = gray_4;
+
+// Tag
+export const tag_horizontal_padding = padding_base;
+export const tag_text_color = white;
+export const tag_font_size = font_size_sm;
+export const tag_border_radius = 2;
+export const tag_line_height = 16;
+export const tag_medium_vertical_padding = 2;
+export const tag_medium_horizontal_padding = 6;
+export const tag_large_vertical_padding = padding_base;
+export const tag_large_horizontal_padding = padding_xs;
+export const tag_large_border_radius = border_radius_md;
+export const tag_large_font_size = font_size_md;
+export const tag_round_border_radius = border_radius_max;
+export const tag_danger_color = red;
+export const tag_primary_color = blue;
+export const tag_success_color = green;
+export const tag_warning_color = orange;
+export const tag_default_color = gray_6;
+export const tag_plain_background_color = white;
