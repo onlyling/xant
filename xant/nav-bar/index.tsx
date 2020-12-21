@@ -3,9 +3,8 @@ import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import { NavBarProps } from './interface';
-import { Theme } from '../theme';
-
 import { createStyles } from './style';
+import { Theme } from '../theme';
 
 /**
  * NavBar 导航栏

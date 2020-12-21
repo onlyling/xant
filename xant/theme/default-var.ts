@@ -124,6 +124,17 @@ export const cell_group_title_padding_bottom = padding_xs;
 export const cell_group_title_font_size = font_size_md;
 export const cell_group_title_line_height = 16;
 
+// Divider
+export const divider_vertical_margin = padding_md;
+export const divider_horizontal_margin = padding_md;
+export const divider_text_color = gray_6;
+export const divider_font_size = font_size_md;
+export const divider_line_height = 24;
+export const divider_border_color = border_color;
+export const divider_content_padding = padding_md;
+export const divider_content_left_width = '10%';
+export const divider_content_right_width = '10%';
+
 // NavBar
 export const nav_bar_height = 46;
 export const nav_bar_background_color = white;

@@ -1,0 +1,40 @@
+import { ViewStyle, TextStyle } from 'react-native';
+
+export interface DividerProps {
+  /**
+   * 自定义文字样式
+   */
+  textStyle?: TextStyle;
+
+  /**
+   * 自定义线样式
+   */
+  borderStyle?: ViewStyle;
+
+  /**
+   * 外层容器自定义样式
+   */
+  wrapperStyle?: ViewStyle;
+
+  /**
+   * 是否使用虚线
+   *
+   * @default `false`
+   * @deprecated not work, to see https://github.com/facebook/react-native/issues/28695
+   */
+  dashed?: boolean;
+
+  /**
+   * 是否使用 0.5px 线
+   *
+   * @default `true`
+   */
+  hairline?: boolean;
+
+  /**
+   * 内容位置，可选值为 `'left' | 'center' | 'right'`
+   *
+   * @default `center`
+   */
+  contentPosition?: 'left' | 'center' | 'right';
+}
