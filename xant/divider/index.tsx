@@ -5,6 +5,9 @@ import { DividerProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 
+/**
+ * 分割线
+ */
 const Divider: React.FC<DividerProps> = ({
   children,
   textStyle,
