@@ -17,6 +17,7 @@ import DemoFullView2 from '@~/pages/demo/full2';
 import DemoButtonView from '@~/pages/demo/button';
 import DemoImageView from '@~/pages/demo/image';
 import DemoCellView from '@~/pages/demo/cell';
+import DemoDividerView from '@~/pages/demo/divider';
 
 import ListView from '@~/pages/list/list';
 import DetailsView from '@~/pages/details/details';
@@ -32,6 +33,7 @@ type RootStackParamList = {
   DemoButton: undefined;
   DemoCell: undefined;
   DemoImage: undefined;
+  DemoDivider: undefined;
   List: undefined;
   Details: {
     id: number;
@@ -66,6 +68,9 @@ const NestingNavigators: React.FC = () => {
         headerMode="none"
         screenOptions={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          cardStyle: {
+            backgroundColor: '#fff',
+          },
         }}
       >
         <Stack.Screen name="Home" component={TabsView} />
@@ -81,6 +86,8 @@ const NestingNavigators: React.FC = () => {
         <Stack.Screen name="DemoImage" component={DemoImageView} />
 
         <Stack.Screen name="DemoCell" component={DemoCellView} />
+
+        <Stack.Screen name="DemoDivider" component={DemoDividerView} />
 
         <Stack.Screen name="List" component={ListView} />
 

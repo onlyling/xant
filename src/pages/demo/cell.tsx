@@ -15,7 +15,7 @@ const Styles = StyleSheet.create({
 
 const Demo: React.FC = () => {
   return (
-    <Layout.Page title="Cell 组件">
+    <Layout.Page title="Cell">
       <ScrollView>
         <View>
           <Text>基础用法</Text>
