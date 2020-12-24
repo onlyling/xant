@@ -70,7 +70,13 @@ const TagView: React.FC = () => {
             <Cell
               label="可关闭标签"
               value={
-                <Tag type="danger" closeable>
+                <Tag
+                  type="danger"
+                  closeable
+                  onPressClose={() => {
+                    console.log('onPressClose');
+                  }}
+                >
                   标签
                 </Tag>
               }
