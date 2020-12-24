@@ -37,8 +37,9 @@ export interface TagProps {
    * 是否展示标签
    *
    * @default `true`
+   * @deprecated 暂时没有实现淡出动画的想法
    */
-  show?: boolean;
+  // show?: boolean;
 
   /**
    * 是否为空心样式
@@ -74,6 +75,11 @@ export interface TagProps {
    * @default `false`
    */
   closeable?: boolean;
+
+  /**
+   * 点击关闭图标
+   */
+  onPressClose?: () => void;
 
   /**
    * 是否使用 0.5px 线

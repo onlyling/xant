@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { View, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 import { TagProps } from './interface';
 import { createStyles } from './style';
@@ -20,6 +21,8 @@ const Tag: React.FC<TagProps> = ({
   round = false,
   size,
   type = 'default',
+  closeable = false,
+  onPressClose,
   hairline = false,
 }) => {
   const { themeVar } = Theme.useContainer();
@@ -45,6 +48,9 @@ const Tag: React.FC<TagProps> = ({
     <View style={tagStyles}>
       <View style={wrapperStyles}>
         <Text style={textStyles}>{children}</Text>
+        {closeable ? (
+          <Icon name="close" style={textStyles} onPress={onPressClose} />
+        ) : null}
       </View>
     </View>
   );

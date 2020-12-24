@@ -44,6 +44,8 @@ export const createStyles = (
       borderWidth: hairline ? StyleSheet.hairlineWidth : 1,
       borderStyle: 'solid',
       borderColor: backgroundColor,
+      flexDirection: 'row',
+      alignItems: 'center',
     },
 
     wrapperMark: {
