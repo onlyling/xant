@@ -18,7 +18,7 @@ const Row: React.FC<RowProps> = ({ children, gutter = 0, style }) => {
     // },
   ];
 
-  console.log(-(+gutter / 2));
+  // console.log(-(+gutter / 2));
 
   return (
     <RowContext.Provider value={{ gutter }}>
