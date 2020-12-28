@@ -32,18 +32,6 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
       <View>
         <Text
           onPress={() => {
-            navigation.push('DemoFull2');
-          }}
-        >
-          Go full2
-        </Text>
-      </View>
-
-      <View style={CStyles.ctxSplit} />
-
-      <View>
-        <Text
-          onPress={() => {
             navigation.push('DemoButton');
           }}
         >

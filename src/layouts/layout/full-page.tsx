@@ -1,48 +1,28 @@
-import React, { memo } from 'react';
-import { View, StatusBar, StyleSheet, StatusBarProps } from 'react-native';
+import React, { useMemo, memo } from 'react';
 
+import { FullPageProps } from './interface';
 import Page from './page';
 
-type FullPageProps = {
-  filled?: boolean;
-  statusBarBackgroundColor?: string;
-  statusBarStyle?: StatusBarProps['barStyle'];
-};
-
-const Styles = StyleSheet.create({
-  statusBar: {
-    height: StatusBar.currentHeight,
-  },
-});
-
+/**
+ * 全屏页面
+ */
 const FullPage: React.FC<FullPageProps> = ({
   children,
-  filled = true,
-  statusBarBackgroundColor,
   statusBarStyle = 'dark-content',
 }) => {
+  const statusBarProps = useMemo(() => ({ barStyle: statusBarStyle }), [
+    statusBarStyle,
+  ]);
+
   return (
     <Page
+      headerBackgroundColor="transparent"
       showHeader={false}
-      statusBarProps={{
-        backgroundColor: 'transparent',
-        barStyle: statusBarStyle,
-        translucent: true,
-      }}
+      statusBarProps={statusBarProps}
     >
-      {!filled ? (
-        <View
-          style={[
-            Styles.statusBar,
-            {
-              backgroundColor: statusBarBackgroundColor,
-            },
-          ]}
-        />
-      ) : null}
       {children}
     </Page>
   );
 };
 
-export default memo(FullPage);
+export default memo<typeof FullPage>(FullPage);

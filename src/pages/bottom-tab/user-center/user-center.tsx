@@ -1,15 +1,18 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
-import FocusAwareStatusBar from '@~/layouts/focus-aware-status-bar';
+import Layout from '@~/layouts/layout';
 import * as Routes from '@~/routes';
 
 type UserCenterProps = {} & Routes.BottomTabScreenProps<'UserCenter'>;
 
 const UserCenter: React.FC<UserCenterProps> = ({ navigation }) => {
   return (
-    <View>
-      <FocusAwareStatusBar backgroundColor="#f99" />
+    <Layout.FullPage statusBarStyle="light-content">
+      <Image
+        source={{ uri: 'https://img.yzcdn.cn/vant/cat.jpeg' }}
+        style={{ width: '100%', height: 200 }}
+      />
 
       <View>
         <Text>UserCenter</Text>
@@ -26,7 +29,7 @@ const UserCenter: React.FC<UserCenterProps> = ({ navigation }) => {
           Go Details
         </Text>
       </View>
-    </View>
+    </Layout.FullPage>
   );
 };
 

@@ -13,7 +13,6 @@ import { BottomTabNavigationProp as BottomTabNavigationPropOriginal } from '@rea
 
 import DemoView from '@~/pages/demo/demo';
 import DemoFullView from '@~/pages/demo/full';
-import DemoFullView2 from '@~/pages/demo/full2';
 import DemoButtonView from '@~/pages/demo/button';
 import DemoImageView from '@~/pages/demo/image';
 import DemoCellView from '@~/pages/demo/cell';
@@ -31,7 +30,6 @@ type RootStackParamList = {
   Home: undefined;
   Demo: undefined;
   DemoFull: undefined;
-  DemoFull2: undefined;
   DemoButton: undefined;
   DemoCell: undefined;
   DemoImage: undefined;
@@ -82,8 +80,6 @@ const NestingNavigators: React.FC = () => {
         <Stack.Screen name="Demo" component={DemoView} />
 
         <Stack.Screen name="DemoFull" component={DemoFullView} />
-
-        <Stack.Screen name="DemoFull2" component={DemoFullView2} />
 
         <Stack.Screen name="DemoButton" component={DemoButtonView} />
 

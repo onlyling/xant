@@ -40,7 +40,7 @@ const ImageView: React.FC = () => {
 
           <Image
             source={{ uri: 'https://img.yzcdn.cn/vant/cat.jpeg' }}
-            radius={20}
+            radius={10}
             duration={2000}
           />
 
