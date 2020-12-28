@@ -11,6 +11,7 @@
 | 文件选择器 | [react-native-document-picker](https://github.com/rnmods/react-native-document-picker) |
 | 图标       | [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) \| [@ant-design/icons-react-native](https://github.com/ant-design/ant-design-icons) |
 | 加解密     | [react-native-rsa-native](https://github.com/amitaymolko/react-native-rsa-native) |
+| 异常处理   | [react-native-exception-handler](https://github.com/a7ul/react-native-exception-handler) |
 
 ## 截图
 
