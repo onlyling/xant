@@ -55,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
    * @param e event 回调事件
    */
   const onPressTouchable = (e: GestureResponderEvent) => {
-    if (!disabled) {
+    if (!disabled && !loading) {
       onPress && onPress(e);
     }
   };
