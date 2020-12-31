@@ -1,15 +1,15 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
-import Theme from 'xant/theme';
+import Provider from 'xant/provider';
 
 import Routes from './routes';
 
 const App: React.FC = () => {
   return (
-    <Theme>
+    <Provider>
       <Routes />
-    </Theme>
+    </Provider>
   );
 };
 
