@@ -1,21 +1,21 @@
-export const black = '#000';
-export const white = '#fff';
-export const gray_1 = '#f7f8fa';
-export const gray_2 = '#f2f3f5';
-export const gray_3 = '#ebedf0';
-export const gray_4 = '#dcdee0';
-export const gray_5 = '#c8c9cc';
-export const gray_6 = '#969799';
-export const gray_7 = '#646566';
-export const gray_8 = '#323233';
-export const red = '#ee0a24';
-export const blue = '#1989fa';
-export const orange = '#ff976a';
-export const orange_dark = '#ed6a0c';
-export const orange_light = '#fffbe8';
-export const green = '#07c160';
-export const primary = blue;
-export const activeOpacity = 0.8; // 被点击时的透明度
+export const black: string = '#000';
+export const white: string = '#fff';
+export const gray_1: string = '#f7f8fa';
+export const gray_2: string = '#f2f3f5';
+export const gray_3: string = '#ebedf0';
+export const gray_4: string = '#dcdee0';
+export const gray_5: string = '#c8c9cc';
+export const gray_6: string = '#969799';
+export const gray_7: string = '#646566';
+export const gray_8: string = '#323233';
+export const red: string = '#ee0a24';
+export const blue: string = '#1989fa';
+export const orange: string = '#ff976a';
+export const orange_dark: string = '#ed6a0c';
+export const orange_light: string = '#fffbe8';
+export const green: string = '#07c160';
+export const primary: string = blue;
+export const activeOpacity: number = 0.8; // 被点击时的透明度
 
 // Component Colors
 export const text_color = gray_8;
@@ -23,8 +23,8 @@ export const active_color = gray_2;
 export const active_opacity = 0.7;
 export const disabled_opacity = 0.5;
 export const background_color = gray_1;
-export const background_color_light = '#fafafa';
-export const text_link_color = '#576b95';
+export const background_color_light: string = '#fafafa';
+export const text_link_color: string = '#576b95';
 
 // Padding
 export const padding_base = 4;
@@ -44,10 +44,10 @@ export const line_height_xs = 14;
 export const line_height_sm = 18;
 export const line_height_md = 20;
 export const line_height_lg = 22;
-export const base_font_family = `-apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+export const base_font_family: string = `-apple-system, BlinkMacSystemFont, 'Helvetica Neue',
 Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB',
 'Microsoft Yahei', sans-serif`;
-export const price_integer_font_family = `Avenir-Heavy, PingFang SC, Helvetica Neue, Arial,
+export const price_integer_font_family: string = `Avenir-Heavy, PingFang SC, Helvetica Neue, Arial,
 sans-serif`;
 
 // Animation
@@ -132,8 +132,8 @@ export const divider_font_size = font_size_md;
 export const divider_line_height = 24;
 export const divider_border_color = border_color;
 export const divider_content_padding = padding_md;
-export const divider_content_left_width = '10%';
-export const divider_content_right_width = '10%';
+export const divider_content_left_width: string = '10%';
+export const divider_content_right_width: string = '10%';
 
 // NavBar
 export const nav_bar_height = 46;

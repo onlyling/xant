@@ -3,6 +3,8 @@ import React, { useMemo } from 'react';
 import { ThemeProps } from './interface';
 import container from './container';
 
+export type { StyleVarType } from './interface';
+
 /** 主题 */
 export const Theme = container;
 
