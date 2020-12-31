@@ -2,6 +2,7 @@ import React from 'react';
 
 import { ProviderProps } from './interface';
 import Theme from '../theme';
+import Portal from '../portal';
 
 /**
  * 统一的配置
@@ -10,7 +11,7 @@ import Theme from '../theme';
 const Provider: React.FC<ProviderProps> = ({ children, theme, dark }) => {
   return (
     <Theme theme={theme} dark={dark}>
-      {children}
+      <Portal.Host>{children}</Portal.Host>
     </Theme>
   );
 };
