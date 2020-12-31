@@ -20,7 +20,7 @@ const Styles = StyleSheet.create({
   },
 });
 
-const ImageView: React.FC = () => {
+const GridView: React.FC = () => {
   return (
     <Layout.Page title="Grid">
       <ScrollView>
@@ -94,4 +94,4 @@ const ImageView: React.FC = () => {
   );
 };
 
-export default ImageView;
+export default GridView;
