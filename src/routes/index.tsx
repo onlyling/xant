@@ -22,6 +22,7 @@ import DemoGridView from '@~/pages/demo/grid';
 import DemoPortalView from '@~/pages/demo/portal';
 import DemoOverlayView from '@~/pages/demo/overlay';
 import DemoPopupView from '@~/pages/demo/popup';
+import DemoLoadingView from '@~/pages/demo/loading';
 
 import ListView from '@~/pages/list/list';
 import DetailsView from '@~/pages/details/details';
@@ -42,6 +43,7 @@ type RootStackParamList = {
   DemoPortal: undefined;
   DemoOverlay: undefined;
   DemoPopup: undefined;
+  DemoLoading: undefined;
   List: undefined;
   Details: {
     id: number;
@@ -104,6 +106,8 @@ const NestingNavigators: React.FC = () => {
         <Stack.Screen name="DemoOverlay" component={DemoOverlayView} />
 
         <Stack.Screen name="DemoPopup" component={DemoPopupView} />
+
+        <Stack.Screen name="DemoLoading" component={DemoLoadingView} />
 
         <Stack.Screen name="List" component={ListView} />
 
