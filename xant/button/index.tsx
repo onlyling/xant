@@ -1,16 +1,10 @@
-import React, { useRef, useEffect, memo } from 'react';
-import {
-  Text,
-  TouchableHighlight,
-  Animated,
-  Easing,
-  GestureResponderEvent,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import React, { memo } from 'react';
+import { Text, TouchableHighlight, GestureResponderEvent } from 'react-native';
 
 import { ButtonProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
+import Loading from '../loading';
 import helpers from '../helpers';
 
 /**
@@ -37,7 +31,6 @@ const Button: React.FC<ButtonProps> = ({
   onPress,
   ...otherProps
 }) => {
-  const LoadingRef = useRef(new Animated.Value(0));
   const { themeVar } = Theme.useContainer();
 
   const Styles = createStyles(themeVar, {
@@ -61,39 +54,6 @@ const Button: React.FC<ButtonProps> = ({
     }
   };
 
-  // loading 状态
-  useEffect(() => {
-    const playerAnimated = Animated.timing(LoadingRef.current, {
-      toValue: 1,
-      duration: 1500,
-      easing: Easing.out(Easing.linear),
-      useNativeDriver: true,
-    });
-
-    let stop = false;
-
-    if (loading) {
-      const start = () => {
-        if (stop) {
-          return;
-        }
-
-        LoadingRef.current.setValue(0);
-
-        playerAnimated.start(() => {
-          start();
-        });
-      };
-
-      start();
-    }
-
-    return () => {
-      stop = true;
-      playerAnimated.stop();
-    };
-  }, [loading]);
-
   const wrapperStyles = [Styles.wrapper, style];
   const textStyles = [Styles.text, textStyle];
   const iconStyles = [Styles.icon, iconStyle];
@@ -110,26 +70,9 @@ const Button: React.FC<ButtonProps> = ({
       {...otherProps}
     >
       {loading ? (
-        <>
-          <Animated.Text
-            style={[
-              iconStyles,
-              {
-                transform: [
-                  {
-                    rotateZ: LoadingRef.current.interpolate({
-                      inputRange: [0, 1],
-                      outputRange: ['0deg', '360deg'],
-                    }),
-                  },
-                ],
-              } as any,
-            ]}
-          >
-            <Icon name="loading1" />
-          </Animated.Text>
-          {loadingText ? <Text style={textStyles}>{loadingText}</Text> : null}
-        </>
+        <Loading color={Styles.text.color} size={Styles.text.fontSize}>
+          {loadingText ? loadingText : null}
+        </Loading>
       ) : (
         <>
           {icon ? <Text style={iconStyles}>{icon}</Text> : null}
