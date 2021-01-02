@@ -17,6 +17,7 @@
     "@react-navigation/bottom-tabs": "^5.11.2",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
+    "omit.js": "^2.0.2",
     "react": "16.13.1",
     "react-native": "0.63.3",
     "react-native-gesture-handler": "^1.9.0",
