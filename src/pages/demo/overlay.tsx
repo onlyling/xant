@@ -34,7 +34,7 @@ const OverlayView: React.FC = () => {
   });
 
   return (
-    <Layout.Page title="Portal">
+    <Layout.Page title="Overlay">
       <ScrollView>
         <View style={CStyles.padding}>
           <View>
