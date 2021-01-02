@@ -7,7 +7,8 @@ import { createStyles } from './style.cell';
 import { Theme } from '../theme';
 
 /**
- * 单元格
+ * Cell 单元格
+ * @description 单元格为列表中的单个展示项。
  */
 const Cell: React.FC<CellProps> = ({
   wrapperStyle,

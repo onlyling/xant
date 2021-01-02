@@ -7,7 +7,7 @@ import { createStyles } from './style';
 import { Theme } from '../theme';
 
 /**
- * 标签
+ * Tag 标签
  */
 const Tag: React.FC<TagProps> = ({
   children,

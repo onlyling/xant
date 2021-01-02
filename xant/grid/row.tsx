@@ -5,6 +5,10 @@ import { RowProps } from './interface';
 import RowContext from './context';
 import Styles from './style';
 
+/**
+ * Row 布局
+ * @description 一组单元格。
+ */
 const Row: React.FC<RowProps> = ({ children, gutter = 0, style }) => {
   const rowStyles: (ViewStyle | undefined)[] = [
     Styles.row,

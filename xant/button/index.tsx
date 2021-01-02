@@ -14,7 +14,8 @@ import { Theme } from '../theme';
 import helpers from '../helpers';
 
 /**
- * 按钮
+ * Button 按钮
+ * @description 按钮用于触发一个操作，如提交表单。
  */
 const Button: React.FC<ButtonProps> = ({
   children,

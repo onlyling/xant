@@ -6,6 +6,10 @@ import RowContext from './context';
 
 const BASE_SPAN_WIDTH = 100 / 24;
 
+/**
+ * Cel 布局
+ * @description 每个子单元格。
+ */
 const Cel: React.FC<CelProps> = ({ children, style, span, offset = 0 }) => {
   const { gutter = 0 } = useContext(RowContext);
   const width = `${+span * BASE_SPAN_WIDTH}%`;

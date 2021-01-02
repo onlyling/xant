@@ -6,7 +6,8 @@ import { createStyles } from './style';
 import { Theme } from '../theme';
 
 /**
- * 分割线
+ * Divider 分割线
+ * @description 用于将内容分隔为多个区域。
  */
 const Divider: React.FC<DividerProps> = ({
   children,

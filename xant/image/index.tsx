@@ -15,8 +15,9 @@ import { createStyles } from './style';
 import { Theme } from '../theme';
 
 /**
- * 图片、图片预览
+ * Image 图片
  * 参考代码：https://github.com/HandlebarLabs/react-native-examples-and-tutorials/blob/master/tutorials/progressive-image-loading/ProgressiveImage.js
+ * @description 增强版的 img 标签，提供多种图片填充模式，支持图片懒加载、加载中提示、加载失败提示。
  */
 const Image: React.FC<ImageProps> = (props) => {
   const {
