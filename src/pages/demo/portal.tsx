@@ -55,6 +55,7 @@ const PortalView: React.FC = () => {
               <Button
                 type="warning"
                 text="关闭"
+                style={{ marginTop: 30 }}
                 onPress={() => {
                   setState((s) => ({
                     ...s,
@@ -116,7 +117,9 @@ const PortalView: React.FC = () => {
                   <Button
                     type="danger"
                     text="关闭"
+                    style={{ marginTop: 30 }}
                     onPress={() => {
+                      console.log('-- Portal key --', key);
                       Portal.remove(key);
                     }}
                   />
