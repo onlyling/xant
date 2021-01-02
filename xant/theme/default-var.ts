@@ -15,7 +15,6 @@ export const orange_dark: string = '#ed6a0c';
 export const orange_light: string = '#fffbe8';
 export const green: string = '#07c160';
 export const primary: string = blue;
-export const activeOpacity: number = 0.8; // 被点击时的透明度
 
 // Component Colors
 export const text_color = gray_8;
@@ -154,6 +153,10 @@ export const image_loading_icon_size = 32;
 export const image_loading_icon_color = gray_4;
 export const image_error_icon_size = 32;
 export const image_error_icon_color = gray_4;
+
+// Overlay
+export const overlay_z_index = 1;
+export const overlay_background_color: string = 'rgba(0, 0, 0, 0.7)';
 
 // Tag
 export const tag_horizontal_padding = padding_base;
