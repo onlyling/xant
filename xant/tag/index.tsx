@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import { TagProps } from './interface';
@@ -42,7 +42,7 @@ const Tag: React.FC<TagProps> = ({
     mark ? Styles.wrapperMark : null,
     wrapperStyle,
   ];
-  const textStyles = [Styles.text, textStyle];
+  const textStyles = StyleSheet.compose(Styles.text, (textStyle || {}) as any);
 
   return (
     <View style={tagStyles}>

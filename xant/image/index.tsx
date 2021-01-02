@@ -75,7 +75,7 @@ const Image: React.FC<ImageProps> = (props) => {
   return (
     <TouchableOpacity
       style={wrapperStyles}
-      activeOpacity={themeVar.activeOpacity}
+      activeOpacity={themeVar.active_opacity}
       onPress={onPress}
     >
       <Animated.Image
