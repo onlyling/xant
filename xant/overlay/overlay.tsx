@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useCallback, useState, memo } from 'react';
-import { TouchableOpacity, Animated } from 'react-native';
+import { TouchableOpacity, Animated, BackHandler } from 'react-native';
 
 import { OverlayProps } from './interface';
 import { createStyles } from './style';
@@ -31,6 +31,7 @@ const Overlay: React.FC<OverlayProps> = ({
     }
   }, [fadeInstance]);
 
+  // 监听状态变化，执行动画
   useEffect(() => {
     if (show) {
       setShow(true);
@@ -56,6 +57,25 @@ const Overlay: React.FC<OverlayProps> = ({
       stopShow();
     };
   }, [show, duration, fadeAnim, stopShow]);
+
+  // Android 返回按钮
+  useEffect(() => {
+    const backAction = () => {
+      if (show) {
+        onPress && onPress();
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove();
+  }, [show, onPress]);
 
   const overlayStyles = [
     Styles.overlay,

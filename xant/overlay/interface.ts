@@ -1,4 +1,4 @@
-import { ViewStyle, GestureResponderEvent } from 'react-native';
+import { ViewStyle } from 'react-native';
 
 export interface OverlayProps {
   /**
@@ -27,5 +27,5 @@ export interface OverlayProps {
   /**
    * 点击弹层
    */
-  onPress?: (e: GestureResponderEvent) => void;
+  onPress?: () => void;
 }

@@ -158,6 +158,16 @@ export const image_error_icon_color = gray_4;
 export const overlay_z_index = 1;
 export const overlay_background_color: string = 'rgba(0, 0, 0, 0.7)';
 
+// Popup
+export const popup_background_color = white;
+// export const popup_transition: transform @animation-duration-base;
+export const popup_round_border_radius = 16;
+export const popup_close_icon_size = 22;
+export const popup_close_icon_color = gray_5;
+export const popup_close_icon_active_color = gray_6;
+export const popup_close_icon_margin = 16;
+export const popup_close_icon_z_index = 1;
+
 // Tag
 export const tag_horizontal_padding = padding_base;
 export const tag_text_color = white;
