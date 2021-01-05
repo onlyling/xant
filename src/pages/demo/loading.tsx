@@ -3,6 +3,8 @@ import { View, Text, ScrollView } from 'react-native';
 
 import Layout from '@~/layouts/layout';
 import Loading from 'xant/loading';
+import Circular from 'xant/loading/circular';
+import Spinner from 'xant/loading/spinner';
 
 import CStyles from './style';
 
@@ -11,6 +13,18 @@ const PortalView: React.FC = () => {
     <Layout.Page title="Portal">
       <ScrollView>
         <View style={CStyles.padding}>
+          <View>
+            <Text>单独使用图标</Text>
+          </View>
+
+          <View style={CStyles.ctxSplit} />
+
+          <View>
+            <Circular />
+
+            <Spinner />
+          </View>
+
           <View>
             <Text>加载类型</Text>
           </View>
