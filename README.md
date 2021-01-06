@@ -23,7 +23,7 @@
 - [ ] Icon 图标
 - [x] Image 图片
 - [x] Grid 栅格化
-- [ ] Popup 弹出层
+- [x] Popup 弹出层
 - [ ] Toast 轻提示
 
 ### 表单组件
@@ -50,7 +50,7 @@
 - [ ] ActionSheet 动作面板
 - [ ] Dialog 弹出框
 - [ ] DropdownMenu 下拉菜单
-- [ ] Loading 加载
+- [x] Loading 加载
 - [ ] Notify 消息提示
 - [x] Overlay 遮罩层
 - [ ] PullRefresh 下拉刷新
@@ -90,11 +90,11 @@
 
 ## 截图
 
-### Button
+### 按钮
 
 ![按钮](screenshots/button.jpg)
 
-### Image
+### 图片
 
 ![图片](screenshots/image.jpg)
 
@@ -109,3 +109,19 @@
 ### 标签
 
 ![标签](screenshots/tag.jpg)
+
+### 栅格化
+
+![栅格化](screenshots/grid.jpg)
+
+### 遮罩层
+
+![遮罩层](screenshots/overlay.jpg)
+
+### 弹出层
+
+![弹出层](screenshots/popup.jpg)
+
+### 加载
+
+![加载](screenshots/loading.jpg)
