@@ -57,7 +57,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size, color }) => {
   useLoop(AnimatedSpinnerValue, 0, {
     toValue: 1,
     duration: themeVar.loading_spinner_animation_duration * 1000,
-    easing: Easing.out(Easing.linear),
+    easing: Easing.linear,
   });
 
   const wrapperStyles: ViewStyle[] = [

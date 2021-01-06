@@ -53,7 +53,7 @@ const Circular: React.FC<CircularProps> = ({ size, color }) => {
 
   const circle2Props = useMemo(() => {
     const center = Math.floor(rsize / 2);
-    const radios = Math.floor(center - strokeWidth / 2 - 8);
+    const radios = Math.floor(center - strokeWidth / 2 - center / 2);
 
     return {
       cy: center,
@@ -72,12 +72,12 @@ const Circular: React.FC<CircularProps> = ({ size, color }) => {
 
   useLoop(AnimatedCircle1Value, half1Circle, {
     toValue: -half1Circle * 2,
-    duration: themeVar.loading_spinner_animation_duration * 1000 * 2,
+    duration: themeVar.loading_spinner_animation_duration * 1000 * 1.5,
   });
 
   useLoop(AnimatedCircle2Value, half2Circle, {
     toValue: -half2Circle * 2,
-    duration: themeVar.loading_spinner_animation_duration * 1000 * 2.8,
+    duration: themeVar.loading_spinner_animation_duration * 1000 * 2.5,
   });
 
   const wrapperStyles: ViewStyle[] = [
