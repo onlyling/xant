@@ -59,9 +59,6 @@ export interface CellProps extends TouchableHighlightProps {
   /** 是否显示内边框 */
   border?: Boolean;
 
-  /** 是否开启点击反馈 */
-  clickable?: Boolean;
-
   /** 是否展示右侧箭头并开启点击反馈 */
   isLink?: Boolean;
 

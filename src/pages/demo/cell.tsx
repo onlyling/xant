@@ -38,7 +38,6 @@ const Demo: React.FC = () => {
         />
 
         <Cell
-          clickable
           title="单元格"
           value="内容"
           onPress={() => {
@@ -57,6 +56,7 @@ const Demo: React.FC = () => {
         <Cell title="单元格" value="内容" label="一些简单的描述" />
 
         <Cell
+          required
           title="单元格"
           value="large"
           label="一些简单的描述"

@@ -84,11 +84,18 @@ export const createStyles = (
 
     required: {
       position: 'absolute',
-      textAlign: 'center',
+      left: -themeVar.padding_md,
+      top: themeVar.cell_vertical_padding,
+      height: themeVar.cell_line_height,
+      width: themeVar.padding_md,
+      // backgroundColor: '#f30', // to test ui
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    requiredText: {
       fontSize: themeVar.cell_font_size,
       color: themeVar.cell_required_color,
-      left: -themeVar.padding_md,
-      width: themeVar.padding_md,
     },
   });
 };

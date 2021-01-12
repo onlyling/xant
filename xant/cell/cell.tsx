@@ -28,16 +28,10 @@ const Cell: React.FC<CellProps> = ({
   arrowDirection = 'right',
   rightIcon,
   required = false,
-  clickable = false,
-  underlayColor = '#f2f3f5',
-  activeOpacity = 1,
+  underlayColor,
   style,
   ...otherProps
 }) => {
-  if (isLink) {
-    clickable = true;
-  }
-
   const { themeVar } = Theme.useContainer();
   const Styles = createStyles(themeVar, { size, title, label, border, center });
   const isValueAlone = !title && !label;
@@ -51,7 +45,6 @@ const Cell: React.FC<CellProps> = ({
   const labelTextStyles = [Styles.labelText, labelTextStyle];
   const iconLeftStyles = [Styles.iconLeft];
   const arrowStyles = [Styles.arrow];
-  const requiredStyles = [Styles.required];
 
   /** 左侧标题 可能是自定义 JSX */
   const TitleJSX = title ? (
@@ -88,12 +81,18 @@ const Cell: React.FC<CellProps> = ({
   ) : null;
 
   /** 必填、红点 */
-  const RequiredJSX = required ? <Text style={requiredStyles}>*</Text> : null;
+  const RequiredJSX = required ? (
+    <View style={Styles.required}>
+      <Text style={Styles.requiredText}>*</Text>
+    </View>
+  ) : null;
 
   return (
     <TouchableHighlight
-      underlayColor={clickable ? underlayColor : 'transparent'}
-      activeOpacity={activeOpacity}
+      underlayColor={
+        // 一定要绑定 Press 事件才有这个效果
+        underlayColor || themeVar.cell_active_color
+      }
       {...otherProps}
       style={wrapperTouchableThemeStyles}
     >
