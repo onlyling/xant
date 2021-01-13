@@ -1,0 +1,88 @@
+import React from 'react';
+import { View, ScrollView } from 'react-native';
+
+import Layout from '@~/layouts/layout';
+import Cell, { CellGroup } from 'xant/cell';
+import Toast from 'xant/toast';
+
+import CStyles from './style';
+
+const ToastView: React.FC = () => {
+  return (
+    <Layout.Page title="Toast">
+      <ScrollView>
+        <View style={CStyles.padding}>
+          <CellGroup title="基础用法" border={false}>
+            <Cell
+              title="文字提示"
+              isLink
+              onPress={() => {
+                Toast({
+                  message: '提示内容',
+                  forbidClick: true,
+                });
+              }}
+            />
+            <Cell
+              title="加载提示"
+              isLink
+              onPress={() => {
+                Toast({
+                  type: 'loading',
+                  message: '加载中...',
+                  forbidClick: true,
+                });
+              }}
+            />
+            <Cell
+              title="加载提示2"
+              isLink
+              onPress={() => {
+                Toast({
+                  type: 'loading',
+                  loadingType: 'spinner',
+                  message: '加载中...',
+                  forbidClick: true,
+                });
+              }}
+            />
+            <Cell title="成功提示" isLink />
+            <Cell title="失败提示" isLink border={false} />
+          </CellGroup>
+
+          <View style={CStyles.ctxSplit} />
+
+          <CellGroup title="自定义位置" border={false}>
+            <Cell
+              title="顶部展示"
+              isLink
+              onPress={() => {
+                Toast({
+                  message: '提示内容',
+                  forbidClick: true,
+                  position: 'top',
+                });
+              }}
+            />
+            <Cell
+              title="底部展示"
+              isLink
+              border={false}
+              onPress={() => {
+                Toast({
+                  message: '提示内容',
+                  forbidClick: true,
+                  position: 'bottom',
+                });
+              }}
+            />
+          </CellGroup>
+
+          <View style={CStyles.ctxSplit} />
+        </View>
+      </ScrollView>
+    </Layout.Page>
+  );
+};
+
+export default ToastView;

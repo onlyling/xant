@@ -60,27 +60,27 @@ export interface PopupProps {
   /**
    * 点击遮罩层时触发
    */
-  onPressOverlay?: () => void;
+  onPressOverlay?: Function;
 
   /**
    * 打开弹出层时触发
    */
-  onOpen?: () => void;
+  onOpen?: Function;
 
   /**
    * 打开弹出层且动画结束后触发
    */
-  onOpened?: () => void;
+  onOpened?: Function;
 
   /**
    * 关闭弹出层时触发
    */
-  onClose?: () => void;
+  onClose?: Function;
 
   /**
    * 关闭弹出层且动画结束后触发
    */
-  onCloseed?: () => void;
+  onCloseed?: Function;
 }
 
 export type State = {

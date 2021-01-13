@@ -194,3 +194,22 @@ export const tag_success_color = green;
 export const tag_warning_color = orange;
 export const tag_default_color = gray_6;
 export const tag_plain_background_color = white;
+
+// Toast
+export const toast_max_width: string = '70%';
+export const toast_font_size = font_size_md;
+export const toast_text_color = white;
+export const toast_loading_icon_color = white;
+export const toast_line_height = line_height_md;
+export const toast_border_radius = border_radius_lg;
+export const toast_background_color: string = 'rgba(0,0,0,0.7)';
+export const toast_icon_size: number = 36;
+export const toast_text_min_width: number = 96;
+export const toast_text_vertical_padding = padding_xs;
+export const toast_text_horizontal_padding = padding_sm;
+export const toast_default_vertical_padding = padding_md;
+export const toast_default_horizontal_padding = padding_md;
+export const toast_default_width: number = 88 + padding_md * 2; // box-sizing: content-box 但是 RN 无法设置，计算了一下
+export const toast_default_min_height: number = 88 + padding_md * 2;
+export const toast_position_top_distance: string = '20%';
+export const toast_position_bottom_distance: string = '20%';
