@@ -28,4 +28,10 @@ export interface OverlayProps {
    * 点击弹层
    */
   onPress?: () => void;
+
+  /**
+   * 当点击返回按钮时触发
+   * @support Android
+   */
+  onRequestClose?: () => boolean;
 }

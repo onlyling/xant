@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, useState, memo } from 'react';
+import React, { useEffect, useRef, useState, memo } from 'react';
 import { TouchableOpacity, Animated, BackHandler } from 'react-native';
 
 import { OverlayProps } from './interface';
@@ -17,19 +17,14 @@ const Overlay: React.FC<OverlayProps> = ({
   show = false,
   duration = 0.3,
   onPress,
+  onRequestClose,
 }) => {
   const { themeVar } = Theme.useContainer();
   const Styles = createStyles(themeVar, { zIndex });
 
   const [localShow, setShow] = useState(show);
-  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const fadeAnim = useRef(new Animated.Value(0));
   const fadeInstance = useRef<Animated.CompositeAnimation | null>(null);
-  const stopShow = useCallback(() => {
-    if (fadeInstance.current) {
-      fadeInstance.current.stop();
-      fadeInstance.current = null;
-    }
-  }, [fadeInstance]);
 
   // 监听状态变化，执行动画
   useEffect(() => {
@@ -37,7 +32,7 @@ const Overlay: React.FC<OverlayProps> = ({
       setShow(true);
     }
     fadeInstance.current = Animated.timing(
-      fadeAnim, // 动画中的变量值
+      fadeAnim.current, // 动画中的变量值
       {
         toValue: show ? 1 : 0,
         duration: +duration * 1000,
@@ -54,19 +49,21 @@ const Overlay: React.FC<OverlayProps> = ({
 
     return () => {
       // 停止动画
-      stopShow();
+      if (fadeInstance.current) {
+        fadeInstance.current.stop();
+        fadeInstance.current = null;
+      }
     };
-  }, [show, duration, fadeAnim, stopShow]);
+  }, [show, duration]);
 
   // Android 返回按钮
   useEffect(() => {
     const backAction = () => {
-      if (show) {
-        onPress && onPress();
-        return true;
-      } else {
-        return false;
+      if (typeof onRequestClose === 'function' && show) {
+        return onRequestClose();
       }
+
+      return false;
     };
 
     const backHandler = BackHandler.addEventListener(
@@ -75,12 +72,12 @@ const Overlay: React.FC<OverlayProps> = ({
     );
 
     return () => backHandler.remove();
-  }, [show, onPress]);
+  }, [show, onRequestClose]);
 
   const overlayStyles = [
     Styles.overlay,
     localShow ? Styles.overlayActive : null,
-    { opacity: fadeAnim },
+    { opacity: fadeAnim.current },
   ];
   const touchableStyles = [Styles.touchable, style];
 

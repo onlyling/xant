@@ -26,6 +26,7 @@ const Popup: React.FC<PopupProps> = ({
   onOpened: onOpenedFN,
   onClose: onCloseFN,
   onCloseed: onCloseedFN,
+  onRequestClose,
 }) => {
   const { themeVar } = Theme.useContainer();
   const Styles = createStyles(themeVar, { round, position });
@@ -122,12 +123,11 @@ const Popup: React.FC<PopupProps> = ({
   // Android 返回按钮
   useEffect(() => {
     const backAction = () => {
-      if (show) {
-        onCloseFN && onCloseFN();
-        return true;
-      } else {
-        return false;
+      if (typeof onRequestClose === 'function' && show) {
+        return onRequestClose();
       }
+
+      return false;
     };
 
     const backHandler = BackHandler.addEventListener(
@@ -136,7 +136,7 @@ const Popup: React.FC<PopupProps> = ({
     );
 
     return () => backHandler.remove();
-  }, [onCloseFN, show]);
+  }, [onRequestClose, show]);
 
   const popupStyles = [
     Styles.popup,
@@ -162,7 +162,6 @@ const Popup: React.FC<PopupProps> = ({
           onPress={onPressOverlay}
         />
       ) : null}
-
       <Animated.View
         style={popupStyles}
         pointerEvents={position !== 'center' ? undefined : 'box-none'}

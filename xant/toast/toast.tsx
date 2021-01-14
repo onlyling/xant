@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, TouchableWithoutFeedback } from 'react-native';
 
 import { ToastProps } from './interface';
 import { createStyles } from './style';
@@ -23,20 +23,39 @@ const Toast: React.FC<ToastProps> = ({
   const { themeVar } = Theme.useContainer();
   const Styles = createStyles(themeVar, { position });
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
+
+  // 修正数据
+  if (closeOnClick) {
+    // 是否在点击后关闭
+    // 是否禁止背景点击
+    // 可以触发点击的地方正好被背景 View 挡住
+    forbidClick = false;
+  }
 
   /**
    * 点击遮罩层
    */
   const onPressOverlay = () => {
+    // 是否在点击遮罩层后关闭
     if (closeOnClickOverlay) {
       setShow(false);
     }
   };
 
-  useEffect(() => {
-    setShow(true);
+  /**
+   * 点击内容
+   */
+  const onPressContent = () => {
+    // 是否在点击后关闭
+    if (closeOnClick) {
+      setShow(false);
+    }
+  };
 
+  useEffect(() => {
+    // 在使用 Toast('test') 的时候如果会直接删了就没得过渡动画
+    // 暂时用这个方式
     hook &&
       hook({
         close: () => {
@@ -47,7 +66,6 @@ const Toast: React.FC<ToastProps> = ({
     let timer: number;
 
     if (duration !== 0) {
-      console.log(duration);
       timer = setTimeout(() => {
         // 隐藏弹窗
         setShow(false);
@@ -61,30 +79,34 @@ const Toast: React.FC<ToastProps> = ({
 
   return (
     <Popup {...reset} show={show} onPressOverlay={onPressOverlay}>
-      <View
-        style={Styles.toast}
-        pointerEvents={forbidClick ? undefined : 'box-none'}
-        collapsable={false}
-      >
-        <View style={[Styles.inner, type === 'text' ? Styles.innerText : null]}>
-          {type === 'loading' ? (
-            <View style={Styles.loading}>
-              {loadingType === 'circular' ? (
-                <Circular color={themeVar.toast_loading_icon_color} />
-              ) : (
-                <Spinner color={themeVar.toast_loading_icon_color} />
-              )}
-            </View>
-          ) : null}
-
-          <Text
-            style={[Styles.text, type === 'text' ? Styles.textTop0 : null]}
-            numberOfLines={1}
+      <TouchableWithoutFeedback onPress={onPressContent}>
+        <View
+          style={Styles.toast}
+          pointerEvents={forbidClick ? undefined : 'box-none'}
+          collapsable={false}
+        >
+          <View
+            style={[Styles.inner, type === 'text' ? Styles.innerText : null]}
           >
-            {message}
-          </Text>
+            {type === 'loading' ? (
+              <View style={Styles.loading}>
+                {loadingType === 'circular' ? (
+                  <Circular color={themeVar.toast_loading_icon_color} />
+                ) : (
+                  <Spinner color={themeVar.toast_loading_icon_color} />
+                )}
+              </View>
+            ) : null}
+
+            <Text
+              style={[Styles.text, type === 'text' ? Styles.textTop0 : null]}
+              numberOfLines={1}
+            >
+              {message}
+            </Text>
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     </Popup>
   );
 };

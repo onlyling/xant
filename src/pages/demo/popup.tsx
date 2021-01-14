@@ -122,6 +122,13 @@ const PopupView: React.FC = () => {
               show: false,
             }));
           }}
+          onRequestClose={() => {
+            setState((s) => ({
+              ...s,
+              show: false,
+            }));
+            return true;
+          }}
           round
         >
           <View style={Styles.card}>

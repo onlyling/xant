@@ -2,17 +2,19 @@ import { ViewStyle } from 'react-native';
 
 export type PopupPosition = 'top' | 'bottom' | 'right' | 'left' | 'center';
 
-export interface PopupProps {
-  /**
-   * 最外层样式
-   */
-  style?: ViewStyle;
-
+/** popup 通用的 props */
+export interface PopupPropsCommon {
   /**
    * 是否展示遮罩层
    * @default false
    */
   show: boolean;
+
+  /**
+   * 动画时长，单位秒
+   * @default 0.3
+   */
+  duration?: number | string;
 
   /**
    * 是否显示遮罩层
@@ -21,16 +23,54 @@ export interface PopupProps {
   overlay?: boolean;
 
   /**
-   * 弹出位置，可选值为 `'top' | 'bottom' | 'right' | 'left' | 'center'`
-   * @default center
+   * 是否在点击遮罩层后关闭
+   * @default true
    */
-  position?: PopupPosition;
+  closeOnClickOverlay?: boolean;
 
   /**
-   * 动画时长，单位秒
-   * @default 0.3
+   * 点击遮罩层时触发
    */
-  duration?: number | string;
+  onPressOverlay?: Function;
+
+  /**
+   * 打开弹出层时触发
+   */
+  onOpen?: Function;
+
+  /**
+   * 打开弹出层且动画结束后触发
+   */
+  onOpened?: Function;
+
+  /**
+   * 关闭弹出层时触发，And
+   */
+  onClose?: Function;
+
+  /**
+   * 关闭弹出层且动画结束后触发
+   */
+  onCloseed?: Function;
+
+  /**
+   * 当点击返回按钮时触发
+   * @support Android
+   */
+  onRequestClose?: () => boolean;
+}
+
+export interface PopupProps extends PopupPropsCommon {
+  /**
+   * 最外层样式
+   */
+  style?: ViewStyle;
+
+  /**
+   * 弹出位置，可选值为 `'top' | 'bottom' | 'right' | 'left' | 'center'`
+   * @default 'center'
+   */
+  position?: PopupPosition;
 
   /**
    * 是否显示圆角
@@ -56,31 +96,6 @@ export interface PopupProps {
    * @default true
    */
   lazyRender?: boolean;
-
-  /**
-   * 点击遮罩层时触发
-   */
-  onPressOverlay?: Function;
-
-  /**
-   * 打开弹出层时触发
-   */
-  onOpen?: Function;
-
-  /**
-   * 打开弹出层且动画结束后触发
-   */
-  onOpened?: Function;
-
-  /**
-   * 关闭弹出层时触发
-   */
-  onClose?: Function;
-
-  /**
-   * 关闭弹出层且动画结束后触发
-   */
-  onCloseed?: Function;
 }
 
 export type State = {

@@ -43,7 +43,7 @@ const OverlayView: React.FC = () => {
 
           <Button
             type="primary"
-            text="显示遮罩层"
+            text="显示遮罩层 Android 返回关闭"
             onPress={() => {
               setState((s) => ({
                 ...s,
@@ -59,6 +59,14 @@ const OverlayView: React.FC = () => {
                 ...s,
                 normal: false,
               }));
+            }}
+            onRequestClose={() => {
+              console.log('???');
+              setState((s) => ({
+                ...s,
+                normal: false,
+              }));
+              return true;
             }}
           />
 

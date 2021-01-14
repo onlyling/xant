@@ -1,10 +1,12 @@
+import { PopupPropsCommon } from '../popup/interface';
+
 export type ToastType = 'text' | 'loading' | 'success' | 'fail';
 
 export type ToastMethods = {
   close: () => void;
 };
 
-export interface ToastProps {
+export interface ToastProps extends Omit<PopupPropsCommon, 'show'> {
   /**
    * 提示类型，可选值为 `'text' | 'loading' | 'success' | 'fail'`
    * @default 'text'
