@@ -24,6 +24,7 @@ const Toast: React.FC<ToastProps> = ({
   const Styles = createStyles(themeVar, { position });
 
   const [show, setShow] = useState(true);
+  const [msg, setMsg] = useState(message);
 
   // 修正数据
   if (closeOnClick) {
@@ -61,6 +62,9 @@ const Toast: React.FC<ToastProps> = ({
         close: () => {
           setShow(false);
         },
+        setMessage: (s) => {
+          setMsg(s);
+        },
       });
 
     let timer: number;
@@ -73,6 +77,9 @@ const Toast: React.FC<ToastProps> = ({
     }
 
     return () => {
+      if (__DEV__) {
+        console.log('toast removed');
+      }
       clearTimeout(timer);
     };
   }, [duration, hook]);
@@ -100,9 +107,8 @@ const Toast: React.FC<ToastProps> = ({
 
             <Text
               style={[Styles.text, type === 'text' ? Styles.textTop0 : null]}
-              numberOfLines={1}
             >
-              {message}
+              {msg}
             </Text>
           </View>
         </View>

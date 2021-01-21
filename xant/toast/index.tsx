@@ -6,6 +6,13 @@ import Portal from '../portal';
 
 type OptionsMap = Record<ToastType, ToastProps | undefined | null>;
 
+const parseOptions = (message: ToastProps | string) => {
+  if (typeof message === 'object') {
+    return message;
+  }
+  return { message };
+};
+
 const defaultOptions: ToastProps = {
   type: 'text',
   duration: 2000,
@@ -23,6 +30,9 @@ let currentOptions = {
   ...defaultOptions,
 };
 
+/**
+ * 提示
+ */
 const ToastInstance: Toast = (options) => {
   let opts: ToastProps =
     typeof options === 'string' ? { message: options } : options;
@@ -56,12 +66,30 @@ const ToastInstance: Toast = (options) => {
   );
 
   return {
-    clear: () => {
+    close: () => {
       ref.current?.close();
+    },
+    setMessage: (m: string) => {
+      ref.current?.setMessage(m);
     },
   };
 };
 
+/**
+ * loading
+ */
+ToastInstance.loading = (options) =>
+  ToastInstance({
+    type: 'loading',
+    ...parseOptions(options),
+  });
+
+// TODO success fail 现在不确定两个图标用 svg 画还是字体文件
+// react-native-vector-icons 太庞大了
+
+/**
+ * 清除弹窗
+ */
 ToastInstance.clear = (mark) => {
   if (typeof mark === 'boolean') {
     // 清除所有
@@ -70,6 +98,9 @@ ToastInstance.clear = (mark) => {
   }
 };
 
+/**
+ * 修改默认配置，对所有 Toast 生效。传入 type 可以修改指定类型的默认配置
+ */
 ToastInstance.setDefaultOptions = (type, options) => {
   if (typeof type === 'string') {
     defaultOptionsMap[type] = options;
@@ -78,6 +109,9 @@ ToastInstance.setDefaultOptions = (type, options) => {
   }
 };
 
+/**
+ * 重置默认配置，对所有 Toast 生效。传入 type 可以重置指定类型的默认配置
+ */
 ToastInstance.resetDefaultOptions = (type) => {
   if (typeof type === 'string') {
     defaultOptionsMap[type] = null;

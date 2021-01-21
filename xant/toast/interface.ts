@@ -4,6 +4,7 @@ export type ToastType = 'text' | 'loading' | 'success' | 'fail';
 
 export type ToastMethods = {
   close: () => void;
+  setMessage: (s: string) => void;
 };
 
 export interface ToastProps extends Omit<PopupPropsCommon, 'show'> {
@@ -84,12 +85,9 @@ export interface ToastProps extends Omit<PopupPropsCommon, 'show'> {
   hook?: (m: ToastMethods) => void;
 }
 
-export type ToastInstance = {
-  clear: () => void;
-};
-
 export interface Toast {
-  (p: ToastProps): ToastInstance;
+  (p: ToastProps | string): ToastMethods;
+  loading(p: ToastProps | string): ToastMethods;
   clear(all: boolean | number): void;
   setDefaultOptions(type: ToastType | ToastProps, options?: ToastProps): void;
   resetDefaultOptions(type: ToastType | ToastProps): void;

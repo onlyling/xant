@@ -9,7 +9,7 @@ export const createStyles = (
 ) => {
   return StyleSheet.create({
     toast: {
-      // backgroundColor: '#000', // to test ui
+      // backgroundColor: '#f30', // to test ui
       flex: 1,
       width: '100%',
       alignItems: 'center',
@@ -40,6 +40,7 @@ export const createStyles = (
       paddingVertical: themeVar.toast_text_vertical_padding,
       minWidth: themeVar.toast_text_min_width,
       minHeight: 0,
+      width: 'auto',
     },
 
     loading: {
