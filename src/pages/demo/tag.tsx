@@ -4,6 +4,7 @@ import { View, ScrollView } from 'react-native';
 import Layout from '@~/layouts/layout';
 import Tag from 'xant/tag';
 import Cell, { CellGroup } from 'xant/cell';
+import Toast from 'xant/toast';
 
 import CStyles from './style';
 
@@ -74,7 +75,7 @@ const TagView: React.FC = () => {
                   type="danger"
                   closeable
                   onPressClose={() => {
-                    console.log('onPressClose');
+                    Toast('点击了关闭按钮');
                   }}
                 >
                   标签

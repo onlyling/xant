@@ -27,11 +27,39 @@ const ToastView: React.FC = () => {
               title="加载提示"
               isLink
               onPress={() => {
-                Toast({
-                  type: 'loading',
+                Toast.loading({
                   message: '加载中...',
                   forbidClick: true,
                 });
+              }}
+            />
+            <Cell
+              title="加载提示倒计时"
+              isLink
+              onPress={() => {
+                let d = 3;
+                const buildMsg = () => `倒计时 ${d} 秒...`;
+
+                const ddd = Toast.loading({
+                  message: buildMsg(),
+                  forbidClick: true,
+                  duration: 0,
+                });
+                const doLoop = () => {
+                  if (d > 0) {
+                    ddd.setMessage(buildMsg());
+
+                    d -= 1;
+
+                    setTimeout(() => {
+                      doLoop();
+                    }, 1000);
+                  } else {
+                    ddd.close();
+                  }
+                };
+
+                doLoop();
               }}
             />
             <Cell
@@ -46,8 +74,26 @@ const ToastView: React.FC = () => {
                 });
               }}
             />
-            <Cell title="成功提示" isLink />
-            <Cell title="失败提示" isLink border={false} />
+            <Cell
+              title="成功提示"
+              isLink
+              onPress={() => {
+                Toast({
+                  message:
+                    '图标暂时还未确定图标暂时还未-确定图标暂时还未确定图标暂时还未确定',
+                  closeOnClick: true,
+                  duration: 5000,
+                });
+              }}
+            />
+            <Cell
+              title="失败提示"
+              isLink
+              border={false}
+              onPress={() => {
+                Toast('图标暂时还未确定');
+              }}
+            />
           </CellGroup>
 
           <View style={CStyles.ctxSplit} />
