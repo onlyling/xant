@@ -84,8 +84,13 @@ export interface ToastProps extends Omit<PopupPropsCommon, 'show'> {
   hook?: (m: ToastMethods) => void;
 }
 
-export type Toast = (
-  o: ToastProps | string,
-) => {
+export type ToastInstance = {
   clear: () => void;
 };
+
+export interface Toast {
+  (p: ToastProps): ToastInstance;
+  clear(all: boolean | number): void;
+  setDefaultOptions(type: ToastType | ToastProps, options?: ToastProps): void;
+  resetDefaultOptions(type: ToastType | ToastProps): void;
+}

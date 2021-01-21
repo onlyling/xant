@@ -23,14 +23,7 @@ let currentOptions = {
   ...defaultOptions,
 };
 
-const ToastInstance: Toast & {
-  clear?: (all: boolean | number) => void;
-  setDefaultOptions?: (
-    type: ToastType | ToastProps,
-    options?: ToastProps,
-  ) => void;
-  resetDefaultOptions?: (type: ToastType | ToastProps) => void;
-} = (options) => {
+const ToastInstance: Toast = (options) => {
   let opts: ToastProps =
     typeof options === 'string' ? { message: options } : options;
 
