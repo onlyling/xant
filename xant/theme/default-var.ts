@@ -63,6 +63,20 @@ export const border_radius_md: number = 4;
 export const border_radius_lg: number = 8;
 export const border_radius_max: number = 999;
 
+// ActionBar
+export const action_bar_background_color = white;
+export const action_bar_height: number = 50;
+export const action_bar_icon_width: number = 48;
+export const action_bar_icon_height: string = '100%';
+export const action_bar_icon_color = text_color;
+export const action_bar_icon_size: number = 18;
+export const action_bar_icon_font_size: number = font_size_xs;
+export const action_bar_icon_active_color = active_color;
+export const action_bar_icon_text_color = gray_7;
+export const action_bar_button_height: number = 40;
+export const action_bar_button_warning_color = orange; // 原生不支持渐变，暂时不弄渐变
+export const action_bar_button_danger_color = red; // 原生不支持渐变，暂时不弄渐变
+
 // Badge
 export const badge_size: number = 16;
 export const badge_color = white;

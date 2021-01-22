@@ -25,6 +25,7 @@ import DemoPopupView from '@~/pages/demo/popup';
 import DemoLoadingView from '@~/pages/demo/loading';
 import DemoToastView from '@~/pages/demo/toast';
 import DemoBadgeView from '@~/pages/demo/badge';
+import DemoActionBarView from '@~/pages/demo/action-bar';
 
 import ListView from '@~/pages/list/list';
 import DetailsView from '@~/pages/details/details';
@@ -48,6 +49,7 @@ type RootStackParamList = {
   DemoLoading: undefined;
   DemoToast: undefined;
   DemoBadge: undefined;
+  DemoActionBar: undefined;
   List: undefined;
   Details: {
     id: number;
@@ -116,6 +118,8 @@ const NestingNavigators: React.FC = () => {
         <Stack.Screen name="DemoToast" component={DemoToastView} />
 
         <Stack.Screen name="DemoBadge" component={DemoBadgeView} />
+
+        <Stack.Screen name="DemoActionBar" component={DemoActionBarView} />
 
         <Stack.Screen name="List" component={ListView} />
 

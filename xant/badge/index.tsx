@@ -22,6 +22,7 @@ const Badge: React.FC<BadgeProps> = ({
   max,
   color,
   style,
+  wrapperStyle,
 }) => {
   const [state, setState] = useState<State>({ width: 0, height: 0 });
 
@@ -38,15 +39,18 @@ const Badge: React.FC<BadgeProps> = ({
     content = `${max}+`;
   }
 
-  const BadgeJSX = (
-    <Text style={[Styles.badge, dot ? Styles.dot : null, style]}>
-      {dot ? null : content}
-    </Text>
-  );
+  const hasContent = () => !!content || content === 0;
+
+  const BadgeJSX =
+    hasContent() || dot ? (
+      <Text style={[Styles.badge, dot ? Styles.dot : null, style]}>
+        {dot ? null : content}
+      </Text>
+    ) : null;
 
   if (children) {
     return (
-      <View style={Styles.wrapper}>
+      <View style={[Styles.wrapper, wrapperStyle]}>
         <View
           style={[
             Styles.fixed,
@@ -65,7 +69,8 @@ const Badge: React.FC<BadgeProps> = ({
         >
           {BadgeJSX}
         </View>
-        <View>{children}</View>
+
+        {children}
       </View>
     );
   }

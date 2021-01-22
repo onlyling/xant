@@ -172,6 +172,18 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
       </View>
 
       <View style={CStyles.ctxSplit} />
+
+      <View>
+        <Text
+          onPress={() => {
+            navigation.push('DemoActionBar');
+          }}
+        >
+          Go action-bar
+        </Text>
+      </View>
+
+      <View style={CStyles.ctxSplit} />
     </Layout.Page>
   );
 };
