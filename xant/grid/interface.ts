@@ -17,7 +17,7 @@ export interface RowContextState {
   gutter?: RowProps['gutter'];
 }
 
-export interface CelProps {
+export interface ColProps {
   /**
    * 自定义 Cel 样式，用于不同形式的布局
    */

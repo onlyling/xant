@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import { Row, Cel } from 'xant/grid';
+import { Row, Col } from 'xant/grid';
 
 import CStyles from './style';
 
@@ -31,25 +31,25 @@ const GridView: React.FC = () => {
             </View>
 
             <Row>
-              <Cel span="8">
+              <Col span="8">
                 <View style={Styles.card}>
                   <Text>fsd</Text>
                 </View>
-              </Cel>
-              <Cel span="8">
+              </Col>
+              <Col span="8">
                 <Text>fsd</Text>
-              </Cel>
-              <Cel span="8">
+              </Col>
+              <Col span="8">
                 <View style={Styles.card}>
                   <Text>fsd</Text>
                 </View>
-              </Cel>
-              <Cel span="8">
+              </Col>
+              <Col span="8">
                 <Text>fsd</Text>
-              </Cel>
-              <Cel span="8">
+              </Col>
+              <Col span="8">
                 <Text>fsd</Text>
-              </Cel>
+              </Col>
             </Row>
 
             <View style={CStyles.ctxSplit} />
@@ -59,31 +59,31 @@ const GridView: React.FC = () => {
             </View>
 
             <Row gutter="10">
-              <Cel span="8">
+              <Col span="8">
                 <View style={Styles.card}>
                   <Text>fsd</Text>
                 </View>
-              </Cel>
-              <Cel span="8">
+              </Col>
+              <Col span="8">
                 <View style={Styles.card2}>
                   <Text>fsd</Text>
                 </View>
-              </Cel>
-              <Cel span="8">
+              </Col>
+              <Col span="8">
                 <View style={Styles.card}>
                   <Text>fsd</Text>
                 </View>
-              </Cel>
-              <Cel span="18" offset="2">
+              </Col>
+              <Col span="18" offset="2">
                 <View style={Styles.card}>
                   <Text>span="18" offset="2"</Text>
                 </View>
-              </Cel>
-              <Cel span="4">
+              </Col>
+              <Col span="4">
                 <View style={Styles.card}>
                   <Text>4</Text>
                 </View>
-              </Cel>
+              </Col>
             </Row>
 
             <View style={CStyles.ctxSplit} />

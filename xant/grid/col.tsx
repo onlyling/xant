@@ -1,21 +1,21 @@
 import React, { useContext, memo } from 'react';
 import { View, ViewStyle } from 'react-native';
 
-import { CelProps } from './interface';
+import { ColProps } from './interface';
 import RowContext from './context';
 
 const BASE_SPAN_WIDTH = 100 / 24;
 
 /**
- * Cel 布局
+ * Col 布局
  * @description 每个子单元格。
  */
-const Cel: React.FC<CelProps> = ({ children, style, span, offset = 0 }) => {
+const Col: React.FC<ColProps> = ({ children, style, span, offset = 0 }) => {
   const { gutter = 0 } = useContext(RowContext);
   const width = `${+span * BASE_SPAN_WIDTH}%`;
   const left = `${+offset * BASE_SPAN_WIDTH}%`;
 
-  const celStyles: (ViewStyle | undefined)[] = [
+  const colStyles: (ViewStyle | undefined)[] = [
     {
       flexGrow: 0,
       flexShrink: 0,
@@ -30,7 +30,7 @@ const Cel: React.FC<CelProps> = ({ children, style, span, offset = 0 }) => {
     // },
   ];
 
-  return <View style={celStyles}>{children}</View>;
+  return <View style={colStyles}>{children}</View>;
 };
 
-export default memo<typeof Cel>(Cel);
+export default memo<typeof Col>(Col);

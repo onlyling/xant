@@ -1,2 +1,2 @@
 export { default as Row } from './row';
-export { default as Cel } from './cel';
+export { default as Col } from './col';

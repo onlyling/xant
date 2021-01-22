@@ -8,9 +8,9 @@ import Spinner from 'xant/loading/spinner';
 
 import CStyles from './style';
 
-const PortalView: React.FC = () => {
+const LoadingView: React.FC = () => {
   return (
-    <Layout.Page title="Portal">
+    <Layout.Page title="Loading">
       <ScrollView>
         <View style={CStyles.padding}>
           <View>
@@ -83,4 +83,4 @@ const PortalView: React.FC = () => {
   );
 };
 
-export default PortalView;
+export default LoadingView;
