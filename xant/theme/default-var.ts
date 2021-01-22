@@ -1,3 +1,5 @@
+import { TextStyle } from 'react-native';
+
 export const black: string = '#000';
 export const white: string = '#fff';
 export const gray_1: string = '#f7f8fa';
@@ -38,7 +40,7 @@ export const font_size_xs: number = 10;
 export const font_size_sm: number = 12;
 export const font_size_md: number = 14;
 export const font_size_lg: number = 16;
-export const font_weight_bold: number = 500;
+export const font_weight_bold: TextStyle['fontWeight'] = '500';
 export const line_height_xs: number = 14;
 export const line_height_sm: number = 18;
 export const line_height_md: number = 20;
@@ -60,6 +62,20 @@ export const border_radius_sm: number = 2;
 export const border_radius_md: number = 4;
 export const border_radius_lg: number = 8;
 export const border_radius_max: number = 999;
+
+// Badge
+export const badge_size: number = 16;
+export const badge_color = white;
+export const badge_vertical_padding: number = 0;
+export const badge_horizontal_padding: number = 3;
+export const badge_font_size = font_size_sm;
+export const badge_font_weight = font_weight_bold;
+export const badge_border_width = border_width_base;
+export const badge_background_color = red;
+export const badge_dot_color = red;
+export const badge_dot_size: number = 8;
+export const badge_font_family: string =
+  '-apple-system-font, Helvetica Neue, Arial, sans-serif';
 
 // Button
 export const button_mini_height: number = 24;
