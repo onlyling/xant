@@ -1,9 +1,12 @@
 import { StyleSheet } from 'react-native';
 
-// import {  } from './interface';
+import { ActionBarIconProps } from './interface';
 import { StyleVarType } from '../theme';
 
-export const createStyles = (themeVar: StyleVarType) => {
+export const createStyles = (
+  themeVar: StyleVarType,
+  { color }: Pick<ActionBarIconProps, 'color'>,
+) => {
   return StyleSheet.create({
     wrapper: {
       height: '100%',
@@ -19,8 +22,8 @@ export const createStyles = (themeVar: StyleVarType) => {
 
     icon: {
       textAlign: 'center',
-      // fontSize: themeVar.action_bar_icon_size,
-      color: themeVar.action_bar_icon_color,
+      fontSize: themeVar.action_bar_icon_size,
+      color: color || themeVar.action_bar_icon_color,
       lineHeight: themeVar.action_bar_icon_size,
     },
 

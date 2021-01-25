@@ -31,7 +31,6 @@ const Badge: React.FC<BadgeProps> = ({
 
   /** 监听布局 */
   const onLayout = useCallback((e: LayoutChangeEvent) => {
-    console.log(e.nativeEvent.layout.height);
     setState(e.nativeEvent.layout);
   }, []);
 

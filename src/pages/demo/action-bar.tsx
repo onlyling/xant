@@ -36,7 +36,9 @@ const ActionBarView: React.FC = () => {
             />
             <ActionBarIcon
               text="客服2"
-              icon={<Icon name="laptop" size={18} />}
+              iconRender={({ size, color }) => (
+                <Icon name="laptop" size={size} color={color} />
+              )}
               onPress={onPressIcon}
             />
           </ActionBar>
@@ -64,8 +66,44 @@ const ActionBarView: React.FC = () => {
             />
             <ActionBarIcon
               text="客服2"
-              icon={<Icon name="laptop" size={18} />}
+              iconRender={({ size, color }) => (
+                <Icon name="laptop" size={size} color={color} />
+              )}
               badge="9"
+              onPress={onPressIcon}
+            />
+          </ActionBar>
+
+          <View style={CStyles.ctxSplit} />
+
+          <View>
+            <Text>自定义图标颜色</Text>
+          </View>
+
+          <View style={CStyles.ctxSplit} />
+
+          <ActionBar>
+            <ActionBarIcon
+              text="客服"
+              icon={<Icon name="customerservice" size={18} />}
+              color="#f30"
+              dot
+              onPress={onPressIcon}
+            />
+            <ActionBarIcon
+              text="客服2"
+              icon={<Icon name="creditcard" size={18} />}
+              badge="1234"
+              color="#f30"
+              onPress={onPressIcon}
+            />
+            <ActionBarIcon
+              text="客服2"
+              color="#f30"
+              badge="9"
+              iconRender={({ size, color }) => (
+                <Icon name="laptop" size={size} color={color} />
+              )}
               onPress={onPressIcon}
             />
           </ActionBar>

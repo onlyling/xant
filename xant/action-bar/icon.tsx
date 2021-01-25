@@ -13,13 +13,24 @@ import { Theme } from '../theme';
 const ActionBarIcon: React.FC<ActionBarIconProps> = ({
   text,
   icon,
+  iconRender,
   dot,
   badge,
+  color,
   underlayColor,
   ...restProps
 }) => {
   const { themeVar } = Theme.useContainer();
-  const Styles = createStyles(themeVar);
+  const Styles = createStyles(themeVar, { color });
+
+  const IconJSX =
+    (icon && <Text style={Styles.icon}>{icon}</Text>) ||
+    (iconRender &&
+      iconRender({
+        color: color || themeVar.action_bar_icon_color,
+        size: themeVar.action_bar_icon_size,
+      })) ||
+    null;
 
   return (
     <TouchableHighlight
@@ -28,7 +39,7 @@ const ActionBarIcon: React.FC<ActionBarIconProps> = ({
     >
       <View style={Styles.wrapper}>
         <Badge wrapperStyle={Styles.badgeWrapper} dot={dot} content={badge}>
-          <Text style={Styles.icon}>{icon}</Text>
+          {IconJSX}
         </Badge>
         <Text style={Styles.text}>{text}</Text>
       </View>
