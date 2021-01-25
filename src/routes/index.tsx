@@ -26,6 +26,7 @@ import DemoLoadingView from '@~/pages/demo/loading';
 import DemoToastView from '@~/pages/demo/toast';
 import DemoBadgeView from '@~/pages/demo/badge';
 import DemoActionBarView from '@~/pages/demo/action-bar';
+import DemoDialogView from '@~/pages/demo/dialog';
 
 import ListView from '@~/pages/list/list';
 import DetailsView from '@~/pages/details/details';
@@ -35,26 +36,29 @@ import TabsView, { BottomTabParamList } from './bottom-tab';
 /** 当前所有 Stack 路由的参数 */
 type RootStackParamList = {
   Home: undefined;
-  Demo: undefined;
-  DemoFull: undefined;
-  DemoButton: undefined;
-  DemoCell: undefined;
-  DemoImage: undefined;
-  DemoDivider: undefined;
-  DemoTag: undefined;
-  DemoGrid: undefined;
-  DemoPortal: undefined;
-  DemoOverlay: undefined;
-  DemoPopup: undefined;
-  DemoLoading: undefined;
-  DemoToast: undefined;
-  DemoBadge: undefined;
-  DemoActionBar: undefined;
   List: undefined;
   Details: {
     id: number;
   };
-};
+} & Record<
+  | 'Demo'
+  | 'DemoFull'
+  | 'DemoButton'
+  | 'DemoCell'
+  | 'DemoImage'
+  | 'DemoDivider'
+  | 'DemoTag'
+  | 'DemoGrid'
+  | 'DemoPortal'
+  | 'DemoOverlay'
+  | 'DemoPopup'
+  | 'DemoLoading'
+  | 'DemoToast'
+  | 'DemoBadge'
+  | 'DemoActionBar'
+  | 'DemoDialog',
+  undefined
+>;
 
 /** Stack 路由的 props */
 export type RootStackScreenProps<
@@ -91,6 +95,10 @@ const NestingNavigators: React.FC = () => {
       >
         <Stack.Screen name="Home" component={TabsView} />
 
+        <Stack.Screen name="List" component={ListView} />
+
+        <Stack.Screen name="Details" component={DetailsView} />
+
         <Stack.Screen name="Demo" component={DemoView} />
 
         <Stack.Screen name="DemoFull" component={DemoFullView} />
@@ -121,9 +129,7 @@ const NestingNavigators: React.FC = () => {
 
         <Stack.Screen name="DemoActionBar" component={DemoActionBarView} />
 
-        <Stack.Screen name="List" component={ListView} />
-
-        <Stack.Screen name="Details" component={DetailsView} />
+        <Stack.Screen name="DemoDialog" component={DemoDialogView} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -82,6 +82,9 @@ export interface ToastProps extends Omit<PopupPropsCommon, 'show'> {
    */
   onCloseed?: Function;
 
+  /**
+   * 在函数使用的时候一个 hook，后面有时间优化一下
+   */
   hook?: (m: ToastMethods) => void;
 }
 
