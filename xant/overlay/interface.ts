@@ -1,10 +1,10 @@
-import { ViewStyle } from 'react-native';
+import { ViewStyle, StyleProp } from 'react-native';
 
 export interface OverlayProps {
   /**
    * 最外层样式
    */
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 
   /**
    * 是否展示遮罩层

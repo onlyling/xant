@@ -1,15 +1,15 @@
-import { TextStyle, ViewStyle } from 'react-native';
+import { TextStyle, ViewStyle, StyleProp } from 'react-native';
 
 export interface BadgeProps {
   /**
    * 文字样式
    */
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
 
   /**
    * 外层样式
    */
-  wrapperStyle?: ViewStyle;
+  wrapperStyle?: StyleProp<ViewStyle>;
 
   /**
    * 徽标内容

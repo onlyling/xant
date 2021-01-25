@@ -1,21 +1,21 @@
 import React from 'react';
-import { ViewStyle, TextStyle } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 export interface NavBarProps {
   /**
    * 最外层的样式
    */
-  wrapperStyle?: ViewStyle;
+  wrapperStyle?: StyleProp<ViewStyle>;
 
   /**
    * 左箭头样式
    */
-  leftArrowStyle?: TextStyle;
+  leftArrowStyle?: StyleProp<TextStyle>;
 
   /**
    * 标题样式
    */
-  titleTextStyle?: TextStyle;
+  titleTextStyle?: StyleProp<TextStyle>;
 
   /**
    * 标题文字或自定义 JSX

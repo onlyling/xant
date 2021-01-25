@@ -1,11 +1,12 @@
 import {
   ImageProps as ImageReactNativeProps,
   ViewStyle,
+  StyleProp,
   GestureResponderEvent,
 } from 'react-native';
 
 export interface ImageProps extends ImageReactNativeProps {
-  wrapperStyle?: ViewStyle;
+  wrapperStyle?: StyleProp<ViewStyle>;
 
   /**
    * 点击图片的事件

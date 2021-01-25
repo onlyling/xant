@@ -1,20 +1,20 @@
-import { ViewStyle, TextStyle } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 export interface TagProps {
   /**
    * 最外层样式
    */
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 
   /**
    * 文字包裹，实现类似 block-inline
    */
-  wrapperStyle?: ViewStyle;
+  wrapperStyle?: StyleProp<ViewStyle>;
 
   /**
    * 文字样式
    */
-  textStyle?: TextStyle;
+  textStyle?: StyleProp<TextStyle>;
 
   /**
    * 类型，可选值为 `'default' | 'primary' | 'success' | 'danger' | 'warning'`

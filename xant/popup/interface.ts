@@ -1,4 +1,4 @@
-import { ViewStyle } from 'react-native';
+import { ViewStyle, StyleProp } from 'react-native';
 
 export type PopupPosition = 'top' | 'bottom' | 'right' | 'left' | 'center';
 
@@ -64,7 +64,7 @@ export interface PopupProps extends PopupPropsCommon {
   /**
    * 最外层样式
    */
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 
   /**
    * 弹出位置，可选值为 `'top' | 'bottom' | 'right' | 'left' | 'center'`

@@ -1,10 +1,10 @@
-import { ViewStyle } from 'react-native';
+import { ViewStyle, StyleProp } from 'react-native';
 
 export interface RowProps {
   /**
    * 自定义 row 样式，用于不同形式的布局
    */
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 
   /**
    * 列元素之间的间距（单位为 px）
@@ -21,7 +21,7 @@ export interface ColProps {
   /**
    * 自定义 Cel 样式，用于不同形式的布局
    */
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 
   /**
    * 列元素宽度 1~24

@@ -1,20 +1,20 @@
-import { ViewStyle, TextStyle } from 'react-native';
+import { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 export interface DividerProps {
   /**
    * 自定义文字样式
    */
-  textStyle?: TextStyle;
+  textStyle?: StyleProp<TextStyle>;
 
   /**
    * 自定义线样式
    */
-  borderStyle?: ViewStyle;
+  borderStyle?: StyleProp<ViewStyle>;
 
   /**
    * 外层容器自定义样式
    */
-  wrapperStyle?: ViewStyle;
+  wrapperStyle?: StyleProp<ViewStyle>;
 
   /**
    * 是否使用虚线

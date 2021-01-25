@@ -1,5 +1,10 @@
 import React from 'react';
-import { ViewStyle, TextStyle, TouchableHighlightProps } from 'react-native';
+import {
+  ViewStyle,
+  TextStyle,
+  TouchableHighlightProps,
+  StyleProp,
+} from 'react-native';
 
 export type CellGroupProps = {
   /**
@@ -10,12 +15,12 @@ export type CellGroupProps = {
   /**
    * 自定义样式
    */
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 
   /**
    * 自定义文字样式
    */
-  textStyle?: TextStyle;
+  textStyle?: StyleProp<TextStyle>;
 
   /**
    * 是否显示外边框
@@ -26,17 +31,17 @@ export type CellGroupProps = {
 };
 
 export interface CellProps extends TouchableHighlightProps {
-  wrapperStyle?: ViewStyle;
+  wrapperStyle?: StyleProp<ViewStyle>;
 
-  titleStyle?: ViewStyle;
+  titleStyle?: StyleProp<ViewStyle>;
 
-  titleTextStyle?: TextStyle;
+  titleTextStyle?: StyleProp<TextStyle>;
 
-  valueStyle?: ViewStyle;
+  valueStyle?: StyleProp<ViewStyle>;
 
-  valueTextStyle?: TextStyle;
+  valueTextStyle?: StyleProp<TextStyle>;
 
-  labelTextStyle?: TextStyle;
+  labelTextStyle?: StyleProp<TextStyle>;
 
   /** 左侧标题 */
   title?: React.ReactNode;
