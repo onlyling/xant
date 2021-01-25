@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextStyle, TouchableHighlightProps } from 'react-native';
+import { TextStyle, TouchableHighlightProps, StyleProp } from 'react-native';
 
 export type ButtonSize = 'large' | 'normal' | 'small' | 'mini';
 
@@ -20,7 +20,7 @@ export interface ButtonProps
   /**
    * 文字自定义样式
    */
-  textStyle?: TextStyle;
+  textStyle?: StyleProp<TextStyle>;
 
   /**
    * 大小

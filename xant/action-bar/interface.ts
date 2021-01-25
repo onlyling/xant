@@ -1,6 +1,8 @@
 import React from 'react';
 import { ViewProps, TouchableHighlightProps } from 'react-native';
 
+import { ButtonProps } from '../button/interface';
+
 export interface ActionBarProps extends ViewProps {
   /**
    * 是否开启底部安全区适配
@@ -42,4 +44,16 @@ export interface ActionBarIconProps extends TouchableHighlightProps {
    * 图标右上角徽标的内容
    */
   badge?: string | number;
+}
+
+export interface ActionBarButtonProps extends Omit<ButtonProps, 'size'> {
+  /**
+   * 是否是第一个，左圆弧
+   */
+  isFirst?: boolean;
+
+  /**
+   * 是否是最后一个，右圆弧
+   */
+  isLast?: boolean;
 }

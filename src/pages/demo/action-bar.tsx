@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import Layout from '@~/layouts/layout';
-import { ActionBar, ActionBarIcon } from 'xant/action-bar';
+import { ActionBar, ActionBarIcon, ActionBarButton } from 'xant/action-bar';
 import Toast from 'xant/toast';
 
 import CStyles from './style';
@@ -41,6 +41,7 @@ const ActionBarView: React.FC = () => {
               )}
               onPress={onPressIcon}
             />
+            <ActionBarButton isFirst isLast text="立即购买" type="danger" />
           </ActionBar>
 
           <View style={CStyles.ctxSplit} />
@@ -72,6 +73,9 @@ const ActionBarView: React.FC = () => {
               badge="9"
               onPress={onPressIcon}
             />
+
+            <ActionBarButton isFirst text="立即购买" type="warning" />
+            <ActionBarButton isLast text="立即购买" type="danger" />
           </ActionBar>
 
           <View style={CStyles.ctxSplit} />
@@ -105,6 +109,18 @@ const ActionBarView: React.FC = () => {
                 <Icon name="laptop" size={size} color={color} />
               )}
               onPress={onPressIcon}
+            />
+            <ActionBarButton
+              isFirst
+              text="立即购买"
+              type="warning"
+              color="#be99ff"
+            />
+            <ActionBarButton
+              isLast
+              text="立即购买"
+              type="danger"
+              color="#7232dd"
             />
           </ActionBar>
 
