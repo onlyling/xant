@@ -6,15 +6,15 @@ export type DialogType = 'alert' | 'confirm';
 
 type messageAlign = 'center' | 'left' | 'right';
 
-type DialogTheme = 'default' | 'round';
+type DialogTheme = 'default' | 'round-button';
 
-type DialogAction = 'cancel' | 'confirm';
+type DialogAction = 'cancel' | 'confirm' | 'overlay';
 
 export type DialogMethods = {
   close: () => void;
 };
 
-export interface DialogProps extends PopupPropsCommon {
+interface DialogCommon extends PopupPropsCommon {
   /**
    * 标题
    */
@@ -25,7 +25,6 @@ export interface DialogProps extends PopupPropsCommon {
    * @default 320
    */
   width?: number | string;
-
   /**
    * 文本内容，支持通过\n换行
    */
@@ -38,7 +37,7 @@ export interface DialogProps extends PopupPropsCommon {
   messageAlign?: messageAlign;
 
   /**
-   * 样式风格，可选值为`'default' | 'round'`
+   * 样式风格，可选值为`'default' | 'round-button'`
    */
   theme?: DialogTheme;
 
@@ -75,7 +74,38 @@ export interface DialogProps extends PopupPropsCommon {
    * 取消按钮颜色
    */
   cancelButtonColor?: string;
+}
 
+export interface DialogProps extends DialogCommon {
+  /**
+   * 取消按钮加载中
+   * @default false
+   */
+  cancelButtonLoading?: boolean;
+
+  /**
+   * 确定按钮加载中
+   * @default false
+   */
+  confirmButtonLoading?: boolean;
+
+  /**
+   * 点击取消
+   */
+  onPressCancel?: () => void;
+
+  /**
+   * 点击确定
+   */
+  onPressConfirm?: () => void;
+
+  /**
+   * 点击遮罩层
+   */
+  onPressOverlay?: () => void;
+}
+
+export interface DialogMethodFC extends DialogCommon {
   /**
    * 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise
    */

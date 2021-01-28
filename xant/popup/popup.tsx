@@ -144,8 +144,8 @@ const Popup: React.FC<PopupProps> = ({
     {
       zIndex: state.zIndex,
     },
-    getTransform(position, fadeAnim),
-    PopupPositionMap[position],
+    state.show ? getTransform(position, fadeAnim) : null,
+    state.show ? PopupPositionMap[position] : null,
   ];
 
   if (state.lazyRender) {
@@ -162,6 +162,7 @@ const Popup: React.FC<PopupProps> = ({
           onPress={onPressOverlay}
         />
       ) : null}
+
       <Animated.View
         style={popupStyles}
         pointerEvents={position !== 'center' ? undefined : 'box-none'}

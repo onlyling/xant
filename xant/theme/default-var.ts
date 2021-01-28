@@ -173,7 +173,8 @@ export const dialog_has_title_message_text_color = gray_7;
 export const dialog_has_title_message_padding_top = padding_xs;
 export const dialog_button_height: number = 48;
 export const dialog_round_button_height: number = 36;
-export const dialog_confirm_button_text_color = red;
+export const dialog_confirm_button_text_color = primary;
+export const dialog_cancel_button_text_color = black;
 
 // Divider
 export const divider_vertical_margin = padding_md;

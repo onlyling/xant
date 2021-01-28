@@ -23,9 +23,11 @@ export const createStyles = (
         position === 'top' || position === 'left' ? borderRadius : 0,
       backgroundColor: themeVar.popup_background_color,
       overflow: 'hidden',
+      height: 0,
     },
     popupActive: {
       position: 'absolute',
+      height: 'auto',
     },
   });
 };
@@ -41,7 +43,7 @@ export const PopupPositionMap: Record<PopupPosition, ViewStyle> = {
   center: {
     flex: 1,
     backgroundColor: 'transparent',
-    // backgroundColor: 'rgba(0,0,0,0.3)', // to test ui
+    // backgroundColor: 'rgba(0,0,0,0.8)', // to test ui
     alignItems: 'center',
     justifyContent: 'center',
   },
