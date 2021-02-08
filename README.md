@@ -9,7 +9,7 @@
 | 文件操作   | [react-native-fs](https://github.com/itinance/react-native-fs) \| [rn-fetch-blob]() |
 | 路由       | [react-navigation](https://github.com/react-navigation/react-navigation) |
 | 文件选择器 | [react-native-document-picker](https://github.com/rnmods/react-native-document-picker) |
-| 图标       | [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) \| [@ant-design/icons-react-native](https://github.com/ant-design/ant-design-icons) |
+| 图标       | [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) \| [@ant-design/icons-react-native](https://github.com/ant-design/ant-design-icons) \| [react-native-iconfont-cli](https://github.com/iconfont-cli/react-native-iconfont-cli) |
 | 加解密     | [react-native-rsa-native](https://github.com/amitaymolko/react-native-rsa-native) \| [crypto-js@3.3.0](https://github.com/brix/crypto-js) |
 | 异常处理   | [react-native-exception-handler](https://github.com/a7ul/react-native-exception-handler) |
 | 压缩解压   | [react-native-zip-archive](https://github.com/mockingbot/react-native-zip-archive) |
