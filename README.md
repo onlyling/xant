@@ -13,6 +13,7 @@
 | 加解密     | [react-native-rsa-native](https://github.com/amitaymolko/react-native-rsa-native) \| [crypto-js@3.3.0](https://github.com/brix/crypto-js) |
 | 异常处理   | [react-native-exception-handler](https://github.com/a7ul/react-native-exception-handler) |
 | 压缩解压   | [react-native-zip-archive](https://github.com/mockingbot/react-native-zip-archive) |
+| 图像       | [react-native-fast-image](https://github.com/DylanVann/react-native-fast-image) |
 
 ## 进度
 
