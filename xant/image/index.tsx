@@ -33,6 +33,7 @@ const Image: React.FC<ImageProps> = (props) => {
     showLoading = true,
     animated = true,
     duration = 200,
+    fadeDuration = 0,
     ...resetProps
   } = props;
   const [state, setState] = useState<{ loaded: boolean; error: boolean }>({
@@ -82,6 +83,7 @@ const Image: React.FC<ImageProps> = (props) => {
       <Animated.Image
         {...resetProps}
         style={imageStyles}
+        fadeDuration={fadeDuration}
         onLoad={onLoadImage}
         onError={onErrorImage}
       />
