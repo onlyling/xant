@@ -46,11 +46,9 @@ const ToastInstance: Toast = (options) => {
     ...opts,
   };
 
-  let ref: { current: ToastMethods | null } = {
-    current: null,
-  };
+  let ref: ToastMethods | null = null;
   const hookInner = (methods: ToastMethods) => {
-    ref.current = methods;
+    ref = methods;
     opts.hook && opts.hook(methods);
   };
   const key = Portal.add(
@@ -62,7 +60,7 @@ const ToastInstance: Toast = (options) => {
         if (__DEV__) {
           console.log('toast removed');
         }
-        ref.current = null;
+        ref = null;
         opts.onCloseed && opts.onCloseed();
       }}
     />,
@@ -70,10 +68,10 @@ const ToastInstance: Toast = (options) => {
 
   return {
     close: () => {
-      ref.current?.close();
+      ref?.close();
     },
     setMessage: (m: string) => {
-      ref.current?.setMessage(m);
+      ref?.setMessage(m);
     },
   };
 };
