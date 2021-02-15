@@ -82,7 +82,7 @@ const Dialog: React.FC<DialogProps> = ({
 
   const MessageJSX = message ? (
     React.isValidElement(message) ? (
-      title
+      message
     ) : (
       <Text style={messageTextStyles}>{message}</Text>
     )
