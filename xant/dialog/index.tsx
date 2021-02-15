@@ -1,39 +1,37 @@
 import React from 'react';
 
-import { Dialog, DialogMethods } from './interface';
+import { Dialog } from './interface';
 import DialogView from './dialog';
+import DialogMethodView from './dialog-method';
 import Portal from '../portal';
 
 /**
  * 对话框
  */
 const DialogInstance: Dialog = (opts) => {
-  let ref: { current: DialogMethods | null } = {
-    current: null,
-  };
+  return new Promise((resovle, reject) => {
+    const key = Portal.add(
+      <DialogMethodView
+        {...opts}
+        onCloseed={() => {
+          Portal.remove(key);
 
-  const hookInner = (methods: DialogMethods) => {
-    ref.current = methods;
-    opts.hook && opts.hook(methods);
-  };
+          if (__DEV__) {
+            console.log('dialog removed');
+          }
 
-  const key = Portal.add(
-    <DialogView
-      {...opts}
-      hook={hookInner}
-      onCloseed={() => {
-        Portal.remove(key);
-        ref.current = null;
-        opts.onCloseed && opts.onCloseed();
-      }}
-    />,
-  );
-
-  return {
-    close: () => {
-      ref.current?.close();
-    },
-  };
+          opts.onCloseed && opts.onCloseed();
+        }}
+        callback={(action) => {
+          if (action === 'confirm') {
+            resovle(action);
+          } else {
+            reject(action);
+          }
+        }}
+      />,
+    );
+  });
 };
 
 DialogInstance.Component = (props) => {
@@ -42,6 +40,13 @@ DialogInstance.Component = (props) => {
       <DialogView {...props} />
     </Portal>
   );
+};
+
+DialogInstance.confirm = (options) => {
+  return DialogInstance({
+    showCancelButton: true,
+    ...options,
+  });
 };
 
 export default DialogInstance;

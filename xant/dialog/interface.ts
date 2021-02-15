@@ -8,11 +8,7 @@ type messageAlign = 'center' | 'left' | 'right';
 
 type DialogTheme = 'default' | 'round-button';
 
-type DialogAction = 'cancel' | 'confirm' | 'overlay';
-
-export type DialogMethods = {
-  close: () => void;
-};
+export type DialogAction = 'cancel' | 'confirm' | 'overlay';
 
 interface DialogCommon extends PopupPropsCommon {
   /**
@@ -98,28 +94,27 @@ export interface DialogProps extends DialogCommon {
    * 点击确定
    */
   onPressConfirm?: () => void;
-
-  /**
-   * 点击遮罩层
-   */
-  onPressOverlay?: () => void;
 }
 
-export interface DialogMethodFC extends DialogCommon {
+export interface DialogMethodFC
+  extends Omit<DialogCommon, 'show' | 'onPressOverlay'> {
   /**
    * 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise
    */
   beforeClose?: (action: DialogAction) => boolean | Promise<boolean>;
 
   /**
-   * 在函数使用的时候一个 hook，后面有时间优化一下
+   * 操作完成后的回调
    */
-  hook?: (m: DialogMethods) => void;
+  callback?: (action: DialogAction) => void;
 }
 
+export interface DialogOptions extends Omit<DialogMethodFC, 'callback'> {}
+
 export interface Dialog {
-  (p: DialogProps): DialogMethods;
+  (p: DialogOptions): Promise<DialogAction>;
   Component: React.FC<DialogProps>;
+  confirm(p: DialogOptions): Promise<DialogAction>;
   // clear(all: boolean | number): void;
   // setDefaultOptions(
   //   type: DialogType | DialogProps,

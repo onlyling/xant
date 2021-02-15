@@ -5,7 +5,7 @@ import { ButtonProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 import Loading from '../loading';
-import helpers from '../helpers';
+import * as helpers from '../helpers';
 
 /**
  * Button 按钮

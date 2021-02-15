@@ -6,7 +6,7 @@ import { createStyles, PopupPositionMap } from './style';
 import { getPosition, getTransform } from './helper';
 import Overlay from '../overlay/overlay';
 import { Theme } from '../theme';
-import helpers from '../helpers';
+import * as helpers from '../helpers';
 
 /**
  * Popup 弹出层

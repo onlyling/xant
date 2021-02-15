@@ -77,9 +77,6 @@ const Toast: React.FC<ToastProps> = ({
     }
 
     return () => {
-      if (__DEV__) {
-        console.log('toast removed');
-      }
       clearTimeout(timer);
     };
   }, [duration, hook]);
