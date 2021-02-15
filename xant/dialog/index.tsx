@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 
 import { Dialog } from './interface';
 import DialogView from './dialog';
@@ -34,13 +34,13 @@ const DialogInstance: Dialog = (opts) => {
   });
 };
 
-DialogInstance.Component = (props) => {
+DialogInstance.Component = memo((props) => {
   return (
     <Portal>
       <DialogView {...props} />
     </Portal>
   );
-};
+});
 
 DialogInstance.confirm = (options) => {
   return DialogInstance({

@@ -204,6 +204,17 @@ export const nav_bar_title_font_size = font_size_lg;
 export const nav_bar_title_text_color = text_color;
 export const nav_bar_z_index: number = 1;
 
+// Notify
+export const notify_text_color = white;
+export const notify_vertical_padding = padding_xs;
+export const notify_horizontal_padding = padding_md;
+export const notify_font_size = font_size_md;
+export const notify_line_height = line_height_md;
+export const notify_primary_background_color = primary;
+export const notify_success_background_color = green;
+export const notify_danger_background_color = red;
+export const notify_warning_background_color = orange;
+
 // Image
 export const image_default_size: number = 100; // 图片默认尺寸
 export const image_placeholder_text_color = gray_6;

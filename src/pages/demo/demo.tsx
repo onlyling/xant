@@ -196,6 +196,18 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
       </View>
 
       <View style={CStyles.ctxSplit} />
+
+      <View>
+        <Text
+          onPress={() => {
+            navigation.push('DemoNotify');
+          }}
+        >
+          Go notify
+        </Text>
+      </View>
+
+      <View style={CStyles.ctxSplit} />
     </Layout.Page>
   );
 };
