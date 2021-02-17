@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { View, ScrollView } from 'react-native';
 
 import Layout from '@~/layouts/layout';
 import Cell, { CellGroup } from 'xant/cell';
-import Dialog from 'xant/dialog';
 import Notify from 'xant/notify';
 
 import CStyles from './style';
@@ -21,93 +20,84 @@ const NotifyView: React.FC = () => {
         <View style={CStyles.padding}>
           <CellGroup title="基础用法" border={false}>
             <Cell
-              title="提示弹窗"
-              isLink
-              onPress={() => {
-                Dialog({
-                  title: '这里是标题',
-                  message: '提示弹窗',
-                  width: 200,
-                }).then(() => {
-                  console.log('提示弹窗');
-                });
-              }}
-            />
-            <Cell
-              title="提示弹窗（无标题）"
-              isLink
-              onPress={() => {
-                Dialog({
-                  message: '提示弹窗（无标题）',
-                }).then(() => {
-                  console.log('提示弹窗（无标题）');
-                });
-              }}
-            />
-            <Cell
-              title="确认弹窗"
+              title="基础用法"
               isLink
               border={false}
               onPress={() => {
-                Dialog.confirm({
-                  message: '确认弹窗',
-                  onCloseed: () => {
-                    console.log('onCloseedonCloseedonCloseedonCloseed');
-                  },
-                  beforeClose: (action) =>
-                    new Promise((resolve) => {
-                      setTimeout(() => {
-                        if (action === 'cancel') {
-                          resolve(false);
-                        } else {
-                          resolve(true);
-                        }
-                      }, 3000);
-                    }),
-                })
-                  .then(() => {
-                    console.log('确认弹窗->确定');
-                  })
-                  .catch(() => {
-                    console.log('确认弹窗->取消');
-                  });
+                Notify('基础用法');
               }}
             />
           </CellGroup>
 
           <View style={CStyles.ctxSplit} />
 
-          <CellGroup title="圆角按钮样式" border={false}>
+          <CellGroup title="通知类型" border={false}>
             <Cell
-              title="提示弹窗"
+              title="主要通知"
               isLink
               onPress={() => {
-                Dialog({
-                  title: '这里是标题',
-                  message: '提示弹窗',
-                  width: 200,
-                  theme: 'round-button',
-                }).then(() => {
-                  console.log('提示弹窗');
+                Notify({
+                  type: 'primary',
+                  message: '主要通知',
                 });
               }}
             />
             <Cell
-              title="提示弹窗（无标题）"
+              title="成功通知"
+              isLink
+              onPress={() => {
+                Notify({
+                  type: 'success',
+                  message: '成功通知',
+                });
+              }}
+            />
+            <Cell
+              title="危险通知"
+              isLink
+              onPress={() => {
+                Notify({
+                  type: 'danger',
+                  message: '危险通知',
+                });
+              }}
+            />
+            <Cell
+              title="警告通知"
               isLink
               border={false}
               onPress={() => {
-                Dialog({
-                  message: '提示弹窗（无标题）',
-                  theme: 'round-button',
-                  showCancelButton: true,
-                })
-                  .then(() => {
-                    console.log('提示弹窗（无标题）');
-                  })
-                  .catch(() => {
-                    console.log('提示弹窗（无标题）->取消');
-                  });
+                Notify({
+                  type: 'warning',
+                  message: '警告通知',
+                });
+              }}
+            />
+          </CellGroup>
+
+          <View style={CStyles.ctxSplit} />
+
+          <CellGroup title="自定义配置" border={false}>
+            <Cell
+              title="自定义颜色"
+              isLink
+              onPress={() => {
+                Notify({
+                  message: '自定义颜色',
+                  backgroundColor: '#fff',
+                  color: '#f30',
+                });
+              }}
+            />
+            <Cell
+              title="自定义时长"
+              isLink
+              border={false}
+              onPress={() => {
+                Notify({
+                  message: '自定义时长',
+                  duration: 5000,
+                });
               }}
             />
           </CellGroup>
@@ -128,6 +118,16 @@ const NotifyView: React.FC = () => {
                     show: true,
                   },
                 }));
+
+                setTimeout(() => {
+                  setState((s) => ({
+                    ...s,
+                    cNotify1: {
+                      ...s.cNotify1,
+                      show: false,
+                    },
+                  }));
+                }, 3000);
               }}
             />
           </CellGroup>
@@ -135,6 +135,10 @@ const NotifyView: React.FC = () => {
           <Notify.Component
             show={state.cNotify1.show}
             message="哈哈哈哈哈哈哈嗝"
+            type="danger"
+            onPress={() => {
+              console.log('点击了「哈哈哈哈哈哈哈嗝」');
+            }}
           />
 
           <View style={CStyles.ctxSplit} />
@@ -144,4 +148,4 @@ const NotifyView: React.FC = () => {
   );
 };
 
-export default NotifyView;
+export default memo(NotifyView);

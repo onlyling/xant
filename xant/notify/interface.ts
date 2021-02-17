@@ -7,7 +7,7 @@ export type NotifyType = 'primary' | 'success' | 'danger' | 'warning';
 
 export type NotifyMethods = {
   close: () => void;
-  setMessage: (s: string) => void;
+  setMessage: (s: React.ReactNode) => void;
 };
 
 export interface NotifyProps
@@ -38,12 +38,6 @@ export interface NotifyProps
   message?: React.ReactNode;
 
   /**
-   * 展示时长(ms)，值为 0 时，notify 不会消失
-   * @default 3000
-   */
-  duration?: number | string;
-
-  /**
    * 字体颜色
    */
   color?: string;
@@ -59,14 +53,24 @@ export interface NotifyProps
   onPress?: () => void;
 }
 
-export interface NotifyOptions
-  extends Pick<
-    NotifyProps,
-    'type' | 'message' | 'duration' | 'color' | 'backgroundColor'
-  > {}
+export interface NotifyOptions extends Omit<NotifyProps, 'show'> {
+  /**
+   * 展示时长(ms)，值为 0 时，notify 不会消失
+   * @default 3000
+   */
+  duration?: number | string;
+
+  /**
+   * 在函数使用的时候一个 hook，后面有时间优化一下
+   * @deprecated 内部使用
+   */
+  hook?: (m: NotifyMethods) => void;
+}
+
+export interface NotifyMethodProps extends NotifyOptions {}
 
 export interface Notify {
-  (p: NotifyOptions): NotifyMethods;
+  (p: NotifyMethodProps | string): NotifyMethods;
   Component: React.FC<NotifyProps>;
   // clear(all: boolean | number): void;
   // setDefaultOptions(

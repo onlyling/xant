@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 
 import { NotifyProps } from './interface';
 import { StyleVarType } from '../theme';
@@ -23,6 +23,7 @@ export const createStyles = (
       paddingHorizontal: themeVar.notify_horizontal_padding,
       paddingVertical: themeVar.notify_vertical_padding,
       backgroundColor: backgroundColor || typeBackgroundColor,
+      paddingTop: StatusBar.currentHeight || 0, // Android 状态栏暂时不知道该怎么盖住，先用边距代替
     },
 
     text: {
