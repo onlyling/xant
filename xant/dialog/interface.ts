@@ -96,7 +96,7 @@ export interface DialogProps extends DialogCommon {
   onPressConfirm?: () => void;
 }
 
-export interface DialogMethodFC
+export interface DialogMethodProps
   extends Omit<DialogCommon, 'show' | 'onPressOverlay'> {
   /**
    * 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise
@@ -109,7 +109,7 @@ export interface DialogMethodFC
   callback?: (action: DialogAction) => void;
 }
 
-export interface DialogOptions extends Omit<DialogMethodFC, 'callback'> {}
+export interface DialogOptions extends Omit<DialogMethodProps, 'callback'> {}
 
 export interface Dialog {
   (p: DialogOptions): Promise<DialogAction>;

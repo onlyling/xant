@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text, TouchableWithoutFeedback } from 'react-native';
 
 import { NotifyProps } from './interface';
@@ -47,4 +47,4 @@ const Notify: React.FC<NotifyProps> = ({
   );
 };
 
-export default Notify;
+export default memo<typeof Notify>(Notify);

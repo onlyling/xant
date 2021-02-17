@@ -28,6 +28,7 @@ import DemoBadgeView from '@~/pages/demo/badge';
 import DemoActionBarView from '@~/pages/demo/action-bar';
 import DemoDialogView from '@~/pages/demo/dialog';
 import DemoNotifyView from '@~/pages/demo/notify';
+import DemoActionSheetView from '@~/pages/demo/action-sheet';
 
 import ListView from '@~/pages/list/list';
 import DetailsView from '@~/pages/details/details';
@@ -58,7 +59,8 @@ type RootStackParamList = {
   | 'DemoBadge'
   | 'DemoActionBar'
   | 'DemoDialog'
-  | 'DemoNotify',
+  | 'DemoNotify'
+  | 'DemoActionSheet',
   undefined
 >;
 
@@ -134,6 +136,8 @@ const NestingNavigators: React.FC = () => {
         <Stack.Screen name="DemoDialog" component={DemoDialogView} />
 
         <Stack.Screen name="DemoNotify" component={DemoNotifyView} />
+
+        <Stack.Screen name="DemoActionSheet" component={DemoActionSheetView} />
       </Stack.Navigator>
     </NavigationContainer>
   );

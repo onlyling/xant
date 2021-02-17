@@ -63,6 +63,20 @@ export const border_radius_md: number = 4;
 export const border_radius_lg: number = 8;
 export const border_radius_max: number = 999;
 
+// Badge
+export const badge_size: number = 16;
+export const badge_color = white;
+export const badge_vertical_padding: number = 0;
+export const badge_horizontal_padding: number = 3;
+export const badge_font_size = font_size_sm;
+export const badge_font_weight = font_weight_bold;
+export const badge_border_width = border_width_base;
+export const badge_background_color = red;
+export const badge_dot_color = red;
+export const badge_dot_size: number = 8;
+export const badge_font_family: string =
+  '-apple-system-font, Helvetica Neue, Arial, sans-serif';
+
 // ActionBar
 export const action_bar_background_color = white;
 export const action_bar_height: number = 50;
@@ -77,19 +91,25 @@ export const action_bar_button_height: number = 40;
 export const action_bar_button_warning_color = orange; // 原生不支持渐变，暂时不弄渐变
 export const action_bar_button_danger_color = red; // 原生不支持渐变，暂时不弄渐变
 
-// Badge
-export const badge_size: number = 16;
-export const badge_color = white;
-export const badge_vertical_padding: number = 0;
-export const badge_horizontal_padding: number = 3;
-export const badge_font_size = font_size_sm;
-export const badge_font_weight = font_weight_bold;
-export const badge_border_width = border_width_base;
-export const badge_background_color = red;
-export const badge_dot_color = red;
-export const badge_dot_size: number = 8;
-export const badge_font_family: string =
-  '-apple-system-font, Helvetica Neue, Arial, sans-serif';
+// ActionSheet
+export const action_sheet_max_height: string | number = '80%';
+export const action_sheet_header_height: number = 48;
+export const action_sheet_header_font_size = font_size_lg;
+export const action_sheet_description_color = gray_6;
+export const action_sheet_description_font_size = font_size_md;
+export const action_sheet_description_line_height = line_height_md;
+export const action_sheet_item_background = white;
+export const action_sheet_item_font_size = font_size_lg;
+export const action_sheet_item_line_height = line_height_lg;
+export const action_sheet_item_text_color = text_color;
+export const action_sheet_item_disabled_text_color = gray_5;
+export const action_sheet_subname_color = gray_6;
+export const action_sheet_subname_font_size = font_size_sm;
+export const action_sheet_subname_line_height = line_height_sm;
+export const action_sheet_cancel_text_color = gray_7;
+export const action_sheet_cancel_padding_top = padding_xs;
+export const action_sheet_cancel_padding_color = background_color;
+export const action_sheet_loading_icon_size: number = 22;
 
 // Button
 export const button_mini_height: number = 24;

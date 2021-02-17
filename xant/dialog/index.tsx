@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 
 import { Dialog } from './interface';
 import DialogView from './dialog';

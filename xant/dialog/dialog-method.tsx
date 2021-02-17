@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from 'react';
 
-import { DialogMethodFC, DialogAction } from './interface';
+import { DialogMethodProps, DialogAction } from './interface';
 import Dialog from './dialog';
 import * as helpers from '../helpers';
 
@@ -8,7 +8,7 @@ import * as helpers from '../helpers';
  * Dialog 弹出框
  * @description 配合函数的使用
  */
-const DialogMethod: React.FC<DialogMethodFC> = ({
+const DialogMethod: React.FC<DialogMethodProps> = ({
   beforeClose,
   callback,
   ...restProps
