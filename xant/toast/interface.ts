@@ -63,27 +63,8 @@ export interface ToastProps extends Omit<PopupPropsCommon, 'show'> {
   duration?: number;
 
   /**
-   * 打开弹出层时触发
-   */
-  onOpen?: Function;
-
-  /**
-   * 完全展示后的回调函数
-   */
-  onOpened?: Function;
-
-  /**
-   * 关闭时的回调函数
-   */
-  onClose?: Function;
-
-  /**
-   * 关闭弹出层且动画结束后触发
-   */
-  onCloseed?: Function;
-
-  /**
    * 在函数使用的时候一个 hook，后面有时间优化一下
+   * @deprecated 内部使用
    */
   hook?: (m: ToastMethods) => void;
 }

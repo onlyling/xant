@@ -23,7 +23,7 @@ const Toast: React.FC<ToastProps> = ({
   const { themeVar } = Theme.useContainer();
   const Styles = createStyles(themeVar, { position });
 
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [msg, setMsg] = useState(message);
 
   // 修正数据
@@ -55,6 +55,8 @@ const Toast: React.FC<ToastProps> = ({
   };
 
   useEffect(() => {
+    setShow(true);
+
     // 在使用 Toast('test') 的时候如果会直接删了就没得过渡动画
     // 暂时用这个方式
     hook &&
