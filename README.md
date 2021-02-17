@@ -25,7 +25,7 @@
 - [x] Image 图片
 - [x] Grid 栅格化
 - [x] Popup 弹出层
-- [ ] Toast 轻提示
+- [x] Toast 轻提示
 
 ### 表单组件
 
@@ -49,10 +49,10 @@
 ### 反馈组件
 
 - [ ] ActionSheet 动作面板
-- [ ] Dialog 弹出框
+- [x] Dialog 弹出框
 - [ ] DropdownMenu 下拉菜单
 - [x] Loading 加载
-- [ ] Notify 消息提示
+- [x] Notify 消息提示
 - [x] Overlay 遮罩层
 - [ ] PullRefresh 下拉刷新
 - [ ] ShareSheet 分享面板
@@ -60,7 +60,7 @@
 
 ### 展示组件
 
-- [ ] Badge 徽标
+- [x] Badge 徽标
 - [ ] Circle 环形进度条
 - [ ] Collapse 折叠面板
 - [ ] CountDown 倒计时
@@ -80,7 +80,7 @@
 
 ### 导航组件
 
-- [ ] ActionBar 动作栏
+- [x] ActionBar 动作栏
 - [ ] IndexBar 索引栏
 - [x] NavBar 导航栏
 - [ ] Pagination 分页
@@ -88,6 +88,12 @@
 - [ ] Tab 标签页
 - [ ] Tabbar 标签栏
 - [ ] TreeSelect 分类选择
+
+## 代改进项
+
+- [ ] 部分组件属性继承 React Native 提供的组件，更贴近原组件试用（目前大部分只提供了 onPress 交互，其他还有其他很多可以用，可以向外暴露）
+- [ ] 优化主题中未只用到的变量
+- [ ] 时间单位，Vant 中部分组件使用毫秒，部分组件使用秒，在 Xant 中需要统一单位
 
 ## 截图
 
