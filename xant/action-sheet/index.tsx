@@ -2,35 +2,36 @@ import React, { memo } from 'react';
 
 import { ActionSheet } from './interface';
 import ActionSheetView from './action-sheet';
-// import ActionSheetMethodView from './action-sheet-method';
+import ActionSheetMethodView from './action-sheet-method';
 import Portal from '../portal';
 
 const ActionSheetInstance: ActionSheet = (opts) => {
-  console.log(opts);
-  return Promise.resolve();
-  // return new Promise((resovle, reject) => {
-  //   const key = Portal.add(
-  //     <ActionSheetMethodView
-  //       {...opts}
-  //       onCloseed={() => {
-  //         Portal.remove(key);
+  return new Promise((resovle, reject) => {
+    const key = Portal.add(
+      <ActionSheetMethodView
+        {...opts}
+        onCloseed={() => {
+          Portal.remove(key);
 
-  //         if (__DEV__) {
-  //           console.log('dialog removed');
-  //         }
+          if (__DEV__) {
+            console.log('action-sheet removed');
+          }
 
-  //         opts.onCloseed && opts.onCloseed();
-  //       }}
-  //       callback={(action) => {
-  //         if (action === 'confirm') {
-  //           resovle(action);
-  //         } else {
-  //           reject(action);
-  //         }
-  //       }}
-  //     />,
-  //   );
-  // });
+          opts.onCloseed && opts.onCloseed();
+        }}
+        callback={(action, item, index) => {
+          if (action === 'item' && item && (index || index === 0)) {
+            resovle({
+              item,
+              index,
+            });
+          } else {
+            reject(action);
+          }
+        }}
+      />,
+    );
+  });
 };
 
 ActionSheetInstance.Component = memo((props) => {

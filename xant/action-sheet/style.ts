@@ -1,5 +1,4 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { padding_md } from 'xant';
 
 import { StyleVarType } from '../theme';
 
@@ -37,13 +36,17 @@ export const createStyles = (themeVar: StyleVarType) => {
     },
 
     btn: {
+      alignItems: 'center',
       paddingVertical: 14,
       paddingHorizontal: themeVar.padding_md,
+      // 配合 activeOpacity、underlayColor 使用，文字有点别扭
+      // backgroundColor: themeVar.action_sheet_item_background,
     },
 
     item: {
       textAlign: 'center',
       fontSize: themeVar.action_sheet_item_font_size,
+      lineHeight: themeVar.action_sheet_loading_icon_size,
     },
 
     subname: {

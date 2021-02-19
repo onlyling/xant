@@ -2,6 +2,8 @@ import React from 'react';
 
 import { PopupPropsCommon } from '../popup/interface';
 
+export type ActionSheetAction = 'cancel' | 'item' | 'overlay';
+
 export interface Action {
   /** 标题 */
   name: string;
@@ -13,10 +15,10 @@ export interface Action {
   color?: string;
 
   /** 是否为加载状态 */
-  loading?: string;
+  loading?: boolean;
 
   /** 是否为禁用状态 */
-  disabled?: string;
+  disabled?: boolean;
 
   /** 点击时触发的回调函数 */
   callback?: () => void;
@@ -54,16 +56,43 @@ export interface ActionSheetProps extends PopupPropsCommon {
    * @default true
    */
   lazyRender?: boolean;
+
+  /**
+   * 点击取消按钮时触发
+   */
+  onCancel?: () => void;
+
+  /**
+   * 点击选项时触发，禁用或加载状态下不会触发
+   */
+  onSelect?: (action: Action, index: number) => void;
 }
 
 export interface ActionSheetOptions
-  extends Omit<ActionSheetProps, 'show' | 'actions'> {
+  extends Omit<ActionSheetProps, 'show' | 'actions' | 'onCancel' | 'onSelect'> {
+  /**
+   * 面板选项列表
+   */
   actions: (string | Action)[];
+
+  /**
+   * 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise
+   */
+  beforeClose?: (
+    action: ActionSheetAction,
+    item?: Action,
+    index?: number,
+  ) => boolean | Promise<boolean>;
+
+  /**
+   * 操作完成后的回调
+   */
+  callback?: (action: ActionSheetAction, item?: Action, index?: number) => void;
 }
 
-export interface ActionSheetMethodPorps extends ActionSheetProps {}
+export interface ActionSheetMethodPorps extends ActionSheetOptions {}
 
 export interface ActionSheet {
-  (p: ActionSheetOptions): Promise<any>;
+  (p: ActionSheetOptions): Promise<{ item: Action; index: number }>;
   Component: React.FC<ActionSheetProps>;
 }

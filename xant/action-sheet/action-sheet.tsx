@@ -1,10 +1,17 @@
 import React, { memo } from 'react';
-import { Text, View, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  TouchableHighlight,
+  TextStyle,
+} from 'react-native';
 
 import { ActionSheetProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 import Popup from '../popup/popup';
+import Loading from '../loading/circular';
 
 /**
  * ActionSheet 动作面板
@@ -16,6 +23,8 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
   cancelText,
   description,
   round = true,
+  onCancel,
+  onSelect,
   ...restProps
 }) => {
   const { themeVar } = Theme.useContainer();
@@ -54,18 +63,54 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
       {DescriptionJSX}
 
       <ScrollView style={Styles.content}>
-        {actions.map((item) => {
+        {actions.map((item, index) => {
+          /** 选项的自定义颜色/配置 */
+          const customTextStyle: TextStyle = {};
+
+          if (item.color) {
+            customTextStyle.color = item.color;
+          }
+
+          if (item.disabled) {
+            customTextStyle.color =
+              themeVar.action_sheet_item_disabled_text_color;
+          }
+
           return (
-            <TouchableWithoutFeedback key={`${item.name}_${item.subname}`}>
+            <TouchableHighlight
+              key={`${item.name}_${item.subname}_${index}`}
+              activeOpacity={1}
+              underlayColor={
+                item.disabled || item.loading
+                  ? themeVar.action_sheet_item_background
+                  : themeVar.active_color
+              }
+              onPress={() => {
+                if (!item.disabled && !item.loading) {
+                  onSelect && onSelect(item, index);
+                }
+              }}
+            >
               <View style={Styles.btn}>
-                <Text style={Styles.item}>{item.name}</Text>
-                {item.subname ? (
-                  <Text style={[Styles.item, Styles.subname]}>
-                    {item.subname}
-                  </Text>
-                ) : null}
+                {item.loading ? (
+                  <Loading
+                    size={themeVar.action_sheet_loading_icon_size}
+                    color={themeVar.action_sheet_item_disabled_text_color}
+                  />
+                ) : (
+                  <>
+                    <Text style={[Styles.item, customTextStyle]}>
+                      {item.name}
+                    </Text>
+                    {item.subname ? (
+                      <Text style={[Styles.item, Styles.subname]}>
+                        {item.subname}
+                      </Text>
+                    ) : null}
+                  </>
+                )}
               </View>
-            </TouchableWithoutFeedback>
+            </TouchableHighlight>
           );
         })}
       </ScrollView>
@@ -73,7 +118,13 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
       {CancelTextJSX ? (
         <>
           <View style={Styles.gap} />
-          {CancelTextJSX}
+          <TouchableHighlight
+            activeOpacity={1}
+            underlayColor={themeVar.active_color}
+            onPress={onCancel}
+          >
+            {CancelTextJSX}
+          </TouchableHighlight>
         </>
       ) : null}
     </Popup>

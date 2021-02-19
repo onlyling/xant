@@ -34,14 +34,14 @@ const DialogMethod: React.FC<DialogMethodProps> = ({
     };
 
     if (beforeClose) {
-      setLoading((s) => ({
-        ...s,
-        [action]: true,
-      }));
-
       const returnVal = beforeClose(action);
       // 如果有判断条件
       if (helpers.isPromise(returnVal)) {
+        setLoading((s) => ({
+          ...s,
+          [action]: true,
+        }));
+
         returnVal
           .then((value) => {
             if (value) {
