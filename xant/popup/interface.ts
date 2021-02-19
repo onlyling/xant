@@ -26,7 +26,7 @@ export interface PopupPropsCommon {
    * 是否在点击遮罩层后关闭
    * @default true
    */
-  closeOnClickOverlay?: boolean;
+  closeOnPressOverlay?: boolean;
 
   /**
    * 点击遮罩层时触发
@@ -77,12 +77,6 @@ export interface PopupProps extends PopupPropsCommon {
    * @default false
    */
   round?: boolean;
-
-  /**
-   * 是否在点击遮罩层后关闭
-   * @default true
-   */
-  closeOnPressOverlay?: boolean;
 
   /**
    * 是否开启底部安全区适配
