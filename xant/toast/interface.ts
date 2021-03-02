@@ -7,7 +7,8 @@ export type ToastMethods = {
   setMessage: (s: string) => void;
 };
 
-export interface ToastProps extends Omit<PopupPropsCommon, 'show'> {
+export interface ToastProps
+  extends Omit<PopupPropsCommon, 'show' | 'duration' | 'closeOnPressOverlay'> {
   /**
    * 提示类型，可选值为 `'text' | 'loading' | 'success' | 'fail'`
    * @default 'text'
@@ -36,19 +37,19 @@ export interface ToastProps extends Omit<PopupPropsCommon, 'show'> {
    * 是否禁止背景点击
    * @default false
    */
-  forbidClick?: boolean;
+  forbidPress?: boolean;
 
   /**
    * 是否在点击后关闭
    * @default false
    */
-  closeOnClick?: boolean;
+  closeOnPress?: boolean;
 
   /**
    * 是否在点击遮罩层后关闭
    * @default false
    */
-  closeOnClickOverlay?: boolean;
+  closeOnPressOverlay?: boolean;
 
   /**
    * 加载图标类型, 可选值为 `'circular' | 'spinner'`

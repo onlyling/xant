@@ -18,8 +18,8 @@ const defaultOptions: ToastProps = {
   duration: 2000,
   message: '',
   position: 'middle',
-  forbidClick: false,
-  closeOnClickOverlay: false,
+  forbidPress: false,
+  closeOnPressOverlay: false,
   overlay: false,
   loadingType: 'circular',
 };

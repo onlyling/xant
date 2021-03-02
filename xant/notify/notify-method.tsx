@@ -30,13 +30,13 @@ const NotifyMethod: React.FC<NotifyMethodProps> = ({
         },
       });
 
-    let timer: number;
+    let timer: ReturnType<typeof setTimeout>;
 
     if (duration !== 0) {
       timer = setTimeout(() => {
         // 隐藏弹窗
         setShow(false);
-      }, duration);
+      }, +duration);
     }
 
     return () => {

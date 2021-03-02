@@ -16,7 +16,7 @@ const Popup: React.FC<PopupProps> = ({
   children,
   show = false,
   overlay = true,
-  duration = 0.3,
+  duration = 300,
   closeOnPressOverlay = true,
   position = 'center',
   round = false,
@@ -80,7 +80,7 @@ const Popup: React.FC<PopupProps> = ({
         fadeAnim, // 动画中的变量值
         {
           toValue: getPosition(show, position),
-          duration: +duration * 1000,
+          duration: +duration,
           useNativeDriver: true,
         },
       );
@@ -93,8 +93,12 @@ const Popup: React.FC<PopupProps> = ({
             show,
           }));
           onCloseedFN && onCloseedFN();
+          if (__DEV__) {
+            console.log('Popup onCloseed');
+          }
         } else {
           onOpenedFN && onOpenedFN();
+          console.log('Popup onOpened');
         }
       });
     }

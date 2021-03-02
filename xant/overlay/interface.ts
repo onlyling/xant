@@ -19,8 +19,8 @@ export interface OverlayProps {
   zIndex?: number | string;
 
   /**
-   * 动画时长，单位秒
-   * @default 0.3
+   * 动画时长，单位毫秒
+   * @default 300
    */
   duration?: number | string;
 

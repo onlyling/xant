@@ -105,11 +105,7 @@ const Dialog: React.FC<DialogProps> = ({
   };
 
   return (
-    <Popup
-      {...restProps}
-      show={show}
-      duration={themeVar.dialog_transition / 1000}
-    >
+    <Popup {...restProps} show={show} duration={themeVar.dialog_transition}>
       <Animated.View style={dialogStyles}>
         {TitleJSX}
 

@@ -19,7 +19,7 @@ const ToastView: React.FC = () => {
               onPress={() => {
                 Toast({
                   message: '提示内容',
-                  forbidClick: true,
+                  forbidPress: true,
                 });
               }}
             />
@@ -29,7 +29,7 @@ const ToastView: React.FC = () => {
               onPress={() => {
                 Toast.loading({
                   message: '加载中...',
-                  forbidClick: true,
+                  forbidPress: true,
                 });
               }}
             />
@@ -42,7 +42,7 @@ const ToastView: React.FC = () => {
 
                 const ddd = Toast.loading({
                   message: buildMsg(),
-                  forbidClick: true,
+                  forbidPress: true,
                   duration: 0,
                 });
                 const doLoop = () => {
@@ -70,7 +70,7 @@ const ToastView: React.FC = () => {
                   type: 'loading',
                   loadingType: 'spinner',
                   message: '加载中...',
-                  forbidClick: true,
+                  forbidPress: true,
                 });
               }}
             />
@@ -81,7 +81,7 @@ const ToastView: React.FC = () => {
                 Toast({
                   message:
                     '图标暂时还未确定图标暂时还未-确定图标暂时还未确定图标暂时还未确定',
-                  closeOnClick: true,
+                  closeOnPress: true,
                   duration: 5000,
                 });
               }}
@@ -105,7 +105,7 @@ const ToastView: React.FC = () => {
               onPress={() => {
                 Toast({
                   message: '提示内容',
-                  forbidClick: true,
+                  forbidPress: true,
                   position: 'top',
                 });
               }}
@@ -117,7 +117,7 @@ const ToastView: React.FC = () => {
               onPress={() => {
                 Toast({
                   message: '提示内容',
-                  forbidClick: true,
+                  forbidPress: true,
                   position: 'bottom',
                 });
               }}
