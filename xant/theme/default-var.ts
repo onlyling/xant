@@ -1,4 +1,4 @@
-import { TextStyle } from 'react-native';
+import { TextStyle, ViewStyle } from 'react-native';
 
 export const black: string = '#000';
 export const white: string = '#fff';
@@ -278,6 +278,23 @@ export const tag_success_color = green;
 export const tag_warning_color = orange;
 export const tag_default_color = gray_6;
 export const tag_plain_background_color = white;
+
+// Switch
+export const switch_size: number = 30;
+export const switch_width_ratio: number = 2; // 原变量中使用了 em，这里改成对应的比例
+export const switch_height_ratio: number = 1; // 原变量中使用了 em，这里改成对应的比例
+export const switch_node_size_ratio: number = 1; // 原变量中使用了 em，这里改成对应的比例
+export const switch_node_background_color = white;
+// export const switch_node_box_shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05),
+//   0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+export const switch_background_color = white;
+export const switch_on_background_color = blue;
+export const switch_transition_duration = animation_duration_base;
+export const switch_disabled_opacity = disabled_opacity;
+export const switch_border_width = border_width_base;
+export const switch_border_style: ViewStyle['borderStyle'] = 'solid';
+export const switch_border_color: string = 'rgba(0, 0, 0, 0.1)';
+// export const switch_border: @border-width-base solid rgba(0, 0, 0, 0.1);
 
 // Toast
 export const toast_max_width: string = '70%';

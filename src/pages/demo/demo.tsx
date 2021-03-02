@@ -224,6 +224,18 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
         </View>
 
         <View style={CStyles.ctxSplit} />
+
+        <View>
+          <Text
+            onPress={() => {
+              navigation.push('DemoSwitch');
+            }}
+          >
+            Go switch
+          </Text>
+        </View>
+
+        <View style={CStyles.ctxSplit} />
       </ScrollView>
     </Layout.Page>
   );
