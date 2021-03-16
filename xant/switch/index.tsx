@@ -64,6 +64,8 @@ const Switch: React.FC<SwitchProps> = ({
   const switchStyles = [
     Styles.switch,
     {
+      // 当前过渡不支持 color/backgroundColor
+      // 参考：https://stackoverflow.com/a/60586628
       backgroundColor: actived
         ? activeColor || themeVar.switch_on_background_color
         : inactiveColor || themeVar.switch_background_color,
