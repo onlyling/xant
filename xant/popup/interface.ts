@@ -94,6 +94,7 @@ export interface PopupProps extends PopupPropsCommon {
 
 export type State = {
   show: boolean;
+  overlayShow: boolean;
   zIndex: number;
   lazyRender: boolean;
 };

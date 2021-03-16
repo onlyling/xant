@@ -33,6 +33,8 @@ const Popup: React.FC<PopupProps> = ({
 
   const [state, setState] = useState<State>({
     show,
+    // 遮罩层显示、隐藏单独管理，避免弹出层完成后才触发关闭，两个组件应该同时变化
+    overlayShow: show,
     zIndex: helpers.getNextZIndex(),
     lazyRender,
   });
@@ -59,6 +61,7 @@ const Popup: React.FC<PopupProps> = ({
   // 监听状态变化，执行动画
   useEffect(() => {
     if (show) {
+      // 弹出弹出，立即响应
       setState((s) => ({
         ...s,
         show,
@@ -66,6 +69,12 @@ const Popup: React.FC<PopupProps> = ({
         lazyRender: false,
       }));
     }
+
+    // 遮罩层状态实时显示
+    setState((s) => ({
+      ...s,
+      overlayShow: show,
+    }));
 
     if (inited.current) {
       fadeAnim.setValue(getPosition(!show, position));
@@ -160,7 +169,7 @@ const Popup: React.FC<PopupProps> = ({
     <>
       {overlay ? (
         <Overlay
-          show={state.show}
+          show={state.overlayShow}
           zIndex={state.zIndex}
           duration={duration}
           onPress={onPressOverlay}
