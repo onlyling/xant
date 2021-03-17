@@ -1,6 +1,6 @@
-import React from 'react';
+import type React from 'react';
 
-import { PopupPropsCommon } from '../popup/interface';
+import type { PopupPropsCommon } from '../popup/interface';
 
 export type ActionSheetAction = 'cancel' | 'item' | 'overlay';
 

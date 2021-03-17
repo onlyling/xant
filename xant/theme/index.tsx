@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { ThemeProps } from './interface';
+import type { ThemeProps } from './interface';
 import container from './container';
 
 export type { StyleVarType } from './interface';

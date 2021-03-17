@@ -1,4 +1,4 @@
-import { TextStyle, ViewStyle, StyleProp } from 'react-native';
+import type { TextStyle, ViewStyle, StyleProp } from 'react-native';
 
 export interface BadgeProps {
   /**

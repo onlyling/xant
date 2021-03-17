@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { View, Text } from 'react-native';
 
-import { DividerProps } from './interface';
+import type { DividerProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 

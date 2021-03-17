@@ -1,4 +1,4 @@
-import { TextStyle, ViewStyle } from 'react-native';
+import type { TextStyle, ViewStyle } from 'react-native';
 
 export const black: string = '#000';
 export const white: string = '#fff';

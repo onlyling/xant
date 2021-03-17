@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ProviderProps } from './interface';
+import type { ProviderProps } from './interface';
 import Theme from '../theme';
 import Portal from '../portal';
 

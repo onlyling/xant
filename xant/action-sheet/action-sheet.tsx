@@ -1,13 +1,8 @@
 import React, { memo } from 'react';
-import {
-  Text,
-  View,
-  ScrollView,
-  TouchableHighlight,
-  TextStyle,
-} from 'react-native';
+import type { TextStyle } from 'react-native';
+import { Text, View, ScrollView, TouchableHighlight } from 'react-native';
 
-import { ActionSheetProps } from './interface';
+import type { ActionSheetProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 import Popup from '../popup/popup';

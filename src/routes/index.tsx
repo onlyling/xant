@@ -1,15 +1,15 @@
 import React from 'react';
-import {
-  NavigationContainer,
-  CompositeNavigationProp,
-} from '@react-navigation/native';
-import {
-  createStackNavigator,
+import type { CompositeNavigationProp } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
+import type {
   StackScreenProps,
   StackNavigationProp,
+} from '@react-navigation/stack';
+import {
+  createStackNavigator,
   CardStyleInterpolators,
 } from '@react-navigation/stack';
-import { BottomTabNavigationProp as BottomTabNavigationPropOriginal } from '@react-navigation/bottom-tabs';
+import type { BottomTabNavigationProp as BottomTabNavigationPropOriginal } from '@react-navigation/bottom-tabs';
 
 import DemoView from '@~/pages/demo/demo';
 import DemoFullView from '@~/pages/demo/full';
@@ -34,7 +34,8 @@ import DemoSwitchView from '@~/pages/demo/switch';
 import ListView from '@~/pages/list/list';
 import DetailsView from '@~/pages/details/details';
 
-import TabsView, { BottomTabParamList } from './bottom-tab';
+import type { BottomTabParamList } from './bottom-tab';
+import TabsView from './bottom-tab';
 
 /** 当前所有 Stack 路由的参数 */
 type RootStackParamList = {

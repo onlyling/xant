@@ -1,5 +1,6 @@
 import React, { useRef, memo } from 'react';
-import { View, ViewStyle, Animated, StyleSheet, Easing } from 'react-native';
+import type { ViewStyle } from 'react-native';
+import { View, Animated, StyleSheet, Easing } from 'react-native';
 
 import useLoop from './loop';
 import { Theme } from '../theme';

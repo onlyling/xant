@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { PopupProps } from './interface';
+import type { PopupProps } from './interface';
 import Popup from './popup';
 import Portal from '../portal';
 

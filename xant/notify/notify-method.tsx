@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from 'react';
 
-import { NotifyMethodProps } from './interface';
+import type { NotifyMethodProps } from './interface';
 import Notify from './notify';
 
 /**

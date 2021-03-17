@@ -1,7 +1,13 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useEffect, memo } from 'react';
 
-import { DialogMethodProps, DialogAction } from './interface';
+import type {
+  DialogMethodProps,
+  DialogAction,
+  DialogMethodState,
+} from './interface';
 import Dialog from './dialog';
+import useState from '../hooks/use-state-update';
+import useDestroyed from '../hooks/use-destroyed';
 import * as helpers from '../helpers';
 
 /**
@@ -13,34 +19,39 @@ const DialogMethod: React.FC<DialogMethodProps> = ({
   callback,
   ...restProps
 }) => {
-  const [show, setShow] = useState(false);
-  const [loading, setLoading] = useState<Record<DialogAction, boolean>>({
+  const [state, setState] = useState<DialogMethodState>({
+    show: false,
     cancel: false,
     confirm: false,
     overlay: false,
   });
+  const getDestroyed = useDestroyed();
 
   const genOnPressBtn = (action: DialogAction) => () => {
     const canceled = () => {
-      setLoading((s) => ({
-        ...s,
-        [action]: false,
-      }));
+      if (!getDestroyed()) {
+        setState({
+          [action]: false,
+        });
+      }
     };
     const done = () => {
       callback && callback(action);
       canceled();
-      setShow(false);
+      if (!getDestroyed()) {
+        setState({
+          show: false,
+        });
+      }
     };
 
     if (beforeClose) {
       const returnVal = beforeClose(action);
       // 如果有判断条件
       if (helpers.isPromise(returnVal)) {
-        setLoading((s) => ({
-          ...s,
+        setState({
           [action]: true,
-        }));
+        });
 
         returnVal
           .then((value) => {
@@ -67,18 +78,20 @@ const DialogMethod: React.FC<DialogMethodProps> = ({
   };
 
   useEffect(() => {
-    setShow(true);
+    setState({
+      show: true,
+    });
   }, []);
 
   return (
     <Dialog
       {...restProps}
-      show={show}
+      show={state.show}
       onPressConfirm={genOnPressBtn('confirm')}
       onPressCancel={genOnPressBtn('cancel')}
       onPressOverlay={genOnPressBtn('overlay')}
-      cancelButtonLoading={loading.cancel}
-      confirmButtonLoading={loading.confirm}
+      cancelButtonLoading={state.cancel}
+      confirmButtonLoading={state.confirm}
     />
   );
 };

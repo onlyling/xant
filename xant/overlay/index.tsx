@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { OverlayProps } from './interface';
+import type { OverlayProps } from './interface';
 import Overlay from './overlay';
 import Portal from '../portal';
 

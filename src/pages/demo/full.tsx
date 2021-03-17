@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import * as Routes from '@~/routes';
+import type * as Routes from '@~/routes';
 
 type DemoFullProps = {} & Routes.RootStackScreenProps<'DemoFull'>;
 

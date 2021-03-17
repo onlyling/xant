@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { CellProps } from './interface';
-import { StyleVarType } from '../theme';
+import type { CellProps } from './interface';
+import type { StyleVarType } from '../theme';
 
 export const createStyles = (
   themeVar: StyleVarType,

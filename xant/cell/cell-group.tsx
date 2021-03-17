@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { View, Text } from 'react-native';
 
-import { CellGroupProps } from './interface';
+import type { CellGroupProps } from './interface';
 import { createStyles } from './style.cell-group';
 import { Theme } from '../theme';
 

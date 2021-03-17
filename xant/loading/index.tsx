@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { View, Text } from 'react-native';
 
-import { LoadingProps } from './interface';
+import type { LoadingProps } from './interface';
 import { createStyles } from './style';
 import Circular from './circular';
 import Spinner from './spinner';

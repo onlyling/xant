@@ -1,6 +1,10 @@
 import React, { useState, useEffect, memo } from 'react';
 
-import { ActionSheetMethodPorps, ActionSheetAction, Action } from './interface';
+import type {
+  ActionSheetMethodPorps,
+  ActionSheetAction,
+  Action,
+} from './interface';
 import ActionSheet from './action-sheet';
 import * as helpers from '../helpers';
 

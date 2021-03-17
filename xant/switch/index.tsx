@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, memo } from 'react';
 import { TouchableWithoutFeedback, Animated } from 'react-native';
 
-import { SwitchProps } from './interface';
+import type { SwitchProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 

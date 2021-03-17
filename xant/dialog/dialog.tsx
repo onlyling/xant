@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, memo } from 'react';
 import { View, Text, Animated } from 'react-native';
 
-import { DialogProps } from './interface';
+import type { DialogProps } from './interface';
 import { createStyles } from './style';
 import Popup from '../popup/popup';
 import Button from '../button';

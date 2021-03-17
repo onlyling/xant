@@ -1,8 +1,9 @@
-import { StyleSheet, ViewStyle } from 'react-native';
+import type { ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 import omit from 'omit.js';
 
-import { PopupProps, PopupPosition } from './interface';
-import { StyleVarType } from '../theme';
+import type { PopupProps, PopupPosition } from './interface';
+import type { StyleVarType } from '../theme';
 
 export const createStyles = (
   themeVar: StyleVarType,

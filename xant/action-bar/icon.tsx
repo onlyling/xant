@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Text, View, TouchableHighlight } from 'react-native';
 
-import { ActionBarIconProps } from './interface';
+import type { ActionBarIconProps } from './interface';
 import { createStyles } from './style.icon';
 import Badge from '../badge';
 import { Theme } from '../theme';

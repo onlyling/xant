@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { Dialog } from './interface';
+import type { Dialog } from './interface';
 import DialogView from './dialog';
 import DialogMethodView from './dialog-method';
 import Portal from '../portal';

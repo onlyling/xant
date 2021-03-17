@@ -1,6 +1,6 @@
-import * as React from 'react';
+import type * as React from 'react';
 
-import { PopupPropsCommon } from '../popup/interface';
+import type { PopupPropsCommon } from '../popup/interface';
 
 export type DialogType = 'alert' | 'confirm';
 
@@ -96,6 +96,15 @@ export interface DialogProps extends DialogCommon {
   onPressConfirm?: () => void;
 }
 
+/** 对话框函数使用时的组件内部状态 */
+export type DialogMethodState = {
+  show: boolean;
+  cancel: boolean;
+  confirm: boolean;
+  overlay: boolean;
+};
+
+/** 对话框函数使用时的组件需要的属性 */
 export interface DialogMethodProps
   extends Omit<DialogCommon, 'show' | 'onPressOverlay'> {
   /**

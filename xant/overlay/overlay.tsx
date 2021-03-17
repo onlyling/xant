@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, memo } from 'react';
 import { TouchableOpacity, Animated, BackHandler } from 'react-native';
 
-import { OverlayProps } from './interface';
+import type { OverlayProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 

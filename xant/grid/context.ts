@@ -1,6 +1,7 @@
-import { createContext, Context } from 'react';
+import type { Context } from 'react';
+import { createContext } from 'react';
 
-import { RowContextState } from './interface';
+import type { RowContextState } from './interface';
 
 const RowContext: Context<RowContextState> = createContext({});
 

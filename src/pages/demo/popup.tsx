@@ -4,7 +4,7 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import Layout from '@~/layouts/layout';
 import Button from 'xant/button';
 import Popup from 'xant/popup';
-import { PopupPosition } from 'xant/popup/interface';
+import type { PopupPosition } from 'xant/popup/interface';
 
 import CStyles from './style';
 

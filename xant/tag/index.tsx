@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import { TagProps } from './interface';
+import type { TagProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 

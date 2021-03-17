@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { Notify, NotifyMethods, NotifyOptions } from './interface';
+import type { Notify, NotifyMethods, NotifyOptions } from './interface';
 import NotifyView from './notify';
 import NotifyMethod from './notify-method';
 import Portal from '../portal';

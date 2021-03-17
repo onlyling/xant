@@ -1,7 +1,8 @@
 import React, { useContext, memo } from 'react';
-import { View, ViewStyle } from 'react-native';
+import type { ViewStyle } from 'react-native';
+import { View } from 'react-native';
 
-import { ColProps } from './interface';
+import type { ColProps } from './interface';
 import RowContext from './context';
 
 const BASE_SPAN_WIDTH = 100 / 24;

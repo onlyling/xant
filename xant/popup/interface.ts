@@ -1,4 +1,4 @@
-import { ViewStyle, StyleProp } from 'react-native';
+import type { ViewStyle, StyleProp } from 'react-native';
 
 export type PopupPosition = 'top' | 'bottom' | 'right' | 'left' | 'center';
 

@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
-import { Text, TouchableHighlight, GestureResponderEvent } from 'react-native';
+import type { GestureResponderEvent } from 'react-native';
+import { Text, TouchableHighlight } from 'react-native';
 
-import { ButtonProps } from './interface';
+import type { ButtonProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 import Loading from '../loading';

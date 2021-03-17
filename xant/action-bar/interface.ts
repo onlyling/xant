@@ -1,7 +1,7 @@
-import React from 'react';
-import { ViewProps, TouchableHighlightProps } from 'react-native';
+import type React from 'react';
+import type { ViewProps, TouchableHighlightProps } from 'react-native';
 
-import { ButtonProps } from '../button/interface';
+import type { ButtonProps } from '../button/interface';
 
 export interface ActionBarProps extends ViewProps {
   /**

@@ -1,5 +1,5 @@
-import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import type React from 'react';
+import type { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 export interface NavBarProps {
   /**

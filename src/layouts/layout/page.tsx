@@ -1,11 +1,12 @@
 import React, { useMemo, useCallback, memo } from 'react';
-import { View, TextStyle } from 'react-native';
+import type { TextStyle } from 'react-native';
+import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import NavBar from 'xant/nav-bar';
 import { Theme } from 'xant/theme';
 
-import { PageProps } from './interface';
+import type { PageProps } from './interface';
 import { createStyles } from './style';
 import FocusAwareStatusBar from '../focus-aware-status-bar';
 

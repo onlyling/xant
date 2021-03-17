@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useCallback, useState, memo } from 'react';
+import React, { useEffect, useRef, useCallback, memo } from 'react';
 import { Animated, BackHandler } from 'react-native';
 
-import { PopupProps, State } from './interface';
+import type { PopupProps, State } from './interface';
 import { createStyles, PopupPositionMap } from './style';
 import { getPosition, getTransform } from './helper';
 import Overlay from '../overlay/overlay';
 import { Theme } from '../theme';
+import useState from '../hooks/use-state-update';
 import * as helpers from '../helpers';
 
 /**
@@ -62,19 +63,17 @@ const Popup: React.FC<PopupProps> = ({
   useEffect(() => {
     if (show) {
       // 弹出弹出，立即响应
-      setState((s) => ({
-        ...s,
+      setState({
         show,
         zIndex: helpers.getNextZIndex(),
         lazyRender: false,
-      }));
+      });
     }
 
     // 遮罩层状态实时显示
-    setState((s) => ({
-      ...s,
+    setState({
       overlayShow: show,
-    }));
+    });
 
     if (inited.current) {
       fadeAnim.setValue(getPosition(!show, position));
@@ -97,10 +96,7 @@ const Popup: React.FC<PopupProps> = ({
       fadeInstance.current.start(() => {
         fadeInstance.current = null;
         if (!show) {
-          setState((s) => ({
-            ...s,
-            show,
-          }));
+          setState({ show });
           onCloseedFN && onCloseedFN();
           if (__DEV__) {
             console.log('Popup onCloseed');

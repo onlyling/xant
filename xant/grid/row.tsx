@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
-import { View, ViewStyle } from 'react-native';
+import type { ViewStyle } from 'react-native';
+import { View } from 'react-native';
 
-import { RowProps } from './interface';
+import type { RowProps } from './interface';
 import RowContext from './context';
 import Styles from './style';
 

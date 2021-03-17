@@ -1,5 +1,9 @@
-import React from 'react';
-import { TextStyle, TouchableHighlightProps, StyleProp } from 'react-native';
+import type React from 'react';
+import type {
+  TextStyle,
+  TouchableHighlightProps,
+  StyleProp,
+} from 'react-native';
 
 export type ButtonSize = 'large' | 'normal' | 'small' | 'mini';
 

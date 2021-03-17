@@ -1,7 +1,7 @@
 import React, { useEffect, useState, memo } from 'react';
 import { Text, View, TouchableWithoutFeedback } from 'react-native';
 
-import { ToastProps } from './interface';
+import type { ToastProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 import Popup from '../popup/popup';

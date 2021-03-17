@@ -1,5 +1,5 @@
 import React from 'react';
-import { PortalMethods } from './portal-host';
+import type { PortalMethods } from './portal-host';
 
 export type PortalConsumerProps = {
   manager: PortalMethods;

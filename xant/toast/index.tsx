@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ToastProps, ToastType, Toast, ToastMethods } from './interface';
+import type { ToastProps, ToastType, Toast, ToastMethods } from './interface';
 import ToastView from './toast';
 import Portal from '../portal';
 

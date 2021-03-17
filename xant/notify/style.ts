@@ -1,7 +1,7 @@
 import { StyleSheet, StatusBar } from 'react-native';
 
-import { NotifyProps } from './interface';
-import { StyleVarType } from '../theme';
+import type { NotifyProps } from './interface';
+import type { StyleVarType } from '../theme';
 
 export const createStyles = (
   themeVar: StyleVarType,

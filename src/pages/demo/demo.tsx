@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import * as Routes from '@~/routes';
+import type * as Routes from '@~/routes';
 
 import FontSize from './font-size';
 import CStyles from './style';

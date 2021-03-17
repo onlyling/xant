@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import { ButtonProps } from './interface';
-import { StyleVarType } from '../theme';
+import type { ButtonProps } from './interface';
+import type { StyleVarType } from '../theme';
 
 export const createStyles = (
   themeVar: StyleVarType,

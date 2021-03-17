@@ -8,7 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "commit": "npx git-cz",
     "ncu": "npx npm-check-updates -u -x react,react-native,react-test-renderer"
   },

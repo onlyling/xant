@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { ActionBarButtonProps } from './interface';
+import type { ActionBarButtonProps } from './interface';
 import { createStyles } from './style.button';
 import Button from '../button';
 import { Theme } from '../theme';

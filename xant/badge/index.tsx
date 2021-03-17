@@ -1,7 +1,8 @@
 import React, { useState, useCallback, memo } from 'react';
-import { View, Text, LayoutChangeEvent } from 'react-native';
+import type { LayoutChangeEvent } from 'react-native';
+import { View, Text } from 'react-native';
 
-import { BadgeProps } from './interface';
+import type { BadgeProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 

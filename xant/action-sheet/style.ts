@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
-import { StyleVarType } from '../theme';
+import type { StyleVarType } from '../theme';
 
 export const createStyles = (themeVar: StyleVarType) => {
   return StyleSheet.create({

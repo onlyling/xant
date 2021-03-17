@@ -1,18 +1,16 @@
-import React, { useState, useRef, memo } from 'react';
-import {
-  View,
-  Text,
-  Animated,
-  TouchableOpacity,
+import React, { useRef, memo } from 'react';
+import type {
   NativeSyntheticEvent,
   ImageLoadEventData,
   ImageErrorEventData,
 } from 'react-native';
+import { View, Text, Animated, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { ImageProps } from './interface';
+import type { ImageProps } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
+import useState from '../hooks/use-state-update';
 
 /**
  * Image 图片
@@ -52,7 +50,7 @@ const Image: React.FC<ImageProps> = (props) => {
    * 图片加载好了
    */
   const onLoadImage = (event: NativeSyntheticEvent<ImageLoadEventData>) => {
-    setState((s) => ({ ...s, loaded: true }));
+    setState({ loaded: true });
 
     Animated.timing(ImageAnimated.current, {
       toValue: 1,

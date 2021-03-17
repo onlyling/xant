@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Text, View, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import { CellProps } from './interface';
+import type { CellProps } from './interface';
 import { createStyles } from './style.cell';
 import { Theme } from '../theme';
 

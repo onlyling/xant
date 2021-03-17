@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createContainer } from 'unstated-next';
 
 import * as DefaultVar from './default-var';
-import { ThemeProps, StyleVarType } from './interface';
+import type { ThemeProps, StyleVarType } from './interface';
 
 /** 默认初始化配置 */
 const defaultInitialState: ThemeProps = {

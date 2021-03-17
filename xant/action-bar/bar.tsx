@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
-import { View, ViewStyle } from 'react-native';
+import type { ViewStyle } from 'react-native';
+import { View } from 'react-native';
 
-import { ActionBarProps } from './interface';
+import type { ActionBarProps } from './interface';
 import { Theme } from '../theme';
 
 /**

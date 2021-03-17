@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { ActionSheet } from './interface';
+import type { ActionSheet } from './interface';
 import ActionSheetView from './action-sheet';
 import ActionSheetMethodView from './action-sheet-method';
 import Portal from '../portal';

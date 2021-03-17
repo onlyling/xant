@@ -1,6 +1,7 @@
-import { Dimensions, ViewStyle } from 'react-native';
+import type { ViewStyle } from 'react-native';
+import { Dimensions } from 'react-native';
 
-import { PopupPosition } from './interface';
+import type { PopupPosition } from './interface';
 
 const isTopOrBottom = (position: PopupPosition) =>
   position === 'top' || position === 'bottom';

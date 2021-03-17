@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { View, Text, TouchableWithoutFeedback } from 'react-native';
 
-import { NotifyProps } from './interface';
+import type { NotifyProps } from './interface';
 import { createStyles } from './style';
 import Popup from '../popup/popup';
 import { Theme } from '../theme';

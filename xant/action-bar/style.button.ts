@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-// import { ActionBarButtonProps } from './interface';
-import { StyleVarType } from '../theme';
+// import type { ActionBarButtonProps } from './interface';
+import type { StyleVarType } from '../theme';
 
 export const createStyles = (themeVar: StyleVarType) => {
   return StyleSheet.create({

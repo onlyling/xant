@@ -1,6 +1,6 @@
 import React, { useMemo, memo } from 'react';
 
-import { FullPageProps } from './interface';
+import type { FullPageProps } from './interface';
 import Page from './page';
 
 /**

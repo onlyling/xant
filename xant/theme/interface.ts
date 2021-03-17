@@ -1,4 +1,4 @@
-import * as DefaultVar from './default-var';
+import type * as DefaultVar from './default-var';
 
 /** 默认变量 */
 export type StyleVarType = typeof DefaultVar;

@@ -1,4 +1,4 @@
-import {
+import type {
   ImageProps as ImageReactNativeProps,
   ViewStyle,
   StyleProp,

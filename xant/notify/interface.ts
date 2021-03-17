@@ -1,7 +1,7 @@
-import React from 'react';
-import { ViewStyle, TextStyle, StyleProp } from 'react-native';
+import type React from 'react';
+import type { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
-import { PopupPropsCommon } from '../popup/interface';
+import type { PopupPropsCommon } from '../popup/interface';
 
 export type NotifyType = 'primary' | 'success' | 'danger' | 'warning';
 

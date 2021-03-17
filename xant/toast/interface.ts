@@ -1,4 +1,4 @@
-import { PopupPropsCommon } from '../popup/interface';
+import type { PopupPropsCommon } from '../popup/interface';
 
 export type ToastType = 'text' | 'loading' | 'success' | 'fail';
 
