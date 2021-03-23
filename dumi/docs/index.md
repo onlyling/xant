@@ -5,7 +5,7 @@ hero:
   desc: 🤖 Vant for React Native。
   actions:
     - text: 快速上手 →
-      link: /zh-CN/docs/getting-started
+      # link: /zh-CN/docs/getting-started
 features:
   - icon: https://gw.alipayobjects.com/zos/basement_prod/a1c647aa-a410-4024-8414-c9837709cb43/k7787itw_w126_h114.png
     title: 可扩展
