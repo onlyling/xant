@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import type { ViewStyle } from 'react-native';
+import type { ViewStyle, StyleProp } from 'react-native';
 import { View } from 'react-native';
 
 import type { RowProps } from './interface';
@@ -11,7 +11,7 @@ import Styles from './style';
  * @description 一组单元格。
  */
 const Row: React.FC<RowProps> = ({ children, gutter = 0, style }) => {
-  const rowStyles: (ViewStyle | undefined)[] = [
+  const rowStyles: StyleProp<ViewStyle>[] = [
     Styles.row,
     {
       marginHorizontal: -(+gutter / 2),

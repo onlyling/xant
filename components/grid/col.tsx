@@ -1,5 +1,5 @@
 import React, { useContext, memo } from 'react';
-import type { ViewStyle } from 'react-native';
+import type { ViewStyle, StyleProp } from 'react-native';
 import { View } from 'react-native';
 
 import type { ColProps } from './interface';
@@ -16,7 +16,7 @@ const Col: React.FC<ColProps> = ({ children, style, span, offset = 0 }) => {
   const width = `${+span * BASE_SPAN_WIDTH}%`;
   const left = `${+offset * BASE_SPAN_WIDTH}%`;
 
-  const colStyles: (ViewStyle | undefined)[] = [
+  const colStyles: StyleProp<ViewStyle>[] = [
     {
       flexGrow: 0,
       flexShrink: 0,

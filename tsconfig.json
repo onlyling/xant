@@ -17,8 +17,6 @@
     "skipLibCheck": true,
     "types": ["react", "react-native"],
     "allowJs": true,
-    "noEmit": true,
-    "isolatedModules": true,
     "strict": true,
     "esModuleInterop": true
   },
