@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Loading from 'xant/loading';
-import Circular from 'xant/loading/circular';
-import Spinner from 'xant/loading/spinner';
+import Loading from 'components/loading';
+import Circular from 'components/loading/circular';
+import Spinner from 'components/loading/spinner';
 
 import CStyles from './style';
 

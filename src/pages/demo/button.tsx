@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import Layout from '@~/layouts/layout';
-import Button from 'xant/button';
+import Button from 'components/button';
 
 import CStyles from './style';
 

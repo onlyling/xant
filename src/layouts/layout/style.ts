@@ -1,6 +1,6 @@
 import { StatusBar, StyleSheet } from 'react-native';
 
-import type { StyleVarType } from 'xant/theme';
+import type { StyleVarType } from 'components/theme';
 
 export const createStyles = (
   themeVar: StyleVarType,

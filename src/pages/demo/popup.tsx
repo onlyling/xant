@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Button from 'xant/button';
-import Popup from 'xant/popup';
-import type { PopupPosition } from 'xant/popup/interface';
+import Button from 'components/button';
+import Popup from 'components/popup';
+import type { PopupPosition } from 'components/popup/interface';
 
 import CStyles from './style';
 

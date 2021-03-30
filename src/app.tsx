@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
-import Provider from 'xant/provider';
+import Provider from 'components/provider';
 
 import Routes from './routes';
 

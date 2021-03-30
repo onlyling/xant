@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Button from 'xant/button';
-import Overlay from 'xant/overlay';
+import Button from 'components/button';
+import Overlay from 'components/overlay';
 
 import CStyles from './style';
 

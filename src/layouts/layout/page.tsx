@@ -3,8 +3,8 @@ import type { TextStyle } from 'react-native';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import NavBar from 'xant/nav-bar';
-import { Theme } from 'xant/theme';
+import NavBar from 'components/nav-bar';
+import { Theme } from 'components/theme';
 
 import type { PageProps } from './interface';
 import { createStyles } from './style';

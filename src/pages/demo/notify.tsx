@@ -2,8 +2,8 @@ import React, { useState, memo } from 'react';
 import { View, ScrollView } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Cell, { CellGroup } from 'xant/cell';
-import Notify from 'xant/notify';
+import Cell, { CellGroup } from 'components/cell';
+import Notify from 'components/notify';
 
 import CStyles from './style';
 

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { View, ScrollView } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Cell, { CellGroup } from 'xant/cell';
-import Dialog from 'xant/dialog';
-import Image from 'xant/image';
+import Cell, { CellGroup } from 'components/cell';
+import Dialog from 'components/dialog';
+import Image from 'components/image';
 
 import CStyles from './style';
 

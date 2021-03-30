@@ -2,11 +2,13 @@ import React, { memo } from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { Text, TouchableHighlight } from 'react-native';
 
-import type { ButtonProps } from './interface';
+import type { ButtonProps as ButtonPropsInterface } from './interface';
 import { createStyles } from './style';
 import { Theme } from '../theme';
 import Loading from '../loading';
 import * as helpers from '../helpers';
+
+export type ButtonProps = ButtonPropsInterface;
 
 /**
  * Button 按钮

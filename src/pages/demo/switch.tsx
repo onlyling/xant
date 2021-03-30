@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Switch from 'xant/switch';
+import Switch from 'components/switch';
 
 import CStyles from './style';
 

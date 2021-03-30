@@ -11,9 +11,6 @@ const useDestroyed = () => {
     DestroyedRef.current = false;
 
     return () => {
-      if (__DEV__) {
-        console.log('useDestroyed  ->  组件已经被销毁了');
-      }
       DestroyedRef.current = true;
     };
   }, []);

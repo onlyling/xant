@@ -3,7 +3,7 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import Layout from '@~/layouts/layout';
-import Cell, { CellGroup } from 'xant/cell';
+import Cell, { CellGroup } from 'components/cell';
 
 import CStyles from './style';
 

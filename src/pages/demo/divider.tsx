@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Divider from 'xant/divider';
+import Divider from 'components/divider';
 
 import CStyles from './style';
 
