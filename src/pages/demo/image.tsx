@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Image from 'xant/image';
+import Image from 'components/image';
 
 import CStyles from './style';
 

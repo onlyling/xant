@@ -1,6 +1,8 @@
 yarn.lock
 coverage
 .umi
+es
+lib
 
 # OSX
 #

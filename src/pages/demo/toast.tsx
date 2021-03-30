@@ -2,8 +2,8 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Cell, { CellGroup } from 'xant/cell';
-import Toast from 'xant/toast';
+import Cell, { CellGroup } from 'components/cell';
+import Toast from 'components/toast';
 
 import CStyles from './style';
 

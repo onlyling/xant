@@ -3,8 +3,8 @@ import { View, Text, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import Layout from '@~/layouts/layout';
-import { ActionBar, ActionBarIcon, ActionBarButton } from 'xant/action-bar';
-import Toast from 'xant/toast';
+import { ActionBar, ActionBarIcon, ActionBarButton } from 'components/action-bar';
+import Toast from 'components/toast';
 
 import CStyles from './style';
 

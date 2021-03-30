@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Button from 'xant/button';
-import Portal from 'xant/portal';
+import Button from 'components/button';
+import Portal from 'components/portal';
 
 import CStyles from './style';
 

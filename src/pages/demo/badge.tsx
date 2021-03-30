@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Badge from 'xant/badge';
+import Badge from 'components/badge';
 
 import CStyles from './style';
 

@@ -1,5 +1,5 @@
 import type { StatusBarProps, ViewStyle } from 'react-native';
-import type { NavBarProps } from 'xant/nav-bar/interface';
+import type { NavBarProps } from 'components/nav-bar/interface';
 
 export interface PageProps {
   style?: ViewStyle;

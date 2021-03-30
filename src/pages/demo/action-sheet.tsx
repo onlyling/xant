@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { View, ScrollView } from 'react-native';
 
 import Layout from '@~/layouts/layout';
-import Cell, { CellGroup } from 'xant/cell';
-import ActionSheet from 'xant/action-sheet';
+import Cell, { CellGroup } from 'components/cell';
+import ActionSheet from 'components/action-sheet';
 
 import CStyles from './style';
 
