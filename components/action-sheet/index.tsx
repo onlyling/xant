@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 
-import type { ActionSheet } from './interface';
+import type { ActionSheetInstance } from './interface';
 import ActionSheetView from './action-sheet';
 import ActionSheetMethodView from './action-sheet-method';
 import Portal from '../portal';
 
-const ActionSheetInstance: ActionSheet = (opts) => {
+const ActionSheet: ActionSheetInstance = (opts) => {
   return new Promise((resovle, reject) => {
     const key = Portal.add(
       <ActionSheetMethodView
@@ -34,7 +34,7 @@ const ActionSheetInstance: ActionSheet = (opts) => {
   });
 };
 
-ActionSheetInstance.Component = memo((props) => {
+ActionSheet.Component = memo((props) => {
   return (
     <Portal>
       <ActionSheetView {...props} />
@@ -42,4 +42,4 @@ ActionSheetInstance.Component = memo((props) => {
   );
 });
 
-export default ActionSheetInstance;
+export default ActionSheet;

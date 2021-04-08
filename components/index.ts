@@ -5,7 +5,7 @@ export type {
 } from './action-bar/interface';
 export { ActionBar, ActionBarIcon, ActionBarButton } from './action-bar';
 
-export type { ActionSheet as ActionSheetInstance } from './action-sheet/interface';
+export type { ActionSheetInstance } from './action-sheet/interface';
 export { default as ActionSheet } from './action-sheet';
 
 export type { BadgeProps } from './badge/interface';
@@ -17,7 +17,7 @@ export { default as Button } from './button';
 export type { CellGroupProps, CellProps } from './cell/interface';
 export { default as Cell, CellGroup } from './cell';
 
-export type { Dialog as DialogInstance } from './dialog/interface';
+export type { DialogInstance } from './dialog/interface';
 export { default as Dialog } from './dialog';
 
 export type { DividerProps } from './divider/interface';
@@ -35,7 +35,7 @@ export { default as Loading } from './loading';
 export type { NavBarProps } from './nav-bar/interface';
 export { default as NavBar } from './nav-bar';
 
-export type { Notify as NotifyInstance } from './notify/interface';
+export type { NotifyInstance } from './notify/interface';
 export { default as Notify } from './notify';
 
 export type { OverlayProps } from './overlay/interface';
@@ -58,5 +58,5 @@ export { default as Tag } from './tag';
 export type { ThemeProps } from './theme/interface';
 export { default as ThemeView, Theme } from './theme';
 
-export type { Toast as ToastInstance } from './toast/interface';
+export type { ToastInstance } from './toast/interface';
 export { default as Toast } from './toast';

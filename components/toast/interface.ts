@@ -70,7 +70,7 @@ export interface ToastProps
   hook?: (m: ToastMethods) => void;
 }
 
-export interface Toast {
+export interface ToastInstance {
   (p: ToastProps | string): ToastMethods;
   loading(p: ToastProps | string): ToastMethods;
   clear(all: boolean | number): void;

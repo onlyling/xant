@@ -76,7 +76,7 @@ export interface NotifyOptions extends Omit<NotifyProps, 'show'> {
 
 export interface NotifyMethodProps extends NotifyOptions {}
 
-export interface Notify {
+export interface NotifyInstance {
   (p: NotifyMethodProps | string): NotifyMethods;
   Component: React.FC<NotifyProps>;
   // clear(all: boolean | number): void;

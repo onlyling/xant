@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 
-import type { Notify, NotifyMethods, NotifyOptions } from './interface';
+import type { NotifyInstance, NotifyMethods, NotifyOptions } from './interface';
 import NotifyView from './notify';
 import NotifyMethod from './notify-method';
 import Portal from '../portal';
 
-const NotifyInstance: Notify = (options) => {
+const Notify: NotifyInstance = (options) => {
   let opts: NotifyOptions =
     typeof options === 'string' ? { message: options } : options;
 
@@ -41,7 +41,7 @@ const NotifyInstance: Notify = (options) => {
   };
 };
 
-NotifyInstance.Component = memo((props) => {
+Notify.Component = memo((props) => {
   return (
     <Portal>
       <NotifyView {...props} />
@@ -49,4 +49,4 @@ NotifyInstance.Component = memo((props) => {
   );
 });
 
-export default NotifyInstance;
+export default Notify;

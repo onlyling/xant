@@ -1,6 +1,11 @@
 import React from 'react';
 
-import type { ToastProps, ToastType, Toast, ToastMethods } from './interface';
+import type {
+  ToastProps,
+  ToastType,
+  ToastInstance,
+  ToastMethods,
+} from './interface';
 import ToastView from './toast';
 import Portal from '../portal';
 
@@ -33,7 +38,7 @@ let currentOptions = {
 /**
  * 提示
  */
-const ToastInstance: Toast = (options) => {
+const Toast: ToastInstance = (options) => {
   let opts: ToastProps =
     typeof options === 'string' ? { message: options } : options;
 
@@ -79,8 +84,8 @@ const ToastInstance: Toast = (options) => {
 /**
  * loading
  */
-ToastInstance.loading = (options) =>
-  ToastInstance({
+Toast.loading = (options) =>
+  Toast({
     type: 'loading',
     ...parseOptions(options),
   });
@@ -91,7 +96,7 @@ ToastInstance.loading = (options) =>
 /**
  * 清除弹窗
  */
-ToastInstance.clear = (mark) => {
+Toast.clear = (mark) => {
   if (typeof mark === 'boolean') {
     // 清除所有
   } else {
@@ -102,7 +107,7 @@ ToastInstance.clear = (mark) => {
 /**
  * 修改默认配置，对所有 Toast 生效。传入 type 可以修改指定类型的默认配置
  */
-ToastInstance.setDefaultOptions = (type, options) => {
+Toast.setDefaultOptions = (type, options) => {
   if (typeof type === 'string') {
     defaultOptionsMap[type] = options;
   } else {
@@ -113,7 +118,7 @@ ToastInstance.setDefaultOptions = (type, options) => {
 /**
  * 重置默认配置，对所有 Toast 生效。传入 type 可以重置指定类型的默认配置
  */
-ToastInstance.resetDefaultOptions = (type) => {
+Toast.resetDefaultOptions = (type) => {
   if (typeof type === 'string') {
     defaultOptionsMap[type] = null;
   } else {
@@ -122,4 +127,4 @@ ToastInstance.resetDefaultOptions = (type) => {
   }
 };
 
-export default ToastInstance;
+export default Toast;

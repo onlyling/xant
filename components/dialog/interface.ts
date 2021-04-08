@@ -120,7 +120,7 @@ export interface DialogMethodProps
 
 export interface DialogOptions extends Omit<DialogMethodProps, 'callback'> {}
 
-export interface Dialog {
+export interface DialogInstance {
   (p: DialogOptions): Promise<DialogAction>;
   Component: React.FC<DialogProps>;
   confirm(p: DialogOptions): Promise<DialogAction>;

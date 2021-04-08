@@ -92,7 +92,7 @@ export interface ActionSheetOptions
 
 export interface ActionSheetMethodPorps extends ActionSheetOptions {}
 
-export interface ActionSheet {
+export interface ActionSheetInstance {
   (p: ActionSheetOptions): Promise<{ item: Action; index: number }>;
   Component: React.FC<ActionSheetProps>;
 }

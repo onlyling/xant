@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import type { Dialog } from './interface';
+import type { DialogInstance } from './interface';
 import DialogView from './dialog';
 import DialogMethodView from './dialog-method';
 import Portal from '../portal';
@@ -8,7 +8,7 @@ import Portal from '../portal';
 /**
  * 对话框
  */
-const DialogInstance: Dialog = (opts) => {
+const Dialog: DialogInstance = (opts) => {
   return new Promise((resovle, reject) => {
     const key = Portal.add(
       <DialogMethodView
@@ -34,7 +34,7 @@ const DialogInstance: Dialog = (opts) => {
   });
 };
 
-DialogInstance.Component = memo((props) => {
+Dialog.Component = memo((props) => {
   return (
     <Portal>
       <DialogView {...props} />
@@ -42,11 +42,11 @@ DialogInstance.Component = memo((props) => {
   );
 });
 
-DialogInstance.confirm = (options) => {
-  return DialogInstance({
+Dialog.confirm = (options) => {
+  return Dialog({
     showCancelButton: true,
     ...options,
   });
 };
 
-export default DialogInstance;
+export default Dialog;
