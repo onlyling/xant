@@ -26,7 +26,7 @@ const Popup: React.FC<PopupProps> = ({
   onOpen: onOpenFN,
   onOpened: onOpenedFN,
   onClose: onCloseFN,
-  onCloseed: onCloseedFN,
+  onClosed: onClosedFN,
   onRequestClose,
 }) => {
   const { themeVar } = Theme.useContainer();
@@ -97,9 +97,9 @@ const Popup: React.FC<PopupProps> = ({
         fadeInstance.current = null;
         if (!show) {
           setState({ show });
-          onCloseedFN && onCloseedFN();
+          onClosedFN && onClosedFN();
           if (__DEV__) {
-            console.log('Popup onCloseed');
+            console.log('Popup onClosed');
           }
         } else {
           onOpenedFN && onOpenedFN();
@@ -121,7 +121,7 @@ const Popup: React.FC<PopupProps> = ({
     onOpenFN,
     onOpenedFN,
     onCloseFN,
-    onCloseedFN,
+    onClosedFN,
   ]);
 
   // 初始化好组件

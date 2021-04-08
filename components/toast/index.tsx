@@ -55,13 +55,13 @@ const ToastInstance: Toast = (options) => {
     <ToastView
       {...opts}
       hook={hookInner}
-      onCloseed={() => {
+      onClosed={() => {
         Portal.remove(key);
         if (__DEV__) {
           console.log('toast removed');
         }
         ref = null;
-        opts.onCloseed && opts.onCloseed();
+        opts.onClosed && opts.onClosed();
       }}
     />,
   );

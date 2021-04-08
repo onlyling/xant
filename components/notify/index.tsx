@@ -20,13 +20,13 @@ const NotifyInstance: Notify = (options) => {
     <NotifyMethod
       {...opts}
       hook={hookInner}
-      onCloseed={() => {
+      onClosed={() => {
         Portal.remove(key);
         if (__DEV__) {
           console.log('notify removed');
         }
         ref = null;
-        opts.onCloseed && opts.onCloseed();
+        opts.onClosed && opts.onClosed();
       }}
     />,
   );

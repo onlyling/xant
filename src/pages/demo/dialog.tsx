@@ -53,8 +53,8 @@ const DialogView: React.FC = () => {
               onPress={() => {
                 Dialog.confirm({
                   message: '确认弹窗',
-                  onCloseed: () => {
-                    console.log('onCloseedonCloseedonCloseedonCloseed');
+                  onClosed: () => {
+                    console.log('onClosedonClosedonClosedonClosed');
                   },
                   beforeClose: (action) =>
                     new Promise((resolve) => {

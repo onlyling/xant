@@ -3,13 +3,17 @@ import { View, Text, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import Layout from '@~/layouts/layout';
-import { ActionBar, ActionBarIcon, ActionBarButton } from 'components/action-bar';
+import {
+  ActionBar,
+  ActionBarIcon,
+  ActionBarButton,
+} from 'components/action-bar';
 import Toast from 'components/toast';
 
 import CStyles from './style';
 
 const onPressIcon = () => {
-  Toast({ message: '点击了 icon', forbidClick: true });
+  Toast({ message: '点击了 icon', forbidPress: true });
 };
 
 const ActionBarView: React.FC = () => {

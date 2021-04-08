@@ -13,14 +13,14 @@ const DialogInstance: Dialog = (opts) => {
     const key = Portal.add(
       <DialogMethodView
         {...opts}
-        onCloseed={() => {
+        onClosed={() => {
           Portal.remove(key);
 
           if (__DEV__) {
             console.log('dialog removed');
           }
 
-          opts.onCloseed && opts.onCloseed();
+          opts.onClosed && opts.onClosed();
         }}
         callback={(action) => {
           if (action === 'confirm') {

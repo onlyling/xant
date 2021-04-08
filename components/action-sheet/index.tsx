@@ -10,14 +10,14 @@ const ActionSheetInstance: ActionSheet = (opts) => {
     const key = Portal.add(
       <ActionSheetMethodView
         {...opts}
-        onCloseed={() => {
+        onClosed={() => {
           Portal.remove(key);
 
           if (__DEV__) {
             console.log('action-sheet removed');
           }
 
-          opts.onCloseed && opts.onCloseed();
+          opts.onClosed && opts.onClosed();
         }}
         callback={(action, item, index) => {
           if (action === 'item' && item && (index || index === 0)) {

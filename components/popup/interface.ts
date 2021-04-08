@@ -51,7 +51,7 @@ export interface PopupPropsCommon {
   /**
    * 关闭弹出层且动画结束后触发
    */
-  onCloseed?: Function;
+  onClosed?: Function;
 
   /**
    * 当点击返回按钮时触发
