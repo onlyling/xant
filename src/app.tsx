@@ -7,7 +7,7 @@ import Routes from './routes';
 
 const App: React.FC = () => {
   return (
-    <Provider>
+    <Provider fullScreen>
       <Routes />
     </Provider>
   );

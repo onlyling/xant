@@ -8,6 +8,7 @@ import type { ThemeProps, StyleVarType } from './interface';
 const defaultInitialState: ThemeProps = {
   theme: {},
   dark: false,
+  fullScreen: false,
 };
 
 /**
@@ -22,7 +23,17 @@ const useCounter = (initialState: ThemeProps = defaultInitialState) => {
   // 是否是 dark 模式
   const [isDark, setIsDark] = useState(initialState.dark);
 
-  return { themeVar, setThemeVar, isDark, setIsDark };
+  // 是否是全屏的方案
+  const [fullScreen, setFullScreen] = useState(initialState.fullScreen);
+
+  return {
+    themeVar,
+    setThemeVar,
+    isDark,
+    setIsDark,
+    fullScreen,
+    setFullScreen,
+  };
 };
 
 export default createContainer(useCounter);

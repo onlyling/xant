@@ -51,6 +51,13 @@ export interface NotifyProps
    * 点击时的回调函数
    */
   onPress?: () => void;
+
+  /**
+   * 是否是全屏模式
+   * @description 全屏的情况需要隔离状态栏，优先全局配置
+   * @default false
+   */
+  fullScreen?: boolean;
 }
 
 export interface NotifyOptions extends Omit<NotifyProps, 'show'> {

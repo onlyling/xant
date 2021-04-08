@@ -8,13 +8,19 @@ export type { StyleVarType } from './interface';
 /** 主题 */
 export const Theme = container;
 
-const ThemeView: React.FC<ThemeProps> = ({ children, theme, dark = false }) => {
+const ThemeView: React.FC<ThemeProps> = ({
+  children,
+  theme,
+  dark = false,
+  fullScreen,
+}) => {
   const state = useMemo<ThemeProps>(
     () => ({
       theme,
       dark,
+      fullScreen,
     }),
-    [theme, dark],
+    [theme, dark, fullScreen],
   );
 
   return <Theme.Provider initialState={state}>{children}</Theme.Provider>;

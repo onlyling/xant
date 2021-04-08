@@ -9,7 +9,8 @@ export const createStyles = (
     color,
     backgroundColor,
     type,
-  }: Pick<NotifyProps, 'color' | 'backgroundColor' | 'type'>,
+    fullScreen,
+  }: Pick<NotifyProps, 'color' | 'backgroundColor' | 'type' | 'fullScreen'>,
 ) => {
   const typeBackgroundColor =
     themeVar[
@@ -23,7 +24,7 @@ export const createStyles = (
       paddingHorizontal: themeVar.notify_horizontal_padding,
       paddingVertical: themeVar.notify_vertical_padding,
       backgroundColor: backgroundColor || typeBackgroundColor,
-      paddingTop: StatusBar.currentHeight || 0, // Android 状态栏暂时不知道该怎么盖住，先用边距代替
+      paddingTop: fullScreen ? StatusBar.currentHeight || 0 : 0, // Android 状态栏暂时不知道该怎么盖住，先用边距代替
     },
 
     text: {

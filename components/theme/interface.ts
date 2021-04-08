@@ -10,4 +10,5 @@ export type StyleVar = Partial<StyleVarType>;
 export interface ThemeProps {
   theme?: StyleVar;
   dark?: boolean;
+  fullScreen?: boolean;
 }

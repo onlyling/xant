@@ -20,10 +20,23 @@ const Notify: React.FC<NotifyProps> = ({
   color,
   backgroundColor,
   onPress,
+  fullScreen = false,
   ...restProps
 }) => {
-  const { themeVar } = Theme.useContainer();
-  const Styles = createStyles(themeVar, { type, color, backgroundColor });
+  const { themeVar, fullScreen: fullScreenGlobal } = Theme.useContainer();
+
+  if (fullScreenGlobal) {
+    fullScreen = fullScreenGlobal;
+  }
+
+  console.log(fullScreen);
+
+  const Styles = createStyles(themeVar, {
+    type,
+    color,
+    backgroundColor,
+    fullScreen,
+  });
 
   const messageStyles = [Styles.notify, style];
   const messageTextStyles = [Styles.text, textStyle];
