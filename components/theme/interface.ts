@@ -1,14 +1,16 @@
 import type * as DefaultVar from './default-var';
 
 /** 默认变量 */
-export type StyleVarType = typeof DefaultVar;
+export type ThemeVarType = typeof DefaultVar;
 
 /** 外界可以参与修改的变量 */
-export type StyleVar = Partial<StyleVarType>;
+export type StyleVar = Partial<ThemeVarType>;
 
 /** 默认初始化状态 */
-export interface ThemeProps {
+export interface ThemeProviderProps {
   theme?: StyleVar;
-  dark?: boolean;
-  fullScreen?: boolean;
+}
+
+export interface ThemeContextProps {
+  themeVar: ThemeVarType;
 }

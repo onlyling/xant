@@ -35,13 +35,12 @@ export interface NavBarProps {
   /**
    * 是否显示左箭头
    *
-   * @default true
+   * @default `true`
    */
   leftArrow?: boolean;
 
   /**
    * 是否显示下边框
-   * @default true
    */
   border?: boolean;
 

@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native';
 
-import type { ThemeVarType } from '../theme';
+import type { StyleVarType } from '../theme';
 
-export const createStyles = (themeVar: ThemeVarType) => {
+export const createStyles = (themeVar: StyleVarType) => {
   return StyleSheet.create({
     wrapper: {
       height: themeVar.nav_bar_height,
       justifyContent: 'center',
       position: 'relative',
-      backgroundColor: themeVar.nav_bar_background_color,
+      backgroundColor: themeVar.background_color,
       paddingHorizontal: themeVar.padding_md,
     },
 
@@ -35,10 +35,9 @@ export const createStyles = (themeVar: ThemeVarType) => {
 
     leftArrow: {
       color: themeVar.nav_bar_icon_color,
-      // marginRight: themeVar.padding_base,
-      height: themeVar.nav_bar_height,
-      minWidth: themeVar.nav_bar_arrow_size,
-      justifyContent: 'center',
+      marginRight: themeVar.padding_md,
+      lineHeight: themeVar.nav_bar_height,
+      paddingRight: themeVar.padding_base,
       // backgroundColor: '#000', // to test ui
     },
 
@@ -50,11 +49,6 @@ export const createStyles = (themeVar: ThemeVarType) => {
       flexDirection: 'row',
       alignItems: 'center',
       zIndex: 3,
-    },
-
-    rightText: {
-      color: themeVar.nav_bar_icon_color,
-      fontSize: 14,
     },
   });
 };
