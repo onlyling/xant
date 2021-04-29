@@ -7,7 +7,7 @@ export default defineConfig({
   chainWebpack(memo: WebpackChain) {
     memo.plugins.delete('copy');
   },
-  title: 'Xant 组件文档',
+  title: 'Xant',
   mode: 'site',
   outputPath: 'docs-dist',
   hash: true,
