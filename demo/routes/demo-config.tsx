@@ -7,12 +7,14 @@ import DemoWrapper from './demo-wrapper';
 import DemoNavBar from '../../components/nav-bar/demo/basic';
 import DemoLoading from '../../components/loading/demo/basic';
 import DemoOverlay from '../../components/overlay/demo/basic';
+import DemoButton from '../../components/button/demo/basic';
 
 export type DemoPaths =
   | 'DemoHome'
   | 'DemoNavBar'
   | 'DemoLoading'
-  | 'DemoOverlay';
+  | 'DemoOverlay'
+  | 'DemoButton';
 
 const pageStyle: ViewStyle = {
   flex: 1,
@@ -45,6 +47,14 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
     page: () => (
       <DemoWrapper>
         <DemoOverlay />
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoButton',
+    page: () => (
+      <DemoWrapper>
+        <DemoButton />
       </DemoWrapper>
     ),
   },

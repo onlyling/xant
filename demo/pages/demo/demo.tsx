@@ -56,6 +56,18 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
         </View>
 
         <View style={CStyles.ctxSplit} />
+
+        <View>
+          <Text
+            onPress={() => {
+              navigation.navigate('DemoButton');
+            }}
+          >
+            Button
+          </Text>
+        </View>
+
+        <View style={CStyles.ctxSplit} />
       </ScrollView>
     </Layout.Page>
   );

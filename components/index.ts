@@ -1,3 +1,8 @@
+import * as IconAll from './icon';
+
+export { ButtonProps } from './button/interface';
+export { default as Button } from './button';
+
 export { LoadingProps } from './loading/interface';
 export { default as Loading } from './loading';
 export { default as LoadingCircular } from './loading/circular';
@@ -14,3 +19,5 @@ export { default as Provider } from './provider';
 
 export type { ThemeVarType } from './theme';
 export { default as Theme, useTheme } from './theme';
+
+export const Icon = IconAll;

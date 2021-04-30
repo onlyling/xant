@@ -10,6 +10,8 @@ group:
 
 # NavBar 导航栏
 
+> 为页面提供导航功能，常用于页面顶部。
+
 ## DEMO
 
 <code src="./demo/doc.tsx"></code>

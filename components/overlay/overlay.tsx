@@ -91,6 +91,12 @@ const Overlay: React.FC<OverlayProps> = ({
     style,
   ]);
 
+  if (!show) {
+    // TODO 优化文档报错
+    // 直接返回 null dumi 报错 -、-
+    return <></>;
+  }
+
   return (
     <Animated.View style={overlayStyleSummary}>
       <TouchableOpacity

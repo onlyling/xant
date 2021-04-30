@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableWithoutFeedback } from 'react-native';
 
-import { Overlay } from 'xant';
+import { Overlay, Button } from 'xant';
 
 const BasicOverlay: React.FC = () => {
   const [state, setState] = useState<Record<'normal' | 'inset', boolean>>({
@@ -16,16 +16,16 @@ const BasicOverlay: React.FC = () => {
       </View>
 
       <View>
-        <Text
+        <Button
+          text="显示遮罩层 Android 返回关闭"
+          type="primary"
           onPress={() => {
             setState((s) => ({
               ...s,
               normal: true,
             }));
           }}
-        >
-          显示遮罩层 Android 返回关闭
-        </Text>
+        />
 
         <Overlay
           show={state.normal}
@@ -53,16 +53,16 @@ const BasicOverlay: React.FC = () => {
       </View>
 
       <View>
-        <Text
+        <Button
+          text="嵌入内容"
+          type="primary"
           onPress={() => {
             setState((s) => ({
               ...s,
               inset: true,
             }));
           }}
-        >
-          嵌入内容
-        </Text>
+        />
 
         <Overlay
           show={state.inset}
@@ -76,7 +76,7 @@ const BasicOverlay: React.FC = () => {
         >
           <TouchableWithoutFeedback
             onPress={() => {
-              console.log('????');
+              console.log('????====');
             }}
           >
             <View

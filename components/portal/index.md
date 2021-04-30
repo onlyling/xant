@@ -5,7 +5,7 @@ nav:
   path: /component
 group:
   title: 基础组件
-  path: /base
+  path: /basic
 ---
 
 # 传送门

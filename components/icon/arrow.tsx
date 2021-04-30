@@ -17,8 +17,8 @@ const PointsMap: Record<Direction, string> = {
 };
 
 const IconArrowOutline: React.FC<IconArrowOutlineProps> = ({
-  size,
-  color,
+  size = 24,
+  color = '#666',
   strokeWidth = 2,
   direction = 'right',
 }) => {
