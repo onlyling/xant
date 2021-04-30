@@ -211,7 +211,7 @@ export const divider_content_right_width: string = '10%';
 export const loading_text_color = gray_6;
 export const loading_text_font_size = font_size_md;
 export const loading_spinner_color = gray_5;
-export const loading_spinner_size: number = 30;
+export const loading_spinner_size: number = 24;
 export const loading_spinner_animation_duration: number = 0.8;
 
 // NavBar

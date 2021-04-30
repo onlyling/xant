@@ -33,6 +33,18 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
 
         <View style={CStyles.ctxSplit} />
 
+        <View>
+          <Text
+            onPress={() => {
+              navigation.navigate('DemoLoading');
+            }}
+          >
+            Loading
+          </Text>
+        </View>
+
+        <View style={CStyles.ctxSplit} />
+
         {/* <View>
           <Text
             onPress={() => {

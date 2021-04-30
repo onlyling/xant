@@ -3,7 +3,7 @@ import React from 'react';
 import Basic from './basic';
 import Doc from '../../_demo/doc';
 
-const BasicNavBarDoc: React.FC = () => {
+const BasicLoadingDoc: React.FC = () => {
   return (
     <Doc>
       <Basic />
@@ -11,4 +11,4 @@ const BasicNavBarDoc: React.FC = () => {
   );
 };
 
-export default BasicNavBarDoc;
+export default BasicLoadingDoc;

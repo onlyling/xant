@@ -23,6 +23,9 @@ npm i xant
 
 ## yarn
 yarn add xant
+
+## ios 依赖
+cd ios && pod install
 ```
 
 ## 引入组件

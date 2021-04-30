@@ -4,9 +4,10 @@ import type { ViewStyle } from 'react-native';
 import DeomHome from '@/pages/demo/demo';
 import DemoWrapper from './demo-wrapper';
 
-import DeomNavBar from '../../components/nav-bar/demo/basic';
+import DemoNavBar from '../../components/nav-bar/demo/basic';
+import DemoLoading from '../../components/loading/demo/basic';
 
-export type DemoPaths = 'DemoHome' | 'DemoNavBar';
+export type DemoPaths = 'DemoHome' | 'DemoNavBar' | 'DemoLoading';
 
 const pageStyle: ViewStyle = {
   flex: 1,
@@ -22,7 +23,15 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
     path: 'DemoNavBar',
     page: () => (
       <DemoWrapper>
-        <DeomNavBar />
+        <DemoNavBar />
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoLoading',
+    page: () => (
+      <DemoWrapper>
+        <DemoLoading />
       </DemoWrapper>
     ),
   },
