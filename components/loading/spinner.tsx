@@ -17,34 +17,6 @@ export interface SpinnerProps {
   color?: string;
 }
 
-const wrapperStyle: ViewStyle = {
-  justifyContent: 'center',
-  alignItems: 'center',
-  position: 'relative',
-  // backgroundColor: '#999', // to test ui
-  // transform: [
-  //   {
-  //     rotate: '-90deg',
-  //   },
-  // ],
-};
-
-const petalStyle: ViewStyle = {
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  alignItems: 'center',
-  // backgroundColor: '#f30', // to test ui
-};
-const petalInnerStyle: ViewStyle = {
-  width: 2,
-  height: '25%',
-  borderRadius: 1,
-  backgroundColor: '#000',
-};
-
 const petalCount = 12;
 const petals = new Array(petalCount).fill(0);
 
@@ -61,8 +33,8 @@ const Spinner: React.FC<SpinnerProps> = ({ size, color }) => {
     easing: Easing.linear,
   });
 
-  const wrapperStyles: ViewStyle[] = [
-    wrapperStyle,
+  const wrapperStyleSummary: ViewStyle = StyleSheet.flatten([
+    Styles.wrapperStyle,
     {
       width: rsize,
       height: rsize,
@@ -75,33 +47,70 @@ const Spinner: React.FC<SpinnerProps> = ({ size, color }) => {
         },
       ],
     },
-  ];
+  ]);
+
+  const petalInnerStyleSummary = StyleSheet.flatten([
+    Styles.petalInnerStyle,
+    {
+      backgroundColor: rcolor,
+    },
+  ]);
 
   return (
-    <Animated.View style={wrapperStyles}>
+    <Animated.View style={wrapperStyleSummary}>
       {petals.map((_, i) => {
         return (
           <View
             key={i}
-            style={StyleSheet.compose(petalStyle, {
-              opacity: (1 / petalCount) * (i + 1),
-              transform: [
-                {
-                  rotate: `${(360 / petalCount) * i}deg`,
-                },
-              ],
-            })}
+            style={StyleSheet.flatten([
+              Styles.petalStyle,
+              {
+                opacity: (1 / petalCount) * (i + 1),
+                transform: [
+                  {
+                    rotate: `${(360 / petalCount) * i}deg`,
+                  },
+                ],
+              },
+            ])}
           >
-            <View
-              style={StyleSheet.compose(petalInnerStyle, {
-                backgroundColor: rcolor,
-              })}
-            />
+            <View style={petalInnerStyleSummary} />
           </View>
         );
       })}
     </Animated.View>
   );
 };
+
+const Styles = StyleSheet.create({
+  wrapperStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    // backgroundColor: '#999', // to test ui
+    // transform: [
+    //   {
+    //     rotate: '-90deg',
+    //   },
+    // ],
+  },
+
+  petalStyle: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    // backgroundColor: '#f30', // to test ui
+  },
+
+  petalInnerStyle: {
+    width: 2,
+    height: '25%',
+    borderRadius: 1,
+    backgroundColor: '#000',
+  },
+});
 
 export default memo(Spinner);

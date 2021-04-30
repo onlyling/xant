@@ -6,6 +6,9 @@ export { default as LoadingSpinner } from './loading/spinner';
 export { NavBarProps } from './nav-bar/interface';
 export { default as NavBar } from './nav-bar';
 
+export { OverlayProps } from './overlay/interface';
+export { default as Overlay } from './overlay';
+
 export { default as Portal } from './portal';
 export { default as Provider } from './provider';
 

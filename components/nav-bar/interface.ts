@@ -5,7 +5,7 @@ export interface NavBarProps {
   /**
    * 最外层的样式
    */
-  wrapperStyle?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 
   /**
    * 左箭头样式

@@ -1,6 +1,6 @@
 import React, { useRef, useMemo, memo } from 'react';
 import type { ViewStyle } from 'react-native';
-import { Animated } from 'react-native';
+import { Animated, StyleSheet } from 'react-native';
 import { Svg, Circle } from 'react-native-svg';
 
 import useLoop from './loop';
@@ -19,16 +19,6 @@ export interface CircularProps {
    */
   color?: string;
 }
-
-const wrapperStyle: ViewStyle = {
-  justifyContent: 'center',
-  alignItems: 'center',
-  // transform: [
-  //   {
-  //     rotate: '-90deg',
-  //   },
-  // ],
-};
 
 const strokeWidth = 2;
 
@@ -81,24 +71,23 @@ const Circular: React.FC<CircularProps> = ({ size, color }) => {
     duration: themeVar.loading_spinner_animation_duration * 1000 * 2.5,
   });
 
-  const wrapperStyles: ViewStyle[] = [
-    wrapperStyle,
-    {
-      width: rsize,
-      height: rsize,
-      transform: [
-        {
-          rotateZ: AnimatedCircle0Value.interpolate({
-            inputRange: [0, 1],
-            outputRange: ['-90deg', '270deg'],
-          }) as any,
-        },
-      ],
-    },
-  ];
+  const wrapperStyleSummary: ViewStyle = {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: rsize,
+    height: rsize,
+    transform: [
+      {
+        rotateZ: AnimatedCircle0Value.interpolate({
+          inputRange: [0, 1],
+          outputRange: ['-90deg', '270deg'],
+        }) as any,
+      },
+    ],
+  };
 
   return (
-    <Animated.View style={wrapperStyles}>
+    <Animated.View style={wrapperStyleSummary}>
       <Svg
         width="100%"
         height="100%"

@@ -11,7 +11,7 @@ import { IconArrowOutline } from '../icon';
  * NavBar 导航栏
  */
 const NavBar: React.FC<NavBarProps> = ({
-  wrapperStyle,
+  style,
   leftArrowStyle,
   titleTextStyle,
   title,
@@ -33,7 +33,7 @@ const NavBar: React.FC<NavBarProps> = ({
           borderBottomWidth: StyleSheet.hairlineWidth,
         }
       : null,
-    wrapperStyle,
+    style,
   ]);
   const leftWrapperStyleSummary: ViewStyle = Styles.leftWrapper;
   const leftArrowStyleSummary = StyleSheet.flatten<TextStyle>([
