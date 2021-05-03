@@ -6,6 +6,7 @@ nav:
 group:
   title: 基础组件
   path: /basic
+  order: 0
 ---
 
 # 传送门

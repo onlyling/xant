@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 
+import { Cell } from 'xant';
 import Layout from '@/layouts/layout';
 import type * as Routes from '@/routes';
 
@@ -21,51 +22,69 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
 
         <View style={CStyles.ctxSplit} />
 
-        <View>
-          <Text
-            onPress={() => {
-              navigation.navigate('DemoNavBar');
-            }}
-          >
-            NavBar
-          </Text>
-        </View>
+        <Cell
+          isLink
+          title="NavBar"
+          onPress={() => {
+            navigation.navigate('DemoNavBar');
+          }}
+        />
 
-        <View style={CStyles.ctxSplit} />
+        <Cell
+          isLink
+          title="Overlay"
+          onPress={() => {
+            navigation.navigate('DemoOverlay');
+          }}
+        />
 
-        <View>
-          <Text
-            onPress={() => {
-              navigation.navigate('DemoLoading');
-            }}
-          >
-            Loading
-          </Text>
-        </View>
+        <Cell
+          isLink
+          title="Button"
+          onPress={() => {
+            navigation.navigate('DemoButton');
+          }}
+        />
 
-        <View style={CStyles.ctxSplit} />
+        <Cell
+          isLink
+          title="Badge"
+          onPress={() => {
+            navigation.navigate('DemoBadge');
+          }}
+        />
 
-        <View>
-          <Text
-            onPress={() => {
-              navigation.navigate('DemoOverlay');
-            }}
-          >
-            Overlay
-          </Text>
-        </View>
+        <Cell
+          isLink
+          title="ActionBar"
+          onPress={() => {
+            navigation.navigate('DemoActionBar');
+          }}
+        />
 
-        <View style={CStyles.ctxSplit} />
+        <Cell
+          isLink
+          title="Popup"
+          onPress={() => {
+            navigation.navigate('DemoPopup');
+          }}
+        />
 
-        <View>
-          <Text
-            onPress={() => {
-              navigation.navigate('DemoButton');
-            }}
-          >
-            Button
-          </Text>
-        </View>
+        <Cell
+          isLink
+          title="Cell"
+          onPress={() => {
+            navigation.navigate('DemoCell');
+          }}
+        />
+
+        <Cell
+          isLink
+          title="Toast"
+          onPress={() => {
+            navigation.navigate('DemoToast');
+          }}
+        />
 
         <View style={CStyles.ctxSplit} />
       </ScrollView>

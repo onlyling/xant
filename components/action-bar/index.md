@@ -1,5 +1,5 @@
 ---
-title: NavBar 导航栏
+title: ActionBar 动作栏
 nav:
   title: Component 组件
   path: /component
@@ -9,9 +9,9 @@ group:
   order: 4
 ---
 
-# NavBar 导航栏
+# ActionBar 动作栏
 
-> 为页面提供导航功能，常用于页面顶部。
+> 用于为页面相关操作提供便捷交互。
 
 ## DEMO
 

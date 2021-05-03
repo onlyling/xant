@@ -6,6 +6,7 @@ nav:
 group:
   title: 反馈组件
   path: /feedback
+  order: 2
 ---
 
 # Loading 加载

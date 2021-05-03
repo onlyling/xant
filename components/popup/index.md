@@ -1,5 +1,5 @@
 ---
-title: Button 按钮
+title: Popup 弹出层
 nav:
   title: Component 组件
   path: /component
@@ -9,9 +9,9 @@ group:
   order: 0
 ---
 
-# Button 按钮
+# Popup 弹出层
 
-> 按钮用于触发一个操作，如提交表单。
+> 弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示。
 
 ## DEMO
 
