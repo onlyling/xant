@@ -56,6 +56,7 @@ export const createStyles = (
     value: {
       flex: 1,
       minHeight: themeVar.cell_line_height,
+      justifyContent: 'center',
     },
 
     valueText: {

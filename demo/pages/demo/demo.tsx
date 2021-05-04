@@ -110,6 +110,30 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
           }}
         />
 
+        <Cell
+          isLink
+          title="Tag"
+          onPress={() => {
+            navigation.navigate('DemoTag');
+          }}
+        />
+
+        <Cell
+          isLink
+          title="Divider"
+          onPress={() => {
+            navigation.navigate('DemoDivider');
+          }}
+        />
+
+        <Cell
+          isLink
+          title="Grid"
+          onPress={() => {
+            navigation.navigate('DemoGrid');
+          }}
+        />
+
         <View style={CStyles.ctxSplit} />
       </ScrollView>
     </Layout.Page>

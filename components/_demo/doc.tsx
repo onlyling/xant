@@ -4,7 +4,7 @@ import { Provider } from 'xant';
 
 const Doc: React.FC = ({ children }) => {
   return (
-    <View style={{ flex: 1, backgroundColor: '#f5f5f5', minHeight: 620 }}>
+    <View style={{ flex: 1, backgroundColor: '#f5f5f5', minHeight: 608 }}>
       <Provider>{children}</Provider>
     </View>
   );

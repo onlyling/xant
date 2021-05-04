@@ -21,9 +21,10 @@ const IconArrowOutline: React.FC<IconArrowOutlineProps> = ({
   color = '#666',
   strokeWidth = 2,
   direction = 'right',
+  ...restProps
 }) => {
   return (
-    <Svg height={size} width={size} viewBox="0 0 24 24">
+    <Svg {...restProps} height={size} width={size} viewBox="0 0 24 24">
       <Polyline
         points={PointsMap[direction]}
         fill="none"

@@ -20,6 +20,12 @@ export type { CellProps, CellGroupProps } from './cell/interface';
 export { default as Cell } from './cell';
 export { default as CellGroup } from './cell/cell-group';
 
+export type { DividerProps } from './divider/interface';
+export { default as Divider } from './divider';
+
+export type { RowProps, ColProps } from './grid/interface';
+export { Row, Col } from './grid';
+
 export type { ImageProps } from './image/interface';
 export { default as Image } from './image';
 
@@ -42,6 +48,9 @@ export { default as Popup } from './popup';
 
 export type { default as Portal } from './portal';
 export { default as Provider } from './provider';
+
+export type { TagProps } from './tag/interface';
+export { default as Tag } from './tag';
 
 export type { ThemeVarType } from './theme';
 export { default as Theme, useTheme } from './theme';

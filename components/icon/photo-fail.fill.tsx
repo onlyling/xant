@@ -8,9 +8,11 @@ interface IconPhotoFailFillProps extends IconCommonFillProps {}
 const IconPhotoFailFill: React.FC<IconPhotoFailFillProps> = ({
   size = 24,
   color = '#666',
+  ...restProps
 }) => {
   return (
     <Svg
+      {...restProps}
       height={size}
       width={size}
       viewBox="0 0 1000 1000"
