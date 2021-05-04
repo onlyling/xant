@@ -28,7 +28,6 @@ export default defineConfig({
   resolve: {
     includes: ['docs', 'components'],
   },
-  dynamicImport: {},
   styles: [
     `
     .__dumi-default-device-status {

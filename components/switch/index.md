@@ -1,7 +1,7 @@
 ---
 title: Switch 开关
 nav:
-  title: Component 组件
+  title: 组件
   path: /component
 group:
   title: 表单组件

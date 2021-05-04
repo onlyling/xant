@@ -1,5 +1,5 @@
 ---
-title: Badge 徽标
+title: Divider 分割线
 nav:
   title: 组件
   path: /component
@@ -9,9 +9,9 @@ group:
   order: 3
 ---
 
-# Badge 徽标
+# Divider 分割线
 
-> 在右上角展示徽标数字或小红点。
+> 用于将内容分隔为多个区域。
 
 ## DEMO
 

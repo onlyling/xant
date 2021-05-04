@@ -1,7 +1,7 @@
 ---
 title: Popup 弹出层
 nav:
-  title: Component 组件
+  title: 组件
   path: /component
 group:
   title: 基础组件
@@ -17,4 +17,4 @@ group:
 
 <code src="./demo/doc.tsx"></code>
 
-<API></API>
+<API src="./popup.tsx"></API>

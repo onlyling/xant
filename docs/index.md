@@ -5,7 +5,7 @@ hero:
   desc: 🤖 轻量、可靠的移动端组件库
   actions:
     - text: 快速上手 →
-      link: /guide/home
+      link: /guide/quickstart
 features:
   - icon: https://gw.alipayobjects.com/zos/basement_prod/a1c647aa-a410-4024-8414-c9837709cb43/k7787itw_w126_h114.png
     title: 可扩展

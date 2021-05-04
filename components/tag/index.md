@@ -1,7 +1,7 @@
 ---
 title: Tag 标签
 nav:
-  title: Component 组件
+  title: 组件
   path: /component
 group:
   title: 展示组件

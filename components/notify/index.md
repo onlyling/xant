@@ -1,7 +1,7 @@
 ---
 title: Notify 消息提示
 nav:
-  title: Component 组件
+  title: 组件
   path: /component
 group:
   title: 反馈组件

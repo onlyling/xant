@@ -1,7 +1,7 @@
 ---
 title: Overlay 遮罩层
 nav:
-  title: Component 组件
+  title: 组件
   path: /component
 group:
   title: 反馈组件

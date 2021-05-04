@@ -1,6 +1,7 @@
 yarn.lock
 coverage
 .umi
+.umi-production
 es
 lib
 
