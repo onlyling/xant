@@ -81,7 +81,6 @@ export interface PopupProps extends PopupPropsCommon {
   /**
    * 是否开启底部安全区适配
    * @default false
-   * TODO 待实现
    */
   safeAreaInsetBottom?: boolean;
 

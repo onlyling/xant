@@ -7,6 +7,9 @@ export type {
 } from './action-bar/interface';
 export { ActionBar, ActionBarIcon, ActionBarButton } from './action-bar';
 
+export type { ActionSheetInstance } from './action-sheet/interface';
+export { default as ActionSheet } from './action-sheet';
+
 export type { BadgeProps } from './badge/interface';
 export { default as Badge } from './badge';
 
@@ -17,6 +20,9 @@ export type { CellProps, CellGroupProps } from './cell/interface';
 export { default as Cell } from './cell';
 export { default as CellGroup } from './cell/cell-group';
 
+export type { ImageProps } from './image/interface';
+export { default as Image } from './image';
+
 export type { LoadingProps } from './loading/interface';
 export { default as Loading } from './loading';
 export { default as LoadingCircular } from './loading/circular';
@@ -24,6 +30,9 @@ export { default as LoadingSpinner } from './loading/spinner';
 
 export type { NavBarProps } from './nav-bar/interface';
 export { default as NavBar } from './nav-bar';
+
+export type { NotifyInstance } from './notify/interface';
+export { default as Notify } from './notify';
 
 export type { OverlayProps } from './overlay/interface';
 export { default as Overlay } from './overlay';

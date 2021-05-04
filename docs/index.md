@@ -9,21 +9,21 @@ hero:
 features:
   - icon: https://gw.alipayobjects.com/zos/basement_prod/a1c647aa-a410-4024-8414-c9837709cb43/k7787itw_w126_h114.png
     title: 可扩展
-    desc: Umi 实现了完整的生命周期，并使其插件化，Umi 内部功能也全由插件完成。此外还支持插件和插件集，以满足功能和垂直域的分层需求。
+    desc: Xant 大部分组件提供自定义样式的属性，函数使用的方式也提供对应组件使用方式，大部分样式变量可以自定义覆盖。
   - icon: https://gw.alipayobjects.com/zos/basement_prod/b54b48c7-087a-4984-b150-bcecb40920de/k7787z07_w114_h120.png
     title: 开箱即用
-    desc: Umi 内置了路由、构建、部署、测试等，仅需一个依赖即可上手开发。并且还提供针对 React 的集成插件集，内涵丰富的功能，可满足日常 80% 的开发需求。
+    desc: 安装依赖库，引入 Xant，根组件使用 `Provider` 包裹一层即可使用所有组件，支持按需加载，可满足日常 80% 的开发需求。
   - icon: https://gw.alipayobjects.com/zos/basement_prod/464cb990-6db8-4611-89af-7766e208b365/k77899wk_w108_h132.png
     title: 企业级
-    desc: 经蚂蚁内部 3000+ 项目以及阿里、优酷、网易、飞猪、口碑等公司项目的验证，值得信赖。
+    desc: 大家多使用反馈问题，不断优化。
   - icon: https://gw.alipayobjects.com/zos/basement_prod/201bea40-cf9d-4be2-a1d8-55bec136faf2/k7788a8s_w102_h120.png
-    title: 大量自研
-    desc: 包含微前端、组件打包、文档工具、请求库、hooks 库、数据流等，满足日常项目的周边需求。
+    title: 低依赖端能力
+    desc: 组件皆在 JavaScript 层实现，对 React Native 版本无太多依赖，且无需关心 Android、iOS 各个版本依赖问题。
   - icon: https://gw.alipayobjects.com/zos/basement_prod/67b771c5-4bdd-4384-80a4-978b85f91282/k7788ov2_w126_h126.png
-    title: 完备路由
-    desc: 同时支持配置式路由和约定式路由，同时保持功能的完备性，比如动态路由、嵌套路由、权限路由等等。
+    title: TODO
+    desc: TODO。
   - icon: https://gw.alipayobjects.com/zos/basement_prod/d078a5a9-1cb3-4352-9f05-505c2e98bc95/k7788v4b_w102_h126.png
-    title: 面向未来
-    desc: 在满足需求的同时，我们也不会停止对新技术的探索。比如 modern mode、webpack@5、自动化 external、bundler less 等等。
-footer: Open-source MIT Licensed | Copyright © 2017-present<br />Powered by [dumi](https://d.umijs.org/).
+    title: 规范交互
+    desc: Xant 是基于有赞 Zan Design System 视觉规范实现的组件库。
+footer: Open-source MIT Licensed | Copyright © 2020-present<br />Powered by [onlyling](https://github.com/onlyling).
 ---

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useCallback, memo } from 'react';
 import type { ViewStyle } from 'react-native';
 import { Animated, BackHandler, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import type { PopupProps, State } from './interface';
 import { createStyles, PopupPositionMap } from './style';
@@ -22,6 +23,7 @@ const Popup: React.FC<PopupProps> = ({
   closeOnPressOverlay = true,
   position = 'center',
   round = false,
+  safeAreaInsetBottom = false,
   lazyRender = true,
   onPressOverlay: onPressOverlayFN,
   onOpen: onOpenFN,
@@ -30,6 +32,7 @@ const Popup: React.FC<PopupProps> = ({
   onClosed: onClosedFN,
   onRequestClose,
 }) => {
+  const insets = useSafeAreaInsets();
   const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { round, position });
 
@@ -152,6 +155,7 @@ const Popup: React.FC<PopupProps> = ({
     Styles.popup,
     state.show ? Styles.popupActive : null,
     {
+      paddingBottom: safeAreaInsetBottom ? insets.bottom : 0,
       zIndex: state.zIndex,
     },
     state.show ? getTransform(position, fadeAnim) : null,

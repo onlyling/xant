@@ -86,6 +86,30 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
           }}
         />
 
+        <Cell
+          isLink
+          title="ActionSheet"
+          onPress={() => {
+            navigation.navigate('DemoActionSheet');
+          }}
+        />
+
+        <Cell
+          isLink
+          title="Notify"
+          onPress={() => {
+            navigation.navigate('DemoNotify');
+          }}
+        />
+
+        <Cell
+          isLink
+          title="Image"
+          onPress={() => {
+            navigation.navigate('DemoImage');
+          }}
+        />
+
         <View style={CStyles.ctxSplit} />
       </ScrollView>
     </Layout.Page>

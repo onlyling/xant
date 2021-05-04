@@ -13,6 +13,9 @@ import DemoActionBar from '../../components/action-bar/demo/basic';
 import DemoPopup from '../../components/popup/demo/basic';
 import DemoCell from '../../components/cell/demo/basic';
 import DemoToast from '../../components/toast/demo/basic';
+import DemoActionSheet from '../../components/action-sheet/demo/basic';
+import DemoNotify from '../../components/notify/demo/basic';
+import DemoImage from '../../components/image/demo/basic';
 
 export type DemoPaths =
   | 'DemoHome'
@@ -24,7 +27,10 @@ export type DemoPaths =
   | 'DemoActionBar'
   | 'DemoPopup'
   | 'DemoCell'
-  | 'DemoToast';
+  | 'DemoToast'
+  | 'DemoActionSheet'
+  | 'DemoNotify'
+  | 'DemoImage';
 
 const pageStyle: ViewStyle = {
   flex: 1,
@@ -105,6 +111,30 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
     page: () => (
       <DemoWrapper>
         <DemoToast />
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoActionSheet',
+    page: () => (
+      <DemoWrapper>
+        <DemoActionSheet />
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoNotify',
+    page: () => (
+      <DemoWrapper>
+        <DemoNotify />
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoImage',
+    page: () => (
+      <DemoWrapper style={pageStyle}>
+        <DemoImage />
       </DemoWrapper>
     ),
   },
