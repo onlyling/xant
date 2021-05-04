@@ -1,15 +1,24 @@
 import type React from 'react';
-import type { ViewProps, TouchableHighlightProps } from 'react-native';
+import type {
+  ViewProps,
+  TouchableHighlightProps,
+  ViewStyle,
+  StyleProp,
+} from 'react-native';
 
 import type { ButtonProps } from '../button/interface';
 
 export interface ActionBarProps extends ViewProps {
   /**
    * 是否开启底部安全区适配
-   * @default true
-   * @deprecated 还未适配 iPhone 全面屏
+   * @default false
    */
   safeAreaInsetBottom?: boolean;
+
+  /**
+   * 内部盒子的样式
+   */
+  innerStyle?: StyleProp<ViewStyle>;
 }
 
 export interface ActionBarIconProps extends TouchableHighlightProps {

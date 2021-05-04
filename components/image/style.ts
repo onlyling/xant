@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 import type { ImageProps } from './interface';
-import type { StyleVarType } from '../theme';
+import type { ThemeVarType } from '../theme';
 
 export const createStyles = (
-  themeVar: StyleVarType,
+  themeVar: ThemeVarType,
   { round, radius }: Pick<ImageProps, 'round' | 'radius'>,
 ) => {
   return StyleSheet.create({
@@ -29,16 +29,17 @@ export const createStyles = (
       justifyContent: 'center',
     },
 
-    hintIcon: {
-      fontSize: themeVar.image_placeholder_font_size,
-      color: themeVar.image_placeholder_text_color,
-    },
+    // hintIcon: {
+    //   fontSize: themeVar.image_placeholder_font_size,
+    //   color: themeVar.image_placeholder_text_color,
+    // },
 
     hintText: {
       fontSize: themeVar.image_placeholder_font_size,
       lineHeight: themeVar.line_height_md,
       color: themeVar.image_placeholder_text_color,
       padding: themeVar.padding_md,
+      textAlign: 'center',
     },
 
     loadingIcon: {

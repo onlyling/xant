@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 import * as isType from '../helpers/typeof';
 import useDestroyed from './use-destroyed';
 
-type UpdateStateParam<T> = Partial<T> | ((s: T) => T);
+type UpdateStateParam<T> = Partial<T> | ((s: T) => Partial<T>);
 
 type UpdateState<T> = (p: UpdateStateParam<T>) => void;
 

@@ -1,29 +1,35 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useContext, createContext, memo } from 'react';
 
-import type { ThemeProps } from './interface';
-import container from './container';
+import type { ThemeProviderProps, ThemeContextProps } from './interface';
+import * as defaultVar from './default-var';
 
-export type { StyleVarType } from './interface';
+export type { ThemeVarType } from './interface';
 
-/** 主题 */
-export const Theme = container;
+const ThemeVarContext = createContext<ThemeContextProps>({
+  themeVar: defaultVar,
+});
 
-const ThemeView: React.FC<ThemeProps> = ({
+export const useTheme = () => useContext(ThemeVarContext);
+
+const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
-  theme,
-  dark = false,
-  fullScreen,
+  theme = {},
 }) => {
-  const state = useMemo<ThemeProps>(
+  const state = useMemo<ThemeContextProps>(
     () => ({
-      theme,
-      dark,
-      fullScreen,
+      themeVar: {
+        ...defaultVar,
+        ...theme,
+      },
     }),
-    [theme, dark, fullScreen],
+    [theme],
   );
 
-  return <Theme.Provider initialState={state}>{children}</Theme.Provider>;
+  return (
+    <ThemeVarContext.Provider value={state}>
+      {children}
+    </ThemeVarContext.Provider>
+  );
 };
 
-export default ThemeView;
+export default memo<typeof ThemeProvider>(ThemeProvider);

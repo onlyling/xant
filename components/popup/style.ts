@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native';
 import omit from 'omit.js';
 
 import type { PopupProps, PopupPosition } from './interface';
-import type { StyleVarType } from '../theme';
+import type { ThemeVarType } from '../theme';
 
 export const createStyles = (
-  themeVar: StyleVarType,
+  themeVar: ThemeVarType,
   { round, position }: Pick<PopupProps, 'round' | 'position'>,
 ) => {
   const borderRadius = round ? themeVar.popup_round_border_radius : 0;

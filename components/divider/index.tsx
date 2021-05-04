@@ -1,9 +1,10 @@
 import React, { memo } from 'react';
-import { View, Text } from 'react-native';
+import type { ViewStyle, TextStyle } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 import type { DividerProps } from './interface';
 import { createStyles } from './style';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
 
 /**
  * Divider 分割线
@@ -13,31 +14,42 @@ const Divider: React.FC<DividerProps> = ({
   children,
   textStyle,
   borderStyle,
-  wrapperStyle,
+  style,
   dashed = false,
   hairline = true,
   contentPosition = 'center',
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { dashed, hairline, contentPosition });
 
-  const wrapperStyles = [Styles.wrapper, wrapperStyle];
-  const textStyles = [Styles.text, textStyle];
-  const leftBorderStyles = [Styles.border, Styles.borderLeft, borderStyle];
-  const rightBorderStyles = [Styles.border, Styles.borderRight, borderStyle];
+  const styleSummary: ViewStyle = StyleSheet.flatten([Styles.divider, style]);
+  const textStyleSummary: TextStyle = StyleSheet.flatten([
+    Styles.text,
+    textStyle,
+  ]);
+  const leftBorderStyleSummary: ViewStyle = StyleSheet.flatten([
+    Styles.border,
+    Styles.borderLeft,
+    borderStyle,
+  ]);
+  const rightBorderStyleSummary: ViewStyle = StyleSheet.flatten([
+    Styles.border,
+    Styles.borderRight,
+    borderStyle,
+  ]);
 
   if (children) {
     return (
-      <View style={wrapperStyles}>
-        <View style={leftBorderStyles} />
-        <Text style={textStyles}>{children}</Text>
-        <View style={rightBorderStyles} />
+      <View style={styleSummary}>
+        <View style={leftBorderStyleSummary} />
+        <Text style={textStyleSummary}>{children}</Text>
+        <View style={rightBorderStyleSummary} />
       </View>
     );
   }
 
   return (
-    <View style={wrapperStyles}>
+    <View style={styleSummary}>
       <View style={[Styles.border, borderStyle]} />
     </View>
   );

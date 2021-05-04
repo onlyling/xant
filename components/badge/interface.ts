@@ -2,9 +2,14 @@ import type { TextStyle, ViewStyle, StyleProp } from 'react-native';
 
 export interface BadgeProps {
   /**
-   * 文字样式
+   * 文案布局样式
    */
-  style?: StyleProp<TextStyle>;
+  style?: StyleProp<ViewStyle>;
+
+  /**
+   * 文案样式
+   */
+  textStyle?: StyleProp<TextStyle>;
 
   /**
    * 外层样式

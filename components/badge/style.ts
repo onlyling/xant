@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 import type { BadgeProps } from './interface';
-import type { StyleVarType } from '../theme';
+import type { ThemeVarType } from '../theme';
 
 export const createStyles = (
-  themeVar: StyleVarType,
+  themeVar: ThemeVarType,
   { color }: Pick<BadgeProps, 'color'>,
 ) => {
   return StyleSheet.create({
@@ -12,13 +12,15 @@ export const createStyles = (
       minWidth: themeVar.badge_size,
       borderRadius: themeVar.border_radius_max,
       backgroundColor: color || themeVar.badge_background_color,
-      color: themeVar.badge_color,
-      fontSize: themeVar.badge_font_size,
-      fontFamily: themeVar.badge_font_family,
-      fontWeight: themeVar.badge_font_weight,
-      textAlign: 'center',
       paddingHorizontal: themeVar.badge_horizontal_padding,
       paddingVertical: themeVar.badge_vertical_padding,
+    },
+
+    badgeText: {
+      color: themeVar.badge_color,
+      fontSize: themeVar.badge_font_size,
+      fontWeight: themeVar.badge_font_weight,
+      textAlign: 'center',
     },
 
     dot: {

@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "demo",
     "paths": {
-      "@~/*": ["./src/*"],
-      "components": ["./components/*"]
+      "@/*": ["./*"],
+      "components": ["../components"],
+      "xant": ["../components"]
     },
     "lib": ["dom", "esnext"],
     "strictNullChecks": true,
@@ -20,12 +21,14 @@
     "strict": true,
     "esModuleInterop": true
   },
+  "include": ["./components", "./demo"],
   "exclude": [
     "node_modules",
     "babel.config.js",
     "metro.config.js",
     "jest.config.js",
-    "lib",
-    "es"
+    "./lib",
+    "./es",
+    "./index.app.js"
   ]
 }

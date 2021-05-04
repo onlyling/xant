@@ -1,45 +1,62 @@
 import React, { memo } from 'react';
-import { View, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import type { ViewStyle, TextStyle } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import type { NavBarProps } from './interface';
 import { createStyles } from './style';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
+import { IconArrowOutline } from '../icon';
 
 /**
  * NavBar 导航栏
  */
 const NavBar: React.FC<NavBarProps> = ({
-  wrapperStyle,
+  style,
   leftArrowStyle,
   titleTextStyle,
   title,
   leftText,
   rightText,
   leftArrow = true,
+  border = true,
   onPressLeftArrow,
   onPressLeftText,
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar);
 
-  const wrapperStyles = [Styles.wrapper, wrapperStyle];
-  const leftWrapperStyles = [Styles.leftWrapper];
-  const leftArrowStyles = [Styles.leftArrow, leftArrowStyle];
-  const titleTextStyles = [Styles.titleText, titleTextStyle];
-  const rightWrapperStyles = [Styles.rithtWrapper];
+  const wrapperStyleSummary = StyleSheet.flatten<ViewStyle>([
+    Styles.wrapper,
+    border
+      ? {
+          borderBottomColor: themeVar.border_color,
+          borderBottomWidth: StyleSheet.hairlineWidth,
+        }
+      : null,
+    style,
+  ]);
+  const leftWrapperStyleSummary: ViewStyle = Styles.leftWrapper;
+  const leftArrowStyleSummary = StyleSheet.flatten<TextStyle>([
+    Styles.leftArrow,
+    leftArrowStyle,
+  ]);
+  const titleTextStyleSummary = StyleSheet.flatten<TextStyle>([
+    Styles.titleText,
+    titleTextStyle,
+  ]);
+  const rightWrapperStyleSummary: ViewStyle = Styles.rithtWrapper;
 
   /** 标题部分 纯文字或自定义 JSX */
-  const TitleJSX = title ? (
+  const titleJSX = title ? (
     React.isValidElement(title) ? (
       title
     ) : (
-      <Text style={titleTextStyles}>{title}</Text>
+      <Text style={titleTextStyleSummary}>{title}</Text>
     )
   ) : null;
 
   /** 左侧文字 纯文字或自定义 JSX */
-  const LeftTextJSX = leftText ? (
+  const leftTextJSX = leftText ? (
     React.isValidElement(leftText) ? (
       leftText
     ) : (
@@ -50,29 +67,36 @@ const NavBar: React.FC<NavBarProps> = ({
   ) : null;
 
   /** 右侧文字 纯文字或自定义 JSX */
-  const RightTextJSX = rightText ? (
+  const rightTextJSX = rightText ? (
     React.isValidElement(rightText) ? (
       rightText
     ) : (
-      <Text>{rightText}</Text>
+      <Text style={Styles.rightText}>{rightText}</Text>
     )
   ) : null;
 
   return (
-    <View style={wrapperStyles}>
-      <View style={leftWrapperStyles}>
+    <View style={wrapperStyleSummary}>
+      <View style={leftWrapperStyleSummary}>
         {leftArrow ? (
-          <Text style={leftArrowStyles} onPress={onPressLeftArrow}>
-            <Icon name="left" size={themeVar.nav_bar_arrow_size} />
-          </Text>
+          <TouchableOpacity
+            style={leftArrowStyleSummary}
+            onPress={onPressLeftArrow}
+          >
+            <IconArrowOutline
+              size={themeVar.nav_bar_arrow_size}
+              color={leftArrowStyleSummary.color as string}
+              direction="left"
+            />
+          </TouchableOpacity>
         ) : null}
 
-        {LeftTextJSX}
+        {leftTextJSX}
       </View>
 
-      <View style={rightWrapperStyles}>{RightTextJSX}</View>
+      <View style={rightWrapperStyleSummary}>{rightTextJSX}</View>
 
-      {TitleJSX}
+      {titleJSX}
     </View>
   );
 };

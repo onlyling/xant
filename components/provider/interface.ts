@@ -1,3 +1,3 @@
-import type { ThemeProps } from '../theme/interface';
+import type { ThemeProviderProps } from '../theme/interface';
 
-export interface ProviderProps extends ThemeProps {}
+export interface ProviderProps extends ThemeProviderProps {}

@@ -29,14 +29,14 @@ export interface ButtonProps
   /**
    * 大小
    *
-   * @default `normal`
+   * @default normal
    */
   size?: ButtonSize;
 
   /**
    * 类型
    *
-   * @default `default`
+   * @default default
    */
   type?: ButtonType;
 
@@ -76,14 +76,9 @@ export interface ButtonProps
   round?: boolean;
 
   /**
-   * 左侧图标名称或图片链接
+   * 左侧图标
    */
   icon?: React.ReactNode;
-
-  /**
-   * icon 样式
-   */
-  iconStyle?: TextStyle;
 
   /**
    * 按钮颜色 不支持渐变

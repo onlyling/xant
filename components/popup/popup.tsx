@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useCallback, memo } from 'react';
-import { Animated, BackHandler } from 'react-native';
+import type { ViewStyle } from 'react-native';
+import { Animated, BackHandler, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import type { PopupProps, State } from './interface';
 import { createStyles, PopupPositionMap } from './style';
 import { getPosition, getTransform } from './helper';
 import Overlay from '../overlay/overlay';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
 import useState from '../hooks/use-state-update';
 import * as helpers from '../helpers';
 
@@ -21,6 +23,7 @@ const Popup: React.FC<PopupProps> = ({
   closeOnPressOverlay = true,
   position = 'center',
   round = false,
+  safeAreaInsetBottom = false,
   lazyRender = true,
   onPressOverlay: onPressOverlayFN,
   onOpen: onOpenFN,
@@ -29,7 +32,8 @@ const Popup: React.FC<PopupProps> = ({
   onClosed: onClosedFN,
   onRequestClose,
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const insets = useSafeAreaInsets();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { round, position });
 
   const [state, setState] = useState<State>({
@@ -39,7 +43,7 @@ const Popup: React.FC<PopupProps> = ({
     zIndex: helpers.getNextZIndex(),
     lazyRender,
   });
-  const inited = useRef(false);
+  const MountedRef = useRef(false);
 
   const fadeAnim = useRef(new Animated.Value(getPosition(show, position)))
     .current;
@@ -75,7 +79,7 @@ const Popup: React.FC<PopupProps> = ({
       overlayShow: show,
     });
 
-    if (inited.current) {
+    if (MountedRef.current) {
       fadeAnim.setValue(getPosition(!show, position));
 
       if (show) {
@@ -126,7 +130,7 @@ const Popup: React.FC<PopupProps> = ({
 
   // 初始化好组件
   useEffect(() => {
-    inited.current = true;
+    MountedRef.current = true;
   }, []);
 
   // Android 返回按钮
@@ -147,15 +151,16 @@ const Popup: React.FC<PopupProps> = ({
     return () => backHandler.remove();
   }, [onRequestClose, show]);
 
-  const popupStyles = [
+  const popupStyleSummary: ViewStyle = StyleSheet.flatten([
     Styles.popup,
     state.show ? Styles.popupActive : null,
     {
+      paddingBottom: safeAreaInsetBottom ? insets.bottom : 0,
       zIndex: state.zIndex,
     },
     state.show ? getTransform(position, fadeAnim) : null,
     state.show ? PopupPositionMap[position] : null,
-  ];
+  ]);
 
   if (state.lazyRender) {
     return null;
@@ -173,7 +178,7 @@ const Popup: React.FC<PopupProps> = ({
       ) : null}
 
       <Animated.View
-        style={popupStyles}
+        style={popupStyleSummary}
         pointerEvents={position !== 'center' ? undefined : 'box-none'}
       >
         {children}

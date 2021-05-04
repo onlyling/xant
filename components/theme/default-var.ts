@@ -68,7 +68,7 @@ export const badge_size: number = 16;
 export const badge_color = white;
 export const badge_vertical_padding: number = 0;
 export const badge_horizontal_padding: number = 3;
-export const badge_font_size = font_size_sm;
+export const badge_font_size = font_size_xs;
 export const badge_font_weight = font_weight_bold;
 export const badge_border_width = border_width_base;
 export const badge_background_color = red;
@@ -168,7 +168,7 @@ export const cell_large_label_font_size = font_size_md;
 export const cell_group_background_color = white;
 export const cell_group_title_color = gray_6;
 export const cell_group_title_padding_horizontal = padding_md;
-export const cell_group_title_padding_top = padding_md;
+export const cell_group_title_padding_top = padding_xs;
 export const cell_group_title_padding_bottom = padding_xs;
 export const cell_group_title_font_size = font_size_md;
 export const cell_group_title_line_height: number = 16;
@@ -211,7 +211,7 @@ export const divider_content_right_width: string = '10%';
 export const loading_text_color = gray_6;
 export const loading_text_font_size = font_size_md;
 export const loading_spinner_color = gray_5;
-export const loading_spinner_size: number = 30;
+export const loading_spinner_size: number = 24;
 export const loading_spinner_animation_duration: number = 0.8;
 
 // NavBar

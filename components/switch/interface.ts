@@ -53,4 +53,10 @@ export interface SwitchProps {
    * 开关状态切换时触发
    */
   onChange?: (v: any) => void;
+
+  /**
+   * 切换状态前，返回 false 可阻止关闭，支持返回 Promise
+   * @param v 切换后的值
+   */
+  beforeChange?: (v: any) => boolean | Promise<boolean>;
 }

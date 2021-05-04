@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 import type { OverlayProps } from './interface';
-import type { StyleVarType } from '../theme';
+import type { ThemeVarType } from '../theme';
 
 export const createStyles = (
-  themeVar: StyleVarType,
+  themeVar: ThemeVarType,
   { zIndex }: Pick<OverlayProps, 'zIndex'>,
 ) => {
   return StyleSheet.create({

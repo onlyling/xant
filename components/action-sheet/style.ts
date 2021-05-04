@@ -1,8 +1,8 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import type { StyleVarType } from '../theme';
+import type { ThemeVarType } from '../theme';
 
-export const createStyles = (themeVar: StyleVarType) => {
+export const createStyles = (themeVar: ThemeVarType) => {
   return StyleSheet.create({
     // actionSheet: {
     //   // maxHeight: themeVar.action_sheet_max_height,
@@ -20,20 +20,26 @@ export const createStyles = (themeVar: StyleVarType) => {
 
     description: {
       flexShrink: 0,
-      paddingVertical: 20,
       textAlign: 'center',
-      marginHorizontal: themeVar.padding_md,
       color: themeVar.action_sheet_description_color,
       fontSize: themeVar.action_sheet_description_font_size,
       lineHeight: themeVar.action_sheet_description_line_height,
+      paddingBottom: 14,
+    },
+
+    descriptionBox: {
       borderBottomWidth: StyleSheet.hairlineWidth,
       borderBottomColor: themeVar.border_color,
     },
 
-    content: {
-      // Popup 的高度是 auto，只有限制内容的高度
-      maxHeight: Dimensions.get('window').height - 200,
+    descriptionAlone: {
+      paddingTop: 14,
     },
+
+    // content: {
+    //   // Popup 的高度是 auto，只有限制内容的高度
+    //   maxHeight: Dimensions.get('window').height - 200,
+    // },
 
     btn: {
       alignItems: 'center',
@@ -66,6 +72,7 @@ export const createStyles = (themeVar: StyleVarType) => {
       textAlign: 'center',
       color: themeVar.action_sheet_cancel_text_color,
       fontSize: themeVar.action_sheet_item_font_size,
+      lineHeight: themeVar.action_sheet_loading_icon_size,
     },
   });
 };

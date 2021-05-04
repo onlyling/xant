@@ -2,6 +2,11 @@ import type { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 export interface DividerProps {
   /**
+   * 外层容器自定义样式
+   */
+  style?: StyleProp<ViewStyle>;
+
+  /**
    * 自定义文字样式
    */
   textStyle?: StyleProp<TextStyle>;
@@ -12,14 +17,9 @@ export interface DividerProps {
   borderStyle?: StyleProp<ViewStyle>;
 
   /**
-   * 外层容器自定义样式
-   */
-  wrapperStyle?: StyleProp<ViewStyle>;
-
-  /**
    * 是否使用虚线
    *
-   * @default `false`
+   * @default false
    * @deprecated not work, to see https://github.com/facebook/react-native/issues/28695
    */
   dashed?: boolean;
@@ -27,14 +27,14 @@ export interface DividerProps {
   /**
    * 是否使用 0.5px 线
    *
-   * @default `true`
+   * @default true
    */
   hairline?: boolean;
 
   /**
    * 内容位置，可选值为 `'left' | 'center' | 'right'`
    *
-   * @default `center`
+   * @default 'center'
    */
   contentPosition?: 'left' | 'center' | 'right';
 }

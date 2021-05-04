@@ -1,10 +1,11 @@
 import React, { memo } from 'react';
+import type { TextStyle, ViewStyle } from 'react-native';
 import { View, Text, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
 
 import type { TagProps } from './interface';
 import { createStyles } from './style';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
+import { IconCrossOutline } from '../icon';
 
 /**
  * Tag 标签
@@ -12,7 +13,7 @@ import { Theme } from '../theme';
 const Tag: React.FC<TagProps> = ({
   children,
   style,
-  wrapperStyle,
+  innerStyle,
   textStyle,
   color,
   textColor = '#fff',
@@ -25,7 +26,7 @@ const Tag: React.FC<TagProps> = ({
   onPressClose,
   hairline = false,
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, {
     color,
     textColor,
@@ -36,20 +37,27 @@ const Tag: React.FC<TagProps> = ({
     hairline,
   });
 
-  const tagStyles = [Styles.tag, style];
-  const wrapperStyles = [
+  const tagStyleSummary: ViewStyle = StyleSheet.flatten([Styles.tag, style]);
+  const innerStyleSummary: ViewStyle = StyleSheet.flatten([
     Styles.wrapper,
     mark ? Styles.wrapperMark : null,
-    wrapperStyle,
-  ];
-  const textStyles = StyleSheet.compose(Styles.text, (textStyle || {}) as any);
+    innerStyle,
+  ]);
+  const textStyleSummary: TextStyle = StyleSheet.flatten([
+    Styles.text,
+    textStyle,
+  ]);
 
   return (
-    <View style={tagStyles}>
-      <View style={wrapperStyles}>
-        <Text style={textStyles}>{children}</Text>
+    <View style={tagStyleSummary}>
+      <View style={innerStyleSummary}>
+        <Text style={textStyleSummary}>{children}</Text>
         {closeable ? (
-          <Icon name="close" style={textStyles} onPress={onPressClose} />
+          <IconCrossOutline
+            onPress={onPressClose}
+            size={textStyleSummary.fontSize}
+            color={textStyleSummary.color as string}
+          />
         ) : null}
       </View>
     </View>

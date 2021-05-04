@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 import type { DividerProps } from './interface';
-import type { StyleVarType } from '../theme';
+import type { ThemeVarType } from '../theme';
 
 export const createStyles = (
-  themeVar: StyleVarType,
+  themeVar: ThemeVarType,
   {
     dashed,
     hairline,
@@ -12,7 +12,7 @@ export const createStyles = (
   }: Pick<DividerProps, 'contentPosition' | 'dashed' | 'hairline'>,
 ) => {
   return StyleSheet.create({
-    wrapper: {
+    divider: {
       flexDirection: 'row',
       alignItems: 'center',
       marginVertical: themeVar.divider_vertical_margin,

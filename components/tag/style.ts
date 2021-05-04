@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 import type { TagProps } from './interface';
-import type { StyleVarType } from '../theme';
+import type { ThemeVarType } from '../theme';
 
 export const createStyles = (
-  themeVar: StyleVarType,
+  themeVar: ThemeVarType,
   {
     type,
     textColor,
@@ -18,10 +18,16 @@ export const createStyles = (
     'color' | 'textColor' | 'plain' | 'round' | 'size' | 'type' | 'hairline'
   >,
 ) => {
-  let backgroundColor =
+  const backgroundColor =
     color ||
     themeVar[`tag_${type}_color` as 'tag_default_color'] ||
     themeVar.tag_default_color;
+  const paddingHorizontal =
+    themeVar[`tag_${size}_horizontal_padding` as 'tag_horizontal_padding'] ||
+    themeVar.tag_horizontal_padding;
+  const paddingVertical =
+    themeVar[`tag_${size}_vertical_padding` as 'tag_medium_vertical_padding'] ||
+    0;
 
   return StyleSheet.create({
     tag: {
@@ -56,7 +62,8 @@ export const createStyles = (
     },
 
     text: {
-      paddingHorizontal: themeVar.tag_horizontal_padding,
+      paddingHorizontal: paddingHorizontal,
+      paddingVertical: paddingVertical,
       color: plain ? backgroundColor : textColor,
       fontSize:
         size === 'large'

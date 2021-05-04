@@ -1,6 +1,16 @@
-// import { ViewStyle } from 'react-native';
+import type { ViewStyle, TextStyle, StyleProp } from 'react-native';
 
 export interface LoadingProps {
+  /**
+   * 最外层的样式
+   */
+  style?: StyleProp<ViewStyle>;
+
+  /**
+   * 文案部分的样式
+   */
+  textStyle?: StyleProp<TextStyle>;
+
   /**
    * 颜色
    */

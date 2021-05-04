@@ -10,7 +10,7 @@ export type CellGroupProps = {
   /**
    * 分组名称
    */
-  title?: string | React.ReactNode;
+  title?: React.ReactNode;
 
   /**
    * 自定义样式
@@ -31,7 +31,7 @@ export type CellGroupProps = {
 };
 
 export interface CellProps extends TouchableHighlightProps {
-  wrapperStyle?: StyleProp<ViewStyle>;
+  innerStyle?: StyleProp<ViewStyle>;
 
   titleStyle?: StyleProp<ViewStyle>;
 

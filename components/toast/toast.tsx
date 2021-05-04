@@ -1,9 +1,10 @@
 import React, { useEffect, useState, memo } from 'react';
-import { Text, View, TouchableWithoutFeedback } from 'react-native';
+import type { ViewStyle, TextStyle } from 'react-native';
+import { Text, View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 
 import type { ToastProps } from './interface';
 import { createStyles } from './style';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
 import Popup from '../popup/popup';
 import Circular from '../loading/circular';
 import Spinner from '../loading/spinner';
@@ -21,7 +22,7 @@ const Toast: React.FC<ToastProps> = ({
   hook,
   ...reset
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { position });
 
   const [show, setShow] = useState(false);
@@ -84,6 +85,15 @@ const Toast: React.FC<ToastProps> = ({
     };
   }, [duration, hook]);
 
+  const toastInnerStyleSummary: ViewStyle = StyleSheet.flatten([
+    Styles.inner,
+    type === 'text' ? Styles.innerText : null,
+  ]);
+  const toastTextStyleSummary: TextStyle = StyleSheet.flatten([
+    Styles.text,
+    type === 'text' ? Styles.textTop0 : null,
+  ]);
+
   return (
     <Popup
       {...reset}
@@ -97,9 +107,7 @@ const Toast: React.FC<ToastProps> = ({
           pointerEvents={forbidPress ? undefined : 'box-none'}
           collapsable={false}
         >
-          <View
-            style={[Styles.inner, type === 'text' ? Styles.innerText : null]}
-          >
+          <View style={toastInnerStyleSummary}>
             {type === 'loading' ? (
               <View style={Styles.loading}>
                 {loadingType === 'circular' ? (
@@ -110,11 +118,7 @@ const Toast: React.FC<ToastProps> = ({
               </View>
             ) : null}
 
-            <Text
-              style={[Styles.text, type === 'text' ? Styles.textTop0 : null]}
-            >
-              {msg}
-            </Text>
+            <Text style={toastTextStyleSummary}>{msg}</Text>
           </View>
         </View>
       </TouchableWithoutFeedback>

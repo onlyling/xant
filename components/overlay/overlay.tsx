@@ -1,9 +1,14 @@
 import React, { useEffect, useRef, useState, memo } from 'react';
-import { TouchableOpacity, Animated, BackHandler } from 'react-native';
+import type { ViewStyle } from 'react-native';
+import {
+  TouchableOpacity,
+  Animated,
+  BackHandler,
+  StyleSheet,
+} from 'react-native';
 
 import type { OverlayProps } from './interface';
-import { createStyles } from './style';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
 
 /**
  * Overlay 遮罩层
@@ -19,9 +24,7 @@ const Overlay: React.FC<OverlayProps> = ({
   onPress,
   onRequestClose,
 }) => {
-  const { themeVar } = Theme.useContainer();
-  const Styles = createStyles(themeVar, { zIndex });
-
+  const { themeVar } = useTheme();
   const [localShow, setShow] = useState(show);
   const fadeAnim = useRef(new Animated.Value(0));
   const fadeInstance = useRef<Animated.CompositeAnimation | null>(null);
@@ -74,17 +77,30 @@ const Overlay: React.FC<OverlayProps> = ({
     return () => backHandler.remove();
   }, [show, onRequestClose]);
 
-  const overlayStyles = [
+  const overlayStyleSummary: ViewStyle = StyleSheet.flatten([
     Styles.overlay,
     localShow ? Styles.overlayActive : null,
-    { opacity: fadeAnim.current },
-  ];
-  const touchableStyles = [Styles.touchable, style];
+    {
+      opacity: (fadeAnim.current as unknown) as number,
+      backgroundColor: themeVar.overlay_background_color,
+      zIndex: zIndex ? +zIndex : themeVar.overlay_z_index,
+    },
+  ]);
+  const touchableStyleSummary: ViewStyle = StyleSheet.flatten([
+    Styles.touchable,
+    style,
+  ]);
+
+  if (!show) {
+    // TODO 优化文档报错
+    // 直接返回 null dumi 报错 -、-
+    return <></>;
+  }
 
   return (
-    <Animated.View style={overlayStyles}>
+    <Animated.View style={overlayStyleSummary}>
       <TouchableOpacity
-        style={touchableStyles}
+        style={touchableStyleSummary}
         activeOpacity={1}
         onPress={onPress}
       >
@@ -93,5 +109,23 @@ const Overlay: React.FC<OverlayProps> = ({
     </Animated.View>
   );
 };
+
+const Styles = StyleSheet.create({
+  overlay: {
+    position: 'relative',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+
+  overlayActive: {
+    position: 'absolute',
+  },
+
+  touchable: {
+    flex: 1,
+  },
+});
 
 export default memo<typeof Overlay>(Overlay);

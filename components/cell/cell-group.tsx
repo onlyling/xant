@@ -1,9 +1,10 @@
 import React, { memo } from 'react';
-import { View, Text } from 'react-native';
+import type { ViewStyle, TextStyle } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 import type { CellGroupProps } from './interface';
 import { createStyles } from './style.cell-group';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
 
 /**
  * CellGroup 单元格组
@@ -16,26 +17,31 @@ const CellGroup: React.FC<CellGroupProps> = ({
   textStyle,
   border = true,
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { border });
 
-  const titleStyles = [Styles.title, style];
-  const titleTextStyles = [Styles.text, textStyle];
-  const wrapperStyles = [Styles.wrapper];
+  const titleStyleSummary: ViewStyle = StyleSheet.flatten([
+    Styles.title,
+    style,
+  ]);
+  const titleTextStyleSummary: TextStyle = StyleSheet.flatten([
+    Styles.text,
+    textStyle,
+  ]);
 
   /** 标题 可能是自定义 JSX */
-  const TitleJSX = title ? (
+  const titleJSX = title ? (
     React.isValidElement(title) ? (
       title
     ) : (
-      <Text style={titleTextStyles}>{title}</Text>
+      <Text style={titleTextStyleSummary}>{title}</Text>
     )
   ) : null;
 
   return (
     <>
-      <View style={titleStyles}>{TitleJSX}</View>
-      <View style={wrapperStyles}>{children}</View>
+      {titleJSX ? <View style={titleStyleSummary}>{titleJSX}</View> : null}
+      <View style={Styles.wrapper}>{children}</View>
     </>
   );
 };

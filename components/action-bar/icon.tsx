@@ -4,7 +4,7 @@ import { Text, View, TouchableHighlight } from 'react-native';
 import type { ActionBarIconProps } from './interface';
 import { createStyles } from './style.icon';
 import Badge from '../badge';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
 
 /**
  * ActionBarIcon 动作栏里面的图标
@@ -20,10 +20,10 @@ const ActionBarIcon: React.FC<ActionBarIconProps> = ({
   underlayColor,
   ...restProps
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { color });
 
-  const IconJSX =
+  const iconJSX =
     (icon && <Text style={Styles.icon}>{icon}</Text>) ||
     (iconRender &&
       iconRender({
@@ -39,7 +39,7 @@ const ActionBarIcon: React.FC<ActionBarIconProps> = ({
     >
       <View style={Styles.wrapper}>
         <Badge wrapperStyle={Styles.badgeWrapper} dot={dot} content={badge}>
-          {IconJSX}
+          {iconJSX}
         </Badge>
         <Text style={Styles.text}>{text}</Text>
       </View>

@@ -1,12 +1,19 @@
 import React, { memo } from 'react';
 import type { TextStyle } from 'react-native';
-import { Text, View, ScrollView, TouchableHighlight } from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  TouchableHighlight,
+  StyleSheet,
+} from 'react-native';
 
 import type { ActionSheetProps } from './interface';
 import { createStyles } from './style';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
 import Popup from '../popup/popup';
 import Loading from '../loading/circular';
+import useSafeHeight from '../hooks/use-safe-height';
 
 /**
  * ActionSheet 动作面板
@@ -22,42 +29,70 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
   onSelect,
   ...restProps
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const safeHeight = useSafeHeight();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar);
 
   /** 标题部分 纯文字或自定义 JSX */
-  const TitleJSX = title ? (
+  const titleJSX = title ? (
     React.isValidElement(title) ? (
       title
     ) : (
-      <Text style={Styles.title}>{title}</Text>
+      <Text style={Styles.title} numberOfLines={1}>
+        {title}
+      </Text>
     )
   ) : null;
 
   /** 取消文案 纯文字或自定义 JSX */
-  const CancelTextJSX = cancelText ? (
+  const cancelTextJSX = cancelText ? (
     React.isValidElement(cancelText) ? (
       cancelText
     ) : (
-      <Text style={[Styles.btn, Styles.cancel]}>{cancelText}</Text>
+      <Text
+        style={StyleSheet.flatten([Styles.btn, Styles.cancel])}
+        numberOfLines={1}
+      >
+        {cancelText}
+      </Text>
     )
   ) : null;
 
   /** 描述文案 纯文字或自定义 JSX */
-  const DescriptionJSX = description ? (
+  const descriptionJSX = description ? (
     React.isValidElement(description) ? (
       description
     ) : (
-      <Text style={Styles.description}>{description}</Text>
+      <View style={Styles.descriptionBox}>
+        <Text
+          style={StyleSheet.flatten([
+            Styles.description,
+            titleJSX ? null : Styles.descriptionAlone,
+          ])}
+          numberOfLines={1}
+        >
+          {description}
+        </Text>
+      </View>
     )
   ) : null;
 
+  const navBarHeight = themeVar.nav_bar_height;
+  const btnHeight = themeVar.action_sheet_loading_icon_size + 14 * 2;
+  const descriptionHeight =
+    themeVar.action_sheet_description_line_height + (titleJSX ? 14 : 14 * 2);
+  const contentHeihgt =
+    safeHeight -
+    navBarHeight -
+    (titleJSX ? themeVar.action_sheet_header_height : 0) -
+    (cancelTextJSX ? themeVar.action_sheet_cancel_padding_top + btnHeight : 0) -
+    (descriptionJSX ? descriptionHeight : 0);
   return (
-    <Popup {...restProps} position="bottom" round={round}>
-      {TitleJSX}
-      {DescriptionJSX}
+    <Popup {...restProps} safeAreaInsetBottom position="bottom" round={round}>
+      {titleJSX}
+      {descriptionJSX}
 
-      <ScrollView style={Styles.content}>
+      <ScrollView style={{ maxHeight: contentHeihgt }}>
         {actions.map((item, index) => {
           /** 选项的自定义颜色/配置 */
           const customTextStyle: TextStyle = {};
@@ -94,11 +129,18 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
                   />
                 ) : (
                   <>
-                    <Text style={[Styles.item, customTextStyle]}>
+                    <Text
+                      style={StyleSheet.flatten([Styles.item, customTextStyle])}
+                    >
                       {item.name}
                     </Text>
                     {item.subname ? (
-                      <Text style={[Styles.item, Styles.subname]}>
+                      <Text
+                        style={StyleSheet.flatten([
+                          Styles.item,
+                          Styles.subname,
+                        ])}
+                      >
                         {item.subname}
                       </Text>
                     ) : null}
@@ -110,7 +152,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
         })}
       </ScrollView>
 
-      {CancelTextJSX ? (
+      {cancelTextJSX ? (
         <>
           <View style={Styles.gap} />
           <TouchableHighlight
@@ -118,7 +160,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
             underlayColor={themeVar.active_color}
             onPress={onCancel}
           >
-            {CancelTextJSX}
+            {cancelTextJSX}
           </TouchableHighlight>
         </>
       ) : null}

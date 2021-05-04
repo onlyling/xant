@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 import type { CellProps } from './interface';
-import type { StyleVarType } from '../theme';
+import type { ThemeVarType } from '../theme';
 
 export const createStyles = (
-  themeVar: StyleVarType,
+  themeVar: ThemeVarType,
   {
     size,
     title,
@@ -21,7 +21,7 @@ export const createStyles = (
   const isValueAlone = !title && !label;
 
   return StyleSheet.create({
-    wrapperTouchable: {
+    cell: {
       backgroundColor: themeVar.cell_background_color,
     },
 
@@ -34,6 +34,12 @@ export const createStyles = (
       borderBottomWidth: border ? StyleSheet.hairlineWidth : 0,
       borderBottomColor: themeVar.cell_border_color,
       alignItems: center ? 'center' : 'flex-start',
+    },
+
+    leftWrapper: {
+      flexDirection: 'row',
+      flex: 1,
+      // backgroundColor: '#f30',
     },
 
     title: {
@@ -50,6 +56,7 @@ export const createStyles = (
     value: {
       flex: 1,
       minHeight: themeVar.cell_line_height,
+      justifyContent: 'center',
     },
 
     valueText: {
@@ -70,22 +77,28 @@ export const createStyles = (
 
     iconLeft: {
       marginRight: themeVar.padding_base,
-      color: themeVar.cell_text_color,
-      fontSize: themeVar.cell_icon_size,
-      lineHeight: themeVar.cell_line_height,
+      minHeight: themeVar.cell_line_height,
+      // color: themeVar.cell_text_color,
+      // fontSize: themeVar.cell_icon_size,
+      // lineHeight: themeVar.cell_line_height,
     },
 
-    arrow: {
+    iconRight: {
       marginLeft: themeVar.padding_base,
-      color: themeVar.cell_right_icon_color,
-      fontSize: themeVar.cell_icon_size,
-      lineHeight: themeVar.cell_line_height,
+      minHeight: themeVar.cell_line_height,
+      alignItems: 'center',
+      justifyContent: 'center',
+      // color: themeVar.cell_right_icon_color,
+      // fontSize: themeVar.cell_icon_size,
+      // lineHeight: themeVar.cell_line_height,
+      flexShrink: 0,
+      // backgroundColor: '#f30',
     },
 
     required: {
       position: 'absolute',
       left: -themeVar.padding_md,
-      top: themeVar.cell_vertical_padding,
+      // top: themeVar.cell_vertical_padding,
       height: themeVar.cell_line_height,
       width: themeVar.padding_md,
       // backgroundColor: '#f30', // to test ui

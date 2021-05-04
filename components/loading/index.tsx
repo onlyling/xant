@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 import type { LoadingProps } from './interface';
 import { createStyles } from './style';
 import Circular from './circular';
 import Spinner from './spinner';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
 
 /**
  * Loading 加载
@@ -13,31 +13,35 @@ import { Theme } from '../theme';
  */
 const Loading: React.FC<LoadingProps> = ({
   children,
+  style,
+  textStyle,
   size,
   color,
   textSize,
   vertical = false,
   type = 'circular',
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { size, color, textSize, vertical });
 
-  const TextJSX = children ? (
+  const textJSX = children ? (
     React.isValidElement(children) ? (
       children
     ) : (
-      <Text style={Styles.text}>{children}</Text>
+      <Text style={StyleSheet.flatten([Styles.text, textStyle])}>
+        {children}
+      </Text>
     )
   ) : null;
 
   return (
-    <View style={Styles.loading}>
+    <View style={StyleSheet.flatten([Styles.loading, style])}>
       {type === 'circular' ? (
         <Circular size={size} color={color} />
       ) : (
         <Spinner size={size} color={color} />
       )}
-      {TextJSX}
+      {textJSX}
     </View>
   );
 };

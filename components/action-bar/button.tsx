@@ -1,9 +1,11 @@
 import React, { memo } from 'react';
+import type { ViewStyle, TextStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import type { ActionBarButtonProps } from './interface';
 import { createStyles } from './style.button';
 import Button from '../button';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
 
 /**
  * ActionBarButton 动作栏里面的按钮
@@ -16,23 +18,26 @@ const ActionBarButton: React.FC<ActionBarButtonProps> = ({
   textStyle,
   ...rest
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar);
 
-  const buttonStyles = [
+  const buttonStyleSummary: ViewStyle = StyleSheet.flatten([
     Styles.button,
     isFirst ? Styles.first : null,
     isLast ? Styles.last : null,
     style,
-  ];
-  const textStyles = [Styles.textStyle, textStyle];
+  ]);
+  const textStyleSummary: TextStyle = StyleSheet.flatten([
+    Styles.textStyle,
+    textStyle,
+  ]);
 
   return (
     <Button
       {...rest}
       size="large"
-      style={buttonStyles}
-      textStyle={textStyles}
+      style={buttonStyleSummary}
+      textStyle={textStyleSummary}
     />
   );
 };

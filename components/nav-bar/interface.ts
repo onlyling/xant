@@ -5,7 +5,7 @@ export interface NavBarProps {
   /**
    * 最外层的样式
    */
-  wrapperStyle?: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 
   /**
    * 左箭头样式
@@ -35,12 +35,13 @@ export interface NavBarProps {
   /**
    * 是否显示左箭头
    *
-   * @default `true`
+   * @default true
    */
   leftArrow?: boolean;
 
   /**
    * 是否显示下边框
+   * @default true
    */
   border?: boolean;
 

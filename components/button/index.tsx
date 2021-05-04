@@ -1,14 +1,12 @@
 import React, { memo } from 'react';
 import type { GestureResponderEvent } from 'react-native';
-import { Text, TouchableHighlight } from 'react-native';
+import { Text, TouchableHighlight, StyleSheet } from 'react-native';
 
-import type { ButtonProps as ButtonPropsInterface } from './interface';
+import type { ButtonProps } from './interface';
 import { createStyles } from './style';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
 import Loading from '../loading';
 import * as helpers from '../helpers';
-
-export type ButtonProps = ButtonPropsInterface;
 
 /**
  * Button 按钮
@@ -29,12 +27,11 @@ const Button: React.FC<ButtonProps> = ({
   square = false,
   round = false,
   icon,
-  iconStyle,
   color,
   onPress,
   ...otherProps
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
 
   const Styles = createStyles(themeVar, {
     size,
@@ -45,6 +42,7 @@ const Button: React.FC<ButtonProps> = ({
     square,
     round,
     disabled,
+    loading,
   });
 
   /**
@@ -52,24 +50,21 @@ const Button: React.FC<ButtonProps> = ({
    * @param e event 回调事件
    */
   const onPressTouchable = (e: GestureResponderEvent) => {
-    if (!disabled && !loading) {
-      onPress && onPress(e);
-    }
+    onPress && onPress(e);
   };
 
-  const wrapperStyles = [Styles.wrapper, style];
-  const textStyles = [Styles.text, textStyle];
-  const iconStyles = [Styles.icon, iconStyle];
+  const buttonStyleSummary = StyleSheet.flatten([Styles.button, style]);
+  const textStyleSummary = StyleSheet.flatten([Styles.text, textStyle]);
 
   return (
     <TouchableHighlight
       underlayColor={helpers.hex2rgba(
-        (Styles.wrapper.backgroundColor === themeVar.white
+        (Styles.button.backgroundColor === themeVar.white
           ? themeVar.button_plain_underlay_color
-          : Styles.wrapper.backgroundColor) as string,
+          : Styles.button.backgroundColor || '') as string,
       )}
-      onPress={onPressTouchable}
-      style={wrapperStyles}
+      onPress={!disabled && !loading ? onPressTouchable : undefined}
+      style={buttonStyleSummary}
       {...otherProps}
     >
       {loading ? (
@@ -78,8 +73,8 @@ const Button: React.FC<ButtonProps> = ({
         </Loading>
       ) : (
         <>
-          {icon ? <Text style={iconStyles}>{icon}</Text> : null}
-          <Text style={textStyles}>{text || children}</Text>
+          {icon || null}
+          <Text style={textStyleSummary}>{text || children}</Text>
         </>
       )}
     </TouchableHighlight>

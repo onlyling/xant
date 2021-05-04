@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, memo } from 'react';
-import { TouchableWithoutFeedback, Animated } from 'react-native';
+import type { ViewStyle } from 'react-native';
+import { TouchableWithoutFeedback, Animated, StyleSheet } from 'react-native';
 
 import type { SwitchProps } from './interface';
 import { createStyles } from './style';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
+import LoadingCircular from '../loading/circular';
+import { isPromise } from '../helpers/typeof';
 
 /**
  * Switch 开关
@@ -12,6 +15,7 @@ import { Theme } from '../theme';
 const Switch: React.FC<SwitchProps> = ({
   size,
   disabled = false,
+  loading = false,
   value = false,
   activeValue = true,
   inactiveValue = false,
@@ -19,20 +23,42 @@ const Switch: React.FC<SwitchProps> = ({
   activeColor,
   onPress,
   onChange,
+  beforeChange,
 }) => {
   const translateX = useRef(new Animated.Value(0));
 
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { size });
 
-  const translateXValue = Styles.activeNode.left;
+  const translateXValueEnd = Styles.nodeRight.left;
+  const translateXValueStart = Styles.nodeLeft.left;
   const duration = themeVar.switch_transition_duration;
   const actived = value === activeValue;
 
   const onPressTouchable = () => {
     onPress && onPress();
-    if (!disabled) {
-      onChange && onChange(actived ? inactiveValue : activeValue);
+    if (!disabled && !loading) {
+      const newValue = actived ? inactiveValue : activeValue;
+      const doChange = () => {
+        onChange && onChange(newValue);
+      };
+
+      if (beforeChange) {
+        const beforeChangeValue = beforeChange(newValue);
+        if (isPromise(beforeChangeValue)) {
+          beforeChangeValue.then((v) => {
+            if (v) {
+              doChange();
+            }
+          });
+        } else {
+          if (beforeChangeValue) {
+            doChange();
+          }
+        }
+      } else {
+        doChange();
+      }
     }
   };
 
@@ -42,7 +68,7 @@ const Switch: React.FC<SwitchProps> = ({
     actionValue = Animated.timing(
       translateX.current, // 动画中的变量值
       {
-        toValue: actived ? translateXValue : 0,
+        toValue: actived ? translateXValueEnd : translateXValueStart,
         duration: +duration,
         useNativeDriver: false,
       },
@@ -59,9 +85,9 @@ const Switch: React.FC<SwitchProps> = ({
         actionValue = null;
       }
     };
-  }, [actived, translateXValue, duration]);
+  }, [actived, translateXValueStart, translateXValueEnd, duration]);
 
-  const switchStyles = [
+  const switchStyleSummary: ViewStyle = StyleSheet.flatten([
     Styles.switch,
     {
       // 当前过渡不支持 color/backgroundColor
@@ -71,22 +97,33 @@ const Switch: React.FC<SwitchProps> = ({
         : inactiveColor || themeVar.switch_background_color,
     },
     disabled ? Styles.disabled : null,
-  ];
-  const nodeStyles = [
+  ]);
+  const nodeStyleSummary: ViewStyle = StyleSheet.flatten([
     Styles.node,
     {
       transform: [
         {
-          translateX: translateX.current,
+          translateX: (translateX.current as unknown) as number,
         },
       ],
     },
-  ];
+  ]);
 
   return (
     <TouchableWithoutFeedback onPress={onPressTouchable}>
-      <Animated.View style={switchStyles}>
-        <Animated.View style={nodeStyles} />
+      <Animated.View style={switchStyleSummary}>
+        <Animated.View style={nodeStyleSummary}>
+          {loading ? (
+            <LoadingCircular
+              size={(Styles.node.width / 4) * 3}
+              color={
+                actived
+                  ? activeColor || themeVar.switch_on_background_color
+                  : inactiveColor || themeVar.loading_text_color
+              }
+            />
+          ) : null}
+        </Animated.View>
       </Animated.View>
     </TouchableWithoutFeedback>
   );

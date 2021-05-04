@@ -1,17 +1,18 @@
 import React, { memo } from 'react';
-import { Text, View, TouchableHighlight } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
+import type { ViewStyle, TextStyle } from 'react-native';
+import { Text, View, TouchableHighlight, StyleSheet } from 'react-native';
 
 import type { CellProps } from './interface';
 import { createStyles } from './style.cell';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
+import ArrowIcon from '../icon/arrow';
 
 /**
  * Cell 单元格
  * @description 单元格为列表中的单个展示项。
  */
 const Cell: React.FC<CellProps> = ({
-  wrapperStyle,
+  innerStyle,
   titleStyle,
   titleTextStyle,
   valueStyle,
@@ -32,56 +33,76 @@ const Cell: React.FC<CellProps> = ({
   style,
   ...otherProps
 }) => {
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { size, title, label, border, center });
   const isValueAlone = !title && !label;
 
-  const wrapperTouchableThemeStyles = [Styles.wrapperTouchable, style];
-  const wrapperStyles = [Styles.wrapper, wrapperStyle];
-  const titleStyles = [Styles.title, titleStyle];
-  const titleTextStyles = [Styles.titleText, titleTextStyle];
-  const valueStyles = [Styles.value, valueStyle];
-  const valueTextStyles = [Styles.valueText, valueTextStyle];
-  const labelTextStyles = [Styles.labelText, labelTextStyle];
-  const iconLeftStyles = [Styles.iconLeft];
-  const arrowStyles = [Styles.arrow];
+  const cellStyleSummary: ViewStyle = StyleSheet.flatten([Styles.cell, style]);
+  const innerStyleSummary: ViewStyle = StyleSheet.flatten([
+    Styles.wrapper,
+    innerStyle,
+  ]);
+  const titleStyleSummary: ViewStyle = StyleSheet.flatten([
+    Styles.title,
+    titleStyle,
+  ]);
+  const titleTextStyleSummary: TextStyle = StyleSheet.flatten([
+    Styles.titleText,
+    titleTextStyle,
+  ]);
+  const valueStyleSummary: ViewStyle = StyleSheet.flatten([
+    Styles.value,
+    valueStyle,
+  ]);
+  const valueTextStyleSummary: TextStyle = StyleSheet.flatten([
+    Styles.valueText,
+    valueTextStyle,
+  ]);
+  const labelTextStyleSummary: TextStyle = StyleSheet.flatten([
+    Styles.labelText,
+    labelTextStyle,
+  ]);
 
   /** 左侧标题 可能是自定义 JSX */
-  const TitleJSX = title ? (
+  const titleJSX = title ? (
     React.isValidElement(title) ? (
       title
     ) : (
-      <Text style={titleTextStyles}>{title}</Text>
+      <Text style={titleTextStyleSummary}>{title}</Text>
     )
   ) : null;
 
   /** 右侧文案 可能是自定义 JSX */
-  const ValueJSX = value ? (
+  const valueJSX = value ? (
     React.isValidElement(value) ? (
       value
     ) : (
-      <Text style={valueTextStyles}>{value}</Text>
+      <Text style={valueTextStyleSummary}>{value}</Text>
     )
   ) : null;
 
   /** 下方文案 可能是自定义 JSX */
-  const LabelJSX = label ? (
+  const labelJSX = label ? (
     React.isValidElement(label) ? (
       label
     ) : (
-      <Text style={labelTextStyles}>{label}</Text>
+      <Text style={labelTextStyleSummary}>{label}</Text>
     )
   ) : null;
 
   /** 箭头 */
-  const ArrowJSX = isLink ? (
-    <Icon name={arrowDirection} />
+  const arrowJSX = isLink ? (
+    <ArrowIcon
+      direction={arrowDirection}
+      size={themeVar.cell_icon_size}
+      color={themeVar.cell_right_icon_color}
+    />
   ) : rightIcon ? (
     rightIcon
   ) : null;
 
   /** 必填、红点 */
-  const RequiredJSX = required ? (
+  const requiredJSX = required ? (
     <View style={Styles.required}>
       <Text style={Styles.requiredText}>*</Text>
     </View>
@@ -94,23 +115,27 @@ const Cell: React.FC<CellProps> = ({
         underlayColor || themeVar.cell_active_color
       }
       {...otherProps}
-      style={wrapperTouchableThemeStyles}
+      style={cellStyleSummary}
     >
-      <View style={wrapperStyles}>
-        {RequiredJSX}
+      <View style={innerStyleSummary}>
+        {requiredJSX || icon || !isValueAlone ? (
+          <View style={Styles.leftWrapper}>
+            {requiredJSX}
 
-        {icon ? <Text style={iconLeftStyles}>{icon}</Text> : null}
+            {icon ? <View style={Styles.iconLeft}>{icon}</View> : null}
 
-        {isValueAlone ? null : (
-          <View style={titleStyles}>
-            <View>{TitleJSX}</View>
-            <View>{LabelJSX}</View>
+            {isValueAlone ? null : (
+              <View style={titleStyleSummary}>
+                <View>{titleJSX}</View>
+                <View>{labelJSX}</View>
+              </View>
+            )}
           </View>
-        )}
+        ) : null}
 
-        <View style={valueStyles}>{ValueJSX}</View>
+        {valueJSX ? <View style={valueStyleSummary}>{valueJSX}</View> : null}
 
-        {ArrowJSX ? <Text style={arrowStyles}>{ArrowJSX}</Text> : null}
+        {arrowJSX ? <View style={Styles.iconRight}>{arrowJSX}</View> : null}
       </View>
     </TouchableHighlight>
   );

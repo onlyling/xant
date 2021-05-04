@@ -3,13 +3,22 @@ import type {
   NativeSyntheticEvent,
   ImageLoadEventData,
   ImageErrorEventData,
+  ViewStyle,
+  ImageStyle,
 } from 'react-native';
-import { View, Text, Animated, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {
+  View,
+  Text,
+  Animated,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 
 import type { ImageProps } from './interface';
 import { createStyles } from './style';
-import { Theme } from '../theme';
+import { useTheme } from '../theme';
+import IconPhotoFailFill from '../icon/photo-fail.fill';
+import IconPhotoFill from '../icon/photo.fill';
 import useState from '../hooks/use-state-update';
 
 /**
@@ -40,7 +49,7 @@ const Image: React.FC<ImageProps> = (props) => {
   });
   const ImageAnimated = useRef(new Animated.Value(0));
 
-  const { themeVar } = Theme.useContainer();
+  const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, {
     round,
     radius,
@@ -69,18 +78,25 @@ const Image: React.FC<ImageProps> = (props) => {
     onError && onError(event);
   };
 
-  const wrapperStyles = [Styles.wrapper, wrapperStyle];
-  const imageStyles = [Styles.image, { opacity: ImageAnimated.current }, style];
+  const wrapperStyleSummary: ViewStyle = StyleSheet.flatten([
+    Styles.wrapper,
+    wrapperStyle,
+  ]);
+  const imageStyleSummary: ImageStyle = StyleSheet.flatten([
+    Styles.image,
+    { opacity: (ImageAnimated.current as unknown) as number },
+    style,
+  ]);
 
   return (
     <TouchableOpacity
-      style={wrapperStyles}
+      style={wrapperStyleSummary}
       activeOpacity={themeVar.active_opacity}
       onPress={onPress}
     >
       <Animated.Image
         {...resetProps}
-        style={imageStyles}
+        style={imageStyleSummary}
         fadeDuration={fadeDuration}
         onLoad={onLoadImage}
         onError={onErrorImage}
@@ -88,13 +104,19 @@ const Image: React.FC<ImageProps> = (props) => {
 
       {!state.loaded && showLoading ? (
         <View style={Styles.hintWrapper}>
-          <Icon style={Styles.loadingIcon} name="image" />
+          <IconPhotoFill
+            size={themeVar.image_loading_icon_size}
+            color={themeVar.image_loading_icon_color}
+          />
         </View>
       ) : null}
 
       {state.error && !alt && showError ? (
         <View style={Styles.hintWrapper}>
-          <Icon style={Styles.errorIcon} name="image-broken" />
+          <IconPhotoFailFill
+            size={themeVar.image_error_icon_size}
+            color={themeVar.image_error_icon_color}
+          />
         </View>
       ) : null}
 

@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 import type { ButtonProps } from './interface';
-import type { StyleVarType } from '../theme';
+import type { ThemeVarType } from '../theme';
 
 export const createStyles = (
-  themeVar: StyleVarType,
+  themeVar: ThemeVarType,
   {
     size,
     type,
@@ -14,6 +14,7 @@ export const createStyles = (
     square,
     round,
     hairline,
+    loading,
   }: Pick<
     ButtonProps,
     | 'size'
@@ -24,6 +25,7 @@ export const createStyles = (
     | 'square'
     | 'round'
     | 'disabled'
+    | 'loading'
   >,
 ) => {
   const fontSize =
@@ -69,7 +71,7 @@ export const createStyles = (
   }
 
   return StyleSheet.create({
-    wrapper: {
+    button: {
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'row',
@@ -78,7 +80,7 @@ export const createStyles = (
       borderColor,
       borderWidth,
       borderStyle: 'solid',
-      opacity: disabled ? themeVar.button_disabled_opacity : 1,
+      opacity: disabled || loading ? themeVar.button_disabled_opacity : 1,
       borderRadius: square
         ? 0
         : round
@@ -90,10 +92,10 @@ export const createStyles = (
       fontSize,
       color: colorText,
     },
-    icon: {
-      color: colorText,
-      fontSize,
-      paddingHorizontal: themeVar.padding_xs,
-    },
+    // icon: {
+    //   color: colorText,
+    //   fontSize,
+    //   paddingHorizontal: themeVar.padding_xs,
+    // },
   });
 };

@@ -1,9 +1,9 @@
-import React, { useContext, memo } from 'react';
-import type { ViewStyle, StyleProp } from 'react-native';
-import { View } from 'react-native';
+import React, { memo } from 'react';
+import type { ViewStyle } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import type { ColProps } from './interface';
-import RowContext from './context';
+import { useRow } from './context';
 
 const BASE_SPAN_WIDTH = 100 / 24;
 
@@ -12,11 +12,11 @@ const BASE_SPAN_WIDTH = 100 / 24;
  * @description 每个子单元格。
  */
 const Col: React.FC<ColProps> = ({ children, style, span, offset = 0 }) => {
-  const { gutter = 0 } = useContext(RowContext);
+  const { gutter = 0 } = useRow();
   const width = `${+span * BASE_SPAN_WIDTH}%`;
   const left = `${+offset * BASE_SPAN_WIDTH}%`;
 
-  const colStyles: StyleProp<ViewStyle>[] = [
+  const colStyles: ViewStyle = StyleSheet.flatten([
     {
       flexGrow: 0,
       flexShrink: 0,
@@ -29,7 +29,7 @@ const Col: React.FC<ColProps> = ({ children, style, span, offset = 0 }) => {
     // {
     //   backgroundColor: '#000',
     // },
-  ];
+  ]);
 
   return <View style={colStyles}>{children}</View>;
 };
