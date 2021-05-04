@@ -11,7 +11,7 @@ group:
 
 > Xant 提供了一套默认主题，如果你想完全替换主题色或者其他样式，可以按照本文档进行主题定制。
 
-Vant 暂时用 context 方式把变量共享给各个组件，有考虑使用 [react-native-extended-stylesheet](https://github.com/vitalets/react-native-extended-stylesheet) 管理样式变量。
+Xant 暂时用 context 方式把变量共享给各个组件，有考虑使用 [react-native-extended-stylesheet](https://github.com/vitalets/react-native-extended-stylesheet) 管理样式变量。
 
 **context 的方式优势**
 
