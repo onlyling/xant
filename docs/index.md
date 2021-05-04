@@ -2,7 +2,7 @@
 title: Xant - Vant for React Native.
 hero:
   title: Xant
-  desc: 🤖 轻量、可靠的移动端组件库
+  desc: 🤖 轻量、可靠的 React Native 组件库
   actions:
     - text: 快速上手 →
       link: /guide/quickstart
