@@ -134,6 +134,14 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
           }}
         />
 
+        <Cell
+          isLink
+          title="Switch"
+          onPress={() => {
+            navigation.navigate('DemoSwitch');
+          }}
+        />
+
         <View style={CStyles.ctxSplit} />
       </ScrollView>
     </Layout.Page>

@@ -4,6 +4,9 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { Image } from 'xant';
 
 const Styles = StyleSheet.create({
+  page: {
+    backgroundColor: '#fff',
+  },
   image: {
     width: 200,
     height: 150,
@@ -12,7 +15,7 @@ const Styles = StyleSheet.create({
 
 const BasicImage: React.FC = () => {
   return (
-    <ScrollView>
+    <ScrollView style={Styles.page}>
       <View>
         <Text>基础用法</Text>
       </View>

@@ -28,4 +28,19 @@ export default defineConfig({
   resolve: {
     includes: ['docs', 'components'],
   },
+  styles: [
+    `
+    .__dumi-default-device-status {
+      background-color: #fff;
+    }
+    #root .__dumi-default-mobile-demo-layout {
+      min-height: 100vh;
+      background-color: #f7f8fa;
+    }
+    @media only screen and (max-width: 500px) {
+      .__dumi-default-mobile-demo-layout {
+        padding: 0 !important;
+      }
+    }`,
+  ],
 });

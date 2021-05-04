@@ -49,6 +49,9 @@ export { default as Popup } from './popup';
 export type { default as Portal } from './portal';
 export { default as Provider } from './provider';
 
+export type { SwitchProps } from './switch/interface';
+export { default as Switch } from './switch';
+
 export type { TagProps } from './tag/interface';
 export { default as Tag } from './tag';
 

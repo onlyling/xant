@@ -78,7 +78,7 @@ const Page: React.FC<PageProps> = memo(
         <View style={pageStyles}>
           {showHeader ? (
             <NavBar
-              wrapperStyle={wrapperStyle}
+              style={wrapperStyle}
               leftArrowStyle={textStyle}
               titleTextStyle={textStyle}
               title={title}

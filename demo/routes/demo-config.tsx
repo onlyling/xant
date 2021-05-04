@@ -19,6 +19,7 @@ import DemoImage from '../../components/image/demo/basic';
 import DemoTag from '../../components/tag/demo/basic';
 import DemoDivider from '../../components/divider/demo/basic';
 import DemoGrid from '../../components/grid/demo/basic';
+import DemoSwitch from '../../components/switch/demo/basic';
 
 export type DemoPaths =
   | 'DemoHome'
@@ -36,7 +37,8 @@ export type DemoPaths =
   | 'DemoImage'
   | 'DemoTag'
   | 'DemoDivider'
-  | 'DemoGrid';
+  | 'DemoGrid'
+  | 'DemoSwitch';
 
 const pageStyle: ViewStyle = {
   flex: 1,
@@ -165,6 +167,14 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
     page: () => (
       <DemoWrapper>
         <DemoGrid />
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoSwitch',
+    page: () => (
+      <DemoWrapper>
+        <DemoSwitch />
       </DemoWrapper>
     ),
   },
