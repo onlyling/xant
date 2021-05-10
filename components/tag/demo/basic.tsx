@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 
 import { Tag, Cell, CellGroup, Toast } from 'xant';
 
@@ -19,11 +19,7 @@ const BasicTag: React.FC = () => {
         />
         <Cell title="success 类型" value={<Tag type="success">标签</Tag>} />
         <Cell title="danger 类型" value={<Tag type="danger">标签</Tag>} />
-        <Cell
-          title="warning 类型"
-          value={<Tag type="warning">标签</Tag>}
-          border={false}
-        />
+        <Cell title="warning 类型" value={<Tag type="warning">标签</Tag>} border={false} />
       </CellGroup>
 
       <CellGroup title="样式风格" border={false}>

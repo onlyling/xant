@@ -1,6 +1,6 @@
 import React, { useRef, useMemo, memo } from 'react';
 import type { ViewStyle } from 'react-native';
-import { Animated, StyleSheet } from 'react-native';
+import { Animated } from 'react-native';
 import { Svg, Circle } from 'react-native-svg';
 
 import useLoop from './loop';
