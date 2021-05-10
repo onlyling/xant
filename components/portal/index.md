@@ -9,7 +9,7 @@ group:
   order: 0
 ---
 
-# 传送门
+## Portal 传送门
 
 代码来自 [react-native-paper](https://github.com/callstack/react-native-paper)，它的[文档](https://callstack.github.io/react-native-paper/portal.html)
 

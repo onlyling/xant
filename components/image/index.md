@@ -15,6 +15,6 @@ group:
 
 ## DEMO
 
-<code src="./demo/doc.tsx"></code>
+<code defaultShowCode src="./demo/doc.tsx"></code>
 
 <API></API>

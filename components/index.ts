@@ -20,6 +20,9 @@ export type { CellProps, CellGroupProps } from './cell/interface';
 export { default as Cell } from './cell';
 export { default as CellGroup } from './cell/cell-group';
 
+export { DialogInstance, DialogProps } from './dialog/interface';
+export { default as Dialog } from './dialog';
+
 export type { DividerProps } from './divider/interface';
 export { default as Divider } from './divider';
 
