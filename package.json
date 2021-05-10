@@ -4,6 +4,7 @@
   "private": true,
   "main": "lib/index.js",
   "module": "es/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -11,6 +12,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "prettier": "prettier --write '{demo,components}/**/*.{js,json,yml,yaml,ts,tsx,md}'",
+    "lint-staged": "lint-staged",
     "commit": "npx git-cz",
     "ncu": "npx npm-check-updates -u -x react,react-native,react-test-renderer",
     "doc": "dumi dev",
@@ -19,7 +22,8 @@
     "doc:pulish-safe": "git subtree push --prefix docs-dist origin gh-pages",
     "doc:pulish": "git push origin `git subtree split --prefix docs-dist master`:gh-pages --force",
     "clean": "antd-tools run clean",
-    "compile": "npm run clean && antd-tools run compile"
+    "compile": "npm run clean && antd-tools run compile",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
@@ -40,6 +44,8 @@
     "@ant-design/tools": "^13.4.0",
     "@babel/core": "^7.14.0",
     "@babel/runtime": "^7.14.0",
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "@react-native-community/eslint-config": "^2.0.0",
     "@testing-library/jest-native": "^4.0.1",
     "@testing-library/react-native": "^7.2.0",
@@ -53,11 +59,25 @@
     "dumi": "^1.1.17",
     "dumi-theme-mobile": "^1.1.0",
     "eslint": "^7.26.0",
+    "git-cz": "^4.7.6",
+    "husky": "^6.0.0",
     "jest": "^26.6.3",
+    "lint-staged": "^11.0.0",
     "metro-react-native-babel-preset": "^0.66.0",
     "react-test-renderer": "17.0.1",
     "ts-jest": "^26.5.6",
     "typescript": "^4.2.4",
     "umi-plugin-react-native": "^0.4.1"
+  },
+  "lint-staged": {
+    "*.{yml,yaml,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   }
 }
