@@ -7,10 +7,7 @@ interface UseSafeHeightParams {
   bottom?: boolean;
 }
 
-const useSafeHeight = ({
-  top = true,
-  bottom = true,
-}: UseSafeHeightParams = {}) => {
+const useSafeHeight = ({ top = true, bottom = true }: UseSafeHeightParams = {}) => {
   const insets = useSafeAreaInsets();
   const insetTop = top ? insets.top : 0;
   const insetBottom = bottom ? insets.bottom : 0;

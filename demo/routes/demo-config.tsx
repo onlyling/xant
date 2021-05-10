@@ -1,7 +1,8 @@
 import React from 'react';
 import type { ViewStyle } from 'react-native';
 
-import DeomHome from '@/pages/demo/demo';
+import DemoHome from '@/pages/demo/demo';
+import DemoFull from '@/pages/demo/full';
 import DemoWrapper from './demo-wrapper';
 
 import DemoNavBar from '../../components/nav-bar/demo/basic';
@@ -24,6 +25,7 @@ import DemoDialog from '../../components/dialog/demo/basic';
 
 export type DemoPaths =
   | 'DemoHome'
+  | 'DemoFull'
   | 'DemoNavBar'
   | 'DemoLoading'
   | 'DemoOverlay'
@@ -50,7 +52,11 @@ const pageStyle: ViewStyle = {
 export const demoConfigs: { path: DemoPaths; page: any }[] = [
   {
     path: 'DemoHome',
-    page: DeomHome,
+    page: DemoHome,
+  },
+  {
+    path: 'DemoFull',
+    page: DemoFull,
   },
   {
     path: 'DemoNavBar',

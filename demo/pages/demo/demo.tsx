@@ -24,6 +24,14 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
 
         <Cell
           isLink
+          title="DemoFull"
+          onPress={() => {
+            navigation.navigate('DemoFull');
+          }}
+        />
+
+        <Cell
+          isLink
           title="NavBar"
           onPress={() => {
             navigation.navigate('DemoNavBar');

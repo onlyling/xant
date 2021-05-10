@@ -29,17 +29,15 @@ type RootStackParamList = {
 } & Record<DemoPaths, undefined>;
 
 /** Stack 路由的 props */
-export type RootStackScreenProps<
-  T extends keyof RootStackParamList
-> = StackScreenProps<RootStackParamList, T>;
+export type RootStackScreenProps<T extends keyof RootStackParamList> =
+  StackScreenProps<RootStackParamList, T>;
 
 /** BottomTab 路由的 navigation prop */
-export type BottomTabNavigationProp<
-  T extends keyof BottomTabParamList
-> = CompositeNavigationProp<
-  BottomTabNavigationPropOriginal<BottomTabParamList, T>,
-  StackNavigationProp<RootStackParamList>
->;
+export type BottomTabNavigationProp<T extends keyof BottomTabParamList> =
+  CompositeNavigationProp<
+    BottomTabNavigationPropOriginal<BottomTabParamList, T>,
+    StackNavigationProp<RootStackParamList>
+  >;
 
 /** BottomTab 路由的 props */
 export type BottomTabScreenProps<T extends keyof BottomTabParamList> = {
