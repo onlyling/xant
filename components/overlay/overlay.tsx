@@ -81,7 +81,7 @@ const Overlay: React.FC<OverlayProps> = ({
     Styles.overlay,
     localShow ? Styles.overlayActive : null,
     {
-      opacity: (fadeAnim.current as unknown) as number,
+      opacity: fadeAnim.current as unknown as number,
       backgroundColor: themeVar.overlay_background_color,
       zIndex: zIndex ? +zIndex : themeVar.overlay_z_index,
     },
@@ -91,7 +91,7 @@ const Overlay: React.FC<OverlayProps> = ({
     style,
   ]);
 
-  if (!show) {
+  if (!localShow) {
     // TODO 优化文档报错
     // 直接返回 null dumi 报错 -、-
     return <></>;
