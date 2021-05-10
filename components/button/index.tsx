@@ -50,7 +50,9 @@ const Button: React.FC<ButtonProps> = ({
    * @param e event 回调事件
    */
   const onPressTouchable = (e: GestureResponderEvent) => {
-    onPress && onPress(e);
+    if (!disabled && !loading) {
+      onPress && onPress(e);
+    }
   };
 
   const buttonStyleSummary = StyleSheet.flatten([Styles.button, style]);
@@ -63,7 +65,7 @@ const Button: React.FC<ButtonProps> = ({
           ? themeVar.button_plain_underlay_color
           : Styles.button.backgroundColor || '') as string,
       )}
-      onPress={!disabled && !loading ? onPressTouchable : undefined}
+      onPress={onPressTouchable}
       style={buttonStyleSummary}
       {...otherProps}
     >
