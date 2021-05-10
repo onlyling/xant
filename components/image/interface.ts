@@ -1,9 +1,4 @@
-import type {
-  ImageProps as ImageReactNativeProps,
-  ViewStyle,
-  StyleProp,
-  GestureResponderEvent,
-} from 'react-native';
+import type { ImageProps as ImageReactNativeProps, ViewStyle, StyleProp, GestureResponderEvent } from 'react-native';
 
 export interface ImageProps extends ImageReactNativeProps {
   wrapperStyle?: StyleProp<ViewStyle>;

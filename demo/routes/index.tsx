@@ -1,14 +1,8 @@
 import React from 'react';
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
-import type {
-  StackScreenProps,
-  StackNavigationProp,
-} from '@react-navigation/stack';
-import {
-  createStackNavigator,
-  CardStyleInterpolators,
-} from '@react-navigation/stack';
+import type { StackScreenProps, StackNavigationProp } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import type { BottomTabNavigationProp as BottomTabNavigationPropOriginal } from '@react-navigation/bottom-tabs';
 
 import ListView from '@/pages/list/list';
@@ -29,15 +23,13 @@ type RootStackParamList = {
 } & Record<DemoPaths, undefined>;
 
 /** Stack 路由的 props */
-export type RootStackScreenProps<T extends keyof RootStackParamList> =
-  StackScreenProps<RootStackParamList, T>;
+export type RootStackScreenProps<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;
 
 /** BottomTab 路由的 navigation prop */
-export type BottomTabNavigationProp<T extends keyof BottomTabParamList> =
-  CompositeNavigationProp<
-    BottomTabNavigationPropOriginal<BottomTabParamList, T>,
-    StackNavigationProp<RootStackParamList>
-  >;
+export type BottomTabNavigationProp<T extends keyof BottomTabParamList> = CompositeNavigationProp<
+  BottomTabNavigationPropOriginal<BottomTabParamList, T>,
+  StackNavigationProp<RootStackParamList>
+>;
 
 /** BottomTab 路由的 props */
 export type BottomTabScreenProps<T extends keyof BottomTabParamList> = {

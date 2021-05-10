@@ -12,10 +12,7 @@ export type PortalManagerState = {
 /**
  * Portal host is the component which actually renders all Portals.
  */
-export default class PortalManager extends React.PureComponent<
-  {},
-  PortalManagerState
-> {
+export default class PortalManager extends React.PureComponent<{}, PortalManagerState> {
   state: State = {
     portals: [],
   };
@@ -41,9 +38,7 @@ export default class PortalManager extends React.PureComponent<
     return this.state.portals.map(({ key, children }, i) => (
       <View
         key={key}
-        collapsable={
-          false /* Need collapsable=false here to clip the elevations, otherwise they appear above sibling components */
-        }
+        collapsable={false /* Need collapsable=false here to clip the elevations, otherwise they appear above sibling components */}
         pointerEvents="box-none"
         style={[StyleSheet.absoluteFill, { zIndex: 1000 + i }]}
       >

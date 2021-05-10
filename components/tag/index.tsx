@@ -38,27 +38,14 @@ const Tag: React.FC<TagProps> = ({
   });
 
   const tagStyleSummary: ViewStyle = StyleSheet.flatten([Styles.tag, style]);
-  const innerStyleSummary: ViewStyle = StyleSheet.flatten([
-    Styles.wrapper,
-    mark ? Styles.wrapperMark : null,
-    innerStyle,
-  ]);
-  const textStyleSummary: TextStyle = StyleSheet.flatten([
-    Styles.text,
-    textStyle,
-  ]);
+  const innerStyleSummary: ViewStyle = StyleSheet.flatten([Styles.wrapper, mark ? Styles.wrapperMark : null, innerStyle]);
+  const textStyleSummary: TextStyle = StyleSheet.flatten([Styles.text, textStyle]);
 
   return (
     <View style={tagStyleSummary}>
       <View style={innerStyleSummary}>
         <Text style={textStyleSummary}>{children}</Text>
-        {closeable ? (
-          <IconCrossOutline
-            onPress={onPressClose}
-            size={textStyleSummary.fontSize}
-            color={textStyleSummary.color as string}
-          />
-        ) : null}
+        {closeable ? <IconCrossOutline onPress={onPressClose} size={textStyleSummary.fontSize} color={textStyleSummary.color as string} /> : null}
       </View>
     </View>
   );

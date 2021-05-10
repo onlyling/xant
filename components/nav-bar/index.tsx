@@ -36,24 +36,12 @@ const NavBar: React.FC<NavBarProps> = ({
     style,
   ]);
   const leftWrapperStyleSummary: ViewStyle = Styles.leftWrapper;
-  const leftArrowStyleSummary = StyleSheet.flatten<TextStyle>([
-    Styles.leftArrow,
-    leftArrowStyle,
-  ]);
-  const titleTextStyleSummary = StyleSheet.flatten<TextStyle>([
-    Styles.titleText,
-    titleTextStyle,
-  ]);
+  const leftArrowStyleSummary = StyleSheet.flatten<TextStyle>([Styles.leftArrow, leftArrowStyle]);
+  const titleTextStyleSummary = StyleSheet.flatten<TextStyle>([Styles.titleText, titleTextStyle]);
   const rightWrapperStyleSummary: ViewStyle = Styles.rithtWrapper;
 
   /** 标题部分 纯文字或自定义 JSX */
-  const titleJSX = title ? (
-    React.isValidElement(title) ? (
-      title
-    ) : (
-      <Text style={titleTextStyleSummary}>{title}</Text>
-    )
-  ) : null;
+  const titleJSX = title ? React.isValidElement(title) ? title : <Text style={titleTextStyleSummary}>{title}</Text> : null;
 
   /** 左侧文字 纯文字或自定义 JSX */
   const leftTextJSX = leftText ? (
@@ -67,27 +55,14 @@ const NavBar: React.FC<NavBarProps> = ({
   ) : null;
 
   /** 右侧文字 纯文字或自定义 JSX */
-  const rightTextJSX = rightText ? (
-    React.isValidElement(rightText) ? (
-      rightText
-    ) : (
-      <Text style={Styles.rightText}>{rightText}</Text>
-    )
-  ) : null;
+  const rightTextJSX = rightText ? React.isValidElement(rightText) ? rightText : <Text style={Styles.rightText}>{rightText}</Text> : null;
 
   return (
     <View style={wrapperStyleSummary}>
       <View style={leftWrapperStyleSummary}>
         {leftArrow ? (
-          <TouchableOpacity
-            style={leftArrowStyleSummary}
-            onPress={onPressLeftArrow}
-          >
-            <IconArrowOutline
-              size={themeVar.nav_bar_arrow_size}
-              color={leftArrowStyleSummary.color as string}
-              direction="left"
-            />
+          <TouchableOpacity style={leftArrowStyleSummary} onPress={onPressLeftArrow}>
+            <IconArrowOutline size={themeVar.nav_bar_arrow_size} color={leftArrowStyleSummary.color as string} direction="left" />
           </TouchableOpacity>
         ) : null}
 

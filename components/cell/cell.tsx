@@ -38,68 +38,24 @@ const Cell: React.FC<CellProps> = ({
   const isValueAlone = !title && !label;
 
   const cellStyleSummary: ViewStyle = StyleSheet.flatten([Styles.cell, style]);
-  const innerStyleSummary: ViewStyle = StyleSheet.flatten([
-    Styles.wrapper,
-    innerStyle,
-  ]);
-  const titleStyleSummary: ViewStyle = StyleSheet.flatten([
-    Styles.title,
-    titleStyle,
-  ]);
-  const titleTextStyleSummary: TextStyle = StyleSheet.flatten([
-    Styles.titleText,
-    titleTextStyle,
-  ]);
-  const valueStyleSummary: ViewStyle = StyleSheet.flatten([
-    Styles.value,
-    valueStyle,
-  ]);
-  const valueTextStyleSummary: TextStyle = StyleSheet.flatten([
-    Styles.valueText,
-    valueTextStyle,
-  ]);
-  const labelTextStyleSummary: TextStyle = StyleSheet.flatten([
-    Styles.labelText,
-    labelTextStyle,
-  ]);
+  const innerStyleSummary: ViewStyle = StyleSheet.flatten([Styles.wrapper, innerStyle]);
+  const titleStyleSummary: ViewStyle = StyleSheet.flatten([Styles.title, titleStyle]);
+  const titleTextStyleSummary: TextStyle = StyleSheet.flatten([Styles.titleText, titleTextStyle]);
+  const valueStyleSummary: ViewStyle = StyleSheet.flatten([Styles.value, valueStyle]);
+  const valueTextStyleSummary: TextStyle = StyleSheet.flatten([Styles.valueText, valueTextStyle]);
+  const labelTextStyleSummary: TextStyle = StyleSheet.flatten([Styles.labelText, labelTextStyle]);
 
   /** 左侧标题 可能是自定义 JSX */
-  const titleJSX = title ? (
-    React.isValidElement(title) ? (
-      title
-    ) : (
-      <Text style={titleTextStyleSummary}>{title}</Text>
-    )
-  ) : null;
+  const titleJSX = title ? React.isValidElement(title) ? title : <Text style={titleTextStyleSummary}>{title}</Text> : null;
 
   /** 右侧文案 可能是自定义 JSX */
-  const valueJSX = value ? (
-    React.isValidElement(value) ? (
-      value
-    ) : (
-      <Text style={valueTextStyleSummary}>{value}</Text>
-    )
-  ) : null;
+  const valueJSX = value ? React.isValidElement(value) ? value : <Text style={valueTextStyleSummary}>{value}</Text> : null;
 
   /** 下方文案 可能是自定义 JSX */
-  const labelJSX = label ? (
-    React.isValidElement(label) ? (
-      label
-    ) : (
-      <Text style={labelTextStyleSummary}>{label}</Text>
-    )
-  ) : null;
+  const labelJSX = label ? React.isValidElement(label) ? label : <Text style={labelTextStyleSummary}>{label}</Text> : null;
 
   /** 箭头 */
-  const arrowJSX = isLink ? (
-    <ArrowIcon
-      direction={arrowDirection}
-      size={themeVar.cell_icon_size}
-      color={themeVar.cell_right_icon_color}
-    />
-  ) : rightIcon ? (
-    rightIcon
-  ) : null;
+  const arrowJSX = isLink ? <ArrowIcon direction={arrowDirection} size={themeVar.cell_icon_size} color={themeVar.cell_right_icon_color} /> : rightIcon ? rightIcon : null;
 
   /** 必填、红点 */
   const requiredJSX = required ? (

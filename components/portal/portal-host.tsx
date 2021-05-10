@@ -1,20 +1,12 @@
 import React from 'react';
-import {
-  DeviceEventEmitter,
-  NativeEventEmitter,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { DeviceEventEmitter, NativeEventEmitter, StyleSheet, View } from 'react-native';
 import PortalManager from './portal-manager';
 
 export type PortalHostProps = {
   children: React.ReactNode;
 };
 
-export type Operation =
-  | { type: 'mount'; key: number; children: React.ReactNode }
-  | { type: 'update'; key: number; children: React.ReactNode }
-  | { type: 'unmount'; key: number };
+export type Operation = { type: 'mount'; key: number; children: React.ReactNode } | { type: 'update'; key: number; children: React.ReactNode } | { type: 'unmount'; key: number };
 
 export type PortalMethods = {
   mount: (children: React.ReactNode) => number;
@@ -123,9 +115,7 @@ export default class PortalHost extends React.Component<PortalHostProps> {
       this._manager.update(key, children);
     } else {
       const op: Operation = { type: 'mount', key, children };
-      const index = this._queue.findIndex(
-        (o) => o.type === 'mount' || (o.type === 'update' && o.key === key),
-      );
+      const index = this._queue.findIndex((o) => o.type === 'mount' || (o.type === 'update' && o.key === key));
 
       if (index > -1) {
         this._queue[index] = op;

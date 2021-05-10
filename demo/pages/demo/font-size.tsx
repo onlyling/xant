@@ -2,9 +2,7 @@ import React from 'react';
 import type { TextStyle } from 'react-native';
 import { Text } from 'react-native';
 
-const fontSizes = new Array(9)
-  .fill(0)
-  .map((_, index) => ((index + 1) * 100).toString() as TextStyle['fontWeight']);
+const fontSizes = new Array(9).fill(0).map((_, index) => ((index + 1) * 100).toString() as TextStyle['fontWeight']);
 
 fontSizes.push('bold');
 

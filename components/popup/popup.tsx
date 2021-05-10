@@ -45,9 +45,7 @@ const Popup: React.FC<PopupProps> = ({
   });
   const MountedRef = useRef(false);
 
-  const fadeAnim = useRef(
-    new Animated.Value(getPosition(show, position)),
-  ).current;
+  const fadeAnim = useRef(new Animated.Value(getPosition(show, position))).current;
   const fadeInstance = useRef<Animated.CompositeAnimation | null>(null);
   const stopShow = useCallback(() => {
     if (fadeInstance.current) {
@@ -117,17 +115,7 @@ const Popup: React.FC<PopupProps> = ({
       // 停止动画
       stopShow();
     };
-  }, [
-    show,
-    duration,
-    fadeAnim,
-    stopShow,
-    position,
-    onOpenFN,
-    onOpenedFN,
-    onCloseFN,
-    onClosedFN,
-  ]);
+  }, [show, duration, fadeAnim, stopShow, position, onOpenFN, onOpenedFN, onCloseFN, onClosedFN]);
 
   // 初始化好组件
   useEffect(() => {
@@ -144,10 +132,7 @@ const Popup: React.FC<PopupProps> = ({
       return false;
     };
 
-    const backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      backAction,
-    );
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
 
     return () => backHandler.remove();
   }, [onRequestClose, show]);
@@ -169,19 +154,9 @@ const Popup: React.FC<PopupProps> = ({
 
   return (
     <>
-      {overlay ? (
-        <Overlay
-          show={state.overlayShow}
-          zIndex={state.zIndex}
-          duration={duration}
-          onPress={onPressOverlay}
-        />
-      ) : null}
+      {overlay ? <Overlay show={state.overlayShow} zIndex={state.zIndex} duration={duration} onPress={onPressOverlay} /> : null}
 
-      <Animated.View
-        style={popupStyleSummary}
-        pointerEvents={position !== 'center' ? undefined : 'box-none'}
-      >
+      <Animated.View style={popupStyleSummary} pointerEvents={position !== 'center' ? undefined : 'box-none'}>
         {children}
       </Animated.View>
     </>

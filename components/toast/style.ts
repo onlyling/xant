@@ -3,22 +3,14 @@ import { StyleSheet } from 'react-native';
 import type { ToastProps } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  { position }: Pick<ToastProps, 'position'>,
-) => {
+export const createStyles = (themeVar: ThemeVarType, { position }: Pick<ToastProps, 'position'>) => {
   return StyleSheet.create({
     toast: {
       // backgroundColor: '#f30', // to test ui
       flex: 1,
       width: '100%',
       alignItems: 'center',
-      justifyContent:
-        position === 'top'
-          ? 'flex-start'
-          : position === 'bottom'
-          ? 'flex-end'
-          : 'center',
+      justifyContent: position === 'top' ? 'flex-start' : position === 'bottom' ? 'flex-end' : 'center',
       paddingTop: themeVar.toast_position_top_distance,
       paddingBottom: themeVar.toast_position_bottom_distance,
     },

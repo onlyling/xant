@@ -44,11 +44,7 @@ const BasicDivider: React.FC = () => {
         <Text>自定义样式</Text>
       </View>
 
-      <Divider
-        style={{ backgroundColor: '#999' }}
-        textStyle={{ color: '#690' }}
-        borderStyle={{ borderColor: '#666' }}
-      >
+      <Divider style={{ backgroundColor: '#999' }} textStyle={{ color: '#690' }} borderStyle={{ borderColor: '#666' }}>
         文字
       </Divider>
 

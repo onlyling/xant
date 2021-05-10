@@ -15,38 +15,15 @@ export const createStyles = (
     round,
     hairline,
     loading,
-  }: Pick<
-    ButtonProps,
-    | 'size'
-    | 'type'
-    | 'color'
-    | 'plain'
-    | 'hairline'
-    | 'square'
-    | 'round'
-    | 'disabled'
-    | 'loading'
-  >,
+  }: Pick<ButtonProps, 'size' | 'type' | 'color' | 'plain' | 'hairline' | 'square' | 'round' | 'disabled' | 'loading'>,
 ) => {
-  const fontSize =
-    themeVar[`button_${size}_font_size` as 'button_mini_font_size'] ||
-    themeVar.button_default_font_size;
-  const height =
-    themeVar[`button_${size}_height` as 'button_mini_height'] ||
-    themeVar.button_default_height;
+  const fontSize = themeVar[`button_${size}_font_size` as 'button_mini_font_size'] || themeVar.button_default_font_size;
+  const height = themeVar[`button_${size}_height` as 'button_mini_height'] || themeVar.button_default_height;
 
-  let colorText =
-    themeVar[`button_${type}_color` as 'button_default_color'] ||
-    themeVar.button_default_color;
-  let backgroundColor =
-    themeVar[
-      `button_${type}_background_color` as 'button_default_background_color'
-    ] || themeVar.button_default_background_color;
-  let borderColor =
-    themeVar[`button_${type}_border_color` as 'button_default_border_color'] ||
-    themeVar.button_default_border_color;
-  let borderWidth =
-    (type === 'default' && !color) || plain ? themeVar.border_width_base : 0;
+  let colorText = themeVar[`button_${type}_color` as 'button_default_color'] || themeVar.button_default_color;
+  let backgroundColor = themeVar[`button_${type}_background_color` as 'button_default_background_color'] || themeVar.button_default_background_color;
+  let borderColor = themeVar[`button_${type}_border_color` as 'button_default_border_color'] || themeVar.button_default_border_color;
+  let borderWidth = (type === 'default' && !color) || plain ? themeVar.border_width_base : 0;
 
   if (plain) {
     colorText = backgroundColor;
@@ -81,11 +58,7 @@ export const createStyles = (
       borderWidth,
       borderStyle: 'solid',
       opacity: disabled || loading ? themeVar.button_disabled_opacity : 1,
-      borderRadius: square
-        ? 0
-        : round
-        ? height / 2
-        : themeVar.button_border_radius,
+      borderRadius: square ? 0 : round ? height / 2 : themeVar.button_border_radius,
     },
     text: {
       textAlign: 'center',

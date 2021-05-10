@@ -1,10 +1,6 @@
 import React, { useEffect, memo } from 'react';
 
-import type {
-  DialogMethodProps,
-  DialogAction,
-  DialogMethodState,
-} from './interface';
+import type { DialogMethodProps, DialogAction, DialogMethodState } from './interface';
 import Dialog from './dialog';
 import useState from '../hooks/use-state-update';
 import useDestroyed from '../hooks/use-destroyed';
@@ -14,11 +10,7 @@ import * as helpers from '../helpers';
  * Dialog 弹出框
  * @description 配合函数的使用
  */
-const DialogMethod: React.FC<DialogMethodProps> = ({
-  beforeClose,
-  callback,
-  ...restProps
-}) => {
+const DialogMethod: React.FC<DialogMethodProps> = ({ beforeClose, callback, ...restProps }) => {
   const [state, setState] = useState<DialogMethodState>({
     show: false,
     cancel: false,

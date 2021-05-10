@@ -1,10 +1,5 @@
 import type React from 'react';
-import type {
-  ViewStyle,
-  TextStyle,
-  TouchableHighlightProps,
-  StyleProp,
-} from 'react-native';
+import type { ViewStyle, TextStyle, TouchableHighlightProps, StyleProp } from 'react-native';
 
 export type CellGroupProps = {
   /**

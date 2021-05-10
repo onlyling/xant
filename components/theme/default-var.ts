@@ -74,8 +74,7 @@ export const badge_border_width = border_width_base;
 export const badge_background_color = red;
 export const badge_dot_color = red;
 export const badge_dot_size: number = 8;
-export const badge_font_family: string =
-  '-apple-system-font, Helvetica Neue, Arial, sans-serif';
+export const badge_font_family: string = '-apple-system-font, Helvetica Neue, Arial, sans-serif';
 
 // ActionBar
 export const action_bar_background_color = white;

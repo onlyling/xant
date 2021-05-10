@@ -7,12 +7,7 @@ import Notify from './notify';
  * Notify 消息提示
  * @description 在页面顶部展示消息提示，支持函数调用和组件调用两种方式。
  */
-const NotifyMethod: React.FC<NotifyMethodProps> = ({
-  duration = 3000,
-  message,
-  hook,
-  ...restProps
-}) => {
+const NotifyMethod: React.FC<NotifyMethodProps> = ({ duration = 3000, message, hook, ...restProps }) => {
   const [show, setShow] = useState(false);
   const [msg, setMsg] = useState(message);
 

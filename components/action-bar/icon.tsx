@@ -10,16 +10,7 @@ import { useTheme } from '../theme';
  * ActionBarIcon 动作栏里面的图标
  * @description icon 的图标可能需要在业务代码中自己控制
  */
-const ActionBarIcon: React.FC<ActionBarIconProps> = ({
-  text,
-  icon,
-  iconRender,
-  dot,
-  badge,
-  color,
-  underlayColor,
-  ...restProps
-}) => {
+const ActionBarIcon: React.FC<ActionBarIconProps> = ({ text, icon, iconRender, dot, badge, color, underlayColor, ...restProps }) => {
   const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { color });
 
@@ -33,10 +24,7 @@ const ActionBarIcon: React.FC<ActionBarIconProps> = ({
     null;
 
   return (
-    <TouchableHighlight
-      {...restProps}
-      underlayColor={underlayColor || themeVar.action_bar_icon_active_color}
-    >
+    <TouchableHighlight {...restProps} underlayColor={underlayColor || themeVar.action_bar_icon_active_color}>
       <View style={Styles.wrapper}>
         <Badge wrapperStyle={Styles.badgeWrapper} dot={dot} content={badge}>
           {iconJSX}

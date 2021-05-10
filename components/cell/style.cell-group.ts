@@ -3,10 +3,7 @@ import { StyleSheet } from 'react-native';
 import type { CellGroupProps } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  { border }: Pick<CellGroupProps, 'border'>,
-) => {
+export const createStyles = (themeVar: ThemeVarType, { border }: Pick<CellGroupProps, 'border'>) => {
   const borderWidth = border ? StyleSheet.hairlineWidth : 0;
 
   return StyleSheet.create({

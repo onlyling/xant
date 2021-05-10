@@ -3,21 +3,10 @@ import { StyleSheet } from 'react-native';
 import type { CellProps } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  {
-    size,
-    title,
-    label,
-    border,
-    center,
-  }: Pick<CellProps, 'size' | 'title' | 'label' | 'border' | 'center'>,
-) => {
+export const createStyles = (themeVar: ThemeVarType, { size, title, label, border, center }: Pick<CellProps, 'size' | 'title' | 'label' | 'border' | 'center'>) => {
   const isLarge = size === 'large';
 
-  const titleFontSize = isLarge
-    ? themeVar.cell_large_title_font_size
-    : themeVar.cell_font_size;
+  const titleFontSize = isLarge ? themeVar.cell_large_title_font_size : themeVar.cell_font_size;
   const isValueAlone = !title && !label;
 
   return StyleSheet.create({
@@ -68,9 +57,7 @@ export const createStyles = (
 
     labelText: {
       color: themeVar.cell_label_color,
-      fontSize: isLarge
-        ? themeVar.cell_large_label_font_size
-        : themeVar.cell_label_font_size,
+      fontSize: isLarge ? themeVar.cell_large_label_font_size : themeVar.cell_label_font_size,
       lineHeight: themeVar.cell_label_line_height,
       marginTop: themeVar.cell_label_margin_top,
     },

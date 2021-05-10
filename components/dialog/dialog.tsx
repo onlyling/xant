@@ -69,29 +69,12 @@ const Dialog: React.FC<DialogProps> = ({
     },
   ];
   const titleTextStyles = [Styles.titleText];
-  const messageTextStyles = [
-    Styles.messageText,
-    title ? Styles.messageTextHasTitle : null,
-  ];
+  const messageTextStyles = [Styles.messageText, title ? Styles.messageTextHasTitle : null];
 
   /** 标题部分 纯文字或自定义 JSX */
-  const titleJSX = title ? (
-    React.isValidElement(title) ? (
-      title
-    ) : (
-      <Text style={titleTextStyles}>{title}</Text>
-    )
-  ) : null;
+  const titleJSX = title ? React.isValidElement(title) ? title : <Text style={titleTextStyles}>{title}</Text> : null;
 
-  const messageJSX = message ? (
-    React.isValidElement(message) ? (
-      message
-    ) : (
-      <Text style={messageTextStyles}>{message}</Text>
-    )
-  ) : (
-    children
-  );
+  const messageJSX = message ? React.isValidElement(message) ? message : <Text style={messageTextStyles}>{message}</Text> : children;
 
   const cancelButtonProps = {
     color: cancelButtonColor || themeVar.dialog_cancel_button_text_color,
@@ -112,51 +95,19 @@ const Dialog: React.FC<DialogProps> = ({
       <Animated.View style={dialogStyles}>
         {titleJSX}
 
-        {titleJSX ? (
-          messageJSX
-        ) : (
-          <View style={Styles.contentIsolated}>{messageJSX}</View>
-        )}
+        {titleJSX ? messageJSX : <View style={Styles.contentIsolated}>{messageJSX}</View>}
 
         {theme === 'default' ? (
           <View style={Styles.footer}>
-            {showCancelButton ? (
-              <Button
-                {...cancelButtonProps}
-                plain
-                size="large"
-                style={Styles.btn}
-              />
-            ) : null}
-            {showConfirmButton ? (
-              <Button
-                {...confirmButtonProps}
-                plain
-                size="large"
-                style={[Styles.btn, showCancelButton ? Styles.btnLeft : null]}
-              />
-            ) : null}
+            {showCancelButton ? <Button {...cancelButtonProps} plain size="large" style={Styles.btn} /> : null}
+            {showConfirmButton ? <Button {...confirmButtonProps} plain size="large" style={[Styles.btn, showCancelButton ? Styles.btnLeft : null]} /> : null}
           </View>
         ) : null}
 
         {theme === 'round-button' ? (
           <ActionBar style={Styles.footerRound}>
-            {showCancelButton ? (
-              <ActionBarButton
-                {...cancelButtonProps}
-                isFirst
-                isLast={!showConfirmButton}
-                style={Styles.btnRound}
-              />
-            ) : null}
-            {showConfirmButton ? (
-              <ActionBarButton
-                {...confirmButtonProps}
-                isFirst={!showCancelButton}
-                isLast
-                style={Styles.btnRound}
-              />
-            ) : null}
+            {showCancelButton ? <ActionBarButton {...cancelButtonProps} isFirst isLast={!showConfirmButton} style={Styles.btnRound} /> : null}
+            {showConfirmButton ? <ActionBarButton {...confirmButtonProps} isFirst={!showCancelButton} isLast style={Styles.btnRound} /> : null}
           </ActionBar>
         ) : null}
       </Animated.View>

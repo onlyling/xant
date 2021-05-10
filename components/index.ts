@@ -1,10 +1,6 @@
 import * as IconAll from './icon';
 
-export type {
-  ActionBarProps,
-  ActionBarIconProps,
-  ActionBarButtonProps,
-} from './action-bar/interface';
+export type { ActionBarProps, ActionBarIconProps, ActionBarButtonProps } from './action-bar/interface';
 export { ActionBar, ActionBarIcon, ActionBarButton } from './action-bar';
 
 export type { ActionSheetInstance } from './action-sheet/interface';

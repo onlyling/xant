@@ -38,13 +38,7 @@ class Portal extends React.Component<PortalProps> {
   render() {
     const { children } = this.props;
 
-    return (
-      <PortalContext.Consumer>
-        {(manager) => (
-          <PortalConsumer manager={manager}>{children}</PortalConsumer>
-        )}
-      </PortalContext.Consumer>
-    );
+    return <PortalContext.Consumer>{(manager) => <PortalConsumer manager={manager}>{children}</PortalConsumer>}</PortalContext.Consumer>;
   }
 }
 

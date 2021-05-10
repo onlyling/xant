@@ -29,11 +29,7 @@ const BasicButton: React.FC = () => {
 
         <View style={{ height: 20 }} />
 
-        <Button
-          type="danger"
-          icon={<Icon.IconArrowOutline color="#fff" />}
-          text="danger"
-        />
+        <Button type="danger" icon={<Icon.IconArrowOutline color="#fff" />} text="danger" />
       </View>
 
       <View style={{ height: 20 }} />
@@ -93,12 +89,7 @@ const BasicButton: React.FC = () => {
       <View>
         <View style={{ height: 20 }} />
 
-        <Button
-          loading
-          type="primary"
-          loadingText="嘿嘿，加油哟~"
-          text="primary"
-        />
+        <Button loading type="primary" loadingText="嘿嘿，加油哟~" text="primary" />
 
         <View style={{ height: 20 }} />
 

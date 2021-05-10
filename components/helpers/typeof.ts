@@ -1,13 +1,4 @@
-const isType = (
-  t:
-    | 'Array'
-    | 'Object'
-    | 'Function'
-    | 'String'
-    | 'Number'
-    | 'Null'
-    | 'Undefined',
-) => (v: any) => Object.prototype.toString.call(v) === `[object ${t}]`;
+const isType = (t: 'Array' | 'Object' | 'Function' | 'String' | 'Number' | 'Null' | 'Undefined') => (v: any) => Object.prototype.toString.call(v) === `[object ${t}]`;
 
 /** 已经声明/定义的数据 */
 export function isDef<T>(val: T): val is NonNullable<T> {
@@ -31,9 +22,7 @@ export const isPromise = <T = any>(val: any): val is Promise<T> => {
 /** 是手机号码 */
 export function isMobile(value: string): boolean {
   value = value.replace(/[^-|\d]/g, '');
-  return (
-    /^((\+86)|(86))?(1)\d{10}$/.test(value) || /^0[0-9-]{10,13}$/.test(value)
-  );
+  return /^((\+86)|(86))?(1)\d{10}$/.test(value) || /^0[0-9-]{10,13}$/.test(value);
 }
 
 /** 是空 */

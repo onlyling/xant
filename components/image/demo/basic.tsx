@@ -33,19 +33,11 @@ const BasicImage: React.FC = () => {
         <Text>圆形图片</Text>
       </View>
 
-      <Image
-        source={{ uri: 'https://img.yzcdn.cn/vant/cat.jpeg' }}
-        radius={10}
-        duration={2000}
-      />
+      <Image source={{ uri: 'https://img.yzcdn.cn/vant/cat.jpeg' }} radius={10} duration={2000} />
 
       <View style={{ height: 20 }} />
 
-      <Image
-        source={{ uri: 'https://img.yzcdn.cn/vant/cat.jpeg' }}
-        round
-        radius={20}
-      />
+      <Image source={{ uri: 'https://img.yzcdn.cn/vant/cat.jpeg' }} round radius={20} />
 
       <View style={{ height: 20 }} />
 
@@ -53,12 +45,7 @@ const BasicImage: React.FC = () => {
         <Text>不需要过度动画</Text>
       </View>
 
-      <Image
-        source={{ uri: 'https://img.yzcdn.cn/vant/cat.jpeg' }}
-        round
-        radius={20}
-        animated={false}
-      />
+      <Image source={{ uri: 'https://img.yzcdn.cn/vant/cat.jpeg' }} round radius={20} animated={false} />
 
       <View style={{ height: 20 }} />
 
@@ -66,18 +53,11 @@ const BasicImage: React.FC = () => {
         <Text>加载失败提示</Text>
       </View>
 
-      <Image
-        source={{ uri: 'https://img.yzcdn.cn/vant/cat1.jpeg' }}
-        wrapperStyle={Styles.image}
-      />
+      <Image source={{ uri: 'https://img.yzcdn.cn/vant/cat1.jpeg' }} wrapperStyle={Styles.image} />
 
       <View style={{ height: 20 }} />
 
-      <Image
-        source={{ uri: 'https://img.yzcdn.cn/vant/cat1.jpeg' }}
-        wrapperStyle={Styles.image}
-        alt="错误提示，说明是什么图片，文字多了"
-      />
+      <Image source={{ uri: 'https://img.yzcdn.cn/vant/cat1.jpeg' }} wrapperStyle={Styles.image} alt="错误提示，说明是什么图片，文字多了" />
 
       <View style={{ height: 20 }} />
     </ScrollView>

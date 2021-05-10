@@ -1,11 +1,6 @@
 import React from 'react';
 
-import type {
-  ToastProps,
-  ToastType,
-  ToastInstance,
-  ToastMethods,
-} from './interface';
+import type { ToastProps, ToastType, ToastInstance, ToastMethods } from './interface';
 import ToastView from './toast';
 import Portal from '../portal';
 
@@ -39,8 +34,7 @@ let currentOptions = {
  * 提示
  */
 const Toast: ToastInstance = (options) => {
-  let opts: ToastProps =
-    typeof options === 'string' ? { message: options } : options;
+  let opts: ToastProps = typeof options === 'string' ? { message: options } : options;
 
   const type = opts.type || currentOptions.type;
 

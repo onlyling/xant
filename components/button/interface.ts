@@ -1,21 +1,11 @@
 import type React from 'react';
-import type {
-  TextStyle,
-  TouchableHighlightProps,
-  StyleProp,
-} from 'react-native';
+import type { TextStyle, TouchableHighlightProps, StyleProp } from 'react-native';
 
 export type ButtonSize = 'large' | 'normal' | 'small' | 'mini';
 
-export type ButtonType =
-  | 'default'
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger';
+export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger';
 
-export interface ButtonProps
-  extends Omit<TouchableHighlightProps, 'underlayColor' | 'activeOpacity'> {
+export interface ButtonProps extends Omit<TouchableHighlightProps, 'underlayColor' | 'activeOpacity'> {
   /**
    * 按钮文字
    */

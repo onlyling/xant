@@ -73,8 +73,7 @@ const BasicToast: React.FC = () => {
           isLink
           onPress={() => {
             Toast({
-              message:
-                '图标暂时还未确定图标暂时还未-确定图标暂时还未确定图标暂时还未确定',
+              message: '图标暂时还未确定图标暂时还未-确定图标暂时还未确定图标暂时还未确定',
               closeOnPress: true,
               duration: 5000,
             });

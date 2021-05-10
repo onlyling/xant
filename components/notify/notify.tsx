@@ -13,17 +13,7 @@ import { useTheme } from '../theme';
  * @description 在页面顶部展示消息提示，支持函数调用和组件调用两种方式。
  * @description 原计划 Notify 的 Props 继承 TouchableWithoutFeedbackProps，更贴近 React Native 提供的组件，这里需要把 Popup 中通用的属性提取出来，如果以后涉及到改动，有点麻烦，等大部分组件完整后看看怎么优化。
  */
-const Notify: React.FC<NotifyProps> = ({
-  children,
-  style,
-  textStyle,
-  type = 'primary',
-  message,
-  color,
-  backgroundColor,
-  onPress,
-  ...restProps
-}) => {
+const Notify: React.FC<NotifyProps> = ({ children, style, textStyle, type = 'primary', message, color, backgroundColor, onPress, ...restProps }) => {
   const insets = useSafeAreaInsets();
   const { themeVar } = useTheme();
 
@@ -40,10 +30,7 @@ const Notify: React.FC<NotifyProps> = ({
     },
     style,
   ]);
-  const messageTextStyleSummary: TextStyle = StyleSheet.flatten([
-    Styles.text,
-    textStyle,
-  ]);
+  const messageTextStyleSummary: TextStyle = StyleSheet.flatten([Styles.text, textStyle]);
 
   const messageJSX = message ? (
     React.isValidElement(message) ? (

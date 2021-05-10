@@ -105,8 +105,7 @@ export type DialogMethodState = {
 };
 
 /** 对话框函数使用时的组件需要的属性 */
-export interface DialogMethodProps
-  extends Omit<DialogCommon, 'show' | 'onPressOverlay'> {
+export interface DialogMethodProps extends Omit<DialogCommon, 'show' | 'onPressOverlay'> {
   /**
    * 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise
    */

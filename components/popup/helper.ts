@@ -3,13 +3,9 @@ import { Dimensions } from 'react-native';
 
 import type { PopupPosition } from './interface';
 
-const isTopOrBottom = (position: PopupPosition) =>
-  position === 'top' || position === 'bottom';
+const isTopOrBottom = (position: PopupPosition) => position === 'top' || position === 'bottom';
 
-export const getTransform = (
-  position: PopupPosition,
-  value: any,
-): ViewStyle => {
+export const getTransform = (position: PopupPosition, value: any): ViewStyle => {
   if (position === 'center') {
     return {
       opacity: value,

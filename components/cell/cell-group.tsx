@@ -10,33 +10,15 @@ import { useTheme } from '../theme';
  * CellGroup 单元格组
  * @description 一组单元格，可以设置一个标题。
  */
-const CellGroup: React.FC<CellGroupProps> = ({
-  children,
-  title,
-  style,
-  textStyle,
-  border = true,
-}) => {
+const CellGroup: React.FC<CellGroupProps> = ({ children, title, style, textStyle, border = true }) => {
   const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { border });
 
-  const titleStyleSummary: ViewStyle = StyleSheet.flatten([
-    Styles.title,
-    style,
-  ]);
-  const titleTextStyleSummary: TextStyle = StyleSheet.flatten([
-    Styles.text,
-    textStyle,
-  ]);
+  const titleStyleSummary: ViewStyle = StyleSheet.flatten([Styles.title, style]);
+  const titleTextStyleSummary: TextStyle = StyleSheet.flatten([Styles.text, textStyle]);
 
   /** 标题 可能是自定义 JSX */
-  const titleJSX = title ? (
-    React.isValidElement(title) ? (
-      title
-    ) : (
-      <Text style={titleTextStyleSummary}>{title}</Text>
-    )
-  ) : null;
+  const titleJSX = title ? React.isValidElement(title) ? title : <Text style={titleTextStyleSummary}>{title}</Text> : null;
 
   return (
     <>

@@ -1,12 +1,6 @@
 import React, { memo } from 'react';
 import type { TextStyle } from 'react-native';
-import {
-  Text,
-  View,
-  ScrollView,
-  TouchableHighlight,
-  StyleSheet,
-} from 'react-native';
+import { Text, View, ScrollView, TouchableHighlight, StyleSheet } from 'react-native';
 
 import type { ActionSheetProps } from './interface';
 import { createStyles } from './style';
@@ -19,16 +13,7 @@ import useSafeHeight from '../hooks/use-safe-height';
  * ActionSheet 动作面板
  * @description 底部弹起的模态面板，包含与当前情境相关的多个选项。
  */
-const ActionSheet: React.FC<ActionSheetProps> = ({
-  actions,
-  title,
-  cancelText,
-  description,
-  round = true,
-  onCancel,
-  onSelect,
-  ...restProps
-}) => {
+const ActionSheet: React.FC<ActionSheetProps> = ({ actions, title, cancelText, description, round = true, onCancel, onSelect, ...restProps }) => {
   const safeHeight = useSafeHeight();
   const { themeVar } = useTheme();
   const Styles = createStyles(themeVar);
@@ -49,10 +34,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
     React.isValidElement(cancelText) ? (
       cancelText
     ) : (
-      <Text
-        style={StyleSheet.flatten([Styles.btn, Styles.cancel])}
-        numberOfLines={1}
-      >
+      <Text style={StyleSheet.flatten([Styles.btn, Styles.cancel])} numberOfLines={1}>
         {cancelText}
       </Text>
     )
@@ -64,13 +46,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
       description
     ) : (
       <View style={Styles.descriptionBox}>
-        <Text
-          style={StyleSheet.flatten([
-            Styles.description,
-            titleJSX ? null : Styles.descriptionAlone,
-          ])}
-          numberOfLines={1}
-        >
+        <Text style={StyleSheet.flatten([Styles.description, titleJSX ? null : Styles.descriptionAlone])} numberOfLines={1}>
           {description}
         </Text>
       </View>
@@ -79,8 +55,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
 
   const navBarHeight = themeVar.nav_bar_height;
   const btnHeight = themeVar.action_sheet_loading_icon_size + 14 * 2;
-  const descriptionHeight =
-    themeVar.action_sheet_description_line_height + (titleJSX ? 14 : 14 * 2);
+  const descriptionHeight = themeVar.action_sheet_description_line_height + (titleJSX ? 14 : 14 * 2);
   const contentHeihgt =
     safeHeight -
     navBarHeight -
@@ -102,19 +77,14 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
           }
 
           if (item.disabled) {
-            customTextStyle.color =
-              themeVar.action_sheet_item_disabled_text_color;
+            customTextStyle.color = themeVar.action_sheet_item_disabled_text_color;
           }
 
           return (
             <TouchableHighlight
               key={`${item.name}_${item.subname}_${index}`}
               activeOpacity={1}
-              underlayColor={
-                item.disabled || item.loading
-                  ? themeVar.action_sheet_item_background
-                  : themeVar.active_color
-              }
+              underlayColor={item.disabled || item.loading ? themeVar.action_sheet_item_background : themeVar.active_color}
               onPress={() => {
                 if (!item.disabled && !item.loading) {
                   onSelect && onSelect(item, index);
@@ -123,27 +93,11 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
             >
               <View style={Styles.btn}>
                 {item.loading ? (
-                  <Loading
-                    size={themeVar.action_sheet_loading_icon_size}
-                    color={themeVar.action_sheet_item_disabled_text_color}
-                  />
+                  <Loading size={themeVar.action_sheet_loading_icon_size} color={themeVar.action_sheet_item_disabled_text_color} />
                 ) : (
                   <>
-                    <Text
-                      style={StyleSheet.flatten([Styles.item, customTextStyle])}
-                    >
-                      {item.name}
-                    </Text>
-                    {item.subname ? (
-                      <Text
-                        style={StyleSheet.flatten([
-                          Styles.item,
-                          Styles.subname,
-                        ])}
-                      >
-                        {item.subname}
-                      </Text>
-                    ) : null}
+                    <Text style={StyleSheet.flatten([Styles.item, customTextStyle])}>{item.name}</Text>
+                    {item.subname ? <Text style={StyleSheet.flatten([Styles.item, Styles.subname])}>{item.subname}</Text> : null}
                   </>
                 )}
               </View>
@@ -155,11 +109,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({
       {cancelTextJSX ? (
         <>
           <View style={Styles.gap} />
-          <TouchableHighlight
-            activeOpacity={1}
-            underlayColor={themeVar.active_color}
-            onPress={onCancel}
-          >
+          <TouchableHighlight activeOpacity={1} underlayColor={themeVar.active_color} onPress={onCancel}>
             {cancelTextJSX}
           </TouchableHighlight>
         </>

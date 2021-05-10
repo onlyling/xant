@@ -85,36 +85,17 @@ const Toast: React.FC<ToastProps> = ({
     };
   }, [duration, hook]);
 
-  const toastInnerStyleSummary: ViewStyle = StyleSheet.flatten([
-    Styles.inner,
-    type === 'text' ? Styles.innerText : null,
-  ]);
-  const toastTextStyleSummary: TextStyle = StyleSheet.flatten([
-    Styles.text,
-    type === 'text' ? Styles.textTop0 : null,
-  ]);
+  const toastInnerStyleSummary: ViewStyle = StyleSheet.flatten([Styles.inner, type === 'text' ? Styles.innerText : null]);
+  const toastTextStyleSummary: TextStyle = StyleSheet.flatten([Styles.text, type === 'text' ? Styles.textTop0 : null]);
 
   return (
-    <Popup
-      {...reset}
-      show={show}
-      overlay={overlay}
-      onPressOverlay={onPressOverlay}
-    >
+    <Popup {...reset} show={show} overlay={overlay} onPressOverlay={onPressOverlay}>
       <TouchableWithoutFeedback onPress={onPressContent}>
-        <View
-          style={Styles.toast}
-          pointerEvents={forbidPress ? undefined : 'box-none'}
-          collapsable={false}
-        >
+        <View style={Styles.toast} pointerEvents={forbidPress ? undefined : 'box-none'} collapsable={false}>
           <View style={toastInnerStyleSummary}>
             {type === 'loading' ? (
               <View style={Styles.loading}>
-                {loadingType === 'circular' ? (
-                  <Circular color={themeVar.toast_loading_icon_color} />
-                ) : (
-                  <Spinner color={themeVar.toast_loading_icon_color} />
-                )}
+                {loadingType === 'circular' ? <Circular color={themeVar.toast_loading_icon_color} /> : <Spinner color={themeVar.toast_loading_icon_color} />}
               </View>
             ) : null}
 

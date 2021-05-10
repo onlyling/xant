@@ -3,18 +3,8 @@ import { StyleSheet } from 'react-native';
 import type { NotifyProps } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  {
-    color,
-    backgroundColor,
-    type,
-  }: Pick<NotifyProps, 'color' | 'backgroundColor' | 'type'>,
-) => {
-  const typeBackgroundColor =
-    themeVar[
-      `notify_${type}_background_color` as 'notify_primary_background_color'
-    ] || themeVar.notify_primary_background_color;
+export const createStyles = (themeVar: ThemeVarType, { color, backgroundColor, type }: Pick<NotifyProps, 'color' | 'backgroundColor' | 'type'>) => {
+  const typeBackgroundColor = themeVar[`notify_${type}_background_color` as 'notify_primary_background_color'] || themeVar.notify_primary_background_color;
 
   return StyleSheet.create({
     notify: {

@@ -1,10 +1,5 @@
 import type React from 'react';
-import type {
-  ViewProps,
-  TouchableHighlightProps,
-  ViewStyle,
-  StyleProp,
-} from 'react-native';
+import type { ViewProps, TouchableHighlightProps, ViewStyle, StyleProp } from 'react-native';
 
 import type { ButtonProps } from '../button/interface';
 

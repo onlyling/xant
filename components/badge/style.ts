@@ -3,10 +3,7 @@ import { StyleSheet } from 'react-native';
 import type { BadgeProps } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  { color }: Pick<BadgeProps, 'color'>,
-) => {
+export const createStyles = (themeVar: ThemeVarType, { color }: Pick<BadgeProps, 'color'>) => {
   return StyleSheet.create({
     badge: {
       minWidth: themeVar.badge_size,

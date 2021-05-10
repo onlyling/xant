@@ -92,9 +92,7 @@ const Switch: React.FC<SwitchProps> = ({
     {
       // 当前过渡不支持 color/backgroundColor
       // 参考：https://stackoverflow.com/a/60586628
-      backgroundColor: actived
-        ? activeColor || themeVar.switch_on_background_color
-        : inactiveColor || themeVar.switch_background_color,
+      backgroundColor: actived ? activeColor || themeVar.switch_on_background_color : inactiveColor || themeVar.switch_background_color,
     },
     disabled ? Styles.disabled : null,
   ]);
@@ -116,11 +114,7 @@ const Switch: React.FC<SwitchProps> = ({
           {loading ? (
             <LoadingCircular
               size={(Styles.node.width / 4) * 3}
-              color={
-                actived
-                  ? activeColor || themeVar.switch_on_background_color
-                  : inactiveColor || themeVar.loading_text_color
-              }
+              color={actived ? activeColor || themeVar.switch_on_background_color : inactiveColor || themeVar.loading_text_color}
             />
           ) : null}
         </Animated.View>

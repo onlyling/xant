@@ -9,10 +9,7 @@ type UserCenterProps = {} & Routes.BottomTabScreenProps<'UserCenter'>;
 const UserCenter: React.FC<UserCenterProps> = ({ navigation }) => {
   return (
     <Layout.FullPage statusBarStyle="light-content">
-      <Image
-        source={{ uri: 'https://img.yzcdn.cn/vant/cat.jpeg' }}
-        style={{ width: '100%', height: 200 }}
-      />
+      <Image source={{ uri: 'https://img.yzcdn.cn/vant/cat.jpeg' }} style={{ width: '100%', height: 200 }} />
 
       <View>
         <Text>UserCenter</Text>

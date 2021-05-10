@@ -3,10 +3,7 @@ import { StyleSheet } from 'react-native';
 import type { DialogProps } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  { messageAlign, width }: Pick<DialogProps, 'messageAlign' | 'width'>,
-) => {
+export const createStyles = (themeVar: ThemeVarType, { messageAlign, width }: Pick<DialogProps, 'messageAlign' | 'width'>) => {
   return StyleSheet.create({
     dialog: {
       // position: 'absolute',

@@ -11,13 +11,7 @@ import { useTheme } from '../theme';
  * @description 需要和 ActionBarIcon 配合使用
  * @description 如果需要固定到底部或头部，最好和 Portal 搭配，或者放置页面的顶部、底部
  */
-const ActionBar: React.FC<ActionBarProps> = ({
-  safeAreaInsetBottom = false,
-  innerStyle,
-  children,
-  style,
-  ...restProps
-}) => {
+const ActionBar: React.FC<ActionBarProps> = ({ safeAreaInsetBottom = false, innerStyle, children, style, ...restProps }) => {
   const insets = useSafeAreaInsets();
   const { themeVar } = useTheme();
   const barStyleSummary: ViewStyle = StyleSheet.flatten([

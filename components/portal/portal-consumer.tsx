@@ -10,9 +10,7 @@ export default class PortalConsumer extends React.Component<PortalConsumerProps>
   _key: any;
   componentDidMount() {
     if (!this.props.manager) {
-      throw new Error(
-        'Looks like you forgot to wrap your root component with `Provider` component from `@ant-design/react-native`.\n\n',
-      );
+      throw new Error('Looks like you forgot to wrap your root component with `Provider` component from `@ant-design/react-native`.\n\n');
     }
 
     this._key = this.props.manager.mount(this.props.children);

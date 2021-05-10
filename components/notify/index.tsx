@@ -6,8 +6,7 @@ import NotifyMethod from './notify-method';
 import Portal from '../portal';
 
 const Notify: NotifyInstance = (options) => {
-  let opts: NotifyOptions =
-    typeof options === 'string' ? { message: options } : options;
+  let opts: NotifyOptions = typeof options === 'string' ? { message: options } : options;
 
   let ref: NotifyMethods | null = null;
 

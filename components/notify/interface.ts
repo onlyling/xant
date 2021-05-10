@@ -10,11 +10,7 @@ export type NotifyMethods = {
   setMessage: (s: React.ReactNode) => void;
 };
 
-export interface NotifyProps
-  extends Omit<
-    PopupPropsCommon,
-    'overlay' | 'closeOnClickOverlay' | 'onPressOverlay' | 'duration'
-  > {
+export interface NotifyProps extends Omit<PopupPropsCommon, 'overlay' | 'closeOnClickOverlay' | 'onPressOverlay' | 'duration'> {
   /**
    * 最外层样式
    */

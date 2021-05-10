@@ -5,23 +5,16 @@ import omit from 'omit.js';
 import type { PopupProps, PopupPosition } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  { round, position }: Pick<PopupProps, 'round' | 'position'>,
-) => {
+export const createStyles = (themeVar: ThemeVarType, { round, position }: Pick<PopupProps, 'round' | 'position'>) => {
   const borderRadius = round ? themeVar.popup_round_border_radius : 0;
 
   return StyleSheet.create({
     popup: {
       position: 'relative',
-      borderTopLeftRadius:
-        position === 'bottom' || position === 'right' ? borderRadius : 0,
-      borderTopRightRadius:
-        position === 'bottom' || position === 'left' ? borderRadius : 0,
-      borderBottomLeftRadius:
-        position === 'top' || position === 'right' ? borderRadius : 0,
-      borderBottomRightRadius:
-        position === 'top' || position === 'left' ? borderRadius : 0,
+      borderTopLeftRadius: position === 'bottom' || position === 'right' ? borderRadius : 0,
+      borderTopRightRadius: position === 'bottom' || position === 'left' ? borderRadius : 0,
+      borderBottomLeftRadius: position === 'top' || position === 'right' ? borderRadius : 0,
+      borderBottomRightRadius: position === 'top' || position === 'left' ? borderRadius : 0,
       backgroundColor: themeVar.popup_background_color,
       overflow: 'hidden',
       height: 0,

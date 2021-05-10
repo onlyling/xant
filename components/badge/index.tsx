@@ -16,16 +16,7 @@ type State = {
  * @description 在右上角展示徽标数字或小红点。
  * @description RN translateX translateY 无法用百分数，需要通过 onLayout 拿到具体的数字后计算偏移量
  */
-const Badge: React.FC<BadgeProps> = ({
-  children,
-  content,
-  dot,
-  max,
-  color,
-  style,
-  textStyle,
-  wrapperStyle,
-}) => {
+const Badge: React.FC<BadgeProps> = ({ children, content, dot, max, color, style, textStyle, wrapperStyle }) => {
   const [state, setState] = useState<State>({ width: 0, height: 0 });
 
   const { themeVar } = useTheme();
@@ -41,19 +32,9 @@ const Badge: React.FC<BadgeProps> = ({
   }
 
   const hasContent = () => !!content || content === 0;
-  const badgeStyleSummary: ViewStyle = StyleSheet.flatten([
-    Styles.badge,
-    dot ? Styles.dot : null,
-    style,
-  ]);
-  const badgeTextStyleSummary: TextStyle = StyleSheet.flatten([
-    Styles.badgeText,
-    textStyle,
-  ]);
-  const badgeWrapperStyleSummary: ViewStyle = StyleSheet.flatten([
-    Styles.wrapper,
-    wrapperStyle,
-  ]);
+  const badgeStyleSummary: ViewStyle = StyleSheet.flatten([Styles.badge, dot ? Styles.dot : null, style]);
+  const badgeTextStyleSummary: TextStyle = StyleSheet.flatten([Styles.badgeText, textStyle]);
+  const badgeWrapperStyleSummary: ViewStyle = StyleSheet.flatten([Styles.wrapper, wrapperStyle]);
   const badgeTextStyleBoxSummary: ViewStyle = StyleSheet.flatten([
     Styles.fixed,
     {

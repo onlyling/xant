@@ -8,11 +8,7 @@ type DetailsProps = {} & Routes.RootStackScreenProps<'Details'>;
 
 const Details: React.FC<DetailsProps> = ({ route }) => {
   return (
-    <Layout.Page
-      title="Details"
-      headerBackgroundColor="#fff"
-      barStyle="dark-content"
-    >
+    <Layout.Page title="Details" headerBackgroundColor="#fff" barStyle="dark-content">
       <View style={{ backgroundColor: '#fff' }}>
         <Text>Details</Text>
         <View>

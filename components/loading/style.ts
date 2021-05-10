@@ -3,15 +3,7 @@ import { StyleSheet } from 'react-native';
 import type { LoadingProps } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  {
-    size,
-    color,
-    textSize,
-    vertical,
-  }: Pick<LoadingProps, 'size' | 'color' | 'textSize' | 'vertical'>,
-) => {
+export const createStyles = (themeVar: ThemeVarType, { size, color, textSize, vertical }: Pick<LoadingProps, 'size' | 'color' | 'textSize' | 'vertical'>) => {
   size = size || themeVar.loading_spinner_size;
 
   return StyleSheet.create({

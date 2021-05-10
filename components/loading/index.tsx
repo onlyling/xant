@@ -11,36 +11,15 @@ import { useTheme } from '../theme';
  * Loading 加载
  * 加载图标，用于表示加载中的过渡状态。
  */
-const Loading: React.FC<LoadingProps> = ({
-  children,
-  style,
-  textStyle,
-  size,
-  color,
-  textSize,
-  vertical = false,
-  type = 'circular',
-}) => {
+const Loading: React.FC<LoadingProps> = ({ children, style, textStyle, size, color, textSize, vertical = false, type = 'circular' }) => {
   const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { size, color, textSize, vertical });
 
-  const textJSX = children ? (
-    React.isValidElement(children) ? (
-      children
-    ) : (
-      <Text style={StyleSheet.flatten([Styles.text, textStyle])}>
-        {children}
-      </Text>
-    )
-  ) : null;
+  const textJSX = children ? React.isValidElement(children) ? children : <Text style={StyleSheet.flatten([Styles.text, textStyle])}>{children}</Text> : null;
 
   return (
     <View style={StyleSheet.flatten([Styles.loading, style])}>
-      {type === 'circular' ? (
-        <Circular size={size} color={color} />
-      ) : (
-        <Spinner size={size} color={color} />
-      )}
+      {type === 'circular' ? <Circular size={size} color={color} /> : <Spinner size={size} color={color} />}
       {textJSX}
     </View>
   );

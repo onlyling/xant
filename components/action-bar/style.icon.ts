@@ -3,10 +3,7 @@ import { StyleSheet } from 'react-native';
 import type { ActionBarIconProps } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  { color }: Pick<ActionBarIconProps, 'color'>,
-) => {
+export const createStyles = (themeVar: ThemeVarType, { color }: Pick<ActionBarIconProps, 'color'>) => {
   return StyleSheet.create({
     wrapper: {
       height: '100%',

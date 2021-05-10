@@ -3,14 +3,7 @@ import { StyleSheet } from 'react-native';
 import type { DividerProps } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  {
-    dashed,
-    hairline,
-    contentPosition,
-  }: Pick<DividerProps, 'contentPosition' | 'dashed' | 'hairline'>,
-) => {
+export const createStyles = (themeVar: ThemeVarType, { dashed, hairline, contentPosition }: Pick<DividerProps, 'contentPosition' | 'dashed' | 'hairline'>) => {
   return StyleSheet.create({
     divider: {
       flexDirection: 'row',
@@ -29,18 +22,12 @@ export const createStyles = (
 
     borderLeft: {
       marginRight: themeVar.divider_horizontal_margin,
-      maxWidth:
-        contentPosition === 'left'
-          ? themeVar.divider_content_left_width
-          : 'auto',
+      maxWidth: contentPosition === 'left' ? themeVar.divider_content_left_width : 'auto',
     },
 
     borderRight: {
       marginLeft: themeVar.divider_horizontal_margin,
-      maxWidth:
-        contentPosition === 'right'
-          ? themeVar.divider_content_right_width
-          : 'auto',
+      maxWidth: contentPosition === 'right' ? themeVar.divider_content_right_width : 'auto',
     },
 
     text: {

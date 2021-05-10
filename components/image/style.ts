@@ -3,10 +3,7 @@ import { StyleSheet } from 'react-native';
 import type { ImageProps } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  { round, radius }: Pick<ImageProps, 'round' | 'radius'>,
-) => {
+export const createStyles = (themeVar: ThemeVarType, { round, radius }: Pick<ImageProps, 'round' | 'radius'>) => {
   return StyleSheet.create({
     wrapper: {
       width: themeVar.image_default_size,

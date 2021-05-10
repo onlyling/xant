@@ -68,8 +68,7 @@ export interface ActionSheetProps extends PopupPropsCommon {
   onSelect?: (action: Action, index: number) => void;
 }
 
-export interface ActionSheetOptions
-  extends Omit<ActionSheetProps, 'show' | 'actions' | 'onCancel' | 'onSelect'> {
+export interface ActionSheetOptions extends Omit<ActionSheetProps, 'show' | 'actions' | 'onCancel' | 'onSelect'> {
   /**
    * 面板选项列表
    */
@@ -78,11 +77,7 @@ export interface ActionSheetOptions
   /**
    * 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise
    */
-  beforeClose?: (
-    action: ActionSheetAction,
-    item?: Action,
-    index?: number,
-  ) => boolean | Promise<boolean>;
+  beforeClose?: (action: ActionSheetAction, item?: Action, index?: number) => boolean | Promise<boolean>;
 
   /**
    * 操作完成后的回调

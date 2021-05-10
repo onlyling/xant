@@ -13,17 +13,7 @@ import FocusAwareStatusBar from '../focus-aware-status-bar';
  * 页面盒子
  */
 const Page: React.FC<PageProps> = memo(
-  ({
-    children,
-    style,
-    statusBarProps,
-    barStyle = 'dark-content',
-    showHeader = true,
-    headerBackgroundColor,
-    title,
-    onPressBack,
-    headerPorps,
-  }) => {
+  ({ children, style, statusBarProps, barStyle = 'dark-content', showHeader = true, headerBackgroundColor, title, onPressBack, headerPorps }) => {
     const navigation = useNavigation();
     const insets = useSafeAreaInsets();
     const { themeVar } = useTheme();
@@ -37,14 +27,7 @@ const Page: React.FC<PageProps> = memo(
       }),
       [primaryColor],
     );
-    const pageStyles = useMemo<ViewStyle>(
-      () =>
-        StyleSheet.flatten([
-          { flex: 1, backgroundColor: themeVar.background_color },
-          style,
-        ]),
-      [themeVar.background_color, style],
-    );
+    const pageStyles = useMemo<ViewStyle>(() => StyleSheet.flatten([{ flex: 1, backgroundColor: themeVar.background_color }, style]), [themeVar.background_color, style]);
     const consBarStyle = useMemo<ViewStyle>(
       () => ({
         height: insets.top,
@@ -77,14 +60,7 @@ const Page: React.FC<PageProps> = memo(
 
         <View style={pageStyles}>
           {showHeader ? (
-            <NavBar
-              style={wrapperStyle}
-              leftArrowStyle={textStyle}
-              titleTextStyle={textStyle}
-              title={title}
-              onPressLeftArrow={onPressLeftArrow}
-              {...headerPorps}
-            />
+            <NavBar style={wrapperStyle} leftArrowStyle={textStyle} titleTextStyle={textStyle} title={title} onPressLeftArrow={onPressLeftArrow} {...headerPorps} />
           ) : null}
           {children}
         </View>

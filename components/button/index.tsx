@@ -60,11 +60,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <TouchableHighlight
-      underlayColor={helpers.hex2rgba(
-        (Styles.button.backgroundColor === themeVar.white
-          ? themeVar.button_plain_underlay_color
-          : Styles.button.backgroundColor || '') as string,
-      )}
+      underlayColor={helpers.hex2rgba((Styles.button.backgroundColor === themeVar.white ? themeVar.button_plain_underlay_color : Styles.button.backgroundColor || '') as string)}
       onPress={onPressTouchable}
       style={buttonStyleSummary}
       {...otherProps}

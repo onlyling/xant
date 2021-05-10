@@ -3,16 +3,11 @@ import { StyleSheet, Platform } from 'react-native';
 import type { SwitchProps } from './interface';
 import type { ThemeVarType } from '../theme';
 
-export const createStyles = (
-  themeVar: ThemeVarType,
-  { size }: Pick<SwitchProps, 'size'>,
-) => {
+export const createStyles = (themeVar: ThemeVarType, { size }: Pick<SwitchProps, 'size'>) => {
   const unitSize = size || themeVar.switch_size;
   const switchWidth = unitSize * themeVar.switch_width_ratio;
   const switchHeight = unitSize * themeVar.switch_height_ratio;
-  const nodeSize =
-    unitSize * themeVar.switch_node_size_ratio -
-    themeVar.switch_border_width * 2;
+  const nodeSize = unitSize * themeVar.switch_node_size_ratio - themeVar.switch_border_width * 2;
 
   return StyleSheet.create({
     switch: {
