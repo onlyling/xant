@@ -142,6 +142,14 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
           }}
         />
 
+        <Cell
+          isLink
+          title="Dialog"
+          onPress={() => {
+            navigation.navigate('DemoDialog');
+          }}
+        />
+
         <View style={CStyles.ctxSplit} />
       </ScrollView>
     </Layout.Page>
