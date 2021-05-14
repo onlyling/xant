@@ -1,4 +1,5 @@
 module.exports = {
+  eslintIntegration: true,
   // // 一行最多 180 字符
   printWidth: 180,
   // 使用 2 个空格缩进
