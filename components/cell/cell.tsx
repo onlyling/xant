@@ -13,6 +13,7 @@ import ArrowIcon from '../icon/arrow';
  */
 const Cell: React.FC<CellProps> = ({
   innerStyle,
+  leftWrapperStyle,
   titleStyle,
   titleTextStyle,
   valueStyle,
@@ -39,6 +40,7 @@ const Cell: React.FC<CellProps> = ({
 
   const cellStyleSummary: ViewStyle = StyleSheet.flatten([Styles.cell, style]);
   const innerStyleSummary: ViewStyle = StyleSheet.flatten([Styles.wrapper, innerStyle]);
+  const leftWrapperStyleSummary: ViewStyle = StyleSheet.flatten([Styles.leftWrapper, leftWrapperStyle]);
   const titleStyleSummary: ViewStyle = StyleSheet.flatten([Styles.title, titleStyle]);
   const titleTextStyleSummary: TextStyle = StyleSheet.flatten([Styles.titleText, titleTextStyle]);
   const valueStyleSummary: ViewStyle = StyleSheet.flatten([Styles.value, valueStyle]);
@@ -75,7 +77,7 @@ const Cell: React.FC<CellProps> = ({
     >
       <View style={innerStyleSummary}>
         {requiredJSX || icon || !isValueAlone ? (
-          <View style={Styles.leftWrapper}>
+          <View style={leftWrapperStyleSummary}>
             {requiredJSX}
 
             {icon ? <View style={Styles.iconLeft}>{icon}</View> : null}

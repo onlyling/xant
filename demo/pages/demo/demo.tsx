@@ -24,7 +24,7 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
 
         <Cell
           isLink
-          title="DemoFull"
+          title="FullPage"
           onPress={() => {
             navigation.navigate('DemoFull');
           }}
@@ -155,6 +155,22 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
           title="Dialog"
           onPress={() => {
             navigation.navigate('DemoDialog');
+          }}
+        />
+
+        <Cell
+          isLink
+          title="TextInput"
+          onPress={() => {
+            navigation.navigate('DemoTextInput');
+          }}
+        />
+
+        <Cell
+          isLink
+          title="Field"
+          onPress={() => {
+            navigation.navigate('DemoField');
           }}
         />
 

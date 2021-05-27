@@ -28,6 +28,8 @@ export type CellGroupProps = {
 export interface CellProps extends TouchableHighlightProps {
   innerStyle?: StyleProp<ViewStyle>;
 
+  leftWrapperStyle?: StyleProp<ViewStyle>;
+
   titleStyle?: StyleProp<ViewStyle>;
 
   titleTextStyle?: StyleProp<TextStyle>;

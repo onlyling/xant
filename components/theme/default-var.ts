@@ -206,6 +206,11 @@ export const divider_content_padding = padding_md;
 export const divider_content_left_width: string = '10%';
 export const divider_content_right_width: string = '10%';
 
+// Field
+export const field_label_width: number = 86; // rem
+export const field_label_color = gray_7;
+export const field_label_margin_right = padding_sm;
+
 // Loading
 export const loading_text_color = gray_6;
 export const loading_text_font_size = font_size_md;
@@ -256,6 +261,23 @@ export const popup_close_icon_size: number = 22;
 export const popup_close_icon_color = gray_5;
 export const popup_close_icon_active_color = gray_6;
 export const popup_close_icon_margin: number = 16;
+
+// Switch
+export const switch_size: number = 30;
+export const switch_width_ratio: number = 2; // 原变量中使用了 em，这里改成对应的比例
+export const switch_height_ratio: number = 1; // 原变量中使用了 em，这里改成对应的比例
+export const switch_node_size_ratio: number = 1; // 原变量中使用了 em，这里改成对应的比例
+export const switch_node_background_color = white;
+// export const switch_node_box_shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05),
+//   0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
+export const switch_background_color = white;
+export const switch_on_background_color = blue;
+export const switch_transition_duration = animation_duration_base;
+export const switch_disabled_opacity = disabled_opacity;
+export const switch_border_width = border_width_base;
+export const switch_border_style: ViewStyle['borderStyle'] = 'solid';
+export const switch_border_color: string = 'rgba(0, 0, 0, 0.1)';
+// export const switch_border: @border-width-base solid rgba(0, 0, 0, 0.1);
 export const popup_close_icon_z_index: number = 1;
 
 // Tag
@@ -278,22 +300,17 @@ export const tag_warning_color = orange;
 export const tag_default_color = gray_6;
 export const tag_plain_background_color = white;
 
-// Switch
-export const switch_size: number = 30;
-export const switch_width_ratio: number = 2; // 原变量中使用了 em，这里改成对应的比例
-export const switch_height_ratio: number = 1; // 原变量中使用了 em，这里改成对应的比例
-export const switch_node_size_ratio: number = 1; // 原变量中使用了 em，这里改成对应的比例
-export const switch_node_background_color = white;
-// export const switch_node_box_shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05),
-//   0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
-export const switch_background_color = white;
-export const switch_on_background_color = blue;
-export const switch_transition_duration = animation_duration_base;
-export const switch_disabled_opacity = disabled_opacity;
-export const switch_border_width = border_width_base;
-export const switch_border_style: ViewStyle['borderStyle'] = 'solid';
-export const switch_border_color: string = 'rgba(0, 0, 0, 0.1)';
-// export const switch_border: @border-width-base solid rgba(0, 0, 0, 0.1);
+// TextInput
+export const text_input_color = gray_7;
+export const text_input_font_size = font_size_md;
+export const text_input_padding_horizontal: number = 0;
+export const text_input_padding_vertical: number = 0;
+export const text_input_selection_color = primary;
+export const text_input_placeholder_text_color = gray_5;
+export const text_input_min_height: number = 24;
+export const text_input_clearable_size: number = 16;
+export const text_input_clearable_background_color = gray_4;
+export const text_input_clearable_color: string = '#fff';
 
 // Toast
 export const toast_max_width: string = '70%';

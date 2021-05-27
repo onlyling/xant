@@ -3,6 +3,7 @@ import type { ViewStyle } from 'react-native';
 
 import DemoHome from '@/pages/demo/demo';
 import DemoFull from '@/pages/demo/full';
+import { KeyboardAwareScrollView } from '@/components/keyboard-aware-scroll-view';
 import DemoWrapper from './demo-wrapper';
 
 import DemoNavBar from '../../components/nav-bar/demo/basic';
@@ -22,6 +23,8 @@ import DemoDivider from '../../components/divider/demo/basic';
 import DemoGrid from '../../components/grid/demo/basic';
 import DemoSwitch from '../../components/switch/demo/basic';
 import DemoDialog from '../../components/dialog/demo/basic';
+import DemoTextInput from '../../components/text-input/demo/basic';
+import DemoField from '../../components/field/demo/basic';
 
 export type DemoPaths =
   | 'DemoHome'
@@ -42,7 +45,9 @@ export type DemoPaths =
   | 'DemoDivider'
   | 'DemoGrid'
   | 'DemoSwitch'
-  | 'DemoDialog';
+  | 'DemoDialog'
+  | 'DemoTextInput'
+  | 'DemoField';
 
 const pageStyle: ViewStyle = {
   flex: 1,
@@ -191,6 +196,24 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
     page: () => (
       <DemoWrapper>
         <DemoDialog />
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoTextInput',
+    page: () => (
+      <DemoWrapper>
+        <DemoTextInput />
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoField',
+    page: () => (
+      <DemoWrapper>
+        <KeyboardAwareScrollView>
+          <DemoField />
+        </KeyboardAwareScrollView>
       </DemoWrapper>
     ),
   },

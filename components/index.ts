@@ -22,6 +22,9 @@ export { default as Dialog } from './dialog';
 export type { DividerProps } from './divider/interface';
 export { default as Divider } from './divider';
 
+export type { FieldProps } from './field/interface';
+export { default as Field } from './field';
+
 export type { RowProps, ColProps } from './grid/interface';
 export { Row, Col } from './grid';
 
@@ -53,6 +56,9 @@ export { default as Switch } from './switch';
 
 export type { TagProps } from './tag/interface';
 export { default as Tag } from './tag';
+
+export type { TextInputProps } from './text-input/interface';
+export { default as TextInput } from './text-input';
 
 export type { ThemeVarType } from './theme';
 export { default as Theme, useTheme } from './theme';
