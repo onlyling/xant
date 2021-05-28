@@ -18,7 +18,7 @@
     "ncu": "npx npm-check-updates -u -x react,react-native,react-test-renderer",
     "doc": "dumi dev",
     "doc:build": "dumi build",
-    "doc:commit": "git add docs-dist && git commit -m 'update doc'",
+    "doc:commit": "git add docs-dist && git commit -n -m 'commit doc file'",
     "doc:pulish-safe": "git subtree push --prefix docs-dist origin gh-pages",
     "doc:pulish": "git push origin `git subtree split --prefix docs-dist master`:gh-pages --force",
     "clean": "antd-tools run clean",
@@ -67,7 +67,7 @@
     "react-native-keyboard-aware-scroll-view": "^0.9.4",
     "react-test-renderer": "17.0.1",
     "ts-jest": "^27.0.1",
-    "typescript": "^4.3.2",
+    "typescript": "4.2.2",
     "umi-plugin-react-native": "^0.4.1"
   },
   "lint-staged": {
