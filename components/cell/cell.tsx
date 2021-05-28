@@ -58,7 +58,7 @@ const Cell: React.FC<CellProps> = ({
   const labelJSX = isDef(label) ? React.isValidElement(label) ? label : <Text style={labelTextStyleSummary}>{label}</Text> : null;
 
   /** 箭头 */
-  const arrowJSX = isDef(isLink) ? <ArrowIcon direction={arrowDirection} size={themeVar.cell_icon_size} color={themeVar.cell_right_icon_color} /> : rightIcon ? rightIcon : null;
+  const arrowJSX = isLink ? <ArrowIcon direction={arrowDirection} size={themeVar.cell_icon_size} color={themeVar.cell_right_icon_color} /> : rightIcon ? rightIcon : null;
 
   /** 必填、红点 */
   const requiredJSX = required ? (
