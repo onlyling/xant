@@ -13,7 +13,7 @@ export type { ButtonProps } from './button/interface';
 export { default as Button } from './button';
 
 export type { CellProps, CellGroupProps } from './cell/interface';
-export { default as Cell } from './cell';
+export { default as Cell } from './cell/cell';
 export { default as CellGroup } from './cell/cell-group';
 
 export { DialogInstance, DialogProps } from './dialog/interface';

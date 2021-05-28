@@ -13,7 +13,7 @@ import FocusAwareStatusBar from '../focus-aware-status-bar';
  * 页面盒子
  */
 const Page: React.FC<PageProps> = memo(
-  ({ children, style, statusBarProps, barStyle = 'dark-content', showHeader = true, headerBackgroundColor, title, onPressBack, headerPorps }) => {
+  ({ children, style, statusBarProps, barStyle = 'dark-content', showHeader = true, headerBackgroundColor, title, onPressBack, headerProps }) => {
     const navigation = useNavigation();
     const insets = useSafeAreaInsets();
     const { themeVar } = useTheme();
@@ -60,7 +60,7 @@ const Page: React.FC<PageProps> = memo(
 
         <View style={pageStyles}>
           {showHeader ? (
-            <NavBar style={wrapperStyle} leftArrowStyle={textStyle} titleTextStyle={textStyle} title={title} onPressLeftArrow={onPressLeftArrow} {...headerPorps} />
+            <NavBar style={wrapperStyle} leftArrowStyle={textStyle} titleTextStyle={textStyle} title={title} onPressLeftArrow={onPressLeftArrow} {...headerProps} />
           ) : null}
           {children}
         </View>

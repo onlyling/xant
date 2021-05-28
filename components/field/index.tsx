@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import type { FieldProps } from './interface';
 import { createStyles } from './style';
 import { useTheme } from '../theme';
-import Cell from '../cell';
+import Cell from '../cell/cell';
 import TextInput from '../text-input';
 import { isDef } from '../helpers/typeof';
 

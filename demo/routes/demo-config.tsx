@@ -25,6 +25,7 @@ import DemoSwitch from '../../components/switch/demo/basic';
 import DemoDialog from '../../components/dialog/demo/basic';
 import DemoTextInput from '../../components/text-input/demo/basic';
 import DemoField from '../../components/field/demo/basic';
+import DemoDropdown from '../../components/dropdown/demo/basic';
 
 export type DemoPaths =
   | 'DemoHome'
@@ -47,7 +48,8 @@ export type DemoPaths =
   | 'DemoSwitch'
   | 'DemoDialog'
   | 'DemoTextInput'
-  | 'DemoField';
+  | 'DemoField'
+  | 'DemoDropdown';
 
 const pageStyle: ViewStyle = {
   flex: 1,
@@ -214,6 +216,14 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
         <KeyboardAwareScrollView>
           <DemoField />
         </KeyboardAwareScrollView>
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoDropdown',
+    page: () => (
+      <DemoWrapper>
+        <DemoDropdown />
       </DemoWrapper>
     ),
   },

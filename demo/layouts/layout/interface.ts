@@ -25,16 +25,16 @@ export interface PageProps {
   headerBackgroundColor?: string;
 
   /**
-   * 页面标题 headerPorps 中的 title，会被后者覆盖
+   * 页面标题 headerProps 中的 title，会被后者覆盖
    */
   title?: string;
 
   /**
-   * 点击返回 headerPorps 中的 onPressLeftArrow，会被后者覆盖
+   * 点击返回 headerProps 中的 onPressLeftArrow，会被后者覆盖
    */
   onPressBack?: () => void;
 
-  headerPorps?: NavBarProps;
+  headerProps?: NavBarProps;
 }
 
 export interface FullPageProps {

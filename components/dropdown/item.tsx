@@ -1,0 +1,109 @@
+import React, { useCallback, memo } from 'react';
+import type { ViewStyle } from 'react-native';
+import { TouchableWithoutFeedback, View, StyleSheet } from 'react-native';
+import useState from '../hooks/use-state-update';
+
+import type { DropdownItemProps, DropdownItemOption } from './interface';
+import DropdownText from './text';
+import { useDropdownConfig } from './context';
+import { useTheme } from '../theme';
+import Portal from '../portal';
+import Popup from '../popup/popup';
+import Cell from '../cell/cell';
+import IconSuccessOutline from '../icon/success';
+
+const DropdownItem: React.FC<DropdownItemProps> = ({ lazyRender = true, value, options = [], disabled = false, onChange, ...restProps }) => {
+  const [active, setActive] = useState(false);
+  const { themeVar } = useTheme();
+  const config = useDropdownConfig();
+  const isContextTop = config.direction === 'up';
+  const menuBottomValue = config.top + (isContextTop ? 0 : themeVar.dropdown_menu_height);
+
+  const onPressText = useCallback(() => {
+    setActive(true);
+  }, []);
+  const onPressShade = useCallback(() => {
+    setActive(false);
+  }, []);
+
+  const text = options.filter((op) => op.value === value)[0].text;
+  const genOnPressCell = (o: DropdownItemOption) => () => {
+    onChange && onChange(o.value);
+    setActive(false);
+  };
+
+  const shadeStyle = StyleSheet.flatten<ViewStyle>([
+    {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: isContextTop ? menuBottomValue : 0,
+      bottom: isContextTop ? 0 : menuBottomValue,
+      zIndex: config.zIndex,
+      // backgroundColor: '#f30', // to test ui
+      // opacity: 0.2,
+    },
+    isContextTop
+      ? {
+          top: menuBottomValue,
+          bottom: 0,
+        }
+      : {
+          top: 0,
+          height: menuBottomValue,
+        },
+  ]);
+  const boxStyle = StyleSheet.flatten<ViewStyle>([
+    {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: isContextTop ? menuBottomValue : 0,
+      bottom: isContextTop ? 0 : menuBottomValue,
+      zIndex: config.zIndex,
+      overflow: 'hidden',
+      // backgroundColor: '#000', // to test ui
+      // opacity: 0.2,
+    },
+    isContextTop
+      ? {
+          top: 0,
+          height: menuBottomValue,
+        }
+      : {
+          top: menuBottomValue,
+          bottom: 0,
+        },
+  ]);
+
+  return (
+    <>
+      <DropdownText {...restProps} title={text} active={active} onPress={onPressText} direction={config.direction} disabled={disabled} pressable={!disabled} />
+
+      <Portal>
+        {active ? (
+          <TouchableWithoutFeedback onPress={onPressShade}>
+            <View style={shadeStyle} />
+          </TouchableWithoutFeedback>
+        ) : null}
+
+        <View style={boxStyle} pointerEvents="box-none">
+          <Popup show={active} lazyRender={lazyRender} position={config.direction === 'up' ? 'bottom' : 'top'} duration={config.duration} onPressOverlay={onPressShade}>
+            {options.map((opt) => {
+              return (
+                <Cell
+                  key={opt.value}
+                  title={opt.text}
+                  rightIcon={opt.value === value ? <IconSuccessOutline size="16" color={config.activeColor} /> : null}
+                  onPress={genOnPressCell(opt)}
+                />
+              );
+            })}
+          </Popup>
+        </View>
+      </Portal>
+    </>
+  );
+};
+
+export default memo(DropdownItem);
