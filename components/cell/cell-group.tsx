@@ -5,6 +5,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import type { CellGroupProps } from './interface';
 import { createStyles } from './style.cell-group';
 import { useTheme } from '../theme';
+import { isDef } from '../helpers/typeof';
 
 /**
  * CellGroup 单元格组
@@ -18,7 +19,7 @@ const CellGroup: React.FC<CellGroupProps> = ({ children, title, style, textStyle
   const titleTextStyleSummary: TextStyle = StyleSheet.flatten([Styles.text, textStyle]);
 
   /** 标题 可能是自定义 JSX */
-  const titleJSX = title ? React.isValidElement(title) ? title : <Text style={titleTextStyleSummary}>{title}</Text> : null;
+  const titleJSX = isDef(title) ? React.isValidElement(title) ? title : <Text style={titleTextStyleSummary}>{title}</Text> : null;
 
   return (
     <>

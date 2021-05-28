@@ -22,6 +22,11 @@ export { default as Dialog } from './dialog';
 export type { DividerProps } from './divider/interface';
 export { default as Divider } from './divider';
 
+export type { DropdownMenuProps } from './dropdown/interface';
+export { default as DropdownMenu } from './dropdown/menu';
+export { default as DropdownItem } from './dropdown/item';
+export { default as DropdownText } from './dropdown/text';
+
 export type { FieldProps } from './field/interface';
 export { default as Field } from './field';
 

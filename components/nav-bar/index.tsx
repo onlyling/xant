@@ -6,6 +6,7 @@ import type { NavBarProps } from './interface';
 import { createStyles } from './style';
 import { useTheme } from '../theme';
 import { IconArrowOutline } from '../icon';
+import { isDef } from '../helpers/typeof';
 
 /**
  * NavBar 导航栏
@@ -38,13 +39,13 @@ const NavBar: React.FC<NavBarProps> = ({
   const leftWrapperStyleSummary: ViewStyle = Styles.leftWrapper;
   const leftArrowStyleSummary = StyleSheet.flatten<TextStyle>([Styles.leftArrow, leftArrowStyle]);
   const titleTextStyleSummary = StyleSheet.flatten<TextStyle>([Styles.titleText, titleTextStyle]);
-  const rightWrapperStyleSummary: ViewStyle = Styles.rithtWrapper;
+  const rightWrapperStyleSummary: ViewStyle = Styles.rightWrapper;
 
   /** 标题部分 纯文字或自定义 JSX */
-  const titleJSX = title ? React.isValidElement(title) ? title : <Text style={titleTextStyleSummary}>{title}</Text> : null;
+  const titleJSX = isDef(title) ? React.isValidElement(title) ? title : <Text style={titleTextStyleSummary}>{title}</Text> : null;
 
   /** 左侧文字 纯文字或自定义 JSX */
-  const leftTextJSX = leftText ? (
+  const leftTextJSX = isDef(leftText) ? (
     React.isValidElement(leftText) ? (
       leftText
     ) : (
@@ -55,7 +56,7 @@ const NavBar: React.FC<NavBarProps> = ({
   ) : null;
 
   /** 右侧文字 纯文字或自定义 JSX */
-  const rightTextJSX = rightText ? React.isValidElement(rightText) ? rightText : <Text style={Styles.rightText}>{rightText}</Text> : null;
+  const rightTextJSX = isDef(rightText) ? React.isValidElement(rightText) ? rightText : <Text style={Styles.rightText}>{rightText}</Text> : null;
 
   return (
     <View style={wrapperStyleSummary}>

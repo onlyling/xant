@@ -28,11 +28,11 @@ const Circular: React.FC<CircularProps> = ({ size, color }) => {
   const AnimatedCircle1Value = useRef(new Animated.Value(0)).current;
   const AnimatedCircle2Value = useRef(new Animated.Value(0)).current;
 
-  const rsize = +(size || themeVar.loading_spinner_size);
-  const rcolor = color || themeVar.primary;
+  const resetSize = +(size || themeVar.loading_spinner_size);
+  const resetColor = color || themeVar.primary;
 
   const circle1Props = useMemo(() => {
-    const center = Math.floor(rsize / 2);
+    const center = Math.floor(resetSize / 2);
     const radios = Math.floor(center - strokeWidth / 2);
 
     return {
@@ -40,10 +40,10 @@ const Circular: React.FC<CircularProps> = ({ size, color }) => {
       cx: center,
       r: radios,
     };
-  }, [rsize]);
+  }, [resetSize]);
 
   const circle2Props = useMemo(() => {
-    const center = Math.floor(rsize / 2);
+    const center = Math.floor(resetSize / 2);
     const radios = Math.floor(center - strokeWidth / 2 - center / 2);
 
     return {
@@ -51,7 +51,7 @@ const Circular: React.FC<CircularProps> = ({ size, color }) => {
       cx: center,
       r: radios,
     };
-  }, [rsize]);
+  }, [resetSize]);
 
   const half1Circle = useMemo(() => circle1Props.r * Math.PI, [circle1Props.r]);
   const half2Circle = useMemo(() => circle2Props.r * Math.PI, [circle2Props.r]);
@@ -74,8 +74,8 @@ const Circular: React.FC<CircularProps> = ({ size, color }) => {
   const wrapperStyleSummary: ViewStyle = {
     justifyContent: 'center',
     alignItems: 'center',
-    width: rsize,
-    height: rsize,
+    width: resetSize,
+    height: resetSize,
     transform: [
       {
         rotateZ: AnimatedCircle0Value.interpolate({
@@ -95,7 +95,7 @@ const Circular: React.FC<CircularProps> = ({ size, color }) => {
       >
         <AnimatedCircle
           {...circle1Props}
-          stroke={rcolor}
+          stroke={resetColor}
           strokeWidth={strokeWidth}
           strokeDasharray={`${half1Circle},${half1Circle * 2}`}
           strokeLinecap="round"
@@ -106,7 +106,7 @@ const Circular: React.FC<CircularProps> = ({ size, color }) => {
 
         <AnimatedCircle
           {...circle2Props}
-          stroke={rcolor}
+          stroke={resetColor}
           strokeWidth={strokeWidth}
           strokeDasharray={`${half2Circle},${half2Circle * 2}`}
           strokeLinecap="round"

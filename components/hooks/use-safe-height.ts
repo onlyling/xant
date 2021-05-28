@@ -11,12 +11,12 @@ const useSafeHeight = ({ top = true, bottom = true }: UseSafeHeightParams = {}) 
   const insets = useSafeAreaInsets();
   const insetTop = top ? insets.top : 0;
   const insetBottom = bottom ? insets.bottom : 0;
-  const dwindow = Dimensions.get('window');
-  const [height, setHeight] = useState(dwindow.height - insetTop - insetBottom);
+  const dimensionsWindow = Dimensions.get('window');
+  const [height, setHeight] = useState(dimensionsWindow.height - insetTop - insetBottom);
 
   useLayoutEffect(() => {
-    setHeight(dwindow.height - insetTop - insetBottom);
-  }, [dwindow.height, insetTop, insetBottom]);
+    setHeight(dimensionsWindow.height - insetTop - insetBottom);
+  }, [dimensionsWindow.height, insetTop, insetBottom]);
 
   return height;
 };

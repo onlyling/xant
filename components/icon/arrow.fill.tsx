@@ -5,7 +5,7 @@ import type { IconCommonOutlineProps } from './interface';
 
 type Direction = 'left' | 'up' | 'right' | 'down';
 
-interface IconArrowOutlineProps extends IconCommonOutlineProps {
+interface IconArrowFillProps extends IconCommonOutlineProps {
   direction?: Direction;
 }
 
@@ -16,12 +16,12 @@ const PointsMap: Record<Direction, string> = {
   down: '4,8 12,16 20,8',
 };
 
-const IconArrowOutline: React.FC<IconArrowOutlineProps> = ({ size = 24, color = '#666', strokeWidth = 2, direction = 'right', ...restProps }) => {
+const IconArrowFill: React.FC<IconArrowFillProps> = ({ size = 24, color = '#666', strokeWidth = 2, direction = 'right', ...restProps }) => {
   return (
     <Svg {...restProps} height={size} width={size} viewBox="0 0 24 24">
-      <Polyline points={PointsMap[direction]} fill="none" stroke={color} strokeWidth={strokeWidth} />
+      <Polyline points={PointsMap[direction]} fill={color} stroke={color} strokeWidth={strokeWidth} />
     </Svg>
   );
 };
 
-export default memo(IconArrowOutline);
+export default memo(IconArrowFill);

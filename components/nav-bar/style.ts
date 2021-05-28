@@ -42,7 +42,7 @@ export const createStyles = (themeVar: ThemeVarType) => {
       // backgroundColor: '#000', // to test ui
     },
 
-    rithtWrapper: {
+    rightWrapper: {
       position: 'absolute',
       top: 0,
       bottom: 0,

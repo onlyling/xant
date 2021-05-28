@@ -6,7 +6,7 @@ import ActionSheetMethodView from './action-sheet-method';
 import Portal from '../portal';
 
 const ActionSheet: ActionSheetInstance = (opts) => {
-  return new Promise((resovle, reject) => {
+  return new Promise((resolve, reject) => {
     const key = Portal.add(
       <ActionSheetMethodView
         {...opts}
@@ -21,7 +21,7 @@ const ActionSheet: ActionSheetInstance = (opts) => {
         }}
         callback={(action, item, index) => {
           if (action === 'item' && item && (index || index === 0)) {
-            resovle({
+            resolve({
               item,
               index,
             });

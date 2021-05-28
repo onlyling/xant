@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from 'react';
 
-import type { ActionSheetMethodPorps, ActionSheetAction, Action } from './interface';
+import type { ActionSheetMethodProps, ActionSheetAction, Action } from './interface';
 import ActionSheet from './action-sheet';
 import * as helpers from '../helpers';
 
@@ -13,7 +13,7 @@ interface LocalAction extends Action {
  * ActionSheet 动作面板
  * @description 底部弹起的模态面板，包含与当前情境相关的多个选项。
  */
-const ActionSheetMethod: React.FC<ActionSheetMethodPorps> = ({ actions, beforeClose, callback, ...restProps }) => {
+const ActionSheetMethod: React.FC<ActionSheetMethodProps> = ({ actions, beforeClose, callback, ...restProps }) => {
   const [show, setShow] = useState(false);
   const [localActions, setLocalActions] = useState<LocalAction[]>(() => {
     return actions.map((ac) => {

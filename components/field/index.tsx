@@ -6,7 +6,7 @@ import { createStyles } from './style';
 import { useTheme } from '../theme';
 import Cell from '../cell';
 import TextInput from '../text-input';
-import * as TypeofHelpers from '../helpers/typeof';
+import { isDef } from '../helpers/typeof';
 
 /**
  * 自定义输入项
@@ -31,7 +31,7 @@ const Field: React.FC<FieldProps> = ({
 
   const cellProps = {
     innerStyle,
-    title: TypeofHelpers.isDef(label) && !React.isValidElement(label) ? `${label}${colon ? colonLabel : ''}` : label,
+    title: isDef(label) && !React.isValidElement(label) ? `${label}${colon ? colonLabel : ''}` : label,
     titleStyle: labelStyle,
     titleTextStyle: StyleSheet.flatten([
       Styles.label,

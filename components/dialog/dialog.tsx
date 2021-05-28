@@ -7,6 +7,7 @@ import Popup from '../popup/popup';
 import Button from '../button';
 import { ActionBar, ActionBarButton } from '../action-bar';
 import { useTheme } from '../theme';
+import { isDef } from '../helpers/typeof';
 
 const getScale = (s: boolean) => (s ? 1 : 0.9);
 
@@ -72,9 +73,9 @@ const Dialog: React.FC<DialogProps> = ({
   const messageTextStyles = [Styles.messageText, title ? Styles.messageTextHasTitle : null];
 
   /** 标题部分 纯文字或自定义 JSX */
-  const titleJSX = title ? React.isValidElement(title) ? title : <Text style={titleTextStyles}>{title}</Text> : null;
+  const titleJSX = isDef(title) ? React.isValidElement(title) ? title : <Text style={titleTextStyles}>{title}</Text> : null;
 
-  const messageJSX = message ? React.isValidElement(message) ? message : <Text style={messageTextStyles}>{message}</Text> : children;
+  const messageJSX = isDef(message) ? React.isValidElement(message) ? message : <Text style={messageTextStyles}>{message}</Text> : children;
 
   const cancelButtonProps = {
     color: cancelButtonColor || themeVar.dialog_cancel_button_text_color,

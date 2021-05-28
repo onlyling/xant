@@ -7,6 +7,7 @@ import type { NotifyProps } from './interface';
 import { createStyles } from './style';
 import Popup from '../popup/popup';
 import { useTheme } from '../theme';
+import { isDef } from '../helpers/typeof';
 
 /**
  * Notify 消息提示
@@ -32,7 +33,7 @@ const Notify: React.FC<NotifyProps> = ({ children, style, textStyle, type = 'pri
   ]);
   const messageTextStyleSummary: TextStyle = StyleSheet.flatten([Styles.text, textStyle]);
 
-  const messageJSX = message ? (
+  const messageJSX = isDef(message) ? (
     React.isValidElement(message) ? (
       message
     ) : (

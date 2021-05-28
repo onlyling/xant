@@ -6,8 +6,8 @@ import type { TextInputProps } from './interface';
 import { createStyles } from './style';
 import IconSvgCross from '../icon/cross';
 import { useTheme } from '../theme';
-import * as NumberHelpers from '../helpers/format/number';
-import * as TypeofHelpers from '../helpers/typeof';
+import { formatNumber } from '../helpers/format/number';
+import { isDef } from '../helpers/typeof';
 
 /**
  * 自定义输入项
@@ -70,7 +70,7 @@ const TextInputBase: React.FC<TextInputProps> = ({
       // 允许输入正整数
       if (type === 'digit' || type === 'number') {
         const isNumber = type === 'number';
-        t = NumberHelpers.formatNumber(t, isNumber, isNumber);
+        t = formatNumber(t, isNumber, isNumber);
       }
 
       if (formatTrigger === 'onChangeText' && formatter) {
@@ -146,7 +146,7 @@ const TextInputBase: React.FC<TextInputProps> = ({
           {...resetProps}
           ref={TextInputRef}
           style={textInputStyleSummary}
-          value={TypeofHelpers.isDef(value) ? value : localValue}
+          value={isDef(value) ? value : localValue}
           multiline={multiline}
           selectionColor={selectionColor || themeVar.text_input_selection_color}
           secureTextEntry={secureTextEntry}

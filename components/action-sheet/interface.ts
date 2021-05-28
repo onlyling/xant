@@ -85,7 +85,7 @@ export interface ActionSheetOptions extends Omit<ActionSheetProps, 'show' | 'act
   callback?: (action: ActionSheetAction, item?: Action, index?: number) => void;
 }
 
-export interface ActionSheetMethodPorps extends ActionSheetOptions {}
+export interface ActionSheetMethodProps extends ActionSheetOptions {}
 
 export interface ActionSheetInstance {
   (p: ActionSheetOptions): Promise<{ item: Action; index: number }>;

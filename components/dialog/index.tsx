@@ -9,7 +9,7 @@ import Portal from '../portal';
  * 对话框
  */
 const Dialog: DialogInstance = (opts) => {
-  return new Promise((resovle, reject) => {
+  return new Promise((resolve, reject) => {
     const key = Portal.add(
       <DialogMethodView
         {...opts}
@@ -24,7 +24,7 @@ const Dialog: DialogInstance = (opts) => {
         }}
         callback={(action) => {
           if (action === 'confirm') {
-            resovle(action);
+            resolve(action);
           } else {
             reject(action);
           }

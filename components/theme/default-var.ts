@@ -206,6 +206,17 @@ export const divider_content_padding = padding_md;
 export const divider_content_left_width: string = '10%';
 export const divider_content_right_width: string = '10%';
 
+// DropdownMenu
+export const dropdown_menu_height: number = 48;
+export const dropdown_menu_background_color = white;
+export const dropdown_menu_title_font_size: number = 15;
+export const dropdown_menu_title_text_color = text_color;
+export const dropdown_menu_title_active_text_color = primary;
+export const dropdown_menu_title_disabled_text_color = gray_6;
+export const dropdown_menu_title_padding_horizontal = padding_base;
+export const dropdown_menu_title_line_height = line_height_lg;
+export const dropdown_menu_option_active_color = primary;
+
 // Field
 export const field_label_width: number = 86; // rem
 export const field_label_color = gray_7;

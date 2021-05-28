@@ -24,8 +24,8 @@ const Spinner: React.FC<SpinnerProps> = ({ size, color }) => {
   const { themeVar } = useTheme();
   const AnimatedSpinnerValue = useRef(new Animated.Value(0)).current;
 
-  const rsize = +(size || themeVar.loading_spinner_size);
-  const rcolor = color || themeVar.primary;
+  const resetSize = +(size || themeVar.loading_spinner_size);
+  const resetColor = color || themeVar.primary;
 
   useLoop(AnimatedSpinnerValue, 0, {
     toValue: 1,
@@ -36,8 +36,8 @@ const Spinner: React.FC<SpinnerProps> = ({ size, color }) => {
   const wrapperStyleSummary: ViewStyle = StyleSheet.flatten([
     Styles.wrapperStyle,
     {
-      width: rsize,
-      height: rsize,
+      width: resetSize,
+      height: resetSize,
       transform: [
         {
           rotateZ: AnimatedSpinnerValue.interpolate({
@@ -52,7 +52,7 @@ const Spinner: React.FC<SpinnerProps> = ({ size, color }) => {
   const petalInnerStyleSummary = StyleSheet.flatten([
     Styles.petalInnerStyle,
     {
-      backgroundColor: rcolor,
+      backgroundColor: resetColor,
     },
   ]);
 

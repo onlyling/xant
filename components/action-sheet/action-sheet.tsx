@@ -8,6 +8,7 @@ import { useTheme } from '../theme';
 import Popup from '../popup/popup';
 import Loading from '../loading/circular';
 import useSafeHeight from '../hooks/use-safe-height';
+import { isDef } from '../helpers/typeof';
 
 /**
  * ActionSheet 动作面板
@@ -19,7 +20,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({ actions, title, cancelText, d
   const Styles = createStyles(themeVar);
 
   /** 标题部分 纯文字或自定义 JSX */
-  const titleJSX = title ? (
+  const titleJSX = isDef(title) ? (
     React.isValidElement(title) ? (
       title
     ) : (
@@ -30,7 +31,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({ actions, title, cancelText, d
   ) : null;
 
   /** 取消文案 纯文字或自定义 JSX */
-  const cancelTextJSX = cancelText ? (
+  const cancelTextJSX = isDef(cancelText) ? (
     React.isValidElement(cancelText) ? (
       cancelText
     ) : (
@@ -41,7 +42,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({ actions, title, cancelText, d
   ) : null;
 
   /** 描述文案 纯文字或自定义 JSX */
-  const descriptionJSX = description ? (
+  const descriptionJSX = isDef(description) ? (
     React.isValidElement(description) ? (
       description
     ) : (
@@ -56,7 +57,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({ actions, title, cancelText, d
   const navBarHeight = themeVar.nav_bar_height;
   const btnHeight = themeVar.action_sheet_loading_icon_size + 14 * 2;
   const descriptionHeight = themeVar.action_sheet_description_line_height + (titleJSX ? 14 : 14 * 2);
-  const contentHeihgt =
+  const contentHeight =
     safeHeight -
     navBarHeight -
     (titleJSX ? themeVar.action_sheet_header_height : 0) -
@@ -67,7 +68,7 @@ const ActionSheet: React.FC<ActionSheetProps> = ({ actions, title, cancelText, d
       {titleJSX}
       {descriptionJSX}
 
-      <ScrollView style={{ maxHeight: contentHeihgt }}>
+      <ScrollView style={{ maxHeight: contentHeight }}>
         {actions.map((item, index) => {
           /** 选项的自定义颜色/配置 */
           const customTextStyle: TextStyle = {};
