@@ -6,9 +6,18 @@ import { CellGroup, DropdownMenu, DropdownItem } from 'xant';
 
 const itemOptions = [
   { text: '全部商品', value: '' },
-  { text: '商品分类1', value: 1 },
-  { text: '商品分类2', value: 2 },
-  { text: '商品分类3', value: 3 },
+  ...[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 11, 12, 13, 14].map((v) => ({
+    text: `商品分类${v}`,
+    value: v,
+  })),
+];
+
+const itemOptions2 = [
+  { text: '全部商品', value: '' },
+  ...[1, 2, 3, 4].map((v) => ({
+    text: `商品分类${v}`,
+    value: v,
+  })),
 ];
 
 const BasicDropdown: React.FC = () => {
@@ -68,7 +77,7 @@ const BasicDropdown: React.FC = () => {
             }}
           />
           <DropdownItem
-            options={itemOptions}
+            options={itemOptions2}
             value={values.v4}
             onChange={(v) => {
               setValues((s) => ({

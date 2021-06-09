@@ -33,12 +33,12 @@ const Switch: React.FC<SwitchProps> = ({
   const translateXValueEnd = Styles.nodeRight.left;
   const translateXValueStart = Styles.nodeLeft.left;
   const duration = themeVar.switch_transition_duration;
-  const actived = value === activeValue;
+  const active = value === activeValue;
 
   const onPressTouchable = () => {
     onPress && onPress();
     if (!disabled && !loading) {
-      const newValue = actived ? inactiveValue : activeValue;
+      const newValue = active ? inactiveValue : activeValue;
       const doChange = () => {
         onChange && onChange(newValue);
       };
@@ -68,7 +68,7 @@ const Switch: React.FC<SwitchProps> = ({
     actionValue = Animated.timing(
       translateX.current, // 动画中的变量值
       {
-        toValue: actived ? translateXValueEnd : translateXValueStart,
+        toValue: active ? translateXValueEnd : translateXValueStart,
         duration: +duration,
         useNativeDriver: false,
       },
@@ -85,14 +85,14 @@ const Switch: React.FC<SwitchProps> = ({
         actionValue = null;
       }
     };
-  }, [actived, translateXValueStart, translateXValueEnd, duration]);
+  }, [active, translateXValueStart, translateXValueEnd, duration]);
 
   const switchStyleSummary: ViewStyle = StyleSheet.flatten([
     Styles.switch,
     {
       // 当前过渡不支持 color/backgroundColor
       // 参考：https://stackoverflow.com/a/60586628
-      backgroundColor: actived ? activeColor || themeVar.switch_on_background_color : inactiveColor || themeVar.switch_background_color,
+      backgroundColor: active ? activeColor || themeVar.switch_on_background_color : inactiveColor || themeVar.switch_background_color,
     },
     disabled ? Styles.disabled : null,
   ]);
@@ -114,7 +114,7 @@ const Switch: React.FC<SwitchProps> = ({
           {loading ? (
             <LoadingCircular
               size={(Styles.node.width / 4) * 3}
-              color={actived ? activeColor || themeVar.switch_on_background_color : inactiveColor || themeVar.loading_text_color}
+              color={active ? activeColor || themeVar.switch_on_background_color : inactiveColor || themeVar.loading_text_color}
             />
           ) : null}
         </Animated.View>
