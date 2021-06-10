@@ -21,6 +21,7 @@
     "doc:commit": "git add docs-dist && git commit -n -m 'commit doc file'",
     "doc:pulish-safe": "git subtree push --prefix docs-dist origin gh-pages",
     "doc:pulish": "git push origin `git subtree split --prefix docs-dist master`:gh-pages --force",
+    "doc:reset": "git reset --hard HEAD^",
     "clean": "antd-tools run clean",
     "compile": "npm run clean && antd-tools run compile",
     "prepare": "husky install"
