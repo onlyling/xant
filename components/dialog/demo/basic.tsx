@@ -35,7 +35,7 @@ const BasicDialog: React.FC = () => {
           isLink
           onPress={() => {
             Dialog({
-              message: '提示弹窗（无标题）',
+              message: '代码是写出来给人看的，附带能在机器上运行',
             })
               .then(() => {
                 console.log('提示弹窗（无标题）');
@@ -135,6 +135,16 @@ const BasicDialog: React.FC = () => {
         show={state.cDialog1.show}
         confirmButtonLoading={state.cDialog1.confirm}
         cancelButtonLoading={state.cDialog1.cancel}
+        onPressOverlay={() => {
+          setState((s) => ({
+            ...s,
+            cDialog1: {
+              cancel: false,
+              confirm: false,
+              show: false,
+            },
+          }));
+        }}
         onPressCancel={() => {
           console.log('onPressCancel');
           setState((s) => ({

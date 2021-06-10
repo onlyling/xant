@@ -1,15 +1,18 @@
-import React, { useEffect, useRef, memo } from 'react';
-import { View, Text, Animated } from 'react-native';
+import React, { useEffect, useRef, useCallback, memo } from 'react';
+import type { ViewStyle, TextStyle } from 'react-native';
+import { View, Text, Animated, BackHandler, StyleSheet } from 'react-native';
 
-import type { DialogProps } from './interface';
+import type { DialogProps, State } from './interface';
 import { createStyles } from './style';
-import Popup from '../popup/popup';
+import Overlay from '../overlay/overlay';
 import Button from '../button';
 import { ActionBar, ActionBarButton } from '../action-bar';
 import { useTheme } from '../theme';
+import useState from '../hooks/use-state-update';
 import { isDef } from '../helpers/typeof';
+import * as helpers from '../helpers';
 
-const getScale = (s: boolean) => (s ? 1 : 0.9);
+const getScale = (s: boolean) => (s ? 1 : 0);
 
 /**
  * Dialog 弹出框
@@ -35,47 +38,142 @@ const Dialog: React.FC<DialogProps> = ({
   cancelButtonLoading = false,
   onPressCancel,
   onPressConfirm,
-  ...restProps
+  overlay = true,
+  duration,
+  closeOnPressOverlay = true,
+  onPressOverlay: onPressOverlayFN,
+  onOpen: onOpenFN,
+  onOpened: onOpenedFN,
+  onClose: onCloseFN,
+  onClosed: onClosedFN,
+  onRequestClose,
 }) => {
-  const fadeAnim = useRef(new Animated.Value(getScale(show))).current;
-
   const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { messageAlign, width });
 
-  useEffect(() => {
-    const instance = Animated.timing(
-      fadeAnim, // 动画中的变量值
-      {
-        toValue: getScale(show),
-        duration: themeVar.dialog_transition,
-        useNativeDriver: true,
-      },
-    );
+  if (!isDef(duration)) {
+    duration = themeVar.animation_duration_base;
+  }
 
-    instance.start();
+  const [state, setState] = useState<State>({
+    show,
+    // 遮罩层显示、隐藏单独管理，避免弹出层完成后才触发关闭，两个组件应该同时变化
+    overlayShow: show,
+    zIndex: helpers.getNextZIndex(),
+  });
+
+  const fadeAnim = useRef(new Animated.Value(getScale(show))).current;
+  const fadeInstance = useRef<Animated.CompositeAnimation | null>(null);
+  const MountedRef = useRef(false);
+  const stopShow = useCallback(() => {
+    if (fadeInstance.current) {
+      fadeInstance.current.stop();
+      fadeInstance.current = null;
+    }
+  }, [fadeInstance]);
+  /** 点击遮罩层 */
+  const onPressOverlay = useCallback(() => {
+    if (closeOnPressOverlay) {
+      // 关闭弹层
+      onPressOverlayFN && onPressOverlayFN();
+    }
+  }, [closeOnPressOverlay, onPressOverlayFN]);
+
+  // 监听状态变化，执行动画
+  useEffect(() => {
+    if (show) {
+      // 弹出弹出，立即响应
+      setState({
+        show,
+        zIndex: helpers.getNextZIndex(),
+      });
+    }
+
+    // 遮罩层状态实时显示
+    setState({
+      overlayShow: show,
+    });
+
+    if (MountedRef.current) {
+      fadeAnim.setValue(getScale(!show));
+
+      if (show) {
+        onOpenFN && onOpenFN();
+      } else {
+        onCloseFN && onCloseFN();
+      }
+
+      fadeInstance.current = Animated.timing(
+        fadeAnim, // 动画中的变量值
+        {
+          toValue: getScale(show),
+          duration: +(duration as number),
+          useNativeDriver: true,
+        },
+      );
+
+      fadeInstance.current.start(() => {
+        fadeInstance.current = null;
+        if (!show) {
+          setState({ show });
+          onClosedFN && onClosedFN();
+        } else {
+          onOpenedFN && onOpenedFN();
+        }
+      });
+    }
 
     return () => {
-      instance.stop();
+      // 停止动画
+      stopShow();
     };
-  }, [fadeAnim, show, themeVar.dialog_transition]);
+  }, [show, duration, fadeAnim, stopShow, onOpenFN, onOpenedFN, onCloseFN, onClosedFN]);
 
-  const dialogStyles = [
+  // Android 返回按钮
+  useEffect(() => {
+    const backAction = () => {
+      if (typeof onRequestClose === 'function' && show) {
+        return onRequestClose();
+      }
+
+      return false;
+    };
+
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
+
+    return () => backHandler.remove();
+  }, [onRequestClose, show]);
+
+  // 初始化好组件
+  useEffect(() => {
+    MountedRef.current = true;
+  }, []);
+
+  const boxStyleSummary = StyleSheet.flatten<ViewStyle>([
+    Styles.box,
+    {
+      zIndex: state.zIndex,
+    },
+  ]);
+  const dialogStyleSummary = StyleSheet.flatten([
     Styles.dialog,
     {
       transform: [
         {
-          scale: fadeAnim,
+          scale: fadeAnim.interpolate({
+            inputRange: [0, 0.01, 1],
+            outputRange: [0, 0.9, 1],
+          }),
         },
       ],
     },
-  ];
-  const titleTextStyles = [Styles.titleText];
-  const messageTextStyles = [Styles.messageText, title ? Styles.messageTextHasTitle : null];
+  ]);
+  const messageTextStyleSummary = StyleSheet.flatten<TextStyle>([Styles.messageText, title ? Styles.messageTextHasTitle : null]);
 
   /** 标题部分 纯文字或自定义 JSX */
-  const titleJSX = isDef(title) ? React.isValidElement(title) ? title : <Text style={titleTextStyles}>{title}</Text> : null;
+  const titleJSX = isDef(title) ? React.isValidElement(title) ? title : <Text style={Styles.titleText}>{title}</Text> : null;
 
-  const messageJSX = isDef(message) ? React.isValidElement(message) ? message : <Text style={messageTextStyles}>{message}</Text> : children;
+  const messageJSX = isDef(message) ? React.isValidElement(message) ? message : <Text style={messageTextStyleSummary}>{message}</Text> : children;
 
   const cancelButtonProps = {
     color: cancelButtonColor || themeVar.dialog_cancel_button_text_color,
@@ -92,27 +190,33 @@ const Dialog: React.FC<DialogProps> = ({
   };
 
   return (
-    <Popup {...restProps} show={show} duration={themeVar.dialog_transition}>
-      <Animated.View style={dialogStyles}>
-        {titleJSX}
+    <>
+      {overlay ? <Overlay show={state.overlayShow} zIndex={state.zIndex} duration={duration} onPress={onPressOverlay} /> : null}
 
-        {titleJSX ? messageJSX : <View style={Styles.contentIsolated}>{messageJSX}</View>}
+      {state.show ? (
+        <View style={boxStyleSummary} pointerEvents="box-none">
+          <Animated.View style={dialogStyleSummary}>
+            {titleJSX}
 
-        {theme === 'default' ? (
-          <View style={Styles.footer}>
-            {showCancelButton ? <Button {...cancelButtonProps} plain size="large" style={Styles.btn} /> : null}
-            {showConfirmButton ? <Button {...confirmButtonProps} plain size="large" style={[Styles.btn, showCancelButton ? Styles.btnLeft : null]} /> : null}
-          </View>
-        ) : null}
+            {titleJSX ? messageJSX : <View style={Styles.contentIsolated}>{messageJSX}</View>}
 
-        {theme === 'round-button' ? (
-          <ActionBar style={Styles.footerRound}>
-            {showCancelButton ? <ActionBarButton {...cancelButtonProps} isFirst isLast={!showConfirmButton} style={Styles.btnRound} /> : null}
-            {showConfirmButton ? <ActionBarButton {...confirmButtonProps} isFirst={!showCancelButton} isLast style={Styles.btnRound} /> : null}
-          </ActionBar>
-        ) : null}
-      </Animated.View>
-    </Popup>
+            {theme === 'default' ? (
+              <View style={Styles.footer}>
+                {showCancelButton ? <Button {...cancelButtonProps} plain size="large" style={Styles.btn} /> : null}
+                {showConfirmButton ? <Button {...confirmButtonProps} plain size="large" style={[Styles.btn, showCancelButton ? Styles.btnLeft : null]} /> : null}
+              </View>
+            ) : null}
+
+            {theme === 'round-button' ? (
+              <ActionBar style={Styles.footerRound}>
+                {showCancelButton ? <ActionBarButton {...cancelButtonProps} isFirst isLast={!showConfirmButton} style={Styles.btnRound} /> : null}
+                {showConfirmButton ? <ActionBarButton {...confirmButtonProps} isFirst={!showCancelButton} isLast style={Styles.btnRound} /> : null}
+              </ActionBar>
+            ) : null}
+          </Animated.View>
+        </View>
+      ) : null}
+    </>
   );
 };
 

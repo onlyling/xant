@@ -5,10 +5,20 @@ import type { ThemeVarType } from '../theme';
 
 export const createStyles = (themeVar: ThemeVarType, { messageAlign, width }: Pick<DialogProps, 'messageAlign' | 'width'>) => {
   return StyleSheet.create({
+    box: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      alignItems: 'center',
+      justifyContent: 'center',
+      // backgroundColor: '#f30', // to test ui
+    },
+
     dialog: {
       // position: 'absolute',
-      // top: '45%', // vant 中在上下 45% 的位置居中显示，popop 已经让 center 的位置居中，现在上移 5% 应该就好了？
-      marginTop: '-5%',
+      marginTop: '-40%', // margin 是对话框的尺寸，不是屏幕宽度有关系？
       width: width || themeVar.dialog_width,
       overflow: 'hidden',
       backgroundColor: themeVar.dialog_background_color,

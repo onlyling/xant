@@ -130,3 +130,9 @@ export interface DialogInstance {
   // ): void;
   // resetDefaultOptions(type: DialogType | DialogProps): void;
 }
+
+export type State = {
+  show: boolean;
+  overlayShow: boolean;
+  zIndex: number;
+};
