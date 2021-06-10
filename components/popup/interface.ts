@@ -12,7 +12,7 @@ export interface PopupPropsCommon {
 
   /**
    * 动画时长，单位毫秒秒
-   * @default 300
+   * @default animation_duration_base
    */
   duration?: number | string;
 

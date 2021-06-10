@@ -13,10 +13,6 @@ const ActionSheet: ActionSheetInstance = (opts) => {
         onClosed={() => {
           Portal.remove(key);
 
-          if (__DEV__) {
-            console.log('action-sheet removed');
-          }
-
           opts.onClosed && opts.onClosed();
         }}
         callback={(action, item, index) => {

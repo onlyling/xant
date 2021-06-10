@@ -9,6 +9,7 @@ import { getPosition, getTransform } from './helper';
 import Overlay from '../overlay/overlay';
 import { useTheme } from '../theme';
 import useState from '../hooks/use-state-update';
+import { isDef } from '../helpers/typeof';
 import * as helpers from '../helpers';
 
 /**
@@ -19,7 +20,7 @@ const Popup: React.FC<PopupProps> = ({
   children,
   show = false,
   overlay = true,
-  duration = 300,
+  duration,
   closeOnPressOverlay = true,
   position = 'center',
   round = false,
@@ -35,6 +36,10 @@ const Popup: React.FC<PopupProps> = ({
   const insets = useSafeAreaInsets();
   const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { round, position });
+
+  if (!isDef(duration)) {
+    duration = themeVar.animation_duration_base;
+  }
 
   const [state, setState] = useState<State>({
     show,
@@ -91,7 +96,7 @@ const Popup: React.FC<PopupProps> = ({
         fadeAnim, // 动画中的变量值
         {
           toValue: getPosition(show, position),
-          duration: +duration,
+          duration: +(duration as number),
           useNativeDriver: true,
         },
       );
@@ -101,12 +106,8 @@ const Popup: React.FC<PopupProps> = ({
         if (!show) {
           setState({ show });
           onClosedFN && onClosedFN();
-          if (__DEV__) {
-            console.log('Popup onClosed');
-          }
         } else {
           onOpenedFN && onOpenedFN();
-          console.log('Popup onOpened');
         }
       });
     }

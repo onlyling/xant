@@ -61,12 +61,6 @@ export interface ToastProps extends Omit<PopupPropsCommon, 'show' | 'duration' |
    * @default 2000
    */
   duration?: number;
-
-  /**
-   * 在函数使用的时候一个 hook，后面有时间优化一下
-   * @deprecated 内部使用
-   */
-  hook?: (m: ToastMethods) => void;
 }
 
 export interface ToastInstance {

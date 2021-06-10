@@ -39,14 +39,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
 
   return (
     <DropdownConfig.Provider value={config}>
-      <View
-        style={Styles.menu}
-        onLayout={(e) => {
-          console.log(e.nativeEvent.layout);
-        }}
-      >
-        {children}
-      </View>
+      <View style={Styles.menu}>{children}</View>
     </DropdownConfig.Provider>
   );
 };

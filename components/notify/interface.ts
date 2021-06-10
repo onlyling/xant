@@ -62,12 +62,6 @@ export interface NotifyOptions extends Omit<NotifyProps, 'show'> {
    * @default 3000
    */
   duration?: number | string;
-
-  /**
-   * 在函数使用的时候一个 hook，后面有时间优化一下
-   * @deprecated 内部使用
-   */
-  hook?: (m: NotifyMethods) => void;
 }
 
 export interface NotifyMethodProps extends NotifyOptions {}

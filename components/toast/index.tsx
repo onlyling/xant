@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 
 import type { ToastProps, ToastType, ToastInstance, ToastMethods } from './interface';
 import ToastView from './toast';
@@ -44,33 +44,25 @@ const Toast: ToastInstance = (options) => {
     ...(type ? defaultOptionsMap[type] : {}),
     ...opts,
   };
-
-  let ref: ToastMethods | null = null;
-  const hookInner = (methods: ToastMethods) => {
-    ref = methods;
-    opts.hook && opts.hook(methods);
-  };
+  const ToastRef = createRef<ToastMethods>();
   const key = Portal.add(
     <ToastView
       {...opts}
-      hook={hookInner}
+      ref={ToastRef}
       onClosed={() => {
         Portal.remove(key);
-        if (__DEV__) {
-          console.log('toast removed');
-        }
-        ref = null;
         opts.onClosed && opts.onClosed();
       }}
     />,
   );
 
+  // TODO 优化调用方法
   return {
     close: () => {
-      ref?.close();
+      ToastRef.current?.close();
     },
     setMessage: (m: string) => {
-      ref?.setMessage(m);
+      ToastRef.current?.setMessage(m);
     },
   };
 };

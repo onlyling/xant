@@ -1,29 +1,18 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect, useImperativeHandle, forwardRef, memo } from 'react';
 
-import type { NotifyMethodProps } from './interface';
+import type { NotifyMethodProps, NotifyMethods } from './interface';
 import Notify from './notify';
 
 /**
  * Notify 消息提示
  * @description 在页面顶部展示消息提示，支持函数调用和组件调用两种方式。
  */
-const NotifyMethod: React.FC<NotifyMethodProps> = ({ duration = 3000, message, hook, ...restProps }) => {
+const NotifyMethod = forwardRef<NotifyMethods, NotifyMethodProps>(({ duration = 3000, message, ...restProps }, ref) => {
   const [show, setShow] = useState(false);
   const [msg, setMsg] = useState(message);
 
   useEffect(() => {
     setShow(true);
-
-    // 暂时用这个方式
-    hook &&
-      hook({
-        close: () => {
-          setShow(false);
-        },
-        setMessage: (s) => {
-          setMsg(s);
-        },
-      });
 
     let timer: ReturnType<typeof setTimeout>;
 
@@ -37,9 +26,19 @@ const NotifyMethod: React.FC<NotifyMethodProps> = ({ duration = 3000, message, h
     return () => {
       clearTimeout(timer);
     };
-  }, [duration, hook]);
+  }, [duration]);
+
+  // 向外暴露函数
+  useImperativeHandle(ref, () => ({
+    close: () => {
+      setShow(false);
+    },
+    setMessage: (s) => {
+      setMsg(s);
+    },
+  }));
 
   return <Notify {...restProps} show={show} message={msg} />;
-};
+});
 
 export default memo(NotifyMethod);

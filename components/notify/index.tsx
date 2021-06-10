@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, createRef } from 'react';
 
 import type { NotifyInstance, NotifyMethods, NotifyOptions } from './interface';
 import NotifyView from './notify';
@@ -6,25 +6,14 @@ import NotifyMethod from './notify-method';
 import Portal from '../portal';
 
 const Notify: NotifyInstance = (options) => {
-  let opts: NotifyOptions = typeof options === 'string' ? { message: options } : options;
-
-  let ref: NotifyMethods | null = null;
-
-  const hookInner = (methods: NotifyMethods) => {
-    ref = methods;
-    opts.hook && opts.hook(methods);
-  };
-
+  const opts: NotifyOptions = typeof options === 'string' ? { message: options } : options;
+  const NotifyRef = createRef<NotifyMethods>();
   const key = Portal.add(
     <NotifyMethod
       {...opts}
-      hook={hookInner}
+      ref={NotifyRef}
       onClosed={() => {
         Portal.remove(key);
-        if (__DEV__) {
-          console.log('notify removed');
-        }
-        ref = null;
         opts.onClosed && opts.onClosed();
       }}
     />,
@@ -32,10 +21,10 @@ const Notify: NotifyInstance = (options) => {
 
   return {
     close: () => {
-      ref?.close();
+      NotifyRef.current?.close();
     },
     setMessage: (m: React.ReactNode) => {
-      ref?.setMessage(m);
+      NotifyRef.current?.setMessage(m);
     },
   };
 };

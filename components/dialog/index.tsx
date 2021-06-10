@@ -16,10 +16,6 @@ const Dialog: DialogInstance = (opts) => {
         onClosed={() => {
           Portal.remove(key);
 
-          if (__DEV__) {
-            console.log('dialog removed');
-          }
-
           opts.onClosed && opts.onClosed();
         }}
         callback={(action) => {
