@@ -18,7 +18,7 @@ const getScale = (s: boolean) => (s ? 1 : 0);
  * Dialog 弹出框
  * @description 弹出模态框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。
  * @description 弹出框组件支持函数调用和组件调用两种方式。
- * @description 在安卓真机表现，按钮的透明度有点问题。
+ * @description 在安卓真机表现，按钮的透明度有点问题。问题是按钮有背景色，和整个透明冲突，如果想要带上透明的改动有点大，暂时只缩放大小
  */
 const Dialog: React.FC<DialogProps> = ({
   children,
@@ -161,8 +161,8 @@ const Dialog: React.FC<DialogProps> = ({
       transform: [
         {
           scale: fadeAnim.interpolate({
-            inputRange: [0, 0.01, 1],
-            outputRange: [0, 0.9, 1],
+            inputRange: [0, 0.01, 0.98, 1],
+            outputRange: [0, 0.9, 1.01, 1],
           }),
         },
       ],
