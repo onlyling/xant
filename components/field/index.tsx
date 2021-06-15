@@ -24,6 +24,8 @@ const Field: React.FC<FieldProps> = ({
   labelAlign = 'left',
   colon = false,
   colonLabel = '：',
+
+  // TextInput 的属性
   ...resetProps
 }) => {
   const { themeVar } = useTheme();

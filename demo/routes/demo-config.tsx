@@ -1,9 +1,10 @@
 import React from 'react';
 import type { ViewStyle } from 'react-native';
+// import { ScrollView } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import DemoHome from '@/pages/demo/demo';
 import DemoFull from '@/pages/demo/full';
-import { KeyboardAwareScrollView } from '@/components/keyboard-aware-scroll-view';
 import DemoWrapper from './demo-wrapper';
 
 import DemoNavBar from '../../components/nav-bar/demo/basic';

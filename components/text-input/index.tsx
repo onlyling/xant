@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback, memo } from 'react';
 import type { ViewStyle, TextStyle, NativeSyntheticEvent, TextInputFocusEventData, TextInputEndEditingEventData } from 'react-native';
-import { View, TextInput as RNTextInput, TouchableWithoutFeedback, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TextInput as RNTextInput, TouchableWithoutFeedback, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 
 import type { TextInputProps } from './interface';
 import { createStyles } from './style';
@@ -11,6 +11,7 @@ import { isDef } from '../helpers/typeof';
 
 /**
  * 自定义输入项
+ * @description 在和 react-native-keyboard-aware-scroll-view 配合做软键盘适配时，如果是 textare 类型默认 scrollEnabled 禁用，避免软键盘遮挡输入内容
  */
 const TextInputBase: React.FC<TextInputProps> = ({
   wrapperStyle,
@@ -33,12 +34,18 @@ const TextInputBase: React.FC<TextInputProps> = ({
   onEndEditing,
   onFocus,
   onBlur,
+  scrollEnabled = false,
+  returnKeyType,
   ...resetProps
 }) => {
   // 修正数据
   if (type === 'textarea') {
     multiline = true;
     clearable = false;
+  } else {
+    if (!returnKeyType) {
+      returnKeyType = 'done';
+    }
   }
   if (type === 'password') {
     secureTextEntry = true;
@@ -134,7 +141,19 @@ const TextInputBase: React.FC<TextInputProps> = ({
   ]);
   const textInputStyleSummary: TextStyle = StyleSheet.flatten([
     Styles.textInput,
-    multiline ? { lineHeight: themeVar.text_input_min_height - 8, paddingVertical: 4 } : { height: themeVar.text_input_min_height },
+    multiline
+      ? {
+          ...Platform.select({
+            android: {
+              lineHeight: themeVar.text_input_min_height,
+            },
+            ios: {
+              lineHeight: themeVar.text_input_min_height - 8,
+              paddingVertical: 4,
+            },
+          }),
+        }
+      : { height: themeVar.text_input_min_height },
     clearable ? Styles.textInputClearable : null,
     style,
   ]);
@@ -148,10 +167,12 @@ const TextInputBase: React.FC<TextInputProps> = ({
           style={textInputStyleSummary}
           value={isDef(value) ? value : localValue}
           multiline={multiline}
+          scrollEnabled={scrollEnabled}
           selectionColor={selectionColor || themeVar.text_input_selection_color}
           secureTextEntry={secureTextEntry}
           placeholderTextColor={placeholderTextColor || themeVar.text_input_placeholder_text_color}
           keyboardType={keyboardType}
+          returnKeyType={returnKeyType}
           onChangeText={onChangeTextTextInput}
           onEndEditing={onEndEditingTextInput}
           onFocus={onFocusTextInput}

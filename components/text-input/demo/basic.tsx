@@ -7,7 +7,7 @@ const BasicTextInput: React.FC = () => {
   const [value, setValue] = useState('');
 
   return (
-    <ScrollView>
+    <ScrollView keyboardShouldPersistTaps="handled">
       <CellGroup title="基础用法">
         <Cell title="text" value={<TextInput placeholder="不限制输入" />} />
 
@@ -20,6 +20,8 @@ const BasicTextInput: React.FC = () => {
         <Cell title="textarea" value={<TextInput type="textarea" placeholder="多行文本" />} />
 
         <Cell title="clearTrigger" value={<TextInput clearable clearTrigger="always" placeholder="多行文本" />} />
+
+        <Cell title="clearTrigger2" value={<TextInput clearable placeholder="多行文本" />} />
 
         <Cell
           title="受控使用"
