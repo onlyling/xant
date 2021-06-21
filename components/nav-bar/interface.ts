@@ -20,17 +20,17 @@ export interface NavBarProps {
   /**
    * 标题文字或自定义 JSX
    */
-  title?: string | React.ReactNode;
+  title?: React.ReactNode;
 
   /**
    * 左侧文字或自定义 JSX
    */
-  leftText?: string | React.ReactNode;
+  leftText?: React.ReactNode;
 
   /**
    * 右侧文字或自定义 JSX
    */
-  rightText?: string | React.ReactNode;
+  rightText?: React.ReactNode;
 
   /**
    * 是否显示左箭头
