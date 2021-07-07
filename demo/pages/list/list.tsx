@@ -12,7 +12,7 @@ const List: React.FC<ListProps> = ({ navigation }) => {
       title="List"
       barStyle="light-content"
       headerBackgroundColor="#f30"
-      headerPorps={{
+      headerProps={{
         rightText: '1234',
       }}
     >
