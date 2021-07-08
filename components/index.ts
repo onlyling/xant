@@ -53,7 +53,9 @@ export { default as Overlay } from './overlay';
 export type { PopupProps, PopupPosition } from './popup/interface';
 export { default as Popup } from './popup';
 
-export type { default as Portal } from './portal';
+export { default as Portal } from './portal';
+
+export type { ProviderProps } from './provider/interface';
 export { default as Provider } from './provider';
 
 export type { SwitchProps } from './switch/interface';
