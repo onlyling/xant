@@ -70,7 +70,7 @@ export { default as TextInput } from './text-input';
 export type { ThemeVarType } from './theme';
 export { default as Theme, useTheme } from './theme';
 
-export { ToastInstance } from './toast/interface';
+export type { ToastInstance } from './toast/interface';
 export { default as Toast } from './toast';
 
 export const Icon = IconAll;
