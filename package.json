@@ -73,19 +73,16 @@
   },
   "lint-staged": {
     "*.{yml,yaml,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "*.{js,jsx}": [
       "eslint --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ],
     "*.{js,jsx,ts,tsx}": [
       "bash -c tsc --noEmit",
       "eslint --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }
