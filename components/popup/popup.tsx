@@ -18,6 +18,7 @@ import * as helpers from '../helpers';
  */
 const Popup: React.FC<PopupProps> = ({
   children,
+  style,
   show = false,
   overlay = true,
   duration,
@@ -140,6 +141,7 @@ const Popup: React.FC<PopupProps> = ({
 
   const popupStyleSummary: ViewStyle = StyleSheet.flatten([
     Styles.popup,
+    style,
     state.show ? Styles.popupActive : null,
     {
       paddingBottom: safeAreaInsetBottom ? insets.bottom : 0,

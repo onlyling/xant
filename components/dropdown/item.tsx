@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, memo } from 'react';
 import type { ViewStyle, LayoutChangeEvent } from 'react-native';
 import { TouchableWithoutFeedback, View, ScrollView, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import useState from '../hooks/use-state-update';
 
 import type { DropdownItemProps, DropdownItemOption } from './interface';
@@ -12,7 +13,10 @@ import Popup from '../popup/popup';
 import Cell from '../cell/cell';
 import IconSuccessOutline from '../icon/success';
 
+const popupStyle: ViewStyle = { backgroundColor: 'transparent' };
+
 const DropdownItem: React.FC<DropdownItemProps> = ({ lazyRender = true, value, options = [], disabled = false, onChange, ...restProps }) => {
+  const insets = useSafeAreaInsets();
   const [active, setActive] = useState(false);
   const [maxHeight, setMaxHeight] = useState(0);
   const optionWrapperStyle = useMemo<ViewStyle>(() => ({ maxHeight }), [maxHeight]);
@@ -93,19 +97,30 @@ const DropdownItem: React.FC<DropdownItemProps> = ({ lazyRender = true, value, o
         ) : null}
 
         <View style={boxStyle} pointerEvents="box-none" onLayout={onLayoutPlace}>
-          <Popup show={active} lazyRender={lazyRender} position={config.direction === 'up' ? 'bottom' : 'top'} duration={config.duration} onPressOverlay={onPressShade}>
-            <ScrollView style={optionWrapperStyle}>
-              {options.map((opt) => {
-                return (
-                  <Cell
-                    key={opt.value}
-                    title={opt.text}
-                    rightIcon={opt.value === value ? <IconSuccessOutline size="16" color={config.activeColor} /> : null}
-                    onPress={genOnPressCell(opt)}
-                  />
-                );
-              })}
-            </ScrollView>
+          <Popup
+            show={active}
+            style={popupStyle}
+            lazyRender={lazyRender}
+            position={config.direction === 'up' ? 'bottom' : 'top'}
+            duration={config.duration}
+            onPressOverlay={onPressShade}
+          >
+            <View style={optionWrapperStyle}>
+              {isContextTop ? <View style={{ height: insets.top }} /> : null}
+              <ScrollView>
+                {options.map((opt) => {
+                  return (
+                    <Cell
+                      key={opt.value}
+                      title={opt.text}
+                      rightIcon={opt.value === value ? <IconSuccessOutline size="16" color={config.activeColor} /> : null}
+                      onPress={genOnPressCell(opt)}
+                    />
+                  );
+                })}
+              </ScrollView>
+              {!isContextTop ? <View style={{ height: insets.bottom }} /> : null}
+            </View>
           </Popup>
         </View>
       </Portal>

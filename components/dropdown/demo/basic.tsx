@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { CellGroup, DropdownMenu, DropdownItem } from 'xant';
+import { CellGroup, DropdownMenu, DropdownItem, useTheme } from 'xant';
 
 const itemOptions = [
   { text: '全部商品', value: '' },
@@ -29,11 +29,14 @@ const BasicDropdown: React.FC = () => {
     v3: itemOptions[0].value,
     v4: itemOptions[0].value,
   });
+  const { themeVar } = useTheme();
+  const groupTitleHeight = themeVar.cell_group_title_padding_top + themeVar.cell_group_title_padding_bottom + themeVar.cell_group_title_line_height;
+  const top1 = insets.top + groupTitleHeight + themeVar.nav_bar_height;
 
   return (
     <>
       <CellGroup title="基础用法">
-        <DropdownMenu top={32 + 46 + insets.top}>
+        <DropdownMenu top={top1}>
           <DropdownItem
             options={itemOptions}
             value={values.v1}
@@ -60,8 +63,7 @@ const BasicDropdown: React.FC = () => {
         <View
           style={{ height: 200 }}
           onLayout={(e) => {
-            console.log();
-            setUpTop(32 + 46 + e.nativeEvent.layout.y + 200 + insets.top);
+            setUpTop(top1 + e.nativeEvent.layout.y + 200);
           }}
         />
 
