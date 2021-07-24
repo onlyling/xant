@@ -26,6 +26,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
   labelStyle,
   children,
 }) => {
+  if (disabled) {
+    labelDisabled = disabled;
+  }
+
   const onChangePersistFn = usePersistFn(onChange || noop);
   const [currentValue, setCurrentValue] = useState(defaultValue);
   const { themeVar } = useTheme();

@@ -24,7 +24,7 @@ const CheckboxIcon: React.FC<CheckboxIconProps> = ({ active, activeColor, size =
   const styleSummary: ViewStyle = StyleSheet.flatten([Styles.icon, active ? Styles.iconActive : null, disabled ? Styles.iconDisabled : null, style]);
 
   return (
-    <TouchableOpacity {...restProps} style={styleSummary}>
+    <TouchableOpacity {...restProps} style={styleSummary} disabled={disabled}>
       {active ? <IconSuccess size={size} color={disabled ? themeVar.checkbox_icon_border_color : '#fff'} style={Styles.iconStyle} /> : null}
     </TouchableOpacity>
   );
