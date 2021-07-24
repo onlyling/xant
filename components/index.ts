@@ -16,6 +16,10 @@ export type { CellProps, CellGroupProps } from './cell/interface';
 export { default as Cell } from './cell/cell';
 export { default as CellGroup } from './cell/cell-group';
 
+export type { CheckboxIconProps, CheckboxProps } from './checkbox/interface';
+export { default as Checkbox } from './checkbox';
+export { default as CheckboxIcon } from './checkbox/icon';
+
 export { DialogInstance, DialogProps } from './dialog/interface';
 export { default as Dialog } from './dialog';
 

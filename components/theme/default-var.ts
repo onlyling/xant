@@ -172,6 +172,15 @@ export const cell_group_title_padding_bottom = padding_xs;
 export const cell_group_title_font_size = font_size_md;
 export const cell_group_title_line_height: number = 16;
 
+// Checkbox
+export const checkbox_icon_border_color = gray_5;
+export const checkbox_icon_size: number = 20;
+export const checkbox_disabled_background_color = border_color;
+export const checkbox_checked_icon_color = primary;
+export const checkbox_label_color = text_color;
+export const checkbox_label_margin = padding_xs;
+export const checkbox_disabled_label_color = gray_5;
+
 // Dialog
 export const dialog_width: number = 320;
 export const dialog_small_screen_width: string = '90%';
