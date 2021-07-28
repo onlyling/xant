@@ -11,7 +11,7 @@ const ThemeVarContext = createContext<ThemeContextProps>({
 
 export const useTheme = () => useContext(ThemeVarContext);
 
-const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, theme = {} }) => {
+const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, theme }) => {
   const state = useMemo<ThemeContextProps>(
     () => ({
       themeVar: {

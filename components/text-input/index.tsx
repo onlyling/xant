@@ -8,10 +8,14 @@ import IconSvgCross from '../icon/cross';
 import { useTheme } from '../theme';
 import { formatNumber } from '../helpers/format/number';
 import { isDef } from '../helpers/typeof';
+import usePersistFn from '../hooks/use-persist-fn';
+import * as helpers from '../helpers';
+
+const defaultFormatter = <T,>(t: T): T => t;
 
 /**
  * 自定义输入项
- * @description 在和 react-native-keyboard-aware-scroll-view 配合做软键盘适配时，如果是 textare 类型默认 scrollEnabled 禁用，避免软键盘遮挡输入内容
+ * @description 在和 react-native-keyboard-aware-scroll-view 配合做软键盘适配时，如果是 textarea 类型默认 scrollEnabled 禁用，避免软键盘遮挡输入内容
  */
 const TextInputBase: React.FC<TextInputProps> = ({
   wrapperStyle,
@@ -58,6 +62,11 @@ const TextInputBase: React.FC<TextInputProps> = ({
   }
 
   const { themeVar } = useTheme();
+  const onChangeTextPersistFn = usePersistFn(onChangeText || helpers.noop);
+  const onEndEditingPersistFn = usePersistFn(onEndEditing || helpers.noop);
+  const onFocusPersistFn = usePersistFn(onFocus || helpers.noop);
+  const onBlurPersistFn = usePersistFn(onBlur || helpers.noop);
+  const formatterPersistFn = usePersistFn(formatter || defaultFormatter);
   const [localValue, setLocalValue] = useState(value);
   const [focus, setFocus] = useState(false);
   const TextInputRef = useRef<RNTextInput>(null);
@@ -80,25 +89,25 @@ const TextInputBase: React.FC<TextInputProps> = ({
         t = formatNumber(t, isNumber, isNumber);
       }
 
-      if (formatTrigger === 'onChangeText' && formatter) {
-        t = formatter(t);
+      if (formatTrigger === 'onChangeText') {
+        t = formatterPersistFn(t);
       }
 
       setLocalValue(t);
-      onChangeText && onChangeText(t);
+      onChangeTextPersistFn(t);
     },
-    [type, onChangeText, formatter, formatTrigger],
+    [type, onChangeTextPersistFn, formatterPersistFn, formatTrigger],
   );
   const onEndEditingTextInput = useCallback(
     (e: NativeSyntheticEvent<TextInputEndEditingEventData>) => {
-      if (formatTrigger === 'onChangeText' && formatter) {
-        e.nativeEvent.text = formatter(e.nativeEvent.text);
+      if (formatTrigger === 'onChangeText') {
+        e.nativeEvent.text = formatterPersistFn(e.nativeEvent.text);
       }
 
       setLocalValue(e.nativeEvent.text);
-      onEndEditing && onEndEditing(e);
+      onEndEditingPersistFn(e);
     },
-    [onEndEditing, formatter, formatTrigger],
+    [onEndEditingPersistFn, formatterPersistFn, formatTrigger],
   );
   /**
    * 点击清除按钮
@@ -107,22 +116,22 @@ const TextInputBase: React.FC<TextInputProps> = ({
   const onPressClearable = useCallback(() => {
     TextInputRef.current?.clear();
     setLocalValue('');
-    onChangeText && onChangeText('');
+    onChangeTextPersistFn('');
     onPressTextInputWrapper();
-  }, [onChangeText, onPressTextInputWrapper]);
+  }, [onChangeTextPersistFn, onPressTextInputWrapper]);
   const onFocusTextInput = useCallback(
     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
       setFocus(true);
-      onFocus && onFocus(e);
+      onFocusPersistFn(e);
     },
-    [onFocus],
+    [onFocusPersistFn],
   );
   const onBlurTextInput = useCallback(
     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
       setFocus(false);
-      onBlur && onBlur(e);
+      onBlurPersistFn(e);
     },
-    [onBlur],
+    [onBlurPersistFn],
   );
 
   // 同步外部的数据

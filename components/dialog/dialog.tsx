@@ -9,6 +9,7 @@ import Button from '../button';
 import { ActionBar, ActionBarButton } from '../action-bar';
 import { useTheme } from '../theme';
 import useState from '../hooks/use-state-update';
+import usePersistFn from '../hooks/use-persist-fn';
 import { isDef } from '../helpers/typeof';
 import * as helpers from '../helpers';
 
@@ -41,14 +42,19 @@ const Dialog: React.FC<DialogProps> = ({
   overlay = true,
   duration,
   closeOnPressOverlay = true,
-  onPressOverlay: onPressOverlayFN,
-  onOpen: onOpenFN,
-  onOpened: onOpenedFN,
-  onClose: onCloseFN,
-  onClosed: onClosedFN,
+  onPressOverlay: onPressOverlayFn,
+  onOpen: onOpenFn,
+  onOpened: onOpenedFn,
+  onClose: onCloseFn,
+  onClosed: onClosedFn,
   onRequestClose,
 }) => {
   const { themeVar } = useTheme();
+  const onPressOverlayPersistFn = usePersistFn(onPressOverlayFn || helpers.noop);
+  const onOpenPersistFn = usePersistFn(onOpenFn || helpers.noop);
+  const onOpenedPersistFn = usePersistFn(onOpenedFn || helpers.noop);
+  const onClosePersistFn = usePersistFn(onCloseFn || helpers.noop);
+  const onClosedPersistFn = usePersistFn(onClosedFn || helpers.noop);
   const Styles = createStyles(themeVar, { messageAlign, width });
 
   if (!isDef(duration)) {
@@ -75,9 +81,9 @@ const Dialog: React.FC<DialogProps> = ({
   const onPressOverlay = useCallback(() => {
     if (closeOnPressOverlay) {
       // 关闭弹层
-      onPressOverlayFN && onPressOverlayFN();
+      onPressOverlayPersistFn();
     }
-  }, [closeOnPressOverlay, onPressOverlayFN]);
+  }, [closeOnPressOverlay, onPressOverlayPersistFn]);
 
   // 监听状态变化，执行动画
   useEffect(() => {
@@ -98,17 +104,18 @@ const Dialog: React.FC<DialogProps> = ({
       fadeAnim.setValue(getScale(!show));
 
       if (show) {
-        onOpenFN && onOpenFN();
+        onOpenPersistFn();
       } else {
-        onCloseFN && onCloseFN();
+        onClosePersistFn();
       }
 
       fadeInstance.current = Animated.timing(
         fadeAnim, // 动画中的变量值
         {
           toValue: getScale(show),
-          duration: +(duration as number),
+          duration: duration,
           useNativeDriver: true,
+          easing: show ? helpers.easing.easeOutCirc : helpers.easing.easeInCubic,
         },
       );
 
@@ -116,9 +123,9 @@ const Dialog: React.FC<DialogProps> = ({
         fadeInstance.current = null;
         if (!show) {
           setState({ show });
-          onClosedFN && onClosedFN();
+          onClosedPersistFn();
         } else {
-          onOpenedFN && onOpenedFN();
+          onOpenedPersistFn();
         }
       });
     }
@@ -127,7 +134,7 @@ const Dialog: React.FC<DialogProps> = ({
       // 停止动画
       stopShow();
     };
-  }, [show, duration, fadeAnim, stopShow, onOpenFN, onOpenedFN, onCloseFN, onClosedFN]);
+  }, [show, duration, fadeAnim, stopShow, onOpenPersistFn, onOpenedPersistFn, onClosePersistFn, onClosedPersistFn]);
 
   // Android 返回按钮
   useEffect(() => {

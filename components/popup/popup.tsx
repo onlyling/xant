@@ -9,6 +9,7 @@ import { getPosition, getTransform } from './helper';
 import Overlay from '../overlay/overlay';
 import { useTheme } from '../theme';
 import useState from '../hooks/use-state-update';
+import usePersistFn from '../hooks/use-persist-fn';
 import { isDef } from '../helpers/typeof';
 import * as helpers from '../helpers';
 
@@ -27,14 +28,19 @@ const Popup: React.FC<PopupProps> = ({
   round = false,
   safeAreaInsetBottom = false,
   lazyRender = true,
-  onPressOverlay: onPressOverlayFN,
-  onOpen: onOpenFN,
-  onOpened: onOpenedFN,
-  onClose: onCloseFN,
-  onClosed: onClosedFN,
+  onPressOverlay: onPressOverlayFn,
+  onOpen: onOpenFn,
+  onOpened: onOpenedFn,
+  onClose: onCloseFn,
+  onClosed: onClosedFn,
   onRequestClose,
 }) => {
   const insets = useSafeAreaInsets();
+  const onPressOverlayPersistFn = usePersistFn(onPressOverlayFn || helpers.noop);
+  const onOpenPersistFn = usePersistFn(onOpenFn || helpers.noop);
+  const onOpenedPersistFn = usePersistFn(onOpenedFn || helpers.noop);
+  const onClosePersistFn = usePersistFn(onCloseFn || helpers.noop);
+  const onClosedPersistFn = usePersistFn(onClosedFn || helpers.noop);
   const { themeVar } = useTheme();
   const Styles = createStyles(themeVar, { round, position });
 
@@ -64,9 +70,9 @@ const Popup: React.FC<PopupProps> = ({
   const onPressOverlay = useCallback(() => {
     if (closeOnPressOverlay) {
       // 关闭弹层
-      onPressOverlayFN && onPressOverlayFN();
+      onPressOverlayPersistFn();
     }
-  }, [closeOnPressOverlay, onPressOverlayFN]);
+  }, [closeOnPressOverlay, onPressOverlayPersistFn]);
 
   // 监听状态变化，执行动画
   useEffect(() => {
@@ -88,16 +94,16 @@ const Popup: React.FC<PopupProps> = ({
       fadeAnim.setValue(getPosition(!show, position));
 
       if (show) {
-        onOpenFN && onOpenFN();
+        onOpenPersistFn();
       } else {
-        onCloseFN && onCloseFN();
+        onClosePersistFn();
       }
 
       fadeInstance.current = Animated.timing(
         fadeAnim, // 动画中的变量值
         {
           toValue: getPosition(show, position),
-          duration: +(duration as number),
+          duration: duration,
           useNativeDriver: true,
         },
       );
@@ -106,9 +112,9 @@ const Popup: React.FC<PopupProps> = ({
         fadeInstance.current = null;
         if (!show) {
           setState({ show });
-          onClosedFN && onClosedFN();
+          onClosedPersistFn();
         } else {
-          onOpenedFN && onOpenedFN();
+          onOpenedPersistFn();
         }
       });
     }
@@ -117,7 +123,7 @@ const Popup: React.FC<PopupProps> = ({
       // 停止动画
       stopShow();
     };
-  }, [show, duration, fadeAnim, stopShow, position, onOpenFN, onOpenedFN, onCloseFN, onClosedFN]);
+  }, [show, duration, fadeAnim, stopShow, position, onOpenPersistFn, onOpenedPersistFn, onClosePersistFn, onClosedPersistFn]);
 
   // 初始化好组件
   useEffect(() => {

@@ -67,7 +67,7 @@ const Image: React.FC<ImageProps> = (props) => {
   };
 
   const wrapperStyleSummary: ViewStyle = StyleSheet.flatten([Styles.wrapper, wrapperStyle]);
-  const imageStyleSummary: ImageStyle = StyleSheet.flatten([Styles.image, { opacity: (ImageAnimated.current as unknown) as number }, style]);
+  const imageStyleSummary: ImageStyle = StyleSheet.flatten([Styles.image, { opacity: ImageAnimated.current as unknown as number }, style]);
 
   return (
     <TouchableOpacity style={wrapperStyleSummary} activeOpacity={themeVar.active_opacity} onPress={onPress}>

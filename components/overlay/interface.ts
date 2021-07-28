@@ -16,13 +16,13 @@ export interface OverlayProps {
    * z-index 层级
    * @default 1
    */
-  zIndex?: number | string;
+  zIndex?: number;
 
   /**
    * 动画时长，单位毫秒
    * @default 300
    */
-  duration?: number | string;
+  duration?: number;
 
   /**
    * 点击弹层

@@ -61,7 +61,7 @@ export interface NotifyOptions extends Omit<NotifyProps, 'show'> {
    * 展示时长(ms)，值为 0 时，notify 不会消失
    * @default 3000
    */
-  duration?: number | string;
+  duration?: number;
 }
 
 export interface NotifyMethodProps extends NotifyOptions {}

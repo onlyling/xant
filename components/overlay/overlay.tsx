@@ -25,7 +25,7 @@ const Overlay: React.FC<OverlayProps> = ({ children, style, zIndex, show = false
       fadeAnim.current, // 动画中的变量值
       {
         toValue: show ? 1 : 0,
-        duration: +duration,
+        duration: duration,
         useNativeDriver: true,
       },
     );
@@ -65,7 +65,7 @@ const Overlay: React.FC<OverlayProps> = ({ children, style, zIndex, show = false
     Styles.overlay,
     localShow ? Styles.overlayActive : null,
     {
-      opacity: (fadeAnim.current as unknown) as number,
+      opacity: fadeAnim.current as unknown as number,
       backgroundColor: themeVar.overlay_background_color,
       zIndex: zIndex ? +zIndex : themeVar.overlay_z_index,
     },
