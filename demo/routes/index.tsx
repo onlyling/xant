@@ -14,7 +14,7 @@ import type { DemoPaths } from './demo-config';
 import { demoConfigs } from './demo-config';
 
 /** 当前所有 Stack 路由的参数 */
-type RootStackParamList = {
+export type RootStackParamList = {
   Home: undefined;
   List: undefined;
   Details: {

@@ -2,9 +2,10 @@
   "name": "xant",
   "version": "0.0.1",
   "private": true,
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "react-native": "src/index.ts",
+  "types": "lib/typescript/index.d.ts",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -22,8 +23,7 @@
     "doc:pulish-safe": "git subtree push --prefix docs-dist origin gh-pages",
     "doc:pulish": "git push origin `git subtree split --prefix docs-dist master`:gh-pages --force",
     "doc:reset": "git reset --hard HEAD^",
-    "clean": "antd-tools run clean",
-    "compile": "npm run clean && antd-tools run compile",
+    "build": "bob build",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -36,7 +36,6 @@
     "prettier": "^2.3.2"
   },
   "devDependencies": {
-    "@ant-design/tools": "^13.6.1",
     "@babel/core": "^7.14.8",
     "@babel/runtime": "^7.14.8",
     "@commitlint/cli": "^13.1.0",
@@ -66,6 +65,7 @@
     "metro-react-native-babel-preset": "^0.66.2",
     "react": "17.0.1",
     "react-native": "0.64.1",
+    "react-native-builder-bob": "^0.18.1",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-keyboard-aware-scroll-view": "^0.9.4",
     "react-native-reanimated": "^2.2.0",
@@ -87,6 +87,20 @@
       "bash -c tsc --noEmit",
       "eslint --fix",
       "prettier --write"
+    ]
+  },
+  "react-native-builder-bob": {
+    "source": "components",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
     ]
   }
 }
