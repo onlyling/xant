@@ -105,6 +105,7 @@ const Popup: React.FC<PopupProps> = ({
           toValue: getPosition(show, position),
           duration: duration,
           useNativeDriver: true,
+          easing: show ? helpers.easing.easeOutCirc : helpers.easing.easeInCubic,
         },
       );
 
