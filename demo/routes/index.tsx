@@ -15,7 +15,7 @@ import { demoConfigs } from './demo-config';
 
 /** 当前所有 Stack 路由的参数 */
 export type RootStackParamList = {
-  Home: undefined;
+  Index: undefined;
   List: undefined;
   Details: {
     id: number;
@@ -42,16 +42,16 @@ const NestingNavigators: React.FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
-        headerMode="none"
+        initialRouteName="Index"
         screenOptions={{
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           cardStyle: {
             backgroundColor: '#fff',
           },
+          headerShown: false,
         }}
       >
-        <Stack.Screen name="Home" component={TabsView} />
+        <Stack.Screen name="Index" component={TabsView} />
 
         <Stack.Screen name="List" component={ListView} />
 
