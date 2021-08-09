@@ -5,17 +5,6 @@ import type { ThemeVarType } from '../theme';
 
 export const createStyles = (themeVar: ThemeVarType, { messageAlign, width }: Pick<DialogProps, 'messageAlign' | 'width'>) => {
   return StyleSheet.create({
-    box: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
-      alignItems: 'center',
-      justifyContent: 'center',
-      // backgroundColor: '#f30', // to test ui
-    },
-
     dialog: {
       // position: 'absolute',
       marginTop: '-40%', // margin 是对话框的尺寸，不是屏幕宽度有关系？
@@ -63,6 +52,7 @@ export const createStyles = (themeVar: ThemeVarType, { messageAlign, width }: Pi
       paddingHorizontal: themeVar.dialog_message_horizontal_padding,
       paddingTop: themeVar.padding_xs,
       paddingBottom: themeVar.padding_md,
+      backgroundColor: 'transparent',
     },
 
     btn: {
@@ -72,6 +62,7 @@ export const createStyles = (themeVar: ThemeVarType, { messageAlign, width }: Pi
       borderWidth: 0,
       borderRadius: 0,
       height: themeVar.dialog_button_height,
+      backgroundColor: 'transparent',
     },
 
     btnRound: {
