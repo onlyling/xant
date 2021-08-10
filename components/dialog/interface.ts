@@ -1,6 +1,7 @@
 import type * as React from 'react';
 
 import type { PopupPropsCommon } from '../popup/interface';
+import type { TextInputProps } from '../text-input/interface';
 
 export type DialogType = 'alert' | 'confirm';
 
@@ -21,6 +22,7 @@ interface DialogCommon extends PopupPropsCommon {
    * @default 320
    */
   width?: number | string;
+
   /**
    * 文本内容，支持通过\n换行
    */
@@ -119,10 +121,51 @@ export interface DialogMethodProps extends Omit<DialogCommon, 'show' | 'onPressO
 
 export interface DialogOptions extends Omit<DialogMethodProps, 'callback'> {}
 
+export type DialogInputState = {
+  value: string;
+} & DialogMethodState;
+
+export interface DialogInputProps extends Omit<DialogCommon, 'show' | 'onPressOverlay' | 'message' | 'messageAlign' | 'theme'> {
+  /**
+   * 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise
+   */
+  beforeClose?: (action: Exclude<DialogAction, 'overlay'>, text: string) => boolean | Promise<boolean>;
+
+  /**
+   * 点击取消
+   */
+  onPressCancel?: (text: string) => boolean | Promise<boolean>;
+
+  /**
+   * 点击确定
+   */
+  onPressConfirm?: (text: string) => boolean | Promise<boolean>;
+
+  /**
+   * 默认值
+   */
+  defaultValue?: string;
+
+  /**
+   * 提示文案
+   */
+  placeholder?: string;
+
+  /**
+   * 输入框类型
+   */
+  type?: TextInputProps['type'];
+
+  textInput?: Omit<TextInputProps, 'defaultValue' | 'placeholder' | 'type'>;
+}
+
+export interface DialogInputOptions extends DialogInputProps {}
+
 export interface DialogInstance {
   (p: DialogOptions): Promise<DialogAction>;
   Component: React.FC<DialogProps>;
   confirm(p: DialogOptions): Promise<DialogAction>;
+  input(p: DialogInputOptions): void;
   // clear(all: boolean | number): void;
   // setDefaultOptions(
   //   type: DialogType | DialogProps,

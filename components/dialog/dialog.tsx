@@ -4,7 +4,7 @@ import { View, Text, Animated, StyleSheet } from 'react-native';
 
 import type { DialogProps } from './interface';
 import { createStyles } from './style';
-import Popup from '../popup';
+import Popup from '../popup/popup';
 import Button from '../button';
 import { ActionBar, ActionBarButton } from '../action-bar';
 import { useTheme } from '../theme';
@@ -125,7 +125,7 @@ const Dialog: React.FC<DialogProps> = ({
         {theme === 'default' ? (
           <View style={Styles.footer}>
             {showCancelButton ? <Button {...cancelButtonProps} plain size="large" style={Styles.btn} /> : null}
-            {showConfirmButton ? <Button {...confirmButtonProps} plain size="large" style={[Styles.btn, showCancelButton ? Styles.btnLeft : null]} /> : null}
+            {showConfirmButton ? <Button {...confirmButtonProps} plain size="large" style={StyleSheet.flatten([Styles.btn, showCancelButton ? Styles.btnLeft : null])} /> : null}
           </View>
         ) : null}
 

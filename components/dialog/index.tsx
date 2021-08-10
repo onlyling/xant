@@ -3,13 +3,14 @@ import React, { memo } from 'react';
 import type { DialogInstance } from './interface';
 import DialogView from './dialog';
 import DialogMethodView from './dialog-method';
+import DialogInputView from './dialog-input';
 import Portal from '../portal';
 
 /**
  * 对话框
  */
 const Dialog: DialogInstance = (opts) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const key = Portal.add(
       <DialogMethodView
         {...opts}
@@ -19,11 +20,7 @@ const Dialog: DialogInstance = (opts) => {
           opts.onClosed && opts.onClosed();
         }}
         callback={(action) => {
-          if (action === 'confirm') {
-            resolve(action);
-          } else {
-            reject(action);
-          }
+          resolve(action);
         }}
       />,
     );
@@ -43,6 +40,18 @@ Dialog.confirm = (options) => {
     showCancelButton: true,
     ...options,
   });
+};
+
+Dialog.input = (opts) => {
+  const key = Portal.add(
+    <DialogInputView
+      {...opts}
+      onClosed={() => {
+        Portal.remove(key);
+        opts.onClosed && opts.onClosed();
+      }}
+    />,
+  );
 };
 
 export default Dialog;

@@ -3,7 +3,6 @@ import React, { useEffect, memo } from 'react';
 import type { DialogMethodProps, DialogAction, DialogMethodState } from './interface';
 import Dialog from './dialog';
 import useState from '../hooks/use-state-update';
-import useDestroyed from '../hooks/use-destroyed';
 import * as helpers from '../helpers';
 
 /**
@@ -17,55 +16,44 @@ const DialogMethod: React.FC<DialogMethodProps> = ({ beforeClose, callback, ...r
     confirm: false,
     overlay: false,
   });
-  const getDestroyed = useDestroyed();
 
   const genOnPressBtn = (action: DialogAction) => () => {
-    const canceled = () => {
-      if (!getDestroyed()) {
-        setState({
-          [action]: false,
-        });
+    const doOkCallback = (v: boolean, okCallback: () => void) => {
+      setState({
+        [action]: false,
+      });
+      if (v) {
+        okCallback();
       }
     };
-    const done = () => {
-      callback && callback(action);
-      canceled();
-      if (!getDestroyed()) {
-        setState({
-          show: false,
-        });
-      }
-    };
-
-    if (beforeClose) {
-      const returnVal = beforeClose(action);
-      // 如果有判断条件
+    const doCallback = (returnVal: boolean | Promise<boolean>, okCallback: () => void) => {
       if (helpers.isPromise(returnVal)) {
         setState({
           [action]: true,
         });
 
-        returnVal
-          .then((value) => {
-            if (value) {
-              // 关闭对话框
-              done();
-            } else {
-              canceled();
-            }
-          })
-          .catch(helpers.noop);
+        returnVal.then((value) => {
+          doOkCallback(value, okCallback);
+        });
       } else {
-        if (returnVal) {
-          // 关闭对话框
-          done();
-        } else {
-          canceled();
-        }
+        doOkCallback(returnVal, okCallback);
       }
+    };
+    const doOnPressCallback = () => {
+      callback(action);
+      doOkCallback(true, () => {
+        setState({
+          show: false,
+        });
+      });
+    };
+
+    if (beforeClose) {
+      doCallback(beforeClose(action), () => {
+        doOnPressCallback();
+      });
     } else {
-      // 关闭对话框
-      done();
+      doOnPressCallback();
     }
   };
 
