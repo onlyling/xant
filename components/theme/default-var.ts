@@ -183,7 +183,6 @@ export const checkbox_disabled_label_color = gray_5;
 
 // Dialog
 export const dialog_width: number = 320;
-export const dialog_small_screen_width: string = '90%';
 export const dialog_font_size = font_size_lg;
 export const dialog_transition = animation_duration_base;
 export const dialog_border_radius: number = 16;
@@ -191,12 +190,10 @@ export const dialog_background_color = white;
 export const dialog_header_font_weight = font_weight_bold;
 export const dialog_header_line_height: number = 24;
 export const dialog_header_padding_top: number = 26;
-export const dialog_header_isolated_vertical_padding = padding_lg;
 export const dialog_message_vertical_padding = padding_lg;
 export const dialog_message_horizontal_padding = padding_lg;
 export const dialog_message_font_size = font_size_md;
 export const dialog_message_line_height = line_height_md;
-export const dialog_message_max_height: number = 60; // 60vh
 export const dialog_has_title_message_text_color = gray_7;
 export const dialog_has_title_message_padding_top = padding_xs;
 export const dialog_button_height: number = 48;

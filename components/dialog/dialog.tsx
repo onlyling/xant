@@ -43,7 +43,7 @@ const Dialog: React.FC<DialogProps> = ({
   const Styles = createStyles(themeVar, { messageAlign, width });
 
   if (!isDef(duration)) {
-    duration = themeVar.animation_duration_base;
+    duration = themeVar.dialog_transition;
   }
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
