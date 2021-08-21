@@ -62,6 +62,9 @@ export { default as Portal } from './portal';
 export type { ProviderProps } from './provider/interface';
 export { default as Provider } from './provider';
 
+export type { PullRefreshProps } from './pull-refresh/interface';
+export { default as PullRefresh } from './pull-refresh';
+
 export type { SwitchProps } from './switch/interface';
 export { default as Switch } from './switch';
 

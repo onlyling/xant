@@ -28,6 +28,7 @@ import DemoTextInput from '../../components/text-input/__fixtures__/basic';
 import DemoField from '../../components/field/__fixtures__/basic';
 import DemoDropdown from '../../components/dropdown/__fixtures__/basic';
 import DemoCheckbox from '../../components/checkbox/__fixtures__/basic';
+import DemoPullRefresh from '../../components/pull-refresh/__fixtures__/basic';
 
 export type DemoPaths =
   | 'DemoHome'
@@ -52,7 +53,8 @@ export type DemoPaths =
   | 'DemoTextInput'
   | 'DemoField'
   | 'DemoDropdown'
-  | 'DemoCheckbox';
+  | 'DemoCheckbox'
+  | 'DemoPullRefresh';
 
 const pageStyle: ViewStyle = {
   flex: 1,
@@ -235,6 +237,14 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
     page: () => (
       <DemoWrapper>
         <DemoCheckbox />
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoPullRefresh',
+    page: () => (
+      <DemoWrapper>
+        <DemoPullRefresh />
       </DemoWrapper>
     ),
   },

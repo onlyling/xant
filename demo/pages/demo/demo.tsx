@@ -102,6 +102,10 @@ const navDatas: {
         title: 'Overlay',
         name: 'DemoOverlay',
       },
+      {
+        title: 'PullRefresh',
+        name: 'DemoPullRefresh',
+      },
     ],
   },
   {
