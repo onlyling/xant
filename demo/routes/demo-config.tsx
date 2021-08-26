@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ViewStyle } from 'react-native';
+// import type { ViewStyle } from 'react-native';
 // import { ScrollView } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -55,11 +55,6 @@ export type DemoPaths =
   | 'DemoDropdown'
   | 'DemoCheckbox'
   | 'DemoPullRefresh';
-
-const pageStyle: ViewStyle = {
-  flex: 1,
-  backgroundColor: '#fff',
-};
 
 export const demoConfigs: { path: DemoPaths; page: any }[] = [
   {
@@ -161,7 +156,7 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
   {
     path: 'DemoImage',
     page: () => (
-      <DemoWrapper style={pageStyle}>
+      <DemoWrapper>
         <DemoImage />
       </DemoWrapper>
     ),

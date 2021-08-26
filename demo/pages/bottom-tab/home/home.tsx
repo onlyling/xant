@@ -8,7 +8,7 @@ type HomeProps = {} & Routes.BottomTabScreenProps<'Home'>;
 
 const Home: React.FC<HomeProps> = ({ navigation }) => {
   return (
-    <Layout.Page showHeader={false}>
+    <Layout.Page headerShown={false}>
       <View>
         <Text>Home</Text>
       </View>

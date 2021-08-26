@@ -23,7 +23,7 @@ export const text_color = gray_8;
 export const active_color = gray_2;
 export const active_opacity: number = 0.7;
 export const disabled_opacity: number = 0.5;
-export const background_color = gray_1;
+export const background_color = '#EDEFF2';
 export const background_color_light: string = '#fafafa';
 export const text_link_color: string = '#576b95';
 

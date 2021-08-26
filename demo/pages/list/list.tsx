@@ -8,14 +8,7 @@ type ListProps = {} & Routes.RootStackScreenProps<'List'>;
 
 const List: React.FC<ListProps> = ({ navigation }) => {
   return (
-    <Layout.Page
-      title="List"
-      barStyle="light-content"
-      headerBackgroundColor="#f30"
-      headerProps={{
-        rightText: '1234',
-      }}
-    >
+    <Layout.Page title="List 哈哈哈" barStyle="light-content" headerBackgroundColor="#f30" headerTintColor="#fff">
       <View>
         <Text>List</Text>
       </View>
