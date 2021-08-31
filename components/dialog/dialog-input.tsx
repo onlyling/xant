@@ -8,8 +8,7 @@ import TextInput from '../text-input';
 import { useTheme } from '../theme';
 import useState from '../hooks/use-state-update';
 import usePersistFn from '../hooks/use-persist-fn';
-import * as helpers from '../helpers';
-import { isDef } from '../helpers/typeof';
+import { isDef, isPromise } from '../helpers/typeof';
 
 /**
  * Dialog 弹出框
@@ -68,7 +67,7 @@ const DialogInput: React.FC<DialogInputProps> = ({
       }
     };
     const doCallback = (returnVal: boolean | Promise<boolean>, okCallback: () => void) => {
-      if (helpers.isPromise(returnVal)) {
+      if (isPromise(returnVal)) {
         setState({
           [action]: true,
         });

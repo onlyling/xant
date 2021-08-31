@@ -1,13 +1,15 @@
 import React from 'react';
 import { Text, ScrollView } from 'react-native';
 
-import { Cell, CellGroup, Icon } from 'xant';
+import { Cell, CellGroup, Icon, useTheme } from 'xant';
 
 const BasicCell: React.FC = () => {
+  const { themeVar } = useTheme();
+
   return (
     <ScrollView>
       <CellGroup title="基础用法">
-        <Cell title={<Text style={{ color: '#f30' }}>单元格</Text>} value="内容" />
+        <Cell title={<Text style={{ color: '#f30', lineHeight: themeVar.cell_line_height }}>单元格</Text>} value="内容" />
 
         <Cell title="单元格" value="内容" label="一些简单的描述" />
 

@@ -3,6 +3,7 @@ import React, { useState, useEffect, memo } from 'react';
 import type { ActionSheetMethodProps, ActionSheetAction, Action } from './interface';
 import ActionSheet from './action-sheet';
 import * as helpers from '../helpers';
+import { isPromise } from '../helpers/typeof';
 
 interface LocalAction extends Action {
   /** 记录谁被点击了 */
@@ -47,7 +48,7 @@ const ActionSheetMethod: React.FC<ActionSheetMethodProps> = ({ actions, beforeCl
       const returnVal = beforeClose(action, item, index);
 
       // 如果有判断条件
-      if (helpers.isPromise(returnVal)) {
+      if (isPromise(returnVal)) {
         setLocalActions((las) =>
           las.map((ac, aci) => {
             if (index === aci) {

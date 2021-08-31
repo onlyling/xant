@@ -3,7 +3,7 @@ import React, { useEffect, memo } from 'react';
 import type { DialogMethodProps, DialogAction, DialogMethodState } from './interface';
 import Dialog from './dialog';
 import useState from '../hooks/use-state-update';
-import * as helpers from '../helpers';
+import { isPromise } from '../helpers/typeof';
 
 /**
  * Dialog 弹出框
@@ -27,7 +27,7 @@ const DialogMethod: React.FC<DialogMethodProps> = ({ beforeClose, callback, ...r
       }
     };
     const doCallback = (returnVal: boolean | Promise<boolean>, okCallback: () => void) => {
-      if (helpers.isPromise(returnVal)) {
+      if (isPromise(returnVal)) {
         setState({
           [action]: true,
         });

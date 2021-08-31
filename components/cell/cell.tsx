@@ -85,8 +85,8 @@ const Cell: React.FC<CellProps> = ({
 
             {isValueAlone ? null : (
               <View style={titleStyleSummary}>
-                <View>{titleJSX}</View>
-                <View>{labelJSX}</View>
+                {titleJSX}
+                {labelJSX}
               </View>
             )}
           </View>

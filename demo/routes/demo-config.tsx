@@ -29,6 +29,7 @@ import DemoField from '../../components/field/__fixtures__/basic';
 import DemoDropdown from '../../components/dropdown/__fixtures__/basic';
 import DemoCheckbox from '../../components/checkbox/__fixtures__/basic';
 import DemoPullRefresh from '../../components/pull-refresh/__fixtures__/basic';
+import DemoProgress from '../../components/progress/__fixtures__/basic';
 
 export type DemoPaths =
   | 'DemoHome'
@@ -54,7 +55,8 @@ export type DemoPaths =
   | 'DemoField'
   | 'DemoDropdown'
   | 'DemoCheckbox'
-  | 'DemoPullRefresh';
+  | 'DemoPullRefresh'
+  | 'DemoProgress';
 
 export const demoConfigs: { path: DemoPaths; page: any }[] = [
   {
@@ -240,6 +242,14 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
     page: () => (
       <DemoWrapper>
         <DemoPullRefresh />
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoProgress',
+    page: () => (
+      <DemoWrapper>
+        <DemoProgress />
       </DemoWrapper>
     ),
   },

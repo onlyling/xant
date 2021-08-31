@@ -1,5 +1,6 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Cell, CellGroup } from 'xant';
 import Layout from '@/layouts/layout';
@@ -123,6 +124,10 @@ const navDatas: {
         title: 'Tag',
         name: 'DemoTag',
       },
+      {
+        title: 'Progress',
+        name: 'DemoProgress',
+      },
     ],
   },
   {
@@ -141,6 +146,8 @@ const navDatas: {
 ];
 
 const Demo: React.FC<DemoProps> = ({ navigation }) => {
+  const insets = useSafeAreaInsets();
+
   return (
     <Layout.Page title="DEMO 组件">
       <ScrollView>
@@ -167,6 +174,8 @@ const Demo: React.FC<DemoProps> = ({ navigation }) => {
             </CellGroup>
           );
         })}
+
+        <View style={{ height: insets.bottom }} />
       </ScrollView>
     </Layout.Page>
   );

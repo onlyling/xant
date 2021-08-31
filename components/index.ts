@@ -57,6 +57,9 @@ export { default as Overlay } from './overlay';
 export type { PopupProps, PopupPosition } from './popup/interface';
 export { default as Popup } from './popup';
 
+export type { ProgressProps } from './progress/interface';
+export { Progress, ProgressPage } from './progress';
+
 export { default as Portal } from './portal';
 
 export type { ProviderProps } from './provider/interface';
