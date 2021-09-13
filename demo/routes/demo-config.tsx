@@ -30,6 +30,7 @@ import DemoDropdown from '../../components/dropdown/__fixtures__/basic';
 import DemoCheckbox from '../../components/checkbox/__fixtures__/basic';
 import DemoPullRefresh from '../../components/pull-refresh/__fixtures__/basic';
 import DemoProgress from '../../components/progress/__fixtures__/basic';
+import DemoCollapse from '../../components/collapse/__fixtures__/basic';
 
 export type DemoPaths =
   | 'DemoHome'
@@ -56,7 +57,8 @@ export type DemoPaths =
   | 'DemoDropdown'
   | 'DemoCheckbox'
   | 'DemoPullRefresh'
-  | 'DemoProgress';
+  | 'DemoProgress'
+  | 'DemoCollapse';
 
 const onScrollBeginDrag = () => {
   Keyboard.dismiss();
@@ -256,6 +258,14 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
     page: () => (
       <DemoWrapper>
         <DemoProgress />
+      </DemoWrapper>
+    ),
+  },
+  {
+    path: 'DemoCollapse',
+    page: () => (
+      <DemoWrapper>
+        <DemoCollapse />
       </DemoWrapper>
     ),
   },
