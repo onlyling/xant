@@ -300,7 +300,7 @@ export const progress_background_color = gray_3;
 export const progress_pivot_horizontal_padding: number = 5;
 export const progress_pivot_text_color = white;
 export const progress_pivot_font_size = font_size_xs;
-export const progress_pivot_line_height: number = 1.6;
+export const progress_pivot_line_height_scale: number = 1.6;
 export const progress_pivot_background_color = primary;
 export const progress_page_background_color = white;
 

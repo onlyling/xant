@@ -109,7 +109,7 @@ const Progress: React.FC<ProgressProps> = ({
   const textStyle: TextStyle = {
     color: textColor,
     fontSize: themeVar.progress_pivot_font_size,
-    lineHeight: themeVar.progress_pivot_line_height * themeVar.progress_pivot_font_size,
+    lineHeight: themeVar.progress_pivot_line_height_scale * themeVar.progress_pivot_font_size,
   };
 
   const onLayoutProgress = useCallback((e: LayoutChangeEvent) => {
