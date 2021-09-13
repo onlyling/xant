@@ -8,8 +8,8 @@ export const createStyles = (
   { type, textColor, size, round, plain, hairline, color }: Pick<TagProps, 'color' | 'textColor' | 'plain' | 'round' | 'size' | 'type' | 'hairline'>,
 ) => {
   const backgroundColor = color || themeVar[`tag_${type}_color` as 'tag_default_color'] || themeVar.tag_default_color;
-  const paddingHorizontal = themeVar[`tag_${size}_horizontal_padding` as 'tag_horizontal_padding'] || themeVar.tag_padding_horizontal;
-  const paddingVertical = themeVar[`tag_${size}_vertical_padding` as 'tag_medium_vertical_padding'] || 0;
+  const paddingHorizontal = themeVar[`tag_${size}_padding_horizontal` as 'tag_horizontal_padding'] || themeVar.tag_padding_horizontal;
+  const paddingVertical = themeVar[`tag_${size}_padding_vertical` as 'tag_medium_padding_vertical'] || 0;
 
   return StyleSheet.create({
     tag: {
