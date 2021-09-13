@@ -52,7 +52,7 @@ const Field: React.FC<FieldProps> = ({
       isTextArea
         ? null
         : {
-            marginVertical: -themeVar.cell_vertical_padding,
+            marginVertical: -themeVar.cell_padding_vertical,
           },
     ],
     size,

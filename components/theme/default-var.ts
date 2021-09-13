@@ -66,8 +66,8 @@ export const border_radius_max: number = 999;
 // Badge
 export const badge_size: number = 16;
 export const badge_color = white;
-export const badge_vertical_padding: number = 0;
-export const badge_horizontal_padding: number = 3;
+export const badge_padding_vertical: number = 0;
+export const badge_padding_horizontal: number = 3;
 export const badge_font_size = font_size_xs;
 export const badge_font_weight = font_weight_bold;
 export const badge_border_width = border_width_base;
@@ -145,8 +145,8 @@ export const button_disabled_opacity = disabled_opacity;
 // Cell
 export const cell_font_size = font_size_md;
 export const cell_line_height: number = 24;
-export const cell_vertical_padding: number = 10;
-export const cell_horizontal_padding = padding_md;
+export const cell_padding_vertical: number = 10;
+export const cell_padding_horizontal = padding_md;
 export const cell_text_color = text_color;
 export const cell_background_color = white;
 export const cell_border_color = border_color;
@@ -159,7 +159,7 @@ export const cell_label_margin_top = padding_base;
 export const cell_value_color = gray_6;
 export const cell_icon_size: number = 16;
 export const cell_right_icon_color = gray_6;
-export const cell_large_vertical_padding = padding_sm;
+export const cell_large_padding_vertical = padding_sm;
 export const cell_large_title_font_size = font_size_lg;
 export const cell_large_label_font_size = font_size_md;
 
@@ -181,6 +181,10 @@ export const checkbox_label_color = text_color;
 export const checkbox_label_margin = padding_xs;
 export const checkbox_disabled_label_color = gray_5;
 
+// Collapse
+export const collapse_transition_duration = animation_duration_base;
+export const collapse_content_padding_horizontal = padding_md;
+
 // Dialog
 export const dialog_width: number = 320;
 export const dialog_font_size = font_size_lg;
@@ -190,8 +194,8 @@ export const dialog_background_color = white;
 export const dialog_header_font_weight = font_weight_bold;
 export const dialog_header_line_height: number = 24;
 export const dialog_header_padding_top: number = 26;
-export const dialog_message_vertical_padding = padding_lg;
-export const dialog_message_horizontal_padding = padding_lg;
+export const dialog_message_padding_vertical = padding_lg;
+export const dialog_message_padding_horizontal = padding_lg;
 export const dialog_message_font_size = font_size_md;
 export const dialog_message_line_height = line_height_md;
 export const dialog_has_title_message_text_color = gray_7;
@@ -202,8 +206,8 @@ export const dialog_confirm_button_text_color = primary;
 export const dialog_cancel_button_text_color = black;
 
 // Divider
-export const divider_vertical_margin = padding_md;
-export const divider_horizontal_margin = padding_md;
+export const divider_margin_vertical = padding_md;
+export const divider_margin_horizontal = padding_md;
 export const divider_text_color = gray_6;
 export const divider_font_size = font_size_md;
 export const divider_line_height: number = 24;
@@ -247,8 +251,8 @@ export const nav_bar_z_index: number = 1;
 
 // Notify
 export const notify_text_color = white;
-export const notify_vertical_padding = padding_xs;
-export const notify_horizontal_padding = padding_md;
+export const notify_padding_vertical = padding_xs;
+export const notify_padding_horizontal = padding_md;
 export const notify_font_size = font_size_md;
 export const notify_line_height = line_height_md;
 export const notify_primary_background_color = primary;
@@ -309,15 +313,15 @@ export const switch_border_color: string = 'rgba(0, 0, 0, 0.1)';
 export const popup_close_icon_z_index: number = 1;
 
 // Tag
-export const tag_horizontal_padding = padding_base;
+export const tag_padding_horizontal = padding_base;
 export const tag_text_color = white;
 export const tag_font_size = font_size_sm;
 export const tag_border_radius: number = 2;
 export const tag_line_height: number = 16;
-export const tag_medium_vertical_padding: number = 2;
-export const tag_medium_horizontal_padding: number = 6;
-export const tag_large_vertical_padding = padding_base;
-export const tag_large_horizontal_padding = padding_xs;
+export const tag_medium_padding_vertical: number = 2;
+export const tag_medium_padding_horizontal: number = 6;
+export const tag_large_padding_vertical = padding_base;
+export const tag_large_padding_horizontal = padding_xs;
 export const tag_large_border_radius = border_radius_md;
 export const tag_large_font_size = font_size_md;
 export const tag_round_border_radius = border_radius_max;
@@ -350,10 +354,10 @@ export const toast_border_radius = border_radius_lg;
 export const toast_background_color: string = 'rgba(0,0,0,0.7)';
 export const toast_icon_size: number = 36;
 export const toast_text_min_width: number = 96;
-export const toast_text_vertical_padding = padding_xs;
-export const toast_text_horizontal_padding = padding_sm;
-export const toast_default_vertical_padding = padding_md;
-export const toast_default_horizontal_padding = padding_md;
+export const toast_text_padding_vertical = padding_xs;
+export const toast_text_padding_horizontal = padding_sm;
+export const toast_default_padding_vertical = padding_md;
+export const toast_default_padding_horizontal = padding_md;
 export const toast_default_width: number = 88 + padding_md * 2; // box-sizing: content-box 但是 RN 无法设置，计算了一下
 export const toast_default_min_height: number = 88 + padding_md * 2;
 export const toast_position_top_distance: string = '20%';

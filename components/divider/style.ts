@@ -8,7 +8,7 @@ export const createStyles = (themeVar: ThemeVarType, { dashed, hairline, content
     divider: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginVertical: themeVar.divider_vertical_margin,
+      marginVertical: themeVar.divider_margin_vertical,
     },
 
     border: {
@@ -21,12 +21,12 @@ export const createStyles = (themeVar: ThemeVarType, { dashed, hairline, content
     },
 
     borderLeft: {
-      marginRight: themeVar.divider_horizontal_margin,
+      marginRight: themeVar.divider_margin_horizontal,
       maxWidth: contentPosition === 'left' ? themeVar.divider_content_left_width : 'auto',
     },
 
     borderRight: {
-      marginLeft: themeVar.divider_horizontal_margin,
+      marginLeft: themeVar.divider_margin_horizontal,
       maxWidth: contentPosition === 'right' ? themeVar.divider_content_right_width : 'auto',
     },
 

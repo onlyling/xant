@@ -10,8 +10,8 @@ export const createStyles = (themeVar: ThemeVarType, { color, backgroundColor, t
     notify: {
       alignItems: 'center',
       justifyContent: 'center',
-      paddingHorizontal: themeVar.notify_horizontal_padding,
-      paddingVertical: themeVar.notify_vertical_padding,
+      paddingHorizontal: themeVar.notify_padding_horizontal,
+      paddingVertical: themeVar.notify_padding_vertical,
       backgroundColor: backgroundColor || typeBackgroundColor,
       // paddingTop: fullScreen ? StatusBar.currentHeight || 0 : 0, // Android 状态栏暂时不知道该怎么盖住，先用边距代替
     },
