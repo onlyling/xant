@@ -30,6 +30,11 @@ const Field: React.FC<FieldProps> = ({
 }) => {
   const { themeVar } = useTheme();
   const Styles = createStyles(themeVar);
+  const isTextArea = resetProps.type === 'textarea';
+
+  if (isTextArea && !isDef(resetProps.showBorder)) {
+    resetProps.showBorder = true;
+  }
 
   const cellProps = {
     innerStyle,
@@ -42,7 +47,14 @@ const Field: React.FC<FieldProps> = ({
       },
       labelTextStyle,
     ]),
-    valueStyle,
+    valueStyle: [
+      valueStyle,
+      isTextArea
+        ? null
+        : {
+            marginVertical: -themeVar.cell_vertical_padding,
+          },
+    ],
     size,
     required,
     border,

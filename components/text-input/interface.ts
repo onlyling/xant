@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { TextInputProps as RNTextInputProps, ViewStyle, StyleProp } from 'react-native';
 
 export interface TextInputProps extends RNTextInputProps {
@@ -13,7 +14,7 @@ export interface TextInputProps extends RNTextInputProps {
    * 多行的时候最低多少行的高度
    * @default 2
    */
-  rows?: number | string;
+  rows?: number;
 
   /**
    * 是否启用清除图标，点击清除图标后会清空输入框
@@ -38,4 +39,26 @@ export interface TextInputProps extends RNTextInputProps {
    * @default `onChangeText`
    */
   formatTrigger?: 'onEndEditing' | 'onChangeText';
+
+  /**
+   * 是否显示字数统计，需要设置 maxLength 属性，只有 textarea 模式下才有效
+   * @default false
+   */
+  showWordLimit?: boolean;
+
+  /**
+   * 是否显示边框
+   * @default false
+   */
+  showBorder?: boolean;
+
+  /**
+   * 带标签的 input，设置后置标签，textarea 无
+   */
+  addonAfter?: React.ReactNode;
+
+  /**
+   * 带标签的 input，设置前置标签，textarea 无
+   */
+  addonBefore?: React.ReactNode;
 }

@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect, useCallback, memo } from 'react';
+import React, { useState, useRef, useEffect, useCallback, memo, isValidElement } from 'react';
 import type { ViewStyle, TextStyle, NativeSyntheticEvent, TextInputFocusEventData, TextInputEndEditingEventData } from 'react-native';
-import { View, TextInput as RNTextInput, TouchableWithoutFeedback, TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import { View, Text, TextInput as RNTextInput, TouchableWithoutFeedback, TouchableOpacity, StyleSheet } from 'react-native';
 
 import type { TextInputProps } from './interface';
 import { createStyles } from './style';
@@ -25,6 +25,10 @@ const TextInputBase: React.FC<TextInputProps> = ({
   clearTrigger = 'focus',
   formatter,
   formatTrigger = 'onChangeText',
+  showWordLimit = false,
+  showBorder = false,
+  addonAfter,
+  addonBefore,
 
   // TextInput 的属性
   value,
@@ -38,6 +42,7 @@ const TextInputBase: React.FC<TextInputProps> = ({
   onEndEditing,
   onFocus,
   onBlur,
+  maxLength,
   scrollEnabled = false,
   returnKeyType,
   ...resetProps
@@ -67,7 +72,7 @@ const TextInputBase: React.FC<TextInputProps> = ({
   const onFocusPersistFn = usePersistFn(onFocus || helpers.noop);
   const onBlurPersistFn = usePersistFn(onBlur || helpers.noop);
   const formatterPersistFn = usePersistFn(formatter || defaultFormatter);
-  const [localValue, setLocalValue] = useState(value);
+  const [localValue, setLocalValue] = useState(value || '');
   const [focus, setFocus] = useState(false);
   const TextInputRef = useRef<RNTextInput>(null);
   const Styles = createStyles(themeVar);
@@ -136,38 +141,27 @@ const TextInputBase: React.FC<TextInputProps> = ({
 
   // 同步外部的数据
   useEffect(() => {
-    setLocalValue(value);
+    if (isDef(value)) {
+      setLocalValue(value);
+    }
   }, [value]);
 
   const wrapperStyleSummary: ViewStyle = StyleSheet.flatten([
     multiline
       ? {
-          minHeight: themeVar.text_input_min_height * +rows,
+          minHeight: themeVar.text_input_min_height * +rows + themeVar.text_input_padding_vertical * 2,
         }
       : null,
+    showBorder ? Styles.border : null,
     clearable ? Styles.wrapperClearable : null,
     wrapperStyle,
   ]);
-  const textInputStyleSummary: TextStyle = StyleSheet.flatten([
-    Styles.textInput,
-    multiline
-      ? {
-          ...Platform.select({
-            android: {
-              lineHeight: themeVar.text_input_min_height,
-            },
-            ios: {
-              lineHeight: themeVar.text_input_min_height - 8,
-              paddingVertical: 4,
-            },
-          }),
-        }
-      : { height: themeVar.text_input_min_height },
-    clearable ? Styles.textInputClearable : null,
-    style,
-  ]);
+  const textInputStyleSummary: TextStyle = StyleSheet.flatten([Styles.textInput, showBorder ? Styles.textInputBorder : null, clearable ? Styles.textInputClearable : null, style]);
 
-  return (
+  const addonAfterJSX = isDef(addonAfter) ? isValidElement(addonAfter) ? addonAfter : <Text style={[Styles.addonText, Styles.addonAfterText]}>{addonAfter}</Text> : null;
+  const addonBeforeJSX = isDef(addonBefore) ? isValidElement(addonBefore) ? addonBefore : <Text style={[Styles.addonText, Styles.addonBeforeText]}>{addonBefore}</Text> : null;
+
+  const textInputJSX = (
     <TouchableWithoutFeedback onPress={onPressTextInputWrapper}>
       <View style={wrapperStyleSummary}>
         <RNTextInput
@@ -195,9 +189,27 @@ const TextInputBase: React.FC<TextInputProps> = ({
             </View>
           </TouchableOpacity>
         ) : null}
+
+        {showWordLimit ? (
+          <Text style={Styles.wordLimit}>
+            {localValue.length}/{maxLength}
+          </Text>
+        ) : null}
       </View>
     </TouchableWithoutFeedback>
   );
+
+  if (addonAfterJSX || addonBeforeJSX) {
+    return (
+      <View style={Styles.addon}>
+        {addonBeforeJSX}
+        <View style={Styles.addonInput}>{textInputJSX}</View>
+        {addonAfterJSX}
+      </View>
+    );
+  }
+
+  return textInputJSX;
 };
 
 export default memo(TextInputBase);

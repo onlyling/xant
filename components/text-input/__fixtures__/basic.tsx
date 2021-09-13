@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
 
 import { Cell, CellGroup, TextInput } from 'xant';
 
@@ -7,9 +6,9 @@ const BasicTextInput: React.FC = () => {
   const [value, setValue] = useState('');
 
   return (
-    <ScrollView keyboardShouldPersistTaps="handled">
+    <>
       <CellGroup title="基础用法">
-        <Cell title="text" value={<TextInput placeholder="不限制输入" />} />
+        <Cell title="text" value={<TextInput showBorder placeholder="不限制输入ABC" addonAfter="哈哈哈" addonBefore="AAA" />} />
 
         <Cell title="number" value={<TextInput type="number" placeholder="数字和小数点" />} />
 
@@ -17,7 +16,7 @@ const BasicTextInput: React.FC = () => {
 
         <Cell title="password" value={<TextInput type="password" placeholder="内容不可见" />} />
 
-        <Cell title="textarea" value={<TextInput type="textarea" placeholder="多行文本" />} />
+        <Cell title="textarea" value={<TextInput showBorder showWordLimit maxLength={120} type="textarea" placeholder="多行文本" />} />
 
         <Cell title="clearTrigger" value={<TextInput clearable clearTrigger="always" placeholder="多行文本" />} />
 
@@ -27,6 +26,7 @@ const BasicTextInput: React.FC = () => {
           title="受控使用"
           value={
             <TextInput
+              showBorder
               type="digit"
               placeholder="受控使用"
               value={value}
@@ -41,7 +41,7 @@ const BasicTextInput: React.FC = () => {
           }
         />
       </CellGroup>
-    </ScrollView>
+    </>
   );
 };
 

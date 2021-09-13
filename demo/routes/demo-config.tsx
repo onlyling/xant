@@ -1,6 +1,6 @@
 import React from 'react';
 // import type { ViewStyle } from 'react-native';
-// import { ScrollView } from 'react-native';
+import { Keyboard } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import DemoHome from '@/pages/demo/demo';
@@ -57,6 +57,10 @@ export type DemoPaths =
   | 'DemoCheckbox'
   | 'DemoPullRefresh'
   | 'DemoProgress';
+
+const onScrollBeginDrag = () => {
+  Keyboard.dismiss();
+};
 
 export const demoConfigs: { path: DemoPaths; page: any }[] = [
   {
@@ -207,7 +211,9 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
     path: 'DemoTextInput',
     page: () => (
       <DemoWrapper>
-        <DemoTextInput />
+        <KeyboardAwareScrollView keyboardShouldPersistTaps="handled" onScrollBeginDrag={onScrollBeginDrag}>
+          <DemoTextInput />
+        </KeyboardAwareScrollView>
       </DemoWrapper>
     ),
   },
@@ -215,7 +221,7 @@ export const demoConfigs: { path: DemoPaths; page: any }[] = [
     path: 'DemoField',
     page: () => (
       <DemoWrapper>
-        <KeyboardAwareScrollView>
+        <KeyboardAwareScrollView keyboardShouldPersistTaps="handled" onScrollBeginDrag={onScrollBeginDrag}>
           <DemoField />
         </KeyboardAwareScrollView>
       </DemoWrapper>
