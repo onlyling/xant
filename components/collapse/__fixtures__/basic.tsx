@@ -6,7 +6,7 @@ import { Collapse, CellGroup } from 'xant';
 const CollapseBadge: React.FC = () => {
   return (
     <ScrollView>
-      <CellGroup title="基础用法">
+      <CellGroup title="基础用法" border={false}>
         <Collapse
           title={
             <View>
