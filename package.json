@@ -12,7 +12,7 @@
     "start": "react-native start",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "lint": "eslint '{components,demo}/**/*.{js,jsx,ts,tsx}' --fix",
+    "lint": "tsc --noEmit && eslint '{components,demo}/**/*.{js,jsx,ts,tsx}' --fix",
     "prettier": "prettier --write '{demo,components}/**/*.{js,json,yml,yaml,ts,tsx,md}'",
     "lint-staged": "lint-staged --allow-empty",
     "commit": "npx git-cz",
