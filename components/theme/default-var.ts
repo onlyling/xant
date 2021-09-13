@@ -192,6 +192,7 @@ export const collapse_title_icon_color = text_color;
 export const collapse_title_icon_size = font_size_md;
 export const collapse_title_border_color = border_color;
 export const collapse_title_background_color = white;
+export const collapse_content_background_color = white;
 export const collapse_content_padding_horizontal = padding_md;
 
 // Dialog

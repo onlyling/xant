@@ -35,4 +35,10 @@ export interface CollapseProps {
    * 动画结束的回调，注意组件渲染问题，会存在多次回调
    */
   onAnimationEnd?: (collapse: boolean) => void;
+
+  /**
+   * 内容区域是否有内边距
+   * @default true
+   */
+  bodyPadding?: boolean;
 }

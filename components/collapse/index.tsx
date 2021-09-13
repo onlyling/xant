@@ -13,7 +13,7 @@ import { createStyles } from './style';
 /**
  * Collapse 折叠面板
  */
-const Collapse: React.FC<CollapseProps> = ({ children, title, renderTitle, renderBody, defaultCollapse, collapse, onAnimationEnd }) => {
+const Collapse: React.FC<CollapseProps> = ({ children, title, renderTitle, renderBody, defaultCollapse, collapse, onAnimationEnd, bodyPadding = true }) => {
   const { themeVar } = useTheme();
   const Styles = createStyles(themeVar);
 
@@ -37,7 +37,7 @@ const Collapse: React.FC<CollapseProps> = ({ children, title, renderTitle, rende
       }
 
       const action = Animated.timing(AnimatedValue, {
-        toValue: v ? HeightMap.current.start + HeightMap.current.end : HeightMap.current.start + 1,
+        toValue: v ? HeightMap.current.start + HeightMap.current.end : HeightMap.current.start,
         duration: themeVar.collapse_transition_duration,
         useNativeDriver: false,
         easing: v ? helpers.easing.easeOutCirc : helpers.easing.easeInCubic,
@@ -98,19 +98,20 @@ const Collapse: React.FC<CollapseProps> = ({ children, title, renderTitle, rende
   );
 
   const collapseStyleSummary = StyleSheet.flatten<ViewStyle>([Styles.collapse, { height: AnimatedValue as unknown as number }]);
+  const bodyStyleSummary = StyleSheet.flatten<ViewStyle>([Styles.body, bodyPadding ? Styles.bodyPadding : null]);
 
   return (
     <Animated.View style={collapseStyleSummary}>
-      <TouchableHighlight style={Styles.title} underlayColor={themeVar.cell_active_color} onPress={onPressTitle} onLayout={onLayoutTitle}>
-        <>
+      <TouchableHighlight underlayColor={themeVar.cell_active_color} onPress={onPressTitle} onLayout={onLayoutTitle}>
+        <View style={Styles.title}>
           {titleJSX}
           <View style={Styles.icon}>
             <IconSVGArrow color={themeVar.collapse_title_icon_color} size={themeVar.collapse_title_icon_size} direction={show ? 'up' : 'down'} />
           </View>
-        </>
+        </View>
       </TouchableHighlight>
 
-      <View collapsable={false} onLayout={onLayoutBody}>
+      <View collapsable={false} onLayout={onLayoutBody} style={bodyStyleSummary}>
         {renderBody ? renderBody(show) : children}
       </View>
     </Animated.View>

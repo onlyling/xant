@@ -18,18 +18,26 @@ export const createStyles = (themeVar: ThemeVarType) => {
       paddingVertical: themeVar.collapse_title_padding_vertical,
       // 给一个最低高度，避免整个节点不渲染，内部无法自然张开，onLayout 无法获得组件高度
       minHeight: themeVar.collapse_title_line_height + themeVar.collapse_title_padding_vertical * 2,
+      borderBottomWidth: 1,
+      borderBottomColor: themeVar.collapse_title_border_color,
     },
     titleText: {
       lineHeight: themeVar.collapse_title_line_height,
       fontSize: themeVar.collapse_title_font_size,
       fontWeight: 'bold',
       color: themeVar.collapse_title_text_color,
-      borderBottomWidth: 1,
-      borderBottomColor: themeVar.collapse_title_border_color,
     },
     icon: {
       height: themeVar.collapse_title_line_height,
       justifyContent: 'center',
+    },
+    body: {
+      backgroundColor: themeVar.collapse_content_background_color,
+      borderBottomWidth: 1,
+      borderBottomColor: themeVar.collapse_title_border_color,
+    },
+    bodyPadding: {
+      paddingHorizontal: themeVar.collapse_content_padding_horizontal,
     },
   });
 };
