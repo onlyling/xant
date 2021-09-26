@@ -82,7 +82,7 @@ const TextInputBase: React.FC<TextInputProps> = ({
   const TextInputRef = useRef<RNTextInput>(null);
   const inputAccessoryViewID = useMemo(() => `TextInputBase_${getNextInputAccessoryViewID()}`, []);
   const Styles = createStyles(themeVar);
-  const keyboardAppearance = resetProps.keyboardAppearance || colorScheme || 'light';
+  const keyboardAppearance = !isDef(resetProps.keyboardAppearance) || resetProps.keyboardAppearance === 'default' ? colorScheme || 'light' : resetProps.keyboardAppearance;
 
   /** 点击外边聚焦 */
   const onPressTextInputWrapper = useCallback(() => {
