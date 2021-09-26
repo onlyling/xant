@@ -90,7 +90,7 @@ export const createStyles = (themeVar: ThemeVarType) => {
 
     accessory: {
       width: '100%',
-      height: 44,
+      height: themeVar.text_input_accessory_height,
       flexDirection: 'row',
       justifyContent: 'flex-end',
       alignItems: 'center',
