@@ -180,15 +180,23 @@ const TextInputBase: React.FC<TextInputProps> = ({
   const addonAfterJSX = isDef(addonAfter) ? isValidElement(addonAfter) ? addonAfter : <Text style={[Styles.addonText, Styles.addonAfterText]}>{addonAfter}</Text> : null;
   const addonBeforeJSX = isDef(addonBefore) ? isValidElement(addonBefore) ? addonBefore : <Text style={[Styles.addonText, Styles.addonBeforeText]}>{addonBefore}</Text> : null;
 
+  /**
+   * 显示辅助工具栏
+   * @description 单行输入框回车键已具备收起键盘的作用
+   */
+  const showInputAccessoryView = type !== 'text';
+
   const textInputJSX = (
     <>
-      <InputAccessoryView nativeID={inputAccessoryViewID} backgroundColor={themeVar[`text_input_${keyboardAppearance}_accessory_background_color`]}>
-        <View style={Styles.accessory}>
-          <Text style={accessoryTextStyle} onPress={onPressFinish}>
-            完成
-          </Text>
-        </View>
-      </InputAccessoryView>
+      {showInputAccessoryView ? (
+        <InputAccessoryView nativeID={inputAccessoryViewID} backgroundColor={themeVar[`text_input_${keyboardAppearance}_accessory_background_color`]}>
+          <View style={Styles.accessory}>
+            <Text style={accessoryTextStyle} onPress={onPressFinish}>
+              完成
+            </Text>
+          </View>
+        </InputAccessoryView>
+      ) : null}
 
       <TouchableWithoutFeedback onPress={onPressTextInputWrapper}>
         <View style={wrapperStyleSummary}>
@@ -208,7 +216,7 @@ const TextInputBase: React.FC<TextInputProps> = ({
             onEndEditing={onEndEditingTextInput}
             onFocus={onFocusTextInput}
             onBlur={onBlurTextInput}
-            inputAccessoryViewID={resetProps.inputAccessoryViewID || inputAccessoryViewID}
+            inputAccessoryViewID={resetProps.inputAccessoryViewID || (showInputAccessoryView ? inputAccessoryViewID : undefined)}
           />
 
           {clearable && (clearTrigger === 'focus' ? focus : true) && localValue && localValue.length ? (

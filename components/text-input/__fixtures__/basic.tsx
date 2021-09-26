@@ -18,9 +18,9 @@ const BasicTextInput: React.FC = () => {
 
         <Cell title="textarea" value={<TextInput showBorder showWordLimit maxLength={120} type="textarea" placeholder="多行文本" />} />
 
-        <Cell title="clearTrigger" value={<TextInput clearable clearTrigger="always" placeholder="多行文本" />} />
+        <Cell title="clearTrigger" value={<TextInput clearable clearTrigger="always" placeholder="单行文本" />} />
 
-        <Cell title="clearTrigger2" value={<TextInput clearable placeholder="多行文本" />} />
+        <Cell title="clearTrigger2" value={<TextInput clearable placeholder="单行文本" />} />
 
         <Cell
           title="受控使用"
