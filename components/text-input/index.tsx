@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect, useCallback, memo, isValidElement } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo, memo, isValidElement } from 'react';
 import type { ViewStyle, TextStyle, NativeSyntheticEvent, TextInputFocusEventData, TextInputEndEditingEventData } from 'react-native';
-import { View, Text, TextInput as RNTextInput, TouchableWithoutFeedback, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput as RNTextInput, InputAccessoryView, TouchableWithoutFeedback, TouchableOpacity, StyleSheet, Keyboard, useColorScheme } from 'react-native';
 
 import type { TextInputProps } from './interface';
 import { createStyles } from './style';
@@ -12,6 +12,10 @@ import usePersistFn from '../hooks/use-persist-fn';
 import * as helpers from '../helpers';
 
 const defaultFormatter = <T,>(t: T): T => t;
+
+let nextInputAccessoryViewID = 0;
+
+const getNextInputAccessoryViewID = () => ++nextInputAccessoryViewID;
 
 /**
  * 自定义输入项
@@ -52,7 +56,7 @@ const TextInputBase: React.FC<TextInputProps> = ({
     multiline = true;
     clearable = false;
   } else {
-    if (!returnKeyType) {
+    if (!isDef(returnKeyType)) {
       returnKeyType = 'done';
     }
   }
@@ -66,6 +70,7 @@ const TextInputBase: React.FC<TextInputProps> = ({
     keyboardType = 'number-pad';
   }
 
+  const colorScheme = useColorScheme();
   const { themeVar } = useTheme();
   const onChangeTextPersistFn = usePersistFn(onChangeText || helpers.noop);
   const onEndEditingPersistFn = usePersistFn(onEndEditing || helpers.noop);
@@ -75,7 +80,9 @@ const TextInputBase: React.FC<TextInputProps> = ({
   const [localValue, setLocalValue] = useState(value || '');
   const [focus, setFocus] = useState(false);
   const TextInputRef = useRef<RNTextInput>(null);
+  const inputAccessoryViewID = useMemo(() => `TextInputBase_${getNextInputAccessoryViewID()}`, []);
   const Styles = createStyles(themeVar);
+  const keyboardAppearance = resetProps.keyboardAppearance || colorScheme || 'light';
 
   /** 点击外边聚焦 */
   const onPressTextInputWrapper = useCallback(() => {
@@ -114,6 +121,13 @@ const TextInputBase: React.FC<TextInputProps> = ({
     },
     [onEndEditingPersistFn, formatterPersistFn, formatTrigger],
   );
+  /**
+   * 点击完成收起软键盘
+   */
+  const onPressFinish = useCallback(() => {
+    Keyboard.dismiss();
+    setFocus(false);
+  }, []);
   /**
    * 点击清除按钮
    * @description 目前不能在输入框聚焦的时候触发点击，输入框失去焦点后才能触发点击，可能是软键盘的问题？
@@ -157,46 +171,62 @@ const TextInputBase: React.FC<TextInputProps> = ({
     wrapperStyle,
   ]);
   const textInputStyleSummary: TextStyle = StyleSheet.flatten([Styles.textInput, showBorder ? Styles.textInputBorder : null, clearable ? Styles.textInputClearable : null, style]);
+  const accessoryTextStyle: TextStyle = {
+    color: themeVar[`text_input_${keyboardAppearance}_accessory_text_color`],
+    fontSize: themeVar.text_input_accessory_font_size,
+    fontWeight: 'bold',
+  };
 
   const addonAfterJSX = isDef(addonAfter) ? isValidElement(addonAfter) ? addonAfter : <Text style={[Styles.addonText, Styles.addonAfterText]}>{addonAfter}</Text> : null;
   const addonBeforeJSX = isDef(addonBefore) ? isValidElement(addonBefore) ? addonBefore : <Text style={[Styles.addonText, Styles.addonBeforeText]}>{addonBefore}</Text> : null;
 
   const textInputJSX = (
-    <TouchableWithoutFeedback onPress={onPressTextInputWrapper}>
-      <View style={wrapperStyleSummary}>
-        <RNTextInput
-          {...resetProps}
-          ref={TextInputRef}
-          style={textInputStyleSummary}
-          value={isDef(value) ? value : localValue}
-          multiline={multiline}
-          scrollEnabled={scrollEnabled}
-          selectionColor={selectionColor || themeVar.text_input_selection_color}
-          secureTextEntry={secureTextEntry}
-          placeholderTextColor={placeholderTextColor || themeVar.text_input_placeholder_text_color}
-          keyboardType={keyboardType}
-          returnKeyType={returnKeyType}
-          onChangeText={onChangeTextTextInput}
-          onEndEditing={onEndEditingTextInput}
-          onFocus={onFocusTextInput}
-          onBlur={onBlurTextInput}
-        />
-
-        {clearable && (clearTrigger === 'focus' ? focus : true) && localValue && localValue.length ? (
-          <TouchableOpacity style={Styles.clearableWrapper} onPress={onPressClearable}>
-            <View style={Styles.clearable}>
-              <IconSvgCross color={themeVar.text_input_clearable_color} size={themeVar.text_input_clearable_size / 2} />
-            </View>
-          </TouchableOpacity>
-        ) : null}
-
-        {showWordLimit ? (
-          <Text style={Styles.wordLimit}>
-            {localValue.length}/{maxLength}
+    <>
+      <InputAccessoryView nativeID={inputAccessoryViewID} backgroundColor={themeVar[`text_input_${keyboardAppearance}_accessory_background_color`]}>
+        <View style={Styles.accessory}>
+          <Text style={accessoryTextStyle} onPress={onPressFinish}>
+            完成
           </Text>
-        ) : null}
-      </View>
-    </TouchableWithoutFeedback>
+        </View>
+      </InputAccessoryView>
+
+      <TouchableWithoutFeedback onPress={onPressTextInputWrapper}>
+        <View style={wrapperStyleSummary}>
+          <RNTextInput
+            {...resetProps}
+            ref={TextInputRef}
+            style={textInputStyleSummary}
+            value={isDef(value) ? value : localValue}
+            multiline={multiline}
+            scrollEnabled={scrollEnabled}
+            selectionColor={selectionColor || themeVar.text_input_selection_color}
+            secureTextEntry={secureTextEntry}
+            placeholderTextColor={placeholderTextColor || themeVar.text_input_placeholder_text_color}
+            keyboardType={keyboardType}
+            returnKeyType={returnKeyType}
+            onChangeText={onChangeTextTextInput}
+            onEndEditing={onEndEditingTextInput}
+            onFocus={onFocusTextInput}
+            onBlur={onBlurTextInput}
+            inputAccessoryViewID={resetProps.inputAccessoryViewID || inputAccessoryViewID}
+          />
+
+          {clearable && (clearTrigger === 'focus' ? focus : true) && localValue && localValue.length ? (
+            <TouchableOpacity style={Styles.clearableWrapper} onPress={onPressClearable}>
+              <View style={Styles.clearable}>
+                <IconSvgCross color={themeVar.text_input_clearable_color} size={themeVar.text_input_clearable_size / 2} />
+              </View>
+            </TouchableOpacity>
+          ) : null}
+
+          {showWordLimit ? (
+            <Text style={Styles.wordLimit}>
+              {localValue.length}/{maxLength}
+            </Text>
+          ) : null}
+        </View>
+      </TouchableWithoutFeedback>
+    </>
   );
 
   if (addonAfterJSX || addonBeforeJSX) {

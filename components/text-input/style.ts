@@ -87,5 +87,14 @@ export const createStyles = (themeVar: ThemeVarType) => {
       borderColor: themeVar.border_color,
       borderRadius: themeVar.border_radius_md,
     },
+
+    accessory: {
+      width: '100%',
+      height: 44,
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      paddingHorizontal: themeVar.text_input_dark_accessory_padding_horizontal,
+    },
   });
 };
