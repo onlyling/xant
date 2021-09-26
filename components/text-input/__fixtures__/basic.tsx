@@ -14,9 +14,9 @@ const BasicTextInput: React.FC = () => {
 
         <Cell title="digit" value={<TextInput type="digit" placeholder="数字" textAlign="right" />} />
 
-        <Cell title="password" value={<TextInput type="password" placeholder="内容不可见" keyboardAppearance="dark" />} />
+        <Cell title="password" value={<TextInput type="password" placeholder="内容不可见" />} />
 
-        <Cell title="textarea" value={<TextInput showBorder showWordLimit maxLength={120} type="textarea" placeholder="多行文本" />} />
+        <Cell title="textarea" value={<TextInput showBorder showWordLimit maxLength={120} type="textarea" placeholder="多行文本" keyboardAppearance="dark" />} />
 
         <Cell title="clearTrigger" value={<TextInput clearable clearTrigger="always" placeholder="单行文本" />} />
 
