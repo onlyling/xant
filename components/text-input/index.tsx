@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo, memo, isValidElement } from 'react';
 import type { ViewStyle, TextStyle, NativeSyntheticEvent, TextInputFocusEventData, TextInputEndEditingEventData } from 'react-native';
-import { View, Text, TextInput as RNTextInput, InputAccessoryView, TouchableWithoutFeedback, TouchableOpacity, StyleSheet, Keyboard, useColorScheme } from 'react-native';
+import { View, Text, TextInput as RNTextInput, InputAccessoryView, TouchableWithoutFeedback, TouchableOpacity, StyleSheet, Keyboard, Platform, useColorScheme } from 'react-native';
 
 import type { TextInputProps } from './interface';
 import { createStyles } from './style';
@@ -16,6 +16,8 @@ const defaultFormatter = <T,>(t: T): T => t;
 let nextInputAccessoryViewID = 0;
 
 const getNextInputAccessoryViewID = () => ++nextInputAccessoryViewID;
+
+const iOSPlatform = Platform.OS === 'ios';
 
 /**
  * 自定义输入项
@@ -186,7 +188,7 @@ const TextInputBase: React.FC<TextInputProps> = ({
    * 显示辅助工具栏
    * @description 单行输入框回车键已具备收起键盘的作用
    */
-  const showInputAccessoryView = type !== 'text' && type !== 'password';
+  const showInputAccessoryView = iOSPlatform && type !== 'text' && type !== 'password';
 
   const textInputJSX = (
     <>
