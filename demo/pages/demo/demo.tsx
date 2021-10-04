@@ -74,6 +74,10 @@ const navDatas: {
         title: 'Field',
         name: 'DemoField',
       },
+      {
+        title: 'Picker',
+        name: 'DemoPicker',
+      },
     ],
   },
   {

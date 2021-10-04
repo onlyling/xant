@@ -57,6 +57,9 @@ export { default as Notify } from './notify';
 export type { OverlayProps } from './overlay/interface';
 export { default as Overlay } from './overlay';
 
+export type { PickerProps } from './picker/interface';
+export { default as Picker } from './picker';
+
 export type { PopupProps, PopupPosition } from './popup/interface';
 export { default as Popup } from './popup';
 
