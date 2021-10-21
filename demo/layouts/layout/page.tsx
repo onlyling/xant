@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, memo } from 'react';
 import type { ViewStyle } from 'react-native';
-import { View, Platform } from 'react-native';
+import { View, Platform, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from 'xant';
@@ -36,7 +36,7 @@ const Page: React.FC<PageProps> = memo(
         headerStyle: {
           ...noHeaderShadowStyle,
           backgroundColor: headerBackgroundColor,
-          borderBottomWidth: 1,
+          borderBottomWidth: StyleSheet.hairlineWidth,
           borderBottomColor: themeVar.border_color,
           borderStyle: 'solid',
         },

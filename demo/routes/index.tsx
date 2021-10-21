@@ -2,7 +2,7 @@ import React from 'react';
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
 import type { StackScreenProps, StackNavigationProp } from '@react-navigation/stack';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import type { BottomTabNavigationProp as BottomTabNavigationPropOriginal } from '@react-navigation/bottom-tabs';
 
 import BackArrow from '@/components/back-arrow';
@@ -46,7 +46,7 @@ const NestingNavigators: React.FC = () => {
       <Stack.Navigator
         initialRouteName="Index"
         screenOptions={{
-          // cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           cardStyle: sceneContainerStyle,
           headerTitleAlign: 'center',
           headerTitleStyle: buildHeaderTitleStyle(),
