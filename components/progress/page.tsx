@@ -43,7 +43,7 @@ const ProgressPage: React.FC<ProgressPageProps> = ({ children, loading: loadingO
   if (state.loading) {
     return (
       <View style={wrapperStyle}>
-        <Progress percentage={state.percentage} showPivot={false} animated animationDuration={state.duration} onAnimationEnd={onAnimationEnd} />
+        <Progress square percentage={state.percentage} showPivot={false} animated animationDuration={state.duration} onAnimationEnd={onAnimationEnd} />
       </View>
     );
   }

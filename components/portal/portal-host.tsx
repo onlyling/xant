@@ -1,4 +1,5 @@
 import React from 'react';
+import type { EmitterSubscription } from 'react-native';
 import { DeviceEventEmitter, NativeEventEmitter, StyleSheet, View } from 'react-native';
 import PortalManager from './portal-manager';
 
@@ -16,8 +17,8 @@ export type PortalMethods = {
 
 export const PortalContext = React.createContext<PortalMethods>(null as any);
 // events
-const addType = 'ANT_DESIGN_MOBILE_RN_ADD_PORTAL';
-const removeType = 'ANT_DESIGN_MOBILE_RN_REMOVE_PORTAL';
+const addType = 'XANT_ADD_PORTAL';
+const removeType = 'XANT_REMOVE_PORTAL';
 // fix react native web does not support DeviceEventEmitter
 const TopViewEventEmitter = DeviceEventEmitter || new NativeEventEmitter();
 
@@ -65,12 +66,15 @@ export default class PortalHost extends React.Component<PortalHostProps> {
   _queue: Operation[] = [];
   _manager?: PortalManager;
 
+  _addTypeES?: EmitterSubscription;
+  _removeTypeES?: EmitterSubscription;
+
   componentDidMount() {
     const manager = this._manager;
     const queue = this._queue;
 
-    TopViewEventEmitter.addListener(addType, this._mount);
-    TopViewEventEmitter.addListener(removeType, this._unmount);
+    this._addTypeES = TopViewEventEmitter.addListener(addType, this._mount);
+    this._removeTypeES = TopViewEventEmitter.addListener(removeType, this._unmount);
 
     while (queue.length && manager) {
       const action = queue.pop();
@@ -92,8 +96,10 @@ export default class PortalHost extends React.Component<PortalHostProps> {
     }
   }
   componentWillUnmount() {
-    TopViewEventEmitter.removeListener(addType, this._mount);
-    TopViewEventEmitter.removeListener(removeType, this._unmount);
+    // TopViewEventEmitter.removeListener(addType, this._mount);
+    // TopViewEventEmitter.removeListener(removeType, this._unmount);
+    this._addTypeES?.remove();
+    this._removeTypeES?.remove();
   }
   _setManager = (manager?: any) => {
     this._manager = manager;
