@@ -1,17 +1,12 @@
 import React, { useRef, useEffect, useMemo, memo } from 'react';
-import type { TextStyle } from 'react-native';
+import type { ViewStyle } from 'react-native';
 import { View, Text, PanResponder, Animated } from 'react-native';
 
 import type { PickerColumnProps, PickerObjectOption } from './interface';
 import { isDef } from '../helpers/typeof';
 import usePersistFn from '../hooks/use-persist-fn';
-
-const textStyle: TextStyle = {
-  textAlign: 'center',
-  height: 44,
-  lineHeight: 44,
-  fontSize: 16,
-};
+import { useTheme } from '../theme';
+import { createStyles } from './style.column';
 
 const findOptionIndex = (options: PickerObjectOption[], start: number, end: number) => {
   const isNext = end - start >= 0;
@@ -38,23 +33,20 @@ const findUsableOptionIndex = (options: PickerObjectOption[], next: boolean, ind
     next = true;
   }
 
-  // 末端补鞥呢继续乡下找
+  // 末端不能继续向下找
   if (index === maxIndex && next) {
     next = false;
   }
-
-  const getStart = (cNext: boolean) => {
-    return index + (cNext ? 1 : -1);
-  };
 
   const getEnd = (cNext: boolean) => {
     return cNext ? maxIndex : 0;
   };
 
-  let nIndex = findOptionIndex(options, getStart(next), getEnd(next));
+  // 以当前为起点向某个方向找
+  let nIndex = findOptionIndex(options, index, getEnd(next));
 
   if (nIndex === -1 && reverse) {
-    nIndex = findOptionIndex(options, getStart(!next), getEnd(!next));
+    nIndex = findOptionIndex(options, index, getEnd(!next));
   }
 
   return nIndex;
@@ -64,6 +56,9 @@ const findUsableOptionIndex = (options: PickerObjectOption[], next: boolean, ind
  * 自定义输入项
  */
 const PickerColumn: React.FC<PickerColumnProps> = ({ itemHeight, visibleItemCount, options, defaultValue, onChangeValue }) => {
+  const { themeVar } = useTheme();
+  const Styles = createStyles(themeVar);
+
   /** 刻度偏移量，中间一个选项的高度，各自偏移半个高度 */
   const markMargin = itemHeight / 2;
   const PanAnimated = useRef(new Animated.Value(0));
@@ -130,7 +125,7 @@ const PickerColumn: React.FC<PickerColumnProps> = ({ itemHeight, visibleItemCoun
           duration: 50,
         }).start(({ finished }) => {
           if (finished) {
-            onChangeValuePersistFn(options[endIndex] || null);
+            onChangeValuePersistFn(options[endIndex]);
           }
         });
       },
@@ -147,9 +142,10 @@ const PickerColumn: React.FC<PickerColumnProps> = ({ itemHeight, visibleItemCoun
       endIndex = options.findIndex((item) => item.value === defaultValue);
     }
 
-    if (options[endIndex].disabled) {
-      endIndex = findUsableOptionIndex(options, true, endIndex);
-    }
+    // 初始化的时候需要做偏移吗？
+    // if (options[endIndex].disabled) {
+    //   endIndex = findUsableOptionIndex(options, true, endIndex);
+    // }
 
     const currentTop = startTop - endIndex * itemHeight;
 
@@ -161,85 +157,33 @@ const PickerColumn: React.FC<PickerColumnProps> = ({ itemHeight, visibleItemCoun
     };
   }, [itemHeight, visibleItemCount, options, defaultValue]);
 
+  const listStyle: ViewStyle = {
+    position: 'relative',
+    transform: [
+      {
+        translateY: PanAnimated.current as unknown as number,
+      },
+    ],
+  };
+
   return (
-    <View
-      style={{
-        flex: 1,
-        marginHorizontal: 12,
-        position: 'relative',
-      }}
-    >
-      <View
-        {...panResponder.panHandlers}
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0,
-          zIndex: 4,
-        }}
-      />
+    <View style={Styles.column}>
+      <View {...panResponder.panHandlers} style={Styles.touch} />
 
-      <View
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: '50%',
-          zIndex: 3,
-          backgroundColor: 'rgba(255,255,255,0.5)',
-          borderBottomColor: '#ebedf0',
-          borderBottomWidth: 1,
-          transform: [
-            {
-              translateY: -markMargin,
-            },
-          ],
-        }}
-      />
-
-      <View
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: '50%',
-          bottom: 0,
-          zIndex: 3,
-          backgroundColor: 'rgba(255,255,255,0.5)',
-          borderTopColor: '#ebedf0',
-          borderTopWidth: 1,
-          transform: [
-            {
-              translateY: markMargin,
-            },
-          ],
-        }}
-      />
-      <Animated.View
-        style={{
-          position: 'relative',
-          transform: [
-            {
-              translateY: PanAnimated.current,
-            },
-          ],
-        }}
-      >
+      <Animated.View style={listStyle}>
         {options.map((item) => {
           return (
             <Text
               key={item.value}
               style={[
-                textStyle,
-                item.disabled
-                  ? {
-                      color: '#999',
-                    }
-                  : null,
+                Styles.text,
+                {
+                  height: itemHeight,
+                  lineHeight: itemHeight,
+                },
+                item.disabled ? Styles.textDisabled : null,
               ]}
+              numberOfLines={1}
             >
               {item.label}
             </Text>

@@ -284,6 +284,18 @@ export const image_error_icon_color = gray_4;
 export const overlay_z_index: number = 1;
 export const overlay_background_color: string = 'rgba(0, 0, 0, 0.7)';
 
+// Picker
+export const picker_background_color: string = '#fff';
+export const picker_title_text_line_height: number = 44;
+export const picker_title_text_padding_horizontal = padding_md;
+export const picker_title_cancel_text_color = gray_6;
+export const picker_title_confirm_text_color = primary;
+export const picker_title_title_text_color = text_color;
+export const picker_column_mask_border_color = border_color;
+export const picker_column_mask_background_color: string = 'rgba(255,255,255,0.8)';
+export const picker_column_text_disabled_color: string = '#999';
+export const picker_column_text_font_size = font_size_lg;
+
 // Popup
 export const popup_background_color = white;
 // export const popup_transition: transform @animation-duration-base;
